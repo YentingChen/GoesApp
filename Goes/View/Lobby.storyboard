@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="See-cs-baK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Lobby View Controller-->
+        <scene sceneID="2sy-IH-v6T">
+            <objects>
+                <viewController id="8ph-z5-KiA" customClass="LobbyViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aMP-n5-QTA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="sQI-iF-vxf">
+                                <rect key="frame" x="30" y="80" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="13q-0f-hvG"/>
+                                    <constraint firstAttribute="width" constant="60" id="q1S-J2-be8"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AC-7u-5Ow">
+                                <rect key="frame" x="30" y="164" width="217" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="bZ5-e5-suI"/>
+                                    <constraint firstAttribute="width" constant="217" id="skG-XD-BXq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <color key="textColor" name="B1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="now?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSG-FJ-bK0">
+                                <rect key="frame" x="30" y="198" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4qa-NP-qmA"/>
+                                    <constraint firstAttribute="width" constant="100" id="h7K-cG-KMF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kre-h9-Cfk">
+                                <rect key="frame" x="30" y="232" width="317" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="haF-68-aOG"/>
+                                    <constraint firstAttribute="width" constant="317" id="yRR-ge-Pwd"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="告訴朋友您的所在地，讓他們知道該去哪裡找你。">
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="PingFangTC-Regular"/>
+                                            <font key="NSOriginalFont" size="16" name="ArialHebrew"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="選擇模式" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZA-MS-XrL">
+                                <rect key="frame" x="30" y="304" width="90" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="I9s-YN-Kii"/>
+                                    <constraint firstAttribute="width" constant="90" id="K4a-qQ-4dz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrt-bi-4tU">
+                                <rect key="frame" x="30" y="352" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Bsk-8D-yy1"/>
+                                    <constraint firstAttribute="width" constant="150" id="QAq-YI-N4D"/>
+                                </constraints>
+                                <size key="titleShadowOffset" width="3" height="3"/>
+                                <state key="normal" title="Button" image="PickMeUp">
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0WD-ap-uHR">
+                                <rect key="frame" x="195" y="352" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="bUo-aI-fin"/>
+                                    <constraint firstAttribute="height" constant="150" id="e4c-jc-mtX"/>
+                                </constraints>
+                                <size key="titleShadowOffset" width="75" height="75"/>
+                                <state key="normal" image="FindMyFriend">
+                                    <color key="titleShadowColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pSG-FJ-bK0" firstAttribute="top" secondItem="7AC-7u-5Ow" secondAttribute="bottom" constant="4" id="0AB-5f-AsA"/>
+                            <constraint firstItem="vrt-bi-4tU" firstAttribute="top" secondItem="iZA-MS-XrL" secondAttribute="bottom" id="9iR-7V-AcF"/>
+                            <constraint firstItem="sQI-iF-vxf" firstAttribute="top" secondItem="vN1-yL-qtP" secondAttribute="top" constant="16" id="BJ3-xf-kgM"/>
+                            <constraint firstItem="iZA-MS-XrL" firstAttribute="leading" secondItem="vN1-yL-qtP" secondAttribute="leading" constant="30" id="CO6-NT-zS9"/>
+                            <constraint firstItem="sQI-iF-vxf" firstAttribute="leading" secondItem="vN1-yL-qtP" secondAttribute="leading" constant="30" id="GZU-Hk-t1c"/>
+                            <constraint firstItem="0WD-ap-uHR" firstAttribute="centerY" secondItem="vrt-bi-4tU" secondAttribute="centerY" id="Gma-n2-Qdc"/>
+                            <constraint firstItem="7AC-7u-5Ow" firstAttribute="top" secondItem="vN1-yL-qtP" secondAttribute="top" constant="100" id="R9s-rW-buc"/>
+                            <constraint firstItem="vN1-yL-qtP" firstAttribute="trailing" secondItem="0WD-ap-uHR" secondAttribute="trailing" constant="30" id="RCH-jz-Iry"/>
+                            <constraint firstItem="vrt-bi-4tU" firstAttribute="leading" secondItem="vN1-yL-qtP" secondAttribute="leading" constant="30" id="TQv-0E-Y9l"/>
+                            <constraint firstItem="pSG-FJ-bK0" firstAttribute="leading" secondItem="vN1-yL-qtP" secondAttribute="leading" constant="30" id="Tyr-A8-DpI"/>
+                            <constraint firstItem="iZA-MS-XrL" firstAttribute="top" secondItem="kre-h9-Cfk" secondAttribute="bottom" constant="24" id="Vmy-zk-hBH"/>
+                            <constraint firstItem="kre-h9-Cfk" firstAttribute="top" secondItem="pSG-FJ-bK0" secondAttribute="bottom" constant="4" id="Yma-Oo-NB4"/>
+                            <constraint firstItem="kre-h9-Cfk" firstAttribute="leading" secondItem="vN1-yL-qtP" secondAttribute="leading" constant="30" id="dxV-d6-rKg"/>
+                            <constraint firstItem="7AC-7u-5Ow" firstAttribute="leading" secondItem="vN1-yL-qtP" secondAttribute="leading" constant="30" id="r1q-Sr-Gor"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vN1-yL-qtP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kGj-6Z-ud5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hEG-eM-xh0" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2738.4000000000001" y="132.68365817091455"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IIj-Mn-p8f">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="See-cs-baK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4UV-Ds-7xx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8ph-z5-KiA" kind="relationship" relationship="rootViewController" id="0uX-1T-i2N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7SO-ze-DYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1799.2" y="132.68365817091455"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="FindMyFriend" width="158" height="158"/>
+        <image name="PickMeUp" width="158" height="158"/>
+        <image name="profile_image" width="512" height="512"/>
+        <namedColor name="B1">
+            <color red="0.24705882352941178" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

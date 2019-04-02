@@ -10,8 +10,15 @@
 		3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F4122533EE10031CF81 /* AppDelegate.swift */; };
 		3E609F4422533EE10031CF81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F4322533EE10031CF81 /* ViewController.swift */; };
 		3E609F4722533EE10031CF81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E609F4522533EE10031CF81 /* Main.storyboard */; };
-		3E609F4922533EE30031CF81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E609F4822533EE30031CF81 /* Assets.xcassets */; };
 		3E609F4C22533EE30031CF81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E609F4A22533EE30031CF81 /* LaunchScreen.storyboard */; };
+		3E609F54225341950031CF81 /* 螢幕快照 2019-04-02 下午3.06.28.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E609F53225341950031CF81 /* 螢幕快照 2019-04-02 下午3.06.28.png */; };
+		3E609F5C22535AE40031CF81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E609F5B22535AE40031CF81 /* Assets.xcassets */; };
+		3E609F5E22535DDD0031CF81 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F5D22535DDD0031CF81 /* UIStoryboard+Extension.swift */; };
+		3E609F6022535E2A0031CF81 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E609F5F22535E2A0031CF81 /* Lobby.storyboard */; };
+		3E609F6222535E800031CF81 /* TabBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F6122535E800031CF81 /* TabBaseViewController.swift */; };
+		3E609F642253603E0031CF81 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F632253603E0031CF81 /* UIImage+Extension.swift */; };
+		3E609F66225362260031CF81 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F65225362260031CF81 /* LobbyViewController.swift */; };
+		3E609F682253664D0031CF81 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F672253664D0031CF81 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,9 +26,16 @@
 		3E609F4122533EE10031CF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E609F4322533EE10031CF81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3E609F4622533EE10031CF81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3E609F4822533EE30031CF81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E609F4B22533EE30031CF81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E609F4D22533EE30031CF81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E609F53225341950031CF81 /* 螢幕快照 2019-04-02 下午3.06.28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "螢幕快照 2019-04-02 下午3.06.28.png"; path = "../../../Desktop/螢幕快照 2019-04-02 下午3.06.28.png"; sourceTree = "<group>"; };
+		3E609F5B22535AE40031CF81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3E609F5D22535DDD0031CF81 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
+		3E609F5F22535E2A0031CF81 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
+		3E609F6122535E800031CF81 /* TabBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBaseViewController.swift; sourceTree = "<group>"; };
+		3E609F632253603E0031CF81 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		3E609F65225362260031CF81 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		3E609F672253664D0031CF81 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +69,52 @@
 			isa = PBXGroup;
 			children = (
 				3E609F4122533EE10031CF81 /* AppDelegate.swift */,
-				3E609F4322533EE10031CF81 /* ViewController.swift */,
-				3E609F4522533EE10031CF81 /* Main.storyboard */,
-				3E609F4822533EE30031CF81 /* Assets.xcassets */,
+				3E609F5B22535AE40031CF81 /* Assets.xcassets */,
+				3E609F69225366FD0031CF81 /* Extension */,
+				3E609F6B2253672C0031CF81 /* Base */,
+				3E609F6C225367400031CF81 /* View */,
+				3E609F6A225367100031CF81 /* Controller */,
+				3E609F53225341950031CF81 /* 螢幕快照 2019-04-02 下午3.06.28.png */,
 				3E609F4A22533EE30031CF81 /* LaunchScreen.storyboard */,
 				3E609F4D22533EE30031CF81 /* Info.plist */,
 			);
 			path = Goes;
+			sourceTree = "<group>";
+		};
+		3E609F69225366FD0031CF81 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3E609F632253603E0031CF81 /* UIImage+Extension.swift */,
+				3E609F672253664D0031CF81 /* UIColor+Extension.swift */,
+				3E609F5D22535DDD0031CF81 /* UIStoryboard+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3E609F6A225367100031CF81 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3E609F4322533EE10031CF81 /* ViewController.swift */,
+				3E609F65225362260031CF81 /* LobbyViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3E609F6B2253672C0031CF81 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3E609F6122535E800031CF81 /* TabBaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		3E609F6C225367400031CF81 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3E609F4522533EE10031CF81 /* Main.storyboard */,
+				3E609F5F22535E2A0031CF81 /* Lobby.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,8 +176,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E609F4C22533EE30031CF81 /* LaunchScreen.storyboard in Resources */,
-				3E609F4922533EE30031CF81 /* Assets.xcassets in Resources */,
+				3E609F6022535E2A0031CF81 /* Lobby.storyboard in Resources */,
 				3E609F4722533EE10031CF81 /* Main.storyboard in Resources */,
+				3E609F5C22535AE40031CF81 /* Assets.xcassets in Resources */,
+				3E609F54225341950031CF81 /* 螢幕快照 2019-04-02 下午3.06.28.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E609F682253664D0031CF81 /* UIColor+Extension.swift in Sources */,
 				3E609F4422533EE10031CF81 /* ViewController.swift in Sources */,
 				3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */,
+				3E609F642253603E0031CF81 /* UIImage+Extension.swift in Sources */,
+				3E609F66225362260031CF81 /* LobbyViewController.swift in Sources */,
+				3E609F5E22535DDD0031CF81 /* UIStoryboard+Extension.swift in Sources */,
+				3E609F6222535E800031CF81 /* TabBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
