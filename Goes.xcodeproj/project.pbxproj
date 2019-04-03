@@ -19,6 +19,8 @@
 		3E609F642253603E0031CF81 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F632253603E0031CF81 /* UIImage+Extension.swift */; };
 		3E609F66225362260031CF81 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F65225362260031CF81 /* LobbyViewController.swift */; };
 		3E609F682253664D0031CF81 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F672253664D0031CF81 /* UIColor+Extension.swift */; };
+		3E6169632253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6169622253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png */; };
+		3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		3E609F632253603E0031CF81 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		3E609F65225362260031CF81 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		3E609F672253664D0031CF81 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		3E6169622253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "螢幕快照 2019-04-02 下午10.17.15.png"; sourceTree = "<group>"; };
+		3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 			children = (
 				3E609F4122533EE10031CF81 /* AppDelegate.swift */,
 				3E609F5B22535AE40031CF81 /* Assets.xcassets */,
+				3E6169622253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png */,
 				3E609F69225366FD0031CF81 /* Extension */,
 				3E609F6B2253672C0031CF81 /* Base */,
 				3E609F6C225367400031CF81 /* View */,
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				3E609F6122535E800031CF81 /* TabBaseViewController.swift */,
+				3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -177,6 +183,7 @@
 			files = (
 				3E609F4C22533EE30031CF81 /* LaunchScreen.storyboard in Resources */,
 				3E609F6022535E2A0031CF81 /* Lobby.storyboard in Resources */,
+				3E6169632253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png in Resources */,
 				3E609F4722533EE10031CF81 /* Main.storyboard in Resources */,
 				3E609F5C22535AE40031CF81 /* Assets.xcassets in Resources */,
 				3E609F54225341950031CF81 /* 螢幕快照 2019-04-02 下午3.06.28.png in Resources */,
@@ -193,6 +200,7 @@
 				3E609F682253664D0031CF81 /* UIColor+Extension.swift in Sources */,
 				3E609F4422533EE10031CF81 /* ViewController.swift in Sources */,
 				3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */,
+				3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */,
 				3E609F642253603E0031CF81 /* UIImage+Extension.swift in Sources */,
 				3E609F66225362260031CF81 /* LobbyViewController.swift in Sources */,
 				3E609F5E22535DDD0031CF81 /* UIStoryboard+Extension.swift in Sources */,

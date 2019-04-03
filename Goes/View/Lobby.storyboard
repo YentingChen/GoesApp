@@ -27,9 +27,9 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AC-7u-5Ow">
-                                <rect key="frame" x="30" y="164" width="217" height="30"/>
+                                <rect key="frame" x="30" y="164" width="217" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="bZ5-e5-suI"/>
+                                    <constraint firstAttribute="height" constant="40" id="bZ5-e5-suI"/>
                                     <constraint firstAttribute="width" constant="217" id="skG-XD-BXq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
@@ -37,33 +37,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="now?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSG-FJ-bK0">
-                                <rect key="frame" x="30" y="198" width="100" height="30"/>
+                                <rect key="frame" x="30" y="208" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="4qa-NP-qmA"/>
                                     <constraint firstAttribute="width" constant="100" id="h7K-cG-KMF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="B1"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kre-h9-Cfk">
-                                <rect key="frame" x="30" y="232" width="317" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="告訴朋友您的所在地，讓他們知道該去哪裡找你。" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kre-h9-Cfk">
+                                <rect key="frame" x="30" y="242" width="317" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="haF-68-aOG"/>
                                     <constraint firstAttribute="width" constant="317" id="yRR-ge-Pwd"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="告訴朋友您的所在地，讓他們知道該去哪裡找你。">
-                                        <attributes>
-                                            <font key="NSFont" size="14" name="PingFangTC-Regular"/>
-                                            <font key="NSOriginalFont" size="16" name="ArialHebrew"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                <color key="textColor" name="B3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="選擇模式" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZA-MS-XrL">
-                                <rect key="frame" x="30" y="304" width="90" height="48"/>
+                                <rect key="frame" x="30" y="314" width="90" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="I9s-YN-Kii"/>
                                     <constraint firstAttribute="width" constant="90" id="K4a-qQ-4dz"/>
@@ -72,19 +66,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrt-bi-4tU">
-                                <rect key="frame" x="30" y="352" width="150" height="150"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrt-bi-4tU">
+                                <rect key="frame" x="30" y="362" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Bsk-8D-yy1"/>
                                     <constraint firstAttribute="width" constant="150" id="QAq-YI-N4D"/>
                                 </constraints>
                                 <size key="titleShadowOffset" width="3" height="3"/>
                                 <state key="normal" title="Button" image="PickMeUp">
-                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" name="B3"/>
                                 </state>
+                                <connections>
+                                    <segue destination="JLf-kq-C3D" kind="show" id="jeN-uZ-Nwa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0WD-ap-uHR">
-                                <rect key="frame" x="195" y="352" width="150" height="150"/>
+                                <rect key="frame" x="195" y="362" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="bUo-aI-fin"/>
                                     <constraint firstAttribute="height" constant="150" id="e4c-jc-mtX"/>
@@ -120,14 +117,90 @@
             </objects>
             <point key="canvasLocation" x="2738.4000000000001" y="132.68365817091455"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--View Controller-->
+        <scene sceneID="e2E-rq-8oM">
+            <objects>
+                <viewController id="JLf-kq-C3D" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qmq-c2-HkD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iah-8n-Xw9">
+                                <rect key="frame" x="65.5" y="189" width="244" height="31"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="244" id="H7C-be-qUd"/>
+                                    <constraint firstAttribute="height" constant="30" id="hcf-GS-f3V"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="" image="baseline_location_on_black"/>
+                                    <segment title="" image="baseline_home_black"/>
+                                    <segment title="" image="baseline_work_black"/>
+                                    <segment title="" image="baseline_star_black"/>
+                                </segments>
+                                <color key="tintColor" name="B2"/>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yYc-Ov-Sio">
+                                <rect key="frame" x="0.0" y="480" width="375" height="187"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home_ProgressBar" translatesAutoresizingMaskIntoConstraints="NO" id="EMx-Jp-9s5">
+                                <rect key="frame" x="72.5" y="521" width="230" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="o18-WH-IiB"/>
+                                    <constraint firstAttribute="width" constant="230" id="pzO-Jo-wY0"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wm-q8-H5Q">
+                                <rect key="frame" x="321" y="426" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="553-kg-Nx4"/>
+                                    <constraint firstAttribute="width" constant="30" id="nW6-BE-eH0"/>
+                                </constraints>
+                                <state key="normal" image="target"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkQ-al-JYZ">
+                                <rect key="frame" x="24" y="88" width="327" height="39"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="327" id="biF-ki-nlQ"/>
+                                    <constraint firstAttribute="height" constant="39" id="hbV-QG-41d"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="B1"/>
+                        <constraints>
+                            <constraint firstItem="PV1-yp-wj7" firstAttribute="trailing" secondItem="6Wm-q8-H5Q" secondAttribute="trailing" constant="24" id="BhZ-2k-Egd"/>
+                            <constraint firstItem="iah-8n-Xw9" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="125" id="Fcz-vB-jON"/>
+                            <constraint firstItem="wkQ-al-JYZ" firstAttribute="leading" secondItem="PV1-yp-wj7" secondAttribute="leading" constant="24" id="PrT-D9-ZQ5"/>
+                            <constraint firstItem="yYc-Ov-Sio" firstAttribute="leading" secondItem="PV1-yp-wj7" secondAttribute="leading" id="QwA-Ob-9Zw"/>
+                            <constraint firstItem="wkQ-al-JYZ" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="24" id="Roy-Wz-9uV"/>
+                            <constraint firstItem="yYc-Ov-Sio" firstAttribute="top" secondItem="6Wm-q8-H5Q" secondAttribute="bottom" constant="24" id="XCj-Xk-7QR"/>
+                            <constraint firstItem="PV1-yp-wj7" firstAttribute="trailing" secondItem="wkQ-al-JYZ" secondAttribute="trailing" constant="24" id="aY7-Do-JEX"/>
+                            <constraint firstItem="PV1-yp-wj7" firstAttribute="bottom" secondItem="EMx-Jp-9s5" secondAttribute="bottom" constant="66" id="fgR-kg-jE0"/>
+                            <constraint firstItem="yYc-Ov-Sio" firstAttribute="bottom" secondItem="PV1-yp-wj7" secondAttribute="bottom" id="jno-Vt-tS3"/>
+                            <constraint firstItem="yYc-Ov-Sio" firstAttribute="trailing" secondItem="PV1-yp-wj7" secondAttribute="trailing" id="pGD-PL-muE"/>
+                            <constraint firstItem="EMx-Jp-9s5" firstAttribute="centerX" secondItem="qmq-c2-HkD" secondAttribute="centerX" id="pyi-Rz-zTb"/>
+                            <constraint firstItem="yYc-Ov-Sio" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="416" id="qNB-en-ccX"/>
+                            <constraint firstItem="iah-8n-Xw9" firstAttribute="centerX" secondItem="qmq-c2-HkD" secondAttribute="centerX" id="wbw-O4-a4d"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PV1-yp-wj7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="00d-iW-dN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3461.5999999999999" y="132.68365817091455"/>
+        </scene>
+        <!--No Underline Navigation Controller-->
         <scene sceneID="IIj-Mn-p8f">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="See-cs-baK" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="See-cs-baK" customClass="STNoUnderlineNavigationController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4UV-Ds-7xx">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="B1"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -141,10 +214,22 @@
     </scenes>
     <resources>
         <image name="FindMyFriend" width="158" height="158"/>
+        <image name="Home_ProgressBar" width="296" height="82"/>
         <image name="PickMeUp" width="158" height="158"/>
+        <image name="baseline_home_black" width="24" height="24"/>
+        <image name="baseline_location_on_black" width="24" height="24"/>
+        <image name="baseline_star_black" width="24" height="24"/>
+        <image name="baseline_work_black" width="24" height="24"/>
         <image name="profile_image" width="512" height="512"/>
+        <image name="target" width="42" height="42"/>
         <namedColor name="B1">
             <color red="0.24705882352941178" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="B2">
+            <color red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="B3">
+            <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
