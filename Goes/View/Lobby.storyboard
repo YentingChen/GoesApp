@@ -117,16 +117,26 @@
             </objects>
             <point key="canvasLocation" x="2738.4000000000001" y="132.68365817091455"/>
         </scene>
-        <!--View Controller-->
+        <!--Lobby Map View Controller-->
         <scene sceneID="e2E-rq-8oM">
             <objects>
-                <viewController id="JLf-kq-C3D" sceneMemberID="viewController">
+                <viewController id="JLf-kq-C3D" customClass="LobbyMapViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qmq-c2-HkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNS-4k-R9c" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="480"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="target" translatesAutoresizingMaskIntoConstraints="NO" id="LbJ-Bm-pCv">
+                                <rect key="frame" x="175.5" y="248" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="Dm0-LX-bCn"/>
+                                    <constraint firstAttribute="height" constant="24" id="oFC-dW-gux"/>
+                                </constraints>
+                            </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iah-8n-Xw9">
-                                <rect key="frame" x="65.5" y="189" width="244" height="31"/>
+                                <rect key="frame" x="65.5" y="124" width="244" height="31"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="244" id="H7C-be-qUd"/>
@@ -151,19 +161,11 @@
                                     <constraint firstAttribute="width" constant="230" id="pzO-Jo-wY0"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wm-q8-H5Q">
-                                <rect key="frame" x="321" y="426" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="553-kg-Nx4"/>
-                                    <constraint firstAttribute="width" constant="30" id="nW6-BE-eH0"/>
-                                </constraints>
-                                <state key="normal" image="target"/>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkQ-al-JYZ">
-                                <rect key="frame" x="24" y="88" width="327" height="39"/>
+                                <rect key="frame" x="30" y="64" width="315" height="39"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="327" id="biF-ki-nlQ"/>
+                                    <constraint firstAttribute="width" constant="315" id="biF-ki-nlQ"/>
                                     <constraint firstAttribute="height" constant="39" id="hbV-QG-41d"/>
                                 </constraints>
                             </view>
@@ -171,22 +173,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="B1"/>
                         <constraints>
-                            <constraint firstItem="PV1-yp-wj7" firstAttribute="trailing" secondItem="6Wm-q8-H5Q" secondAttribute="trailing" constant="24" id="BhZ-2k-Egd"/>
-                            <constraint firstItem="iah-8n-Xw9" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="125" id="Fcz-vB-jON"/>
-                            <constraint firstItem="wkQ-al-JYZ" firstAttribute="leading" secondItem="PV1-yp-wj7" secondAttribute="leading" constant="24" id="PrT-D9-ZQ5"/>
+                            <constraint firstItem="iah-8n-Xw9" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="60" id="Fcz-vB-jON"/>
+                            <constraint firstItem="yYc-Ov-Sio" firstAttribute="top" secondItem="gNS-4k-R9c" secondAttribute="bottom" id="Fvq-gk-FBT"/>
+                            <constraint firstItem="gNS-4k-R9c" firstAttribute="leading" secondItem="PV1-yp-wj7" secondAttribute="leading" id="GYw-GQ-1ze"/>
+                            <constraint firstItem="wkQ-al-JYZ" firstAttribute="leading" secondItem="PV1-yp-wj7" secondAttribute="leading" constant="30" id="PrT-D9-ZQ5"/>
+                            <constraint firstItem="gNS-4k-R9c" firstAttribute="trailing" secondItem="PV1-yp-wj7" secondAttribute="trailing" id="Qhk-Kz-vnv"/>
                             <constraint firstItem="yYc-Ov-Sio" firstAttribute="leading" secondItem="PV1-yp-wj7" secondAttribute="leading" id="QwA-Ob-9Zw"/>
-                            <constraint firstItem="wkQ-al-JYZ" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="24" id="Roy-Wz-9uV"/>
-                            <constraint firstItem="yYc-Ov-Sio" firstAttribute="top" secondItem="6Wm-q8-H5Q" secondAttribute="bottom" constant="24" id="XCj-Xk-7QR"/>
-                            <constraint firstItem="PV1-yp-wj7" firstAttribute="trailing" secondItem="wkQ-al-JYZ" secondAttribute="trailing" constant="24" id="aY7-Do-JEX"/>
+                            <constraint firstItem="LbJ-Bm-pCv" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="184" id="RYn-7a-bhj"/>
+                            <constraint firstItem="wkQ-al-JYZ" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" id="Roy-Wz-9uV"/>
+                            <constraint firstItem="PV1-yp-wj7" firstAttribute="trailing" secondItem="wkQ-al-JYZ" secondAttribute="trailing" constant="30" id="aY7-Do-JEX"/>
                             <constraint firstItem="PV1-yp-wj7" firstAttribute="bottom" secondItem="EMx-Jp-9s5" secondAttribute="bottom" constant="66" id="fgR-kg-jE0"/>
                             <constraint firstItem="yYc-Ov-Sio" firstAttribute="bottom" secondItem="PV1-yp-wj7" secondAttribute="bottom" id="jno-Vt-tS3"/>
                             <constraint firstItem="yYc-Ov-Sio" firstAttribute="trailing" secondItem="PV1-yp-wj7" secondAttribute="trailing" id="pGD-PL-muE"/>
                             <constraint firstItem="EMx-Jp-9s5" firstAttribute="centerX" secondItem="qmq-c2-HkD" secondAttribute="centerX" id="pyi-Rz-zTb"/>
                             <constraint firstItem="yYc-Ov-Sio" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="416" id="qNB-en-ccX"/>
+                            <constraint firstItem="LbJ-Bm-pCv" firstAttribute="centerX" secondItem="gNS-4k-R9c" secondAttribute="centerX" id="vjX-gm-E8P"/>
+                            <constraint firstItem="gNS-4k-R9c" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="-64" id="wKg-PN-a5S"/>
                             <constraint firstItem="iah-8n-Xw9" firstAttribute="centerX" secondItem="qmq-c2-HkD" secondAttribute="centerX" id="wbw-O4-a4d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PV1-yp-wj7"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="gNS-4k-R9c" id="GjG-bf-TB0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00d-iW-dN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
