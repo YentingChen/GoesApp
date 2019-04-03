@@ -15,12 +15,37 @@ import GooglePlaces
 class LobbyMapViewController: UIViewController {
 
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var pinLocationLabel: UILabel!
     private let locationManager = CLLocationManager()
+    
+    private func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D) {
+        
+        // 1
+        let geocoder = GMSGeocoder()
+        
+        // 2
+        geocoder.reverseGeocodeCoordinate(coordinate) { response, error in
+            guard let address = response?.firstResult(), let lines = address.lines else {
+                return
+            }
+            
+            // 3
+            self.pinLocationLabel.text = lines.joined(separator: "\n")
+            
+            // 4
+            UIView.animate(withDuration: 0.25) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
+        mapView.delegate = self
+
 //        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
 //        mapView.camera = camera
 //        mapView.settings.myLocationButton = true
@@ -88,4 +113,14 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
         // 8
         locationManager.stopUpdatingLocation()
     }
+}
+
+// MARK: - GMSMapViewDelegate
+extension LobbyMapViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        reverseGeocodeCoordinate(position.target)
+        
+    }
+    
+   
 }
