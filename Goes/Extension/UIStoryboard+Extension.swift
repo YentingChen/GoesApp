@@ -14,7 +14,7 @@ private struct StoryboardCategory {
     
     static let lobby = "Lobby"
     
-    static let product = "Product"
+    static let friend = "Friend"
     
     static let trolley = "Trolley"
     
@@ -29,7 +29,7 @@ extension UIStoryboard {
     
     static var lobby: UIStoryboard { return stStoryboard(name: StoryboardCategory.lobby) }
     
-    static var product: UIStoryboard { return stStoryboard(name: StoryboardCategory.product) }
+    static var friend: UIStoryboard { return stStoryboard(name: StoryboardCategory.friend) }
     
     static var trolley: UIStoryboard { return stStoryboard(name: StoryboardCategory.trolley) }
     

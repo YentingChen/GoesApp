@@ -21,9 +21,9 @@ class STNoUnderlineNavigationController: UINavigationController {
         
         navigationBar.shadowImage = UIImage()
         
-        self.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem()
-        self.navigationBar.backIndicatorImage = UIImage.asset(.Icons_24px_Back02)
-        self.navigationBar.backIndicatorTransitionMaskImage = UIImage.asset(.Icons_24px_Back02)
+//        self.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem()
+//        self.navigationBar.backIndicatorImage = UIImage.asset(.Icons_24px_Back02)
+//        self.navigationBar.backIndicatorTransitionMaskImage = UIImage.asset(.Icons_24px_Back02)
 //
 //        let yourBackImage = UIImage(named: "back_button_image")
 //        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage

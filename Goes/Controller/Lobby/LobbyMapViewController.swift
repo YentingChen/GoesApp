@@ -16,6 +16,13 @@ class LobbyMapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var pinLocationLabel: UILabel!
     
+    @IBAction func dismiss(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        self.navigationController?.dismiss(animated: true, completion: nil)
+        present(LobbyViewController(), animated: true, completion: nil)
+    }
+    
+  
     func gotoMyLocationAction(sender: UIButton)
     {
         guard let lat = self.mapView.myLocation?.coordinate.latitude,
@@ -95,6 +102,9 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
 extension LobbyMapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         reverseGeocodeCoordinate(position.target)
+        self.mapView.padding = UIEdgeInsets(top: 0, left: 0,
+                                            bottom: 85, right: 0)
+
        
     }
     

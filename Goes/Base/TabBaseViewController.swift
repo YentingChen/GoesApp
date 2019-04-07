@@ -12,7 +12,7 @@ private enum Tab {
     
     case lobby
     
-    case product
+    case friend
     
     case profile
     
@@ -26,7 +26,7 @@ private enum Tab {
             
         case .lobby: controller = UIStoryboard.lobby.instantiateInitialViewController()!
             
-        case .product: controller = UIStoryboard.product.instantiateInitialViewController()!
+        case .friend: controller = UIStoryboard.friend.instantiateInitialViewController()!
             
         case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
             
@@ -52,7 +52,7 @@ private enum Tab {
                 selectedImage: UIImage.asset(.Icons_36px_Home_Selected)
             )
 
-        case .product:
+        case .friend:
             return UITabBarItem(
                 title: nil,
                 image: UIImage.asset(.Icons_36px_Catalog_Normal),
@@ -78,7 +78,7 @@ private enum Tab {
 
 class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     //, .product, .trolley, .profile
-    private let tabs: [Tab] = [.lobby]
+    private let tabs: [Tab] = [.lobby, .friend,  .profile]
     
     override func viewDidLoad() {
         super.viewDidLoad()

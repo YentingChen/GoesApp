@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E06C21D22571895000F7E5F /* Friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E06C21C22571895000F7E5F /* Friend.storyboard */; };
+		3E06C21F22575397000F7E5F /* LobbyTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E06C21E22575397000F7E5F /* LobbyTimeViewController.swift */; };
+		3E23588522588B1D004182F0 /* FriendMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23588322588B1D004182F0 /* FriendMenuCollectionViewCell.swift */; };
+		3E23588622588B1D004182F0 /* FriendMenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23588422588B1D004182F0 /* FriendMenuCollectionViewCell.xib */; };
+		3E23588822588B51004182F0 /* FriendHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23588722588B51004182F0 /* FriendHomeViewController.swift */; };
+		3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23588922590C0B004182F0 /* FriendInviteTableViewCell.swift */; };
+		3E23588C22590C0B004182F0 /* FriendInviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23588A22590C0B004182F0 /* FriendInviteTableViewCell.xib */; };
+		3E23588F22590D74004182F0 /* FriendInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23588E22590D74004182F0 /* FriendInviteViewController.swift */; };
+		3E3EFD0A225914B40078E686 /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EFD08225914B40078E686 /* FriendListTableViewCell.swift */; };
+		3E3EFD0B225914B40078E686 /* FriendListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EFD09225914B40078E686 /* FriendListTableViewCell.xib */; };
+		3E3EFD0D225918510078E686 /* FriendSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EFD0C225918510078E686 /* FriendSentViewController.swift */; };
+		3E3EFD102259186C0078E686 /* FriendSentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EFD0E2259186C0078E686 /* FriendSentTableViewCell.swift */; };
+		3E3EFD112259186C0078E686 /* FriendSentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EFD0F2259186C0078E686 /* FriendSentTableViewCell.xib */; };
+		3E45934E2257714A00073210 /* LobbyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E45934D2257714A00073210 /* LobbyFriendViewController.swift */; };
+		3E459351225773EE00073210 /* LobbyFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E45934F225773EE00073210 /* LobbyFriendTableViewCell.swift */; };
+		3E459352225773EE00073210 /* LobbyFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E459350225773EE00073210 /* LobbyFriendTableViewCell.xib */; };
+		3E459355225777DE00073210 /* LobbyFriendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E459353225777DE00073210 /* LobbyFriendCollectionViewCell.swift */; };
+		3E459356225777DE00073210 /* LobbyFriendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E459354225777DE00073210 /* LobbyFriendCollectionViewCell.xib */; };
+		3E45935C2257BBCA00073210 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E45935B2257BBCA00073210 /* FriendListViewController.swift */; };
+		3E45935E225851B500073210 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E45935D225851B500073210 /* Profile.storyboard */; };
+		3E4593602258565900073210 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E45935F2258565900073210 /* Order.storyboard */; };
 		3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F4122533EE10031CF81 /* AppDelegate.swift */; };
 		3E609F4422533EE10031CF81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F4322533EE10031CF81 /* ViewController.swift */; };
 		3E609F4722533EE10031CF81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E609F4522533EE10031CF81 /* Main.storyboard */; };
@@ -21,12 +42,36 @@
 		3E6169632253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6169622253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png */; };
 		3E6169652254798500786F9F /* LobbyMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6169642254798500786F9F /* LobbyMapViewController.swift */; };
 		3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E61696622549A1300786F9F /* UIView+Extension.swift */; };
+		3E7B6E072259225500646724 /* ProfilePersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */; };
+		3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */; };
+		3E7B6E0B2259229B00646724 /* ProfilePersonalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */; };
 		3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */; };
 		5CA711F534226EDCB52E35CA /* Pods_Goes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DEB760BA8574D01298CE22 /* Pods_Goes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		090995E10833A3558FBB0D9B /* Pods-Goes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goes.debug.xcconfig"; path = "Target Support Files/Pods-Goes/Pods-Goes.debug.xcconfig"; sourceTree = "<group>"; };
+		3E06C21C22571895000F7E5F /* Friend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friend.storyboard; sourceTree = "<group>"; };
+		3E06C21E22575397000F7E5F /* LobbyTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTimeViewController.swift; sourceTree = "<group>"; };
+		3E23588322588B1D004182F0 /* FriendMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E23588422588B1D004182F0 /* FriendMenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendMenuCollectionViewCell.xib; sourceTree = "<group>"; };
+		3E23588722588B51004182F0 /* FriendHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHomeViewController.swift; sourceTree = "<group>"; };
+		3E23588922590C0B004182F0 /* FriendInviteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInviteTableViewCell.swift; sourceTree = "<group>"; };
+		3E23588A22590C0B004182F0 /* FriendInviteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendInviteTableViewCell.xib; sourceTree = "<group>"; };
+		3E23588E22590D74004182F0 /* FriendInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInviteViewController.swift; sourceTree = "<group>"; };
+		3E3EFD08225914B40078E686 /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
+		3E3EFD09225914B40078E686 /* FriendListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListTableViewCell.xib; sourceTree = "<group>"; };
+		3E3EFD0C225918510078E686 /* FriendSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSentViewController.swift; sourceTree = "<group>"; };
+		3E3EFD0E2259186C0078E686 /* FriendSentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSentTableViewCell.swift; sourceTree = "<group>"; };
+		3E3EFD0F2259186C0078E686 /* FriendSentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendSentTableViewCell.xib; sourceTree = "<group>"; };
+		3E45934D2257714A00073210 /* LobbyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFriendViewController.swift; sourceTree = "<group>"; };
+		3E45934F225773EE00073210 /* LobbyFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFriendTableViewCell.swift; sourceTree = "<group>"; };
+		3E459350225773EE00073210 /* LobbyFriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyFriendTableViewCell.xib; sourceTree = "<group>"; };
+		3E459353225777DE00073210 /* LobbyFriendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFriendCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E459354225777DE00073210 /* LobbyFriendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyFriendCollectionViewCell.xib; sourceTree = "<group>"; };
+		3E45935B2257BBCA00073210 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		3E45935D225851B500073210 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		3E45935F2258565900073210 /* Order.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		3E609F3E22533EE10031CF81 /* Goes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E609F4122533EE10031CF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E609F4322533EE10031CF81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +88,9 @@
 		3E6169622253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "螢幕快照 2019-04-02 下午10.17.15.png"; sourceTree = "<group>"; };
 		3E6169642254798500786F9F /* LobbyMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyMapViewController.swift; sourceTree = "<group>"; };
 		3E61696622549A1300786F9F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalDataViewController.swift; sourceTree = "<group>"; };
+		3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalTableViewCell.swift; sourceTree = "<group>"; };
+		3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePersonalTableViewCell.xib; sourceTree = "<group>"; };
 		3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		53DEB760BA8574D01298CE22 /* Pods_Goes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFD64D319E200998BB050F3 /* Pods-Goes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goes.release.xcconfig"; path = "Target Support Files/Pods-Goes/Pods-Goes.release.xcconfig"; sourceTree = "<group>"; };
@@ -60,6 +108,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E23588D22590D46004182F0 /* Lobby */ = {
+			isa = PBXGroup;
+			children = (
+				3E609F65225362260031CF81 /* LobbyViewController.swift */,
+				3E6169642254798500786F9F /* LobbyMapViewController.swift */,
+				3E06C21E22575397000F7E5F /* LobbyTimeViewController.swift */,
+				3E45934D2257714A00073210 /* LobbyFriendViewController.swift */,
+			);
+			path = Lobby;
+			sourceTree = "<group>";
+		};
+		3E23589022590DCE004182F0 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3E609F4522533EE10031CF81 /* Main.storyboard */,
+				3E609F5F22535E2A0031CF81 /* Lobby.storyboard */,
+				3E06C21C22571895000F7E5F /* Friend.storyboard */,
+				3E45935D225851B500073210 /* Profile.storyboard */,
+				3E45935F2258565900073210 /* Order.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		3E23589122590DE2004182F0 /* Lobby */ = {
+			isa = PBXGroup;
+			children = (
+				3E45934F225773EE00073210 /* LobbyFriendTableViewCell.swift */,
+				3E459350225773EE00073210 /* LobbyFriendTableViewCell.xib */,
+				3E459353225777DE00073210 /* LobbyFriendCollectionViewCell.swift */,
+				3E459354225777DE00073210 /* LobbyFriendCollectionViewCell.xib */,
+			);
+			path = Lobby;
+			sourceTree = "<group>";
+		};
+		3E3EFD1222591CED0078E686 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				3E23588322588B1D004182F0 /* FriendMenuCollectionViewCell.swift */,
+				3E23588422588B1D004182F0 /* FriendMenuCollectionViewCell.xib */,
+				3E23588922590C0B004182F0 /* FriendInviteTableViewCell.swift */,
+				3E23588A22590C0B004182F0 /* FriendInviteTableViewCell.xib */,
+				3E3EFD08225914B40078E686 /* FriendListTableViewCell.swift */,
+				3E3EFD09225914B40078E686 /* FriendListTableViewCell.xib */,
+				3E3EFD0E2259186C0078E686 /* FriendSentTableViewCell.swift */,
+				3E3EFD0F2259186C0078E686 /* FriendSentTableViewCell.xib */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
 		3E609F3522533EE10031CF81 = {
 			isa = PBXGroup;
 			children = (
@@ -109,8 +206,9 @@
 			isa = PBXGroup;
 			children = (
 				3E609F4322533EE10031CF81 /* ViewController.swift */,
-				3E609F65225362260031CF81 /* LobbyViewController.swift */,
-				3E6169642254798500786F9F /* LobbyMapViewController.swift */,
+				3E23588D22590D46004182F0 /* Lobby */,
+				3E7B6E052259221C00646724 /* Friend */,
+				3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -127,10 +225,24 @@
 		3E609F6C225367400031CF81 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3E609F4522533EE10031CF81 /* Main.storyboard */,
-				3E609F5F22535E2A0031CF81 /* Lobby.storyboard */,
+				3E23589122590DE2004182F0 /* Lobby */,
+				3E23589022590DCE004182F0 /* storyboard */,
+				3E3EFD1222591CED0078E686 /* Friend */,
+				3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */,
+				3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3E7B6E052259221C00646724 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				3E45935B2257BBCA00073210 /* FriendListViewController.swift */,
+				3E23588722588B51004182F0 /* FriendHomeViewController.swift */,
+				3E23588E22590D74004182F0 /* FriendInviteViewController.swift */,
+				3E3EFD0C225918510078E686 /* FriendSentViewController.swift */,
+			);
+			path = Friend;
 			sourceTree = "<group>";
 		};
 		523BF933A9E08874422EBCD8 /* Frameworks */ = {
@@ -210,10 +322,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E23588C22590C0B004182F0 /* FriendInviteTableViewCell.xib in Resources */,
+				3E06C21D22571895000F7E5F /* Friend.storyboard in Resources */,
 				3E609F4C22533EE30031CF81 /* LaunchScreen.storyboard in Resources */,
+				3E3EFD112259186C0078E686 /* FriendSentTableViewCell.xib in Resources */,
+				3E45935E225851B500073210 /* Profile.storyboard in Resources */,
 				3E609F6022535E2A0031CF81 /* Lobby.storyboard in Resources */,
+				3E459356225777DE00073210 /* LobbyFriendCollectionViewCell.xib in Resources */,
+				3E4593602258565900073210 /* Order.storyboard in Resources */,
+				3E23588622588B1D004182F0 /* FriendMenuCollectionViewCell.xib in Resources */,
 				3E6169632253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png in Resources */,
+				3E7B6E0B2259229B00646724 /* ProfilePersonalTableViewCell.xib in Resources */,
+				3E459352225773EE00073210 /* LobbyFriendTableViewCell.xib in Resources */,
 				3E609F4722533EE10031CF81 /* Main.storyboard in Resources */,
+				3E3EFD0B225914B40078E686 /* FriendListTableViewCell.xib in Resources */,
 				3E609F5C22535AE40031CF81 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,12 +399,26 @@
 				3E609F682253664D0031CF81 /* UIColor+Extension.swift in Sources */,
 				3E609F4422533EE10031CF81 /* ViewController.swift in Sources */,
 				3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */,
+				3E3EFD0A225914B40078E686 /* FriendListTableViewCell.swift in Sources */,
+				3E7B6E072259225500646724 /* ProfilePersonalDataViewController.swift in Sources */,
 				3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */,
 				3E609F642253603E0031CF81 /* UIImage+Extension.swift in Sources */,
+				3E23588822588B51004182F0 /* FriendHomeViewController.swift in Sources */,
+				3E459351225773EE00073210 /* LobbyFriendTableViewCell.swift in Sources */,
+				3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */,
 				3E6169652254798500786F9F /* LobbyMapViewController.swift in Sources */,
+				3E459355225777DE00073210 /* LobbyFriendCollectionViewCell.swift in Sources */,
+				3E23588F22590D74004182F0 /* FriendInviteViewController.swift in Sources */,
+				3E06C21F22575397000F7E5F /* LobbyTimeViewController.swift in Sources */,
 				3E609F66225362260031CF81 /* LobbyViewController.swift in Sources */,
 				3E609F5E22535DDD0031CF81 /* UIStoryboard+Extension.swift in Sources */,
+				3E45934E2257714A00073210 /* LobbyFriendViewController.swift in Sources */,
+				3E3EFD0D225918510078E686 /* FriendSentViewController.swift in Sources */,
+				3E23588522588B1D004182F0 /* FriendMenuCollectionViewCell.swift in Sources */,
+				3E3EFD102259186C0078E686 /* FriendSentTableViewCell.swift in Sources */,
+				3E45935C2257BBCA00073210 /* FriendListViewController.swift in Sources */,
 				3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */,
+				3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */,
 				3E609F6222535E800031CF81 /* TabBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
