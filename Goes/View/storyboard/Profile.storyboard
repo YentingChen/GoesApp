@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile Main View Controller-->
+        <!--個人資訊-->
         <scene sceneID="QFd-QT-3Sp">
             <objects>
                 <viewController id="tEL-4Q-yV3" customClass="ProfileMainViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,20 +24,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="oa3-4N-boZ">
-                                        <rect key="frame" x="157" y="64" width="60" height="60"/>
+                                        <rect key="frame" x="157" y="72" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yenting Chen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-hJ-2dv">
-                                        <rect key="frame" x="126" y="139" width="122" height="26"/>
+                                        <rect key="frame" x="136" y="140" width="103" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="B1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="o8R-C4-Pit">
-                                <rect key="frame" x="83" y="177" width="216" height="29"/>
+                                <rect key="frame" x="83" y="177" width="216" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GqR-d5-JuD"/>
+                                </constraints>
                                 <segments>
                                     <segment title="我的資料"/>
                                     <segment title="常用地址"/>
@@ -128,7 +131,7 @@
                         <constraints>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="bottom" secondItem="jR5-dv-g57" secondAttribute="bottom" id="0eA-RB-Jb6"/>
                             <constraint firstItem="o8R-C4-Pit" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" constant="113" id="2hz-OW-rBK"/>
-                            <constraint firstItem="EiI-px-mNu" firstAttribute="top" secondItem="o8R-C4-Pit" secondAttribute="bottom" constant="16" id="AEG-8S-naS"/>
+                            <constraint firstItem="EiI-px-mNu" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" constant="157" id="DTD-xk-1Kg"/>
                             <constraint firstItem="o8R-C4-Pit" firstAttribute="leading" secondItem="jR5-dv-g57" secondAttribute="leading" constant="83" id="Tvf-8H-f88"/>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="trailing" secondItem="jR5-dv-g57" secondAttribute="trailing" id="ZqE-Q2-MIr"/>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="leading" secondItem="jR5-dv-g57" secondAttribute="leading" id="a4E-r6-MF9"/>
@@ -136,7 +139,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jR5-dv-g57"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bpp-ON-Vbn"/>
+                    <navigationItem key="navigationItem" title="個人資訊" id="bpp-ON-Vbn"/>
                     <connections>
                         <outlet property="scrollView" destination="EiI-px-mNu" id="QD9-J5-aE2"/>
                         <outlet property="segmentedControl" destination="o8R-C4-Pit" id="t5k-sG-xEO"/>

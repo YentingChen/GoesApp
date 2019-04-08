@@ -51,6 +51,17 @@ enum ImageAsset: String {
     
     //Back button
     case Icons_24px_Back02
+    
+    //Friend tab
+    
+    case Icons_40px_FriendSearch_Selected
+    case Icons_40px_FriendSearch_Normal
+    case Icons_40px_FriendList_Normal
+    case Icons_40px_FriendList_Selected
+    case Icons_40px_FriendSent_Normal
+    case Icons_40px_FriendSent_Selected
+    case Icons_40px_FriendInvite_Normal
+    case Icons_40px_FriendInvite_Selected
 }
 
 extension UIImage {

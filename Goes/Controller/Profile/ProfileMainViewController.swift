@@ -18,6 +18,7 @@ class ProfileMainViewController: UIViewController {
         scrollView.delegate = self
 
        segmentedControl.addUnderlineForSelectedSegment()
+
         
     }
     
