@@ -16,6 +16,8 @@ class ProfilePersonalDataViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ProfilePersonalTableViewCell", bundle: nil), forCellReuseIdentifier: "profilePersonalTableViewCell")
+        tableView.separatorStyle = .none
+      
     }
 
 }
@@ -26,9 +28,9 @@ extension ProfilePersonalDataViewController: UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let title = ["姓名", "手機" , "email"]
-        let content = ["Yenting Chen", "0988888888", "yenting@gmail.com"]
-        let image = ["name_icon_24x", "phone_icon_24x","email_icon_24x"]
+        let title = ["姓名" , "email"  , "手機"]
+        let content = ["Yenting Chen", "yenting@gmail.com" , "0988888888"]
+        let image = ["name_icon_24x","email_icon_24x" , "phone_icon_24x"]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "profilePersonalTableViewCell", for: indexPath) as? ProfilePersonalTableViewCell else { return UITableViewCell() }
         cell.cellTitle.text = title[indexPath.row]
         cell.cellContent.text = content[indexPath.row]
