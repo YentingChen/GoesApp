@@ -12,14 +12,14 @@ import UIKit
 enum ImageAsset: String {
     
     // Profile tab - Tab
-    case Icons_36px_Home_Normal
-    case Icons_36px_Home_Selected
-    case Icons_36px_Profile_Normal
-    case Icons_36px_Profile_Selected
-    case Icons_36px_Cart_Normal
-    case Icons_36px_Cart_Selected
-    case Icons_36px_Catalog_Normal
-    case Icons_36px_Catalog_Selected
+    case Icons_24px_Home_Normal
+    case Icons_24px_Home_Selected
+    case Icons_24px_Profile_Normal
+    case Icons_24px_Profile_Selected
+    case Icons_24px_Friend_Normal
+    case Icons_24px_Friend_Selected
+    case Icons_24px_Order_Normal
+    case Icons_24px_Order_Selected
     case Image_Logo02
     
     // Profile tab - Order

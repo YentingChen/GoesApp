@@ -45,6 +45,16 @@
 		3E7B6E072259225500646724 /* ProfilePersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */; };
 		3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */; };
 		3E7B6E0B2259229B00646724 /* ProfilePersonalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */; };
+		3E7B6E0D2259F7BE00646724 /* ProfileAdressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E0C2259F7BE00646724 /* ProfileAdressViewController.swift */; };
+		3E7B6E0F2259FB8500646724 /* ProfileHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E0E2259FB8500646724 /* ProfileHistoryViewController.swift */; };
+		3E7B6E122259FBA200646724 /* ProfileHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E102259FBA200646724 /* ProfileHistoryTableViewCell.swift */; };
+		3E7B6E132259FBA200646724 /* ProfileHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E112259FBA200646724 /* ProfileHistoryTableViewCell.xib */; };
+		3E7B6E17225A633E00646724 /* OrderRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E16225A633E00646724 /* OrderRequestViewController.swift */; };
+		3E7B6E1A225A645F00646724 /* OrderRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E18225A645F00646724 /* OrderRequestTableViewCell.swift */; };
+		3E7B6E1B225A645F00646724 /* OrderRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E19225A645F00646724 /* OrderRequestTableViewCell.xib */; };
+		3E7B6E1D225AE52900646724 /* UISegmentControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E1C225AE52900646724 /* UISegmentControl+.swift */; };
+		3E7B6E1F225AE56400646724 /* ProfileMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E1E225AE56400646724 /* ProfileMainViewController.swift */; };
+		3E7B6E21225AE8C700646724 /* OrderMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E20225AE8C700646724 /* OrderMainViewController.swift */; };
 		3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */; };
 		5CA711F534226EDCB52E35CA /* Pods_Goes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DEB760BA8574D01298CE22 /* Pods_Goes.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +101,16 @@
 		3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalDataViewController.swift; sourceTree = "<group>"; };
 		3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalTableViewCell.swift; sourceTree = "<group>"; };
 		3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePersonalTableViewCell.xib; sourceTree = "<group>"; };
+		3E7B6E0C2259F7BE00646724 /* ProfileAdressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAdressViewController.swift; sourceTree = "<group>"; };
+		3E7B6E0E2259FB8500646724 /* ProfileHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHistoryViewController.swift; sourceTree = "<group>"; };
+		3E7B6E102259FBA200646724 /* ProfileHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		3E7B6E112259FBA200646724 /* ProfileHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		3E7B6E16225A633E00646724 /* OrderRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequestViewController.swift; sourceTree = "<group>"; };
+		3E7B6E18225A645F00646724 /* OrderRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequestTableViewCell.swift; sourceTree = "<group>"; };
+		3E7B6E19225A645F00646724 /* OrderRequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderRequestTableViewCell.xib; sourceTree = "<group>"; };
+		3E7B6E1C225AE52900646724 /* UISegmentControl+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentControl+.swift"; sourceTree = "<group>"; };
+		3E7B6E1E225AE56400646724 /* ProfileMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainViewController.swift; sourceTree = "<group>"; };
+		3E7B6E20225AE8C700646724 /* OrderMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMainViewController.swift; sourceTree = "<group>"; };
 		3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		53DEB760BA8574D01298CE22 /* Pods_Goes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFD64D319E200998BB050F3 /* Pods-Goes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goes.release.xcconfig"; path = "Target Support Files/Pods-Goes/Pods-Goes.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +218,7 @@
 				3E609F672253664D0031CF81 /* UIColor+Extension.swift */,
 				3E609F5D22535DDD0031CF81 /* UIStoryboard+Extension.swift */,
 				3E61696622549A1300786F9F /* UIView+Extension.swift */,
+				3E7B6E1C225AE52900646724 /* UISegmentControl+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -208,7 +229,9 @@
 				3E609F4322533EE10031CF81 /* ViewController.swift */,
 				3E23588D22590D46004182F0 /* Lobby */,
 				3E7B6E052259221C00646724 /* Friend */,
-				3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */,
+				3E7B6E14225A62FF00646724 /* Profile */,
+				3E7B6E16225A633E00646724 /* OrderRequestViewController.swift */,
+				3E7B6E20225AE8C700646724 /* OrderMainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -228,8 +251,9 @@
 				3E23589122590DE2004182F0 /* Lobby */,
 				3E23589022590DCE004182F0 /* storyboard */,
 				3E3EFD1222591CED0078E686 /* Friend */,
-				3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */,
-				3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */,
+				3E7B6E15225A631F00646724 /* Profile */,
+				3E7B6E18225A645F00646724 /* OrderRequestTableViewCell.swift */,
+				3E7B6E19225A645F00646724 /* OrderRequestTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -243,6 +267,28 @@
 				3E3EFD0C225918510078E686 /* FriendSentViewController.swift */,
 			);
 			path = Friend;
+			sourceTree = "<group>";
+		};
+		3E7B6E14225A62FF00646724 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */,
+				3E7B6E0C2259F7BE00646724 /* ProfileAdressViewController.swift */,
+				3E7B6E0E2259FB8500646724 /* ProfileHistoryViewController.swift */,
+				3E7B6E1E225AE56400646724 /* ProfileMainViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		3E7B6E15225A631F00646724 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */,
+				3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */,
+				3E7B6E102259FBA200646724 /* ProfileHistoryTableViewCell.swift */,
+				3E7B6E112259FBA200646724 /* ProfileHistoryTableViewCell.xib */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		523BF933A9E08874422EBCD8 /* Frameworks */ = {
@@ -328,7 +374,9 @@
 				3E3EFD112259186C0078E686 /* FriendSentTableViewCell.xib in Resources */,
 				3E45935E225851B500073210 /* Profile.storyboard in Resources */,
 				3E609F6022535E2A0031CF81 /* Lobby.storyboard in Resources */,
+				3E7B6E132259FBA200646724 /* ProfileHistoryTableViewCell.xib in Resources */,
 				3E459356225777DE00073210 /* LobbyFriendCollectionViewCell.xib in Resources */,
+				3E7B6E1B225A645F00646724 /* OrderRequestTableViewCell.xib in Resources */,
 				3E4593602258565900073210 /* Order.storyboard in Resources */,
 				3E23588622588B1D004182F0 /* FriendMenuCollectionViewCell.xib in Resources */,
 				3E6169632253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png in Resources */,
@@ -398,7 +446,10 @@
 			files = (
 				3E609F682253664D0031CF81 /* UIColor+Extension.swift in Sources */,
 				3E609F4422533EE10031CF81 /* ViewController.swift in Sources */,
+				3E7B6E17225A633E00646724 /* OrderRequestViewController.swift in Sources */,
 				3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */,
+				3E7B6E0D2259F7BE00646724 /* ProfileAdressViewController.swift in Sources */,
+				3E7B6E1D225AE52900646724 /* UISegmentControl+.swift in Sources */,
 				3E3EFD0A225914B40078E686 /* FriendListTableViewCell.swift in Sources */,
 				3E7B6E072259225500646724 /* ProfilePersonalDataViewController.swift in Sources */,
 				3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */,
@@ -414,9 +465,14 @@
 				3E609F5E22535DDD0031CF81 /* UIStoryboard+Extension.swift in Sources */,
 				3E45934E2257714A00073210 /* LobbyFriendViewController.swift in Sources */,
 				3E3EFD0D225918510078E686 /* FriendSentViewController.swift in Sources */,
+				3E7B6E0F2259FB8500646724 /* ProfileHistoryViewController.swift in Sources */,
 				3E23588522588B1D004182F0 /* FriendMenuCollectionViewCell.swift in Sources */,
 				3E3EFD102259186C0078E686 /* FriendSentTableViewCell.swift in Sources */,
+				3E7B6E21225AE8C700646724 /* OrderMainViewController.swift in Sources */,
 				3E45935C2257BBCA00073210 /* FriendListViewController.swift in Sources */,
+				3E7B6E122259FBA200646724 /* ProfileHistoryTableViewCell.swift in Sources */,
+				3E7B6E1A225A645F00646724 /* OrderRequestTableViewCell.swift in Sources */,
+				3E7B6E1F225AE56400646724 /* ProfileMainViewController.swift in Sources */,
 				3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */,
 				3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */,
 				3E609F6222535E800031CF81 /* TabBaseViewController.swift in Sources */,

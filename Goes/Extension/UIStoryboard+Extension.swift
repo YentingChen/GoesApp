@@ -16,7 +16,7 @@ private struct StoryboardCategory {
     
     static let friend = "Friend"
     
-    static let trolley = "Trolley"
+    static let order = "Order"
     
     static let profile = "Profile"
     
@@ -31,7 +31,7 @@ extension UIStoryboard {
     
     static var friend: UIStoryboard { return stStoryboard(name: StoryboardCategory.friend) }
     
-    static var trolley: UIStoryboard { return stStoryboard(name: StoryboardCategory.trolley) }
+    static var order: UIStoryboard { return stStoryboard(name: StoryboardCategory.order) }
     
     static var profile: UIStoryboard { return stStoryboard(name: StoryboardCategory.profile) }
     

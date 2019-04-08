@@ -16,7 +16,7 @@ private enum Tab {
     
     case profile
     
-    case trolley
+    case order
     
     func controller() -> UIViewController {
         
@@ -30,7 +30,7 @@ private enum Tab {
             
         case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
             
-        case .trolley: controller = UIStoryboard.trolley.instantiateInitialViewController()!
+        case .order: controller = UIStoryboard.order.instantiateInitialViewController()!
             
         }
         
@@ -48,29 +48,29 @@ private enum Tab {
         case .lobby:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Home_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Home_Selected)
+                image: UIImage.asset(.Icons_24px_Home_Normal),
+                selectedImage: UIImage.asset(.Icons_24px_Home_Selected)
             )
 
         case .friend:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Catalog_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Catalog_Selected)
+                image: UIImage.asset(.Icons_24px_Friend_Normal),
+                selectedImage: UIImage.asset(.Icons_24px_Friend_Selected)
             )
 
-        case .trolley:
+        case .order:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Cart_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Cart_Selected)
+                image: UIImage.asset(.Icons_24px_Order_Normal),
+                selectedImage: UIImage.asset(.Icons_24px_Order_Selected)
             )
 
         case .profile:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Profile_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Profile_Selected)
+                image: UIImage.asset(.Icons_24px_Profile_Normal),
+                selectedImage: UIImage.asset(.Icons_24px_Profile_Selected)
             )
         }
     }
@@ -78,7 +78,7 @@ private enum Tab {
 
 class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     //, .product, .trolley, .profile
-    private let tabs: [Tab] = [.lobby, .friend,  .profile]
+    private let tabs: [Tab] = [.lobby,  .order ,.friend, .profile]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +86,7 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         viewControllers = tabs.map({ $0.controller() })
         
         delegate = self
+        self.tabBar.backgroundColor = .clear
     }
     
     //MARK: - UITabBarControllerDelegate
