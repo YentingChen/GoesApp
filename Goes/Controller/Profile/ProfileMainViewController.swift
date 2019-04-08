@@ -22,7 +22,7 @@ class ProfileMainViewController: UIViewController {
         
     }
     
-    func test() {
+    func changeBtnView() {
         if scrollView.contentOffset.x == 0 {
             segmentedControl.selectedSegmentIndex = 0
             segmentedControl.changeUnderlinePosition()
@@ -63,7 +63,7 @@ class ProfileMainViewController: UIViewController {
 
 extension ProfileMainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        test()
+        changeBtnView()
     }
     
 }

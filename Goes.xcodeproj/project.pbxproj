@@ -56,6 +56,9 @@
 		3E7B6E1F225AE56400646724 /* ProfileMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E1E225AE56400646724 /* ProfileMainViewController.swift */; };
 		3E7B6E21225AE8C700646724 /* OrderMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E20225AE8C700646724 /* OrderMainViewController.swift */; };
 		3E7B6E23225B300600646724 /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E22225B300600646724 /* FriendSearchViewController.swift */; };
+		3E7B6E25225B517C00646724 /* OrderMyRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */; };
+		3E7B6E28225B52E100646724 /* OrderMyRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */; };
+		3E7B6E29225B52E100646724 /* OrderMyRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */; };
 		3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */; };
 		5CA711F534226EDCB52E35CA /* Pods_Goes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DEB760BA8574D01298CE22 /* Pods_Goes.framework */; };
 /* End PBXBuildFile section */
@@ -113,6 +116,9 @@
 		3E7B6E1E225AE56400646724 /* ProfileMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainViewController.swift; sourceTree = "<group>"; };
 		3E7B6E20225AE8C700646724 /* OrderMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMainViewController.swift; sourceTree = "<group>"; };
 		3E7B6E22225B300600646724 /* FriendSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
+		3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyRequestViewController.swift; sourceTree = "<group>"; };
+		3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyRequestTableViewCell.swift; sourceTree = "<group>"; };
+		3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderMyRequestTableViewCell.xib; sourceTree = "<group>"; };
 		3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		53DEB760BA8574D01298CE22 /* Pods_Goes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFD64D319E200998BB050F3 /* Pods-Goes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goes.release.xcconfig"; path = "Target Support Files/Pods-Goes/Pods-Goes.release.xcconfig"; sourceTree = "<group>"; };
@@ -234,6 +240,7 @@
 				3E7B6E14225A62FF00646724 /* Profile */,
 				3E7B6E16225A633E00646724 /* OrderRequestViewController.swift */,
 				3E7B6E20225AE8C700646724 /* OrderMainViewController.swift */,
+				3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -256,6 +263,8 @@
 				3E7B6E15225A631F00646724 /* Profile */,
 				3E7B6E18225A645F00646724 /* OrderRequestTableViewCell.swift */,
 				3E7B6E19225A645F00646724 /* OrderRequestTableViewCell.xib */,
+				3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */,
+				3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -385,6 +394,7 @@
 				3E6169632253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png in Resources */,
 				3E7B6E0B2259229B00646724 /* ProfilePersonalTableViewCell.xib in Resources */,
 				3E459352225773EE00073210 /* LobbyFriendTableViewCell.xib in Resources */,
+				3E7B6E29225B52E100646724 /* OrderMyRequestTableViewCell.xib in Resources */,
 				3E609F4722533EE10031CF81 /* Main.storyboard in Resources */,
 				3E3EFD0B225914B40078E686 /* FriendListTableViewCell.xib in Resources */,
 				3E609F5C22535AE40031CF81 /* Assets.xcassets in Resources */,
@@ -474,12 +484,14 @@
 				3E3EFD102259186C0078E686 /* FriendSentTableViewCell.swift in Sources */,
 				3E7B6E21225AE8C700646724 /* OrderMainViewController.swift in Sources */,
 				3E45935C2257BBCA00073210 /* FriendListViewController.swift in Sources */,
+				3E7B6E28225B52E100646724 /* OrderMyRequestTableViewCell.swift in Sources */,
 				3E7B6E122259FBA200646724 /* ProfileHistoryTableViewCell.swift in Sources */,
 				3E7B6E1A225A645F00646724 /* OrderRequestTableViewCell.swift in Sources */,
 				3E7B6E1F225AE56400646724 /* ProfileMainViewController.swift in Sources */,
 				3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */,
 				3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */,
 				3E609F6222535E800031CF81 /* TabBaseViewController.swift in Sources */,
+				3E7B6E25225B517C00646724 /* OrderMyRequestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
