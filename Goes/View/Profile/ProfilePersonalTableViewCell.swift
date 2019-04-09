@@ -10,7 +10,7 @@ import UIKit
 
 class ProfilePersonalTableViewCell: UITableViewCell {
     @IBOutlet weak var cellImageView: UIImageView!
-    
+
     @IBOutlet weak var cellTitle: UILabel!
     @IBOutlet weak var cellContent: UILabel!
     override func awakeFromNib() {
@@ -21,7 +21,6 @@ class ProfilePersonalTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        
     }
-    
+
 }

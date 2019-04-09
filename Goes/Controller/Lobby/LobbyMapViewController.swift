@@ -15,36 +15,34 @@ class LobbyMapViewController: UIViewController {
 //    @IBOutlet weak var testtest: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var pinLocationLabel: UILabel!
-    
+
     @IBAction func dismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         self.navigationController?.dismiss(animated: true, completion: nil)
         present(LobbyViewController(), animated: true, completion: nil)
     }
-    
-  
-    func gotoMyLocationAction(sender: UIButton)
-    {
+
+    func gotoMyLocationAction(sender: UIButton) {
         guard let lat = self.mapView.myLocation?.coordinate.latitude,
             let lng = self.mapView.myLocation?.coordinate.longitude else { return }
-        
-        let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng , zoom: 16)
+
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 16)
         self.mapView.animate(to: camera)
     }
-    
+
     private let locationManager = CLLocationManager()
-    
+
     private func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D) {
-        
+
         let geocoder = GMSGeocoder()
-        
-        geocoder.reverseGeocodeCoordinate(coordinate) { response, error in
+
+        geocoder.reverseGeocodeCoordinate(coordinate) { response, _ in
             guard let address = response?.firstResult(), let lines = address.lines else {
                 return
             }
-        
+
             self.pinLocationLabel.text = lines.joined(separator: "\n")
-      
+
             UIView.animate(withDuration: 0.25) {
                 self.view.layoutIfNeeded()
             }
@@ -53,11 +51,11 @@ class LobbyMapViewController: UIViewController {
     @IBAction func ttt(_ sender: Any) {
         guard let lat = self.mapView.myLocation?.coordinate.latitude,
             let lng = self.mapView.myLocation?.coordinate.longitude else { return }
-        
-        let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng , zoom: 16)
+
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 16)
         self.mapView.animate(to: camera)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 //        gotoMyLocationAction(sender: testtest)
@@ -67,7 +65,7 @@ class LobbyMapViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
     }
-    
+
 }
 
 extension LobbyMapViewController: CLLocationManagerDelegate {
@@ -79,20 +77,18 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
         }
 
         locationManager.startUpdatingLocation()
-        
+
         mapView.isMyLocationEnabled = true
 //        mapView.settings.myLocationButton = true
-        
+
     }
-    
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else {
             return
         }
-        
+
 //        mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-        
 
         locationManager.stopUpdatingLocation()
     }
@@ -105,10 +101,6 @@ extension LobbyMapViewController: GMSMapViewDelegate {
         self.mapView.padding = UIEdgeInsets(top: 0, left: 0,
                                             bottom: 85, right: 0)
 
-       
     }
-    
-   
+
 }
-
-

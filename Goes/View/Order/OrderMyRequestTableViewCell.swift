@@ -19,5 +19,5 @@ class OrderMyRequestTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-    
+
 }

@@ -17,36 +17,32 @@ class OrderMainViewController: UIViewController {
         segmentedControl.addUnderlineForSelectedSegment()
         scrollView.delegate = self
     }
-    
- 
-    @IBAction func segmentedControlDidChange(_ sender: UISegmentedControl){
+
+    @IBAction func segmentedControlDidChange(_ sender: UISegmentedControl) {
         segmentedControl.changeUnderlinePosition()
         if sender.selectedSegmentIndex == 0 {
             scrollView.contentOffset.x = 0
         }
-        
+
         if sender.selectedSegmentIndex == 1 {
             scrollView.contentOffset.x = scrollView.frame.size.width
         }
-        
+
     }
-    
+
     func changeBtnView() {
         if scrollView.contentOffset.x == 0 {
             segmentedControl.selectedSegmentIndex = 0
             segmentedControl.changeUnderlinePosition()
-            
-            
+
         }
-        if scrollView.contentOffset.x == scrollView.frame.size.width  {
+        if scrollView.contentOffset.x == scrollView.frame.size.width {
             segmentedControl.selectedSegmentIndex = 1
             segmentedControl.changeUnderlinePosition()
-            
-        }
-        
-        
-    }
 
+        }
+
+    }
 
 }
 

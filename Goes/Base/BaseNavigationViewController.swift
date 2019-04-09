@@ -9,18 +9,18 @@
 import UIKit
 
 class STNoUnderlineNavigationController: UINavigationController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationBar.isTranslucent = true
-        
+
         navigationBar.setBackgroundImage(UIImage(), for: .default)
-        
+
         navigationBar.backgroundColor = .clear
-        
+
         navigationBar.shadowImage = UIImage()
-        
+
 //        self.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem()
 //        self.navigationBar.backIndicatorImage = UIImage.asset(.Icons_24px_Back02)
 //        self.navigationBar.backIndicatorTransitionMaskImage = UIImage.asset(.Icons_24px_Back02)
@@ -30,5 +30,5 @@ class STNoUnderlineNavigationController: UINavigationController {
 //        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
 //        self.navigationController?.navigationBar.backItem?.title = "Custom"
     }
-    
+
 }

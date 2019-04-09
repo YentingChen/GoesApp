@@ -10,7 +10,7 @@ import UIKit
 
 class FriendListTableViewCell: UITableViewCell {
     @IBOutlet weak var cellImageView: UIImageView!
-    
+
     @IBOutlet weak var favoriteImageView: UIImageView!
     @IBOutlet weak var cellLabel: UILabel!
     override func awakeFromNib() {
@@ -23,5 +23,5 @@ class FriendListTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

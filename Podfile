@@ -9,5 +9,6 @@ target 'Goes' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'MTSlideToOpen'
+  pod 'SwiftLint'
 
 end
