@@ -59,5 +59,10 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
         return 90
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            performSegue(withIdentifier: "test3", sender: self)
+        }
+    }
     
 }

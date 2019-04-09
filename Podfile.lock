@@ -6,20 +6,24 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (3.0.3):
     - GoogleMaps/Base (= 3.0.3)
+  - MTSlideToOpen (1.2.1)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
+  - MTSlideToOpen
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - GoogleMaps
     - GooglePlaces
+    - MTSlideToOpen
 
 SPEC CHECKSUMS:
   GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
   GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
+  MTSlideToOpen: 66d68b2acf888beae7ebfda50e97fbdb26ddb0f6
 
-PODFILE CHECKSUM: 516c309cb121e4c367350949278320ef84fa4adb
+PODFILE CHECKSUM: e390e35c98192b49be6bd81ba11b8667333b13df
 
 COCOAPODS: 1.6.0

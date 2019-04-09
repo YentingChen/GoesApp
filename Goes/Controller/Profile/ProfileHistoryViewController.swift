@@ -25,39 +25,30 @@ class ProfileHistoryViewController: UIViewController {
 }
 
 extension ProfileHistoryViewController: UITableViewDelegate, UITableViewDataSource {
+  
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "profileHistoryTableViewCell", for: indexPath) as? ProfileHistoryTableViewCell else { return UITableViewCell()}
-//        return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "profileHistoryTableViewCell", for: indexPath) as? ProfileHistoryTableViewCell else { return UITableViewCell()}
+        return cell
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "profileHistoryTableViewCell")  as? ProfileHistoryTableViewCell else { return UITableViewCell()}
-        return cell
+    
+   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 &&  indexPath.row == 0 {
+            performSegue(withIdentifier: "test3", sender: self)
+        }
         
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
-    }
-    
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 100
-//    }
     
    
     

@@ -8,5 +8,6 @@ target 'Goes' do
   # Pods for Goes
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'MTSlideToOpen'
 
 end

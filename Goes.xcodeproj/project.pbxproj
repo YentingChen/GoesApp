@@ -59,6 +59,7 @@
 		3E7B6E25225B517C00646724 /* OrderMyRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */; };
 		3E7B6E28225B52E100646724 /* OrderMyRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */; };
 		3E7B6E29225B52E100646724 /* OrderMyRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */; };
+		3E95EE81225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E95EE80225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift */; };
 		3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */; };
 		5CA711F534226EDCB52E35CA /* Pods_Goes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DEB760BA8574D01298CE22 /* Pods_Goes.framework */; };
 /* End PBXBuildFile section */
@@ -119,6 +120,7 @@
 		3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyRequestViewController.swift; sourceTree = "<group>"; };
 		3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyRequestTableViewCell.swift; sourceTree = "<group>"; };
 		3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderMyRequestTableViewCell.xib; sourceTree = "<group>"; };
+		3E95EE80225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAnswerRequestViewController.swift; sourceTree = "<group>"; };
 		3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		53DEB760BA8574D01298CE22 /* Pods_Goes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFD64D319E200998BB050F3 /* Pods-Goes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goes.release.xcconfig"; path = "Target Support Files/Pods-Goes/Pods-Goes.release.xcconfig"; sourceTree = "<group>"; };
@@ -238,9 +240,7 @@
 				3E23588D22590D46004182F0 /* Lobby */,
 				3E7B6E052259221C00646724 /* Friend */,
 				3E7B6E14225A62FF00646724 /* Profile */,
-				3E7B6E16225A633E00646724 /* OrderRequestViewController.swift */,
-				3E7B6E20225AE8C700646724 /* OrderMainViewController.swift */,
-				3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */,
+				3E7B6E2A225B5A7D00646724 /* Order */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -261,10 +261,7 @@
 				3E23589022590DCE004182F0 /* storyboard */,
 				3E3EFD1222591CED0078E686 /* Friend */,
 				3E7B6E15225A631F00646724 /* Profile */,
-				3E7B6E18225A645F00646724 /* OrderRequestTableViewCell.swift */,
-				3E7B6E19225A645F00646724 /* OrderRequestTableViewCell.xib */,
-				3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */,
-				3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */,
+				3E7B6E2B225B5A9E00646724 /* Order */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -303,6 +300,28 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		3E7B6E2A225B5A7D00646724 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				3E7B6E16225A633E00646724 /* OrderRequestViewController.swift */,
+				3E7B6E20225AE8C700646724 /* OrderMainViewController.swift */,
+				3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */,
+				3E95EE80225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		3E7B6E2B225B5A9E00646724 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				3E7B6E18225A645F00646724 /* OrderRequestTableViewCell.swift */,
+				3E7B6E19225A645F00646724 /* OrderRequestTableViewCell.xib */,
+				3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */,
+				3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
 		523BF933A9E08874422EBCD8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +351,7 @@
 				3E609F3B22533EE10031CF81 /* Frameworks */,
 				3E609F3C22533EE10031CF81 /* Resources */,
 				EA63ABBBCB07A1319072035E /* [CP] Copy Pods Resources */,
+				D9CB31342C6F546054344B00 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -404,6 +424,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		D9CB31342C6F546054344B00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Goes/Pods-Goes-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MTSlideToOpen/MTSlideToOpen.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MTSlideToOpen.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Goes/Pods-Goes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DC6CDEE4E027C391A5A35174 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -458,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E609F682253664D0031CF81 /* UIColor+Extension.swift in Sources */,
+				3E95EE81225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift in Sources */,
 				3E609F4422533EE10031CF81 /* ViewController.swift in Sources */,
 				3E7B6E17225A633E00646724 /* OrderRequestViewController.swift in Sources */,
 				3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */,
