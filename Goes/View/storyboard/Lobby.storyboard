@@ -119,7 +119,7 @@
             </objects>
             <point key="canvasLocation" x="3296.8000000000002" y="132.68365817091455"/>
         </scene>
-        <!--Lobby Map View Controller-->
+        <!--    -->
         <scene sceneID="e2E-rq-8oM">
             <objects>
                 <viewController id="JLf-kq-C3D" customClass="LobbyMapViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
@@ -256,7 +256,7 @@
                                         <rect key="frame" x="67" y="98" width="58" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
-                                            <segue destination="Ima-1g-ql7" kind="show" id="z7W-7h-Tuu"/>
+                                            <segue destination="Ima-1g-ql7" kind="show" id="1tX-bW-EvQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -294,7 +294,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PV1-yp-wj7"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1Lx-jh-HhZ">
+                    <navigationItem key="navigationItem" title="    " id="1Lx-jh-HhZ">
                         <barButtonItem key="backBarButtonItem" title=" " id="CqQ-RP-SJm"/>
                         <barButtonItem key="rightBarButtonItem" title="      " id="pAB-he-FvC">
                             <connections>
@@ -311,7 +311,7 @@
             </objects>
             <point key="canvasLocation" x="5340" y="132.68365817091455"/>
         </scene>
-        <!--Lobby Time View Controller-->
+        <!--          -->
         <scene sceneID="oUU-FC-bG7">
             <objects>
                 <viewController id="Ima-1g-ql7" customClass="LobbyTimeViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
@@ -349,7 +349,7 @@
                                         <rect key="frame" x="164" y="96" width="46" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
-                                            <segue destination="rB6-HP-yiJ" kind="show" id="Ijj-I1-rnF"/>
+                                            <segue destination="oDo-gR-yDl" kind="show" id="Pjn-Vs-l2n"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -411,12 +411,15 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWa-hz-y3x">
                                 <rect key="frame" x="325" y="132" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="radio_blue 2"/>
+                                <state key="normal" image="Images_24px_RadioBtn_Selected"/>
+                                <connections>
+                                    <action selector="aspsBtnFunction:" destination="Ima-1g-ql7" eventType="touchUpInside" id="r50-Cy-bge"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOp-UM-Y4C">
                                 <rect key="frame" x="325" y="175" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="radio button_gray36x"/>
+                                <state key="normal" image="Images_24px_RadioBtn_Normal"/>
                                 <connections>
                                     <action selector="showClicked:" destination="Ima-1g-ql7" eventType="touchUpInside" id="20C-Gf-Zbh"/>
                                 </connections>
@@ -430,7 +433,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="q7F-Uz-jvq"/>
                     </view>
-                    <navigationItem key="navigationItem" id="k3o-Gb-TEa">
+                    <navigationItem key="navigationItem" title="          " id="k3o-Gb-TEa">
+                        <barButtonItem key="backBarButtonItem" title="     " id="inZ-Xz-Cpk"/>
                         <barButtonItem key="rightBarButtonItem" title="       " id="ogR-3s-9pc">
                             <connections>
                                 <action selector="dismissBtn:" destination="Ima-1g-ql7" id="umR-hW-1KK"/>
@@ -438,7 +442,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="aspsBtn" destination="NWa-hz-y3x" id="egE-be-xa9"/>
                         <outlet property="datePicker" destination="jHX-7r-NLs" id="5eB-EJ-Wyz"/>
+                        <outlet property="laterBtn" destination="GOp-UM-Y4C" id="pJP-Og-l4f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXf-PC-d7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -464,53 +470,16 @@
             </objects>
             <point key="canvasLocation" x="4400.8000000000002" y="132.68365817091455"/>
         </scene>
-        <!--Lobby Friend View Controller-->
-        <scene sceneID="ID5-rH-XeD">
+        <!--     -->
+        <scene sceneID="6wT-lc-W3M">
             <objects>
-                <viewController id="rB6-HP-yiJ" customClass="LobbyFriendViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iZO-nN-fOe">
+                <viewController id="oDo-gR-yDl" customClass="LobbyFriendViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AoD-XB-etW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nta-yG-iJe">
-                                <rect key="frame" x="315" y="20" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="cross36x"/>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S6D-YU-Dtp">
-                                <rect key="frame" x="0.0" y="457" width="375" height="210"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Home_ProgressBar_friend" translatesAutoresizingMaskIntoConstraints="NO" id="m2c-bQ-BEK">
-                                        <rect key="frame" x="67" y="96" width="240" height="85"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who ? " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUq-dC-gJl">
-                                        <rect key="frame" x="27" y="20" width="217" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
-                                        <color key="textColor" name="B1"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="請選擇您的朋友" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJE-6y-mf9">
-                                        <rect key="frame" x="27" y="50" width="217" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
-                                        <color key="textColor" name="B1"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="好友列表" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDJ-hG-rPi">
-                                <rect key="frame" x="31" y="188" width="217" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
-                                <color key="textColor" name="B1"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="X4l-Vy-PVh">
-                                <rect key="frame" x="31" y="101" width="328" height="79"/>
+                                <rect key="frame" x="16" y="93" width="328" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h51-h5-Rat">
@@ -543,39 +512,37 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="摯友" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOV-Te-t5a">
+                                <rect key="frame" x="16" y="64" width="217" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
+                                <color key="textColor" name="B1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nta-yG-iJe">
+                                <rect key="frame" x="321" y="12" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="cross36x"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="好友列表" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDJ-hG-rPi">
+                                <rect key="frame" x="16" y="180" width="217" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                                <color key="textColor" name="B1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Jf2-8y-bmc">
-                                <rect key="frame" x="0.0" y="219" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="220" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vVR-wT-JFV">
-                                <rect key="frame" x="0.0" y="286" width="375" height="163"/>
+                                <rect key="frame" x="0.0" y="284" width="375" height="163"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="61" id="VAy-D4-kwB">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="61"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VAy-D4-kwB" id="3aU-wm-zNB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Xian wu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAk-bm-PPr">
-                                                    <rect key="frame" x="104" y="20" width="61" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="V0c-dU-h5r">
-                                                    <rect key="frame" x="42" y="10" width="40" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="61" id="wxA-ME-Txn">
-                                        <rect key="frame" x="0.0" y="89" width="375" height="61"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wxA-ME-Txn" id="dwM-rZ-XAD">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
@@ -597,33 +564,51 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="摯友" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOV-Te-t5a">
-                                <rect key="frame" x="31" y="64" width="217" height="29"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S6D-YU-Dtp">
+                                <rect key="frame" x="0.0" y="455" width="375" height="210"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
-                                <color key="textColor" name="B1"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Home_ProgressBar_friend" translatesAutoresizingMaskIntoConstraints="NO" id="m2c-bQ-BEK">
+                                        <rect key="frame" x="67" y="96" width="240" height="85"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who ? " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUq-dC-gJl">
+                                        <rect key="frame" x="27" y="20" width="217" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
+                                        <color key="textColor" name="B1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="請選擇您的朋友" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJE-6y-mf9">
+                                        <rect key="frame" x="27" y="50" width="217" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
+                                        <color key="textColor" name="B1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="ei8-dd-Qs2"/>
+                        <viewLayoutGuide key="safeArea" id="JvM-ch-Rxn"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3Za-C9-ZGy">
-                        <barButtonItem key="leftBarButtonItem" id="xZK-IU-hdY"/>
-                        <barButtonItem key="rightBarButtonItem" title="         " id="ap0-4Y-rEh">
+                    <navigationItem key="navigationItem" title="     " id="t9F-R4-via">
+                        <barButtonItem key="backBarButtonItem" title="    " id="EUG-LN-TjG"/>
+                        <barButtonItem key="rightBarButtonItem" title="       " id="aJA-cY-ED6">
                             <connections>
-                                <action selector="dismissBtn:" destination="rB6-HP-yiJ" id="QHu-sR-QWw"/>
+                                <action selector="dismissBtn:" destination="oDo-gR-yDl" id="9fo-0s-sMI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="X4l-Vy-PVh" id="ACU-qn-bYv"/>
-                        <outlet property="tableView" destination="vVR-wT-JFV" id="e2h-ud-Ks5"/>
+                        <outlet property="collectionView" destination="X4l-Vy-PVh" id="VOS-uZ-sCg"/>
+                        <outlet property="tableView" destination="vVR-wT-JFV" id="PKQ-v5-Pop"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qw6-4Y-7JJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bxy-my-ERd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6868" y="132.68365817091455"/>
+            <point key="canvasLocation" x="6740" y="127"/>
         </scene>
         <!--No Underline Navigation Controller-->
         <scene sceneID="o25-ph-WiD">
@@ -655,6 +640,8 @@
         <image name="Home_ProgressBar_friend" width="296" height="83"/>
         <image name="Home_ProgressBar_place" width="296" height="82"/>
         <image name="Home_ProgressBar_time" width="296" height="85"/>
+        <image name="Images_24px_RadioBtn_Normal" width="37" height="37"/>
+        <image name="Images_24px_RadioBtn_Selected" width="36" height="36"/>
         <image name="PickMeUp" width="158" height="158"/>
         <image name="baseline_home_black" width="24" height="24"/>
         <image name="baseline_location_on_black" width="24" height="24"/>
@@ -663,8 +650,6 @@
         <image name="cross36x" width="44" height="44"/>
         <image name="pin24x24" width="14" height="24"/>
         <image name="profile_image" width="512" height="512"/>
-        <image name="radio button_gray36x" width="36" height="36"/>
-        <image name="radio_blue 2" width="36" height="36"/>
         <image name="target36x" width="48" height="48"/>
         <image name="time36x_white" width="36" height="36"/>
         <image name="time_dark_36x" width="36" height="36"/>
