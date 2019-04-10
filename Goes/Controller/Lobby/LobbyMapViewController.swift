@@ -11,11 +11,18 @@ import GoogleMaps
 import GooglePlaces
 
 class LobbyMapViewController: UIViewController {
-
-//    @IBOutlet weak var testtest: UIButton!
+    @IBOutlet weak var adressTxtField: UITextField!
+    @IBOutlet weak var adressSegmentedControl: UISegmentedControl!
+    
+    @IBAction func adressModeChosen(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 1 {
+            adressTxtField.text = "我家"
+        }
+    }
     @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var pinLocationLabel: UILabel!
-
+ 
+    
+    
     @IBAction func dismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         self.navigationController?.dismiss(animated: true, completion: nil)
@@ -37,18 +44,20 @@ class LobbyMapViewController: UIViewController {
         let geocoder = GMSGeocoder()
 
         geocoder.reverseGeocodeCoordinate(coordinate) { response, _ in
+            self.adressTxtField.unlock()
             guard let address = response?.firstResult(), let lines = address.lines else {
                 return
             }
 
-            self.pinLocationLabel.text = lines.joined(separator: "\n")
+            self.adressTxtField.text = lines.joined(separator: "\n")
 
             UIView.animate(withDuration: 0.25) {
                 self.view.layoutIfNeeded()
             }
         }
     }
-    @IBAction func ttt(_ sender: Any) {
+    
+    @IBAction func mylocationBtn(_ sender: Any) {
         guard let lat = self.mapView.myLocation?.coordinate.latitude,
             let lng = self.mapView.myLocation?.coordinate.longitude else { return }
 
@@ -58,12 +67,12 @@ class LobbyMapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        gotoMyLocationAction(sender: testtest)
         self.mapView.isMyLocationEnabled = true
         mapView.delegate = self
 
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        
     }
 
 }
@@ -79,7 +88,6 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
 
         mapView.isMyLocationEnabled = true
-//        mapView.settings.myLocationButton = true
 
     }
 
@@ -88,7 +96,7 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
             return
         }
 
-//        mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
 
         locationManager.stopUpdatingLocation()
     }
@@ -102,5 +110,12 @@ extension LobbyMapViewController: GMSMapViewDelegate {
                                             bottom: 85, right: 0)
 
     }
+    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        adressTxtField.text = ""
+        self.adressSegmentedControl.selectedSegmentIndex = 0
+        adressTxtField.lock()
+    }
+   
+
 
 }

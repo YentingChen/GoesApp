@@ -28,6 +28,7 @@
 		3E45935C2257BBCA00073210 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E45935B2257BBCA00073210 /* FriendListViewController.swift */; };
 		3E45935E225851B500073210 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E45935D225851B500073210 /* Profile.storyboard */; };
 		3E4593602258565900073210 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E45935F2258565900073210 /* Order.storyboard */; };
+		3E52376D225DD2920090818A /* LobbyFindMyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */; };
 		3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F4122533EE10031CF81 /* AppDelegate.swift */; };
 		3E609F4422533EE10031CF81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F4322533EE10031CF81 /* ViewController.swift */; };
 		3E609F4722533EE10031CF81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E609F4522533EE10031CF81 /* Main.storyboard */; };
@@ -87,6 +88,7 @@
 		3E45935B2257BBCA00073210 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		3E45935D225851B500073210 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		3E45935F2258565900073210 /* Order.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
+		3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFindMyFriendViewController.swift; sourceTree = "<group>"; };
 		3E609F3E22533EE10031CF81 /* Goes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E609F4122533EE10031CF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E609F4322533EE10031CF81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				3E6169642254798500786F9F /* LobbyMapViewController.swift */,
 				3E06C21E22575397000F7E5F /* LobbyTimeViewController.swift */,
 				3E45934D2257714A00073210 /* LobbyFriendViewController.swift */,
+				3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -350,9 +353,9 @@
 				3E609F3A22533EE10031CF81 /* Sources */,
 				3E609F3B22533EE10031CF81 /* Frameworks */,
 				3E609F3C22533EE10031CF81 /* Resources */,
-				EA63ABBBCB07A1319072035E /* [CP] Copy Pods Resources */,
-				D9CB31342C6F546054344B00 /* [CP] Embed Pods Frameworks */,
 				3E95EE82225C993B00B3DEF6 /* SwiftLint */,
+				9967CEAB466F8FA6A9B1C64B /* [CP] Embed Pods Frameworks */,
+				44DDB57E2F9D1C0FC994EEE2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -443,7 +446,31 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
-		D9CB31342C6F546054344B00 /* [CP] Embed Pods Frameworks */ = {
+		44DDB57E2F9D1C0FC994EEE2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Goes/Pods-Goes-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Goes/Pods-Goes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9967CEAB466F8FA6A9B1C64B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -452,13 +479,17 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Goes/Pods-Goes-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/MTSlideToOpen/MTSlideToOpen.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MTSlideToOpen.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -487,30 +518,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EA63ABBBCB07A1319072035E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Goes/Pods-Goes-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Goes/Pods-Goes-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -533,6 +540,7 @@
 				3E23588822588B51004182F0 /* FriendHomeViewController.swift in Sources */,
 				3E459351225773EE00073210 /* LobbyFriendTableViewCell.swift in Sources */,
 				3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */,
+				3E52376D225DD2920090818A /* LobbyFindMyFriendViewController.swift in Sources */,
 				3E6169652254798500786F9F /* LobbyMapViewController.swift in Sources */,
 				3E459355225777DE00073210 /* LobbyFriendCollectionViewCell.swift in Sources */,
 				3E23588F22590D74004182F0 /* FriendInviteViewController.swift in Sources */,

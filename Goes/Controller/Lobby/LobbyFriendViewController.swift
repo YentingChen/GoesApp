@@ -13,15 +13,32 @@ class LobbyFriendViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    @IBAction func checkBtn(_ sender: Any) {
+        let alertController = UIAlertController(title: "", message: "選擇地點：\n台北市大安區100巷\n選擇時間：盡快抵達\n選擇朋友：Xian Wu", preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.dismiss(animated: true, completion: nil)
+            self.present(LobbyViewController(), animated: true, completion: nil)
+        }
+        alertController.addAction(doneAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "LobbyFriendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "lobbyFriendCollectionViewCell")
+        collectionView.register(
+            UINib(nibName: "LobbyFriendCollectionViewCell",
+                  bundle: nil),
+            forCellWithReuseIdentifier: "lobbyFriendCollectionViewCell")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "LobbyFriendTableViewCell", bundle: nil), forCellReuseIdentifier: "lobbyFriendTableViewCell")
+        tableView.register(
+            UINib(nibName: "LobbyFriendTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "lobbyFriendTableViewCell")
 
     }
 
@@ -52,7 +69,7 @@ extension LobbyFriendViewController: UICollectionViewDelegate, UICollectionViewD
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath)
     -> CGSize {
-        return CGSize(width: 60, height: 60)
+        return CGSize(width: 80, height: 80)
     }
 
     func collectionView(
@@ -67,17 +84,19 @@ extension LobbyFriendViewController: UICollectionViewDelegate, UICollectionViewD
 
 extension LobbyFriendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 30
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "lobbyFriendTableViewCell", for: indexPath) as? LobbyFriendTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "lobbyFriendTableViewCell",
+            for: indexPath) as? LobbyFriendTableViewCell else { return UITableViewCell() }
         return cell
 
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 50
     }
 
 }
