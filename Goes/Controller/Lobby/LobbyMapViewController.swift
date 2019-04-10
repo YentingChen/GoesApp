@@ -11,28 +11,27 @@ import GoogleMaps
 import GooglePlaces
 
 class LobbyMapViewController: UIViewController {
+
     @IBOutlet weak var adressTxtField: UITextField!
     @IBOutlet weak var adressSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var mapView: GMSMapView!
     
     @IBAction func adressModeChosen(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
             adressTxtField.text = "我家"
         }
     }
-    @IBOutlet weak var mapView: GMSMapView!
- 
-    
-    
+   
     @IBAction func dismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         self.navigationController?.dismiss(animated: true, completion: nil)
         present(LobbyViewController(), animated: true, completion: nil)
     }
-
-    func gotoMyLocationAction(sender: UIButton) {
+    
+    @IBAction func mylocationBtn(_ sender: Any) {
         guard let lat = self.mapView.myLocation?.coordinate.latitude,
             let lng = self.mapView.myLocation?.coordinate.longitude else { return }
-
+        
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 16)
         self.mapView.animate(to: camera)
     }
@@ -45,9 +44,7 @@ class LobbyMapViewController: UIViewController {
 
         geocoder.reverseGeocodeCoordinate(coordinate) { response, _ in
             self.adressTxtField.unlock()
-            guard let address = response?.firstResult(), let lines = address.lines else {
-                return
-            }
+            guard let address = response?.firstResult(), let lines = address.lines else { return }
 
             self.adressTxtField.text = lines.joined(separator: "\n")
 
@@ -57,13 +54,7 @@ class LobbyMapViewController: UIViewController {
         }
     }
     
-    @IBAction func mylocationBtn(_ sender: Any) {
-        guard let lat = self.mapView.myLocation?.coordinate.latitude,
-            let lng = self.mapView.myLocation?.coordinate.longitude else { return }
-
-        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 16)
-        self.mapView.animate(to: camera)
-    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,9 +83,7 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else {
-            return
-        }
+        guard let location = locations.first else { return }
 
         mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
 
@@ -104,18 +93,17 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
 
 // MARK: - GMSMapViewDelegate
 extension LobbyMapViewController: GMSMapViewDelegate {
+
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         reverseGeocodeCoordinate(position.target)
         self.mapView.padding = UIEdgeInsets(top: 0, left: 0,
                                             bottom: 85, right: 0)
-
     }
+
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         adressTxtField.text = ""
         self.adressSegmentedControl.selectedSegmentIndex = 0
         adressTxtField.lock()
     }
-   
-
 
 }
