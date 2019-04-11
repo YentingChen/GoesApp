@@ -14,7 +14,7 @@
         <!--Goes-->
         <scene sceneID="2sy-IH-v6T">
             <objects>
-                <viewController id="8ph-z5-KiA" customClass="LobbyViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Goes" id="8ph-z5-KiA" customClass="LobbyViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aMP-n5-QTA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +93,7 @@
                                     <color key="titleShadowColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="HJZ-t2-qVX" kind="show" id="OQb-Sc-pAY"/>
+                                    <segue destination="HJZ-t2-qVX" kind="show" id="i6R-yF-nOU"/>
                                 </connections>
                             </button>
                         </subviews>

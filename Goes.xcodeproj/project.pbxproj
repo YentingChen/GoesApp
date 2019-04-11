@@ -29,6 +29,14 @@
 		3E45935E225851B500073210 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E45935D225851B500073210 /* Profile.storyboard */; };
 		3E4593602258565900073210 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E45935F2258565900073210 /* Order.storyboard */; };
 		3E52376D225DD2920090818A /* LobbyFindMyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */; };
+		3E5ADFF3225F0B0F0003B241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */; };
+		3E5ADFF5225F11610003B241 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF4225F11610003B241 /* Auth.storyboard */; };
+		3E5ADFF7225F12490003B241 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF6225F12490003B241 /* SignUpViewController.swift */; };
+		3E5ADFF9225F12DF0003B241 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF8225F12DF0003B241 /* LoginViewController.swift */; };
+		3E5ADFFB225F130F0003B241 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ADFFA225F130F0003B241 /* ResetPasswordViewController.swift */; };
+		3E5ADFFD225F157F0003B241 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ADFFC225F157F0003B241 /* HomeViewController.swift */; };
+		3E5AE001225F2E3A0003B241 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5AE000225F2E3A0003B241 /* LaunchViewController.swift */; };
+		3E5AE003225F2FC70003B241 /* LStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5AE002225F2FC70003B241 /* LStoryboard.storyboard */; };
 		3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F4122533EE10031CF81 /* AppDelegate.swift */; };
 		3E609F4422533EE10031CF81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F4322533EE10031CF81 /* ViewController.swift */; };
 		3E609F4722533EE10031CF81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E609F4522533EE10031CF81 /* Main.storyboard */; };
@@ -89,6 +97,14 @@
 		3E45935D225851B500073210 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		3E45935F2258565900073210 /* Order.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFindMyFriendViewController.swift; sourceTree = "<group>"; };
+		3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3E5ADFF4225F11610003B241 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		3E5ADFF6225F12490003B241 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3E5ADFF8225F12DF0003B241 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3E5ADFFA225F130F0003B241 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		3E5ADFFC225F157F0003B241 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3E5AE000225F2E3A0003B241 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		3E5AE002225F2FC70003B241 /* LStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LStoryboard.storyboard; sourceTree = "<group>"; };
 		3E609F3E22533EE10031CF81 /* Goes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E609F4122533EE10031CF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E609F4322533EE10031CF81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +176,8 @@
 				3E06C21C22571895000F7E5F /* Friend.storyboard */,
 				3E45935D225851B500073210 /* Profile.storyboard */,
 				3E45935F2258565900073210 /* Order.storyboard */,
+				3E5ADFF4225F11610003B241 /* Auth.storyboard */,
+				3E5AE002225F2FC70003B241 /* LStoryboard.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -220,6 +238,7 @@
 				3E609F6A225367100031CF81 /* Controller */,
 				3E609F4A22533EE30031CF81 /* LaunchScreen.storyboard */,
 				3E609F4D22533EE30031CF81 /* Info.plist */,
+				3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */,
 			);
 			path = Goes;
 			sourceTree = "<group>";
@@ -240,10 +259,15 @@
 			isa = PBXGroup;
 			children = (
 				3E609F4322533EE10031CF81 /* ViewController.swift */,
+				3E5ADFF6225F12490003B241 /* SignUpViewController.swift */,
+				3E5ADFF8225F12DF0003B241 /* LoginViewController.swift */,
 				3E23588D22590D46004182F0 /* Lobby */,
 				3E7B6E052259221C00646724 /* Friend */,
 				3E7B6E14225A62FF00646724 /* Profile */,
 				3E7B6E2A225B5A7D00646724 /* Order */,
+				3E5ADFFA225F130F0003B241 /* ResetPasswordViewController.swift */,
+				3E5ADFFC225F157F0003B241 /* HomeViewController.swift */,
+				3E5AE000225F2E3A0003B241 /* LaunchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -406,6 +430,7 @@
 			files = (
 				3E23588C22590C0B004182F0 /* FriendInviteTableViewCell.xib in Resources */,
 				3E06C21D22571895000F7E5F /* Friend.storyboard in Resources */,
+				3E5AE003225F2FC70003B241 /* LStoryboard.storyboard in Resources */,
 				3E609F4C22533EE30031CF81 /* LaunchScreen.storyboard in Resources */,
 				3E3EFD112259186C0078E686 /* FriendSentTableViewCell.xib in Resources */,
 				3E45935E225851B500073210 /* Profile.storyboard in Resources */,
@@ -415,6 +440,8 @@
 				3E7B6E1B225A645F00646724 /* OrderRequestTableViewCell.xib in Resources */,
 				3E4593602258565900073210 /* Order.storyboard in Resources */,
 				3E23588622588B1D004182F0 /* FriendMenuCollectionViewCell.xib in Resources */,
+				3E5ADFF3225F0B0F0003B241 /* GoogleService-Info.plist in Resources */,
+				3E5ADFF5225F11610003B241 /* Auth.storyboard in Resources */,
 				3E6169632253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png in Resources */,
 				3E7B6E0B2259229B00646724 /* ProfilePersonalTableViewCell.xib in Resources */,
 				3E459352225773EE00073210 /* LobbyFriendTableViewCell.xib in Resources */,
@@ -480,16 +507,22 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Goes/Pods-Goes-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MTSlideToOpen/MTSlideToOpen.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MTSlideToOpen.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -544,13 +577,17 @@
 				3E6169652254798500786F9F /* LobbyMapViewController.swift in Sources */,
 				3E459355225777DE00073210 /* LobbyFriendCollectionViewCell.swift in Sources */,
 				3E23588F22590D74004182F0 /* FriendInviteViewController.swift in Sources */,
+				3E5AE001225F2E3A0003B241 /* LaunchViewController.swift in Sources */,
 				3E06C21F22575397000F7E5F /* LobbyTimeViewController.swift in Sources */,
 				3E609F66225362260031CF81 /* LobbyViewController.swift in Sources */,
 				3E609F5E22535DDD0031CF81 /* UIStoryboard+Extension.swift in Sources */,
 				3E45934E2257714A00073210 /* LobbyFriendViewController.swift in Sources */,
 				3E3EFD0D225918510078E686 /* FriendSentViewController.swift in Sources */,
+				3E5ADFF9225F12DF0003B241 /* LoginViewController.swift in Sources */,
 				3E7B6E0F2259FB8500646724 /* ProfileHistoryViewController.swift in Sources */,
 				3E23588522588B1D004182F0 /* FriendMenuCollectionViewCell.swift in Sources */,
+				3E5ADFFB225F130F0003B241 /* ResetPasswordViewController.swift in Sources */,
+				3E5ADFF7225F12490003B241 /* SignUpViewController.swift in Sources */,
 				3E3EFD102259186C0078E686 /* FriendSentTableViewCell.swift in Sources */,
 				3E7B6E21225AE8C700646724 /* OrderMainViewController.swift in Sources */,
 				3E45935C2257BBCA00073210 /* FriendListViewController.swift in Sources */,
@@ -558,6 +595,7 @@
 				3E7B6E122259FBA200646724 /* ProfileHistoryTableViewCell.swift in Sources */,
 				3E7B6E1A225A645F00646724 /* OrderRequestTableViewCell.swift in Sources */,
 				3E7B6E1F225AE56400646724 /* ProfileMainViewController.swift in Sources */,
+				3E5ADFFD225F157F0003B241 /* HomeViewController.swift in Sources */,
 				3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */,
 				3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */,
 				3E609F6222535E800031CF81 /* TabBaseViewController.swift in Sources */,

@@ -12,7 +12,7 @@
         <!--Go Tab Bar View Controller-->
         <scene sceneID="X2o-Af-nJO">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="iRE-mY-iMa" customClass="GoTabBarViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Goes" automaticallyAdjustsScrollViewInsets="NO" id="iRE-mY-iMa" customClass="GoTabBarViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HkD-iA-zKi">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
