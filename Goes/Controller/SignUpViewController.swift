@@ -45,19 +45,12 @@ class SignUpViewController: UIViewController {
                     guard let userName = self.userNameTextField.text else { return }
                     guard let userPhone = self.phoneNumberTextField.text else { return }
                     guard let userEmail = user?.user.email else { return }
-                    self.db.collection("users").document(userID).collection("profile").document(userID).setData([
-                        "name": userName,
-                        "uid": userID,
-                        "phone": userPhone,
-                        "email": userEmail,
-                        "avatar":""
-                    ]) { err in
-                        if let err = err {
-                            print("Error writing document: \(err)")
-                        } else {
-                            print("Document successfully written!")
-                        }
-                    }
+                    self.db.collection("users").document(userID).setData(
+                        [SetProfile.CodingKeys.userID.rawValue : userID,
+                         SetProfile.CodingKeys.userName.rawValue : userName,
+                         SetProfile.CodingKeys.email.rawValue : userEmail,
+                         SetProfile.CodingKeys.avatar.rawValue : "",
+                         SetProfile.CodingKeys.phoneNumber.rawValue : userPhone])
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "Goes")
                     self.present(vc, animated: true, completion: nil)
@@ -81,6 +74,10 @@ class SignUpViewController: UIViewController {
         addShadow()
         roundCorner()
        
+    }
+    
+    func postUserProfile(_ userProfile: SetProfile, uid: String) {
+        
     }
     
     

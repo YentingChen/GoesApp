@@ -20,6 +20,8 @@ class ProfileMainViewController: UIViewController {
         super.viewDidLoad()
         scrollView.delegate = self
         segmentedControl.addUnderlineForSelectedSegment()
+        segmentedControl.removeBorder()
+       
     }
     
     @IBAction func logOutBtn(_ sender: Any) {

@@ -8,6 +8,22 @@
 
 import Foundation
 
+struct SetProfile {
+    var email: String
+    var userID: String
+    var userName: String
+    var phoneNumber: String
+    var avatar: String
+    
+    enum CodingKeys: String, CodingKey {
+        case email
+        case userID
+        case userName
+        case phoneNumber
+        case avatar
+    }
+}
+
 struct Profile {
     var email: String
     var userID: String

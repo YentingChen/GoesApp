@@ -37,7 +37,7 @@
                                 </subviews>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="o8R-C4-Pit">
-                                <rect key="frame" x="83" y="177" width="216" height="41"/>
+                                <rect key="frame" x="60" y="164" width="255" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GqR-d5-JuD"/>
                                 </constraints>
@@ -46,6 +46,7 @@
                                     <segment title="常用地址"/>
                                     <segment title="過往行程"/>
                                 </segments>
+                                <color key="tintColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="segmentedControlDidChange:" destination="tEL-4Q-yV3" eventType="valueChanged" id="1wh-XR-GU1"/>
                                 </connections>
@@ -130,12 +131,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="bottom" secondItem="jR5-dv-g57" secondAttribute="bottom" id="0eA-RB-Jb6"/>
-                            <constraint firstItem="o8R-C4-Pit" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" constant="113" id="2hz-OW-rBK"/>
+                            <constraint firstItem="o8R-C4-Pit" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" constant="100" id="2hz-OW-rBK"/>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" constant="157" id="DTD-xk-1Kg"/>
-                            <constraint firstItem="o8R-C4-Pit" firstAttribute="leading" secondItem="jR5-dv-g57" secondAttribute="leading" constant="83" id="Tvf-8H-f88"/>
+                            <constraint firstItem="o8R-C4-Pit" firstAttribute="leading" secondItem="jR5-dv-g57" secondAttribute="leading" constant="60" id="Tvf-8H-f88"/>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="trailing" secondItem="jR5-dv-g57" secondAttribute="trailing" id="ZqE-Q2-MIr"/>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="leading" secondItem="jR5-dv-g57" secondAttribute="leading" id="a4E-r6-MF9"/>
-                            <constraint firstItem="jR5-dv-g57" firstAttribute="trailing" secondItem="o8R-C4-Pit" secondAttribute="trailing" constant="76" id="p5m-Ze-oTp"/>
+                            <constraint firstItem="jR5-dv-g57" firstAttribute="trailing" secondItem="o8R-C4-Pit" secondAttribute="trailing" constant="60" id="p5m-Ze-oTp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jR5-dv-g57"/>
                     </view>
@@ -185,6 +186,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxL-ra-zGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1366" y="924"/>
+        </scene>
+        <!--Edit Adress View Controller-->
+        <scene sceneID="M83-qR-f8b">
+            <objects>
+                <viewController id="kMX-Yb-ifP" customClass="EditAdressViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dgd-yf-Tdr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7tt-5Q-rub"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RaA-ms-N8J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1366" y="1693"/>
         </scene>
         <!--Profile History View Controller-->
         <scene sceneID="rRN-3h-c3l">

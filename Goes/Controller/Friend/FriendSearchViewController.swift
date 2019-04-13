@@ -7,23 +7,40 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class FriendSearchViewController: UIViewController {
-
+    @IBOutlet weak var searchFriend: UITextField!
+    var db : Firestore!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+         db = Firestore.firestore()
 
-        // Do any additional setup after loading the view.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func searchBtn(_ sender: Any) {
+        guard let friendEmail = searchFriend.text else { return }
+        
+        db.collection("users")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                        print(document.data()["email"])
+                    }
+                }
+        }
+//        Auth.auth().fetchProviders(forEmail: friendEmail) { (providers, error) in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            } else if let providers = providers {
+//                print(providers)
+//            }
+//        }
     }
-    */
 
 }
