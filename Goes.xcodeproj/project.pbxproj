@@ -20,6 +20,7 @@
 		3E3EFD0D225918510078E686 /* FriendSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EFD0C225918510078E686 /* FriendSentViewController.swift */; };
 		3E3EFD102259186C0078E686 /* FriendSentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EFD0E2259186C0078E686 /* FriendSentTableViewCell.swift */; };
 		3E3EFD112259186C0078E686 /* FriendSentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EFD0F2259186C0078E686 /* FriendSentTableViewCell.xib */; };
+		3E42382C22607BF3004988A1 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E42382B22607BF3004988A1 /* Profile.swift */; };
 		3E45934E2257714A00073210 /* LobbyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E45934D2257714A00073210 /* LobbyFriendViewController.swift */; };
 		3E459351225773EE00073210 /* LobbyFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E45934F225773EE00073210 /* LobbyFriendTableViewCell.swift */; };
 		3E459352225773EE00073210 /* LobbyFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E459350225773EE00073210 /* LobbyFriendTableViewCell.xib */; };
@@ -88,6 +89,7 @@
 		3E3EFD0C225918510078E686 /* FriendSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSentViewController.swift; sourceTree = "<group>"; };
 		3E3EFD0E2259186C0078E686 /* FriendSentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSentTableViewCell.swift; sourceTree = "<group>"; };
 		3E3EFD0F2259186C0078E686 /* FriendSentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendSentTableViewCell.xib; sourceTree = "<group>"; };
+		3E42382B22607BF3004988A1 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		3E45934D2257714A00073210 /* LobbyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFriendViewController.swift; sourceTree = "<group>"; };
 		3E45934F225773EE00073210 /* LobbyFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFriendTableViewCell.swift; sourceTree = "<group>"; };
 		3E459350225773EE00073210 /* LobbyFriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyFriendTableViewCell.xib; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				3E609F4A22533EE30031CF81 /* LaunchScreen.storyboard */,
 				3E609F4D22533EE30031CF81 /* Info.plist */,
 				3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */,
+				3E42382B22607BF3004988A1 /* Profile.swift */,
 			);
 			path = Goes;
 			sourceTree = "<group>";
@@ -308,9 +311,9 @@
 		3E7B6E14225A62FF00646724 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */,
 				3E7B6E0C2259F7BE00646724 /* ProfileAdressViewController.swift */,
 				3E7B6E0E2259FB8500646724 /* ProfileHistoryViewController.swift */,
+				3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */,
 				3E7B6E1E225AE56400646724 /* ProfileMainViewController.swift */,
 			);
 			path = Profile;
@@ -507,10 +510,16 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Goes/Pods-Goes-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MTSlideToOpen/MTSlideToOpen.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -518,10 +527,16 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MTSlideToOpen.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +582,7 @@
 				3E7B6E0D2259F7BE00646724 /* ProfileAdressViewController.swift in Sources */,
 				3E7B6E1D225AE52900646724 /* UISegmentControl+.swift in Sources */,
 				3E3EFD0A225914B40078E686 /* FriendListTableViewCell.swift in Sources */,
+				3E42382C22607BF3004988A1 /* Profile.swift in Sources */,
 				3E7B6E072259225500646724 /* ProfilePersonalDataViewController.swift in Sources */,
 				3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */,
 				3E609F642253603E0031CF81 /* UIImage+Extension.swift in Sources */,

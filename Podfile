@@ -12,8 +12,10 @@ target 'Goes' do
   pod 'SwiftLint'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Alamofire'
-  pod 'Firebase/Core'
+  pod 'IQKeyboardManagerSwift'
   pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
  
 
 

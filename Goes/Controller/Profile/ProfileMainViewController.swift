@@ -7,19 +7,34 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class ProfileMainViewController: UIViewController {
+    var profilePersonalVC = ProfilePersonalDataViewController()
 
+    @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
-
-       segmentedControl.addUnderlineForSelectedSegment()
-
+        segmentedControl.addUnderlineForSelectedSegment()
     }
-
+    
+    @IBAction func logOutBtn(_ sender: Any) {
+        if Auth.auth().currentUser != nil {
+            do {
+                try Auth.auth().signOut()
+                let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "SignUp")
+                self.present(viewController, animated: true, completion: nil)
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func changeBtnView() {
         if scrollView.contentOffset.x == 0 {
             segmentedControl.selectedSegmentIndex = 0
@@ -37,7 +52,6 @@ class ProfileMainViewController: UIViewController {
             segmentedControl.changeUnderlinePosition()
 
         }
-        //loadViewIfNeeded()
 
     }
 

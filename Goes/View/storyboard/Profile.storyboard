@@ -59,7 +59,7 @@
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adp-bi-W5C">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
                                                 <connections>
-                                                    <segue destination="5hg-km-Grz" kind="embed" id="gF8-U1-egu"/>
+                                                    <segue destination="5hg-km-Grz" kind="embed" identifier="toPersonalPage" id="gF8-U1-egu"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
@@ -139,10 +139,22 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jR5-dv-g57"/>
                     </view>
-                    <navigationItem key="navigationItem" title="個人資訊" id="bpp-ON-Vbn"/>
+                    <navigationItem key="navigationItem" title="個人資訊" id="bpp-ON-Vbn">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="aqf-ln-53Y">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aE2-lo-bdy">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="log out"/>
+                                <connections>
+                                    <action selector="logOutBtn:" destination="tEL-4Q-yV3" eventType="touchUpInside" id="tlE-t8-qam"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="EiI-px-mNu" id="QD9-J5-aE2"/>
                         <outlet property="segmentedControl" destination="o8R-C4-Pit" id="t5k-sG-xEO"/>
+                        <outlet property="userName" destination="dAz-hJ-2dv" id="7BG-px-mxV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fT6-l3-j0z" userLabel="First Responder" sceneMemberID="firstResponder"/>
