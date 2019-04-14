@@ -18,12 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="baseline_work_black" translatesAutoresizingMaskIntoConstraints="NO" id="5M1-UX-3DE">
-                                <rect key="frame" x="54" y="97" width="240" height="497"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Images_180x_Logo_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="5M1-UX-3DE">
+                                <rect key="frame" x="117.5" y="243.5" width="140" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="bYn-yc-TlJ"/>
+                                    <constraint firstAttribute="height" constant="180" id="j0D-54-IsF"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5M1-UX-3DE" firstAttribute="centerX" secondItem="ozb-1N-23G" secondAttribute="centerX" id="H72-ZY-JTs"/>
+                            <constraint firstItem="5M1-UX-3DE" firstAttribute="centerY" secondItem="ozb-1N-23G" secondAttribute="centerY" id="asX-RI-BKK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="uNt-NL-xqJ"/>
                     </view>
                     <connections>
@@ -36,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="baseline_work_black" width="24" height="24"/>
+        <image name="Images_180x_Logo_Normal" width="140" height="180"/>
     </resources>
 </document>

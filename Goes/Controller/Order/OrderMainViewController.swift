@@ -15,6 +15,7 @@ class OrderMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         segmentedControl.addUnderlineForSelectedSegment()
+        segmentedControl.removeBorder()
         scrollView.delegate = self
     }
 

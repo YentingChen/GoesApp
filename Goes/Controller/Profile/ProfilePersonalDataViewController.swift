@@ -36,7 +36,7 @@ class ProfilePersonalDataViewController: UIViewController {
         Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
             guard user != nil else { return }
             guard let userID = user?.uid else { return }
-            let userProfile =  self?.db.collection("users").document(userID).collection("profile").document(userID)
+            let userProfile =  self?.db.collection("users").document(userID)
             userProfile?.getDocument { (document, error) in
                 if let profile = document.flatMap({
                     $0.data().flatMap({ (data) in

@@ -19,25 +19,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XXo-HA-71G">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XXo-HA-71G">
+                                <rect key="frame" x="0.0" y="64" width="375" height="200"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="oa3-4N-boZ">
-                                        <rect key="frame" x="157" y="72" width="60" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="oa3-4N-boZ">
+                                        <rect key="frame" x="157.5" y="24" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="aO7-HD-7le"/>
+                                            <constraint firstAttribute="width" constant="60" id="hE2-af-KDD"/>
+                                        </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yenting Chen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-hJ-2dv">
-                                        <rect key="frame" x="136" y="140" width="103" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yenting Chen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-hJ-2dv">
+                                        <rect key="frame" x="136" y="92" width="103" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="ode-Os-MTL"/>
+                                            <constraint firstAttribute="width" constant="103" id="ppY-Tp-LGl"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="B1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dAz-hJ-2dv" secondAttribute="bottom" constant="87" id="DjC-e1-u8d"/>
+                                    <constraint firstAttribute="trailing" secondItem="dAz-hJ-2dv" secondAttribute="trailing" constant="136" id="NvX-mR-QN9"/>
+                                    <constraint firstItem="dAz-hJ-2dv" firstAttribute="leading" secondItem="XXo-HA-71G" secondAttribute="leading" constant="136" id="SaJ-kK-5WJ"/>
+                                    <constraint firstItem="oa3-4N-boZ" firstAttribute="top" secondItem="XXo-HA-71G" secondAttribute="top" constant="24" id="a77-tS-k4L"/>
+                                    <constraint firstItem="oa3-4N-boZ" firstAttribute="centerX" secondItem="XXo-HA-71G" secondAttribute="centerX" id="oYW-lh-o8O"/>
+                                </constraints>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="o8R-C4-Pit">
-                                <rect key="frame" x="60" y="164" width="255" height="41"/>
+                                <rect key="frame" x="60" y="194" width="255" height="41"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GqR-d5-JuD"/>
                                 </constraints>
@@ -52,13 +65,13 @@
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiI-px-mNu">
-                                <rect key="frame" x="0.0" y="221" width="375" height="446"/>
+                                <rect key="frame" x="0.0" y="264" width="375" height="403"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJf-rN-i5f">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adp-bi-W5C">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                                                 <connections>
                                                     <segue destination="5hg-km-Grz" kind="embed" identifier="toPersonalPage" id="gF8-U1-egu"/>
                                                 </connections>
@@ -73,10 +86,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xc8-py-pxd">
-                                        <rect key="frame" x="375" y="0.0" width="375" height="446"/>
+                                        <rect key="frame" x="375" y="0.0" width="375" height="403"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wyt-mo-H4R">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                                                 <connections>
                                                     <segue destination="RWm-Bg-jE7" kind="embed" id="QAM-7M-ZHD"/>
                                                 </connections>
@@ -90,10 +103,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBZ-Kx-eZ2">
-                                        <rect key="frame" x="750" y="0.0" width="375" height="446"/>
+                                        <rect key="frame" x="750" y="0.0" width="375" height="403"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Llu-LO-Mm8">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                                                 <connections>
                                                     <segue destination="lC3-hk-peT" kind="embed" id="y5X-ko-4Gp"/>
                                                 </connections>
@@ -131,21 +144,26 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="bottom" secondItem="jR5-dv-g57" secondAttribute="bottom" id="0eA-RB-Jb6"/>
-                            <constraint firstItem="o8R-C4-Pit" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" constant="100" id="2hz-OW-rBK"/>
-                            <constraint firstItem="EiI-px-mNu" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" constant="157" id="DTD-xk-1Kg"/>
+                            <constraint firstItem="o8R-C4-Pit" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" constant="130" id="2hz-OW-rBK"/>
+                            <constraint firstItem="EiI-px-mNu" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" constant="200" id="DTD-xk-1Kg"/>
+                            <constraint firstItem="XXo-HA-71G" firstAttribute="trailing" secondItem="jR5-dv-g57" secondAttribute="trailing" id="DXf-C7-R3S"/>
+                            <constraint firstItem="EiI-px-mNu" firstAttribute="top" secondItem="XXo-HA-71G" secondAttribute="bottom" id="H0b-HO-MMg"/>
                             <constraint firstItem="o8R-C4-Pit" firstAttribute="leading" secondItem="jR5-dv-g57" secondAttribute="leading" constant="60" id="Tvf-8H-f88"/>
+                            <constraint firstItem="XXo-HA-71G" firstAttribute="leading" secondItem="jR5-dv-g57" secondAttribute="leading" id="Y99-qA-Zbx"/>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="trailing" secondItem="jR5-dv-g57" secondAttribute="trailing" id="ZqE-Q2-MIr"/>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="leading" secondItem="jR5-dv-g57" secondAttribute="leading" id="a4E-r6-MF9"/>
+                            <constraint firstItem="XXo-HA-71G" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" id="bgI-Qn-UxC"/>
                             <constraint firstItem="jR5-dv-g57" firstAttribute="trailing" secondItem="o8R-C4-Pit" secondAttribute="trailing" constant="60" id="p5m-Ze-oTp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jR5-dv-g57"/>
                     </view>
                     <navigationItem key="navigationItem" title="個人資訊" id="bpp-ON-Vbn">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="aqf-ln-53Y">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aE2-lo-bdy">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aE2-lo-bdy">
+                                <rect key="frame" x="276" y="7" width="24" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="log out"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" image="icons_24x_logOut_Normal"/>
                                 <connections>
                                     <action selector="logOutBtn:" destination="tEL-4Q-yV3" eventType="touchUpInside" id="tlE-t8-qam"/>
                                 </connections>
@@ -167,7 +185,7 @@
             <objects>
                 <viewController id="RWm-Bg-jE7" customClass="ProfileAdressViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h9l-XA-gFE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p3A-68-3mq">
@@ -207,7 +225,7 @@
             <objects>
                 <viewController id="lC3-hk-peT" customClass="ProfileHistoryViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DLx-aa-WVm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jvy-aw-shh">
@@ -279,7 +297,7 @@
             <objects>
                 <viewController id="5hg-km-Grz" customClass="ProfilePersonalDataViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8dI-Fb-7dc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LKT-OX-iSx">
@@ -369,6 +387,7 @@
     </scenes>
     <resources>
         <image name="Images_40x_Arrow_Normal" width="86" height="40"/>
+        <image name="icons_24x_logOut_Normal" width="24" height="23"/>
         <image name="map_image_60x" width="60" height="60"/>
         <image name="profile_image" width="512" height="512"/>
         <namedColor name="B1">

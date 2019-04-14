@@ -36,7 +36,6 @@
 		3E5ADFF7225F12490003B241 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF6225F12490003B241 /* SignUpViewController.swift */; };
 		3E5ADFF9225F12DF0003B241 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF8225F12DF0003B241 /* LoginViewController.swift */; };
 		3E5ADFFB225F130F0003B241 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ADFFA225F130F0003B241 /* ResetPasswordViewController.swift */; };
-		3E5ADFFD225F157F0003B241 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ADFFC225F157F0003B241 /* HomeViewController.swift */; };
 		3E5AE001225F2E3A0003B241 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5AE000225F2E3A0003B241 /* LaunchViewController.swift */; };
 		3E5AE003225F2FC70003B241 /* LStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5AE002225F2FC70003B241 /* LStoryboard.storyboard */; };
 		3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E609F4122533EE10031CF81 /* AppDelegate.swift */; };
@@ -106,7 +105,6 @@
 		3E5ADFF6225F12490003B241 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3E5ADFF8225F12DF0003B241 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3E5ADFFA225F130F0003B241 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
-		3E5ADFFC225F157F0003B241 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3E5AE000225F2E3A0003B241 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		3E5AE002225F2FC70003B241 /* LStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LStoryboard.storyboard; sourceTree = "<group>"; };
 		3E609F3E22533EE10031CF81 /* Goes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +210,16 @@
 			path = Friend;
 			sourceTree = "<group>";
 		};
+		3E4639D522638BA8006C9E51 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				3E5ADFF6225F12490003B241 /* SignUpViewController.swift */,
+				3E5ADFF8225F12DF0003B241 /* LoginViewController.swift */,
+				3E5ADFFA225F130F0003B241 /* ResetPasswordViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		3E609F3522533EE10031CF81 = {
 			isa = PBXGroup;
 			children = (
@@ -264,14 +272,11 @@
 			isa = PBXGroup;
 			children = (
 				3E609F4322533EE10031CF81 /* ViewController.swift */,
-				3E5ADFF6225F12490003B241 /* SignUpViewController.swift */,
-				3E5ADFF8225F12DF0003B241 /* LoginViewController.swift */,
 				3E23588D22590D46004182F0 /* Lobby */,
 				3E7B6E052259221C00646724 /* Friend */,
 				3E7B6E14225A62FF00646724 /* Profile */,
 				3E7B6E2A225B5A7D00646724 /* Order */,
-				3E5ADFFA225F130F0003B241 /* ResetPasswordViewController.swift */,
-				3E5ADFFC225F157F0003B241 /* HomeViewController.swift */,
+				3E4639D522638BA8006C9E51 /* Auth */,
 				3E5AE000225F2E3A0003B241 /* LaunchViewController.swift */,
 			);
 			path = Controller;
@@ -615,7 +620,6 @@
 				3E7B6E122259FBA200646724 /* ProfileHistoryTableViewCell.swift in Sources */,
 				3E7B6E1A225A645F00646724 /* OrderRequestTableViewCell.swift in Sources */,
 				3E7B6E1F225AE56400646724 /* ProfileMainViewController.swift in Sources */,
-				3E5ADFFD225F157F0003B241 /* HomeViewController.swift in Sources */,
 				3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */,
 				3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */,
 				3E609F6222535E800031CF81 /* TabBaseViewController.swift in Sources */,

@@ -81,9 +81,11 @@
                                     <constraint firstAttribute="bottom" secondItem="EBr-pM-uxO" secondAttribute="bottom" id="vUb-ht-RM8"/>
                                 </constraints>
                             </scrollView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KfD-AJ-C0x">
-                                <rect key="frame" x="104" y="96" width="167" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KfD-AJ-C0x">
+                                <rect key="frame" x="100" y="84" width="175" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="e67-3y-1DK"/>
+                                </constraints>
                                 <segments>
                                     <segment title="接送請求"/>
                                     <segment title="我的請求"/>
@@ -98,6 +100,9 @@
                             <constraint firstItem="pyH-Ar-hgN" firstAttribute="bottom" secondItem="beX-pD-DPB" secondAttribute="bottom" id="0dm-lP-6L0"/>
                             <constraint firstItem="pyH-Ar-hgN" firstAttribute="top" secondItem="beX-pD-DPB" secondAttribute="top" constant="68" id="1n5-yF-x2n"/>
                             <constraint firstItem="pyH-Ar-hgN" firstAttribute="trailing" secondItem="beX-pD-DPB" secondAttribute="trailing" id="g1u-Li-uXi"/>
+                            <constraint firstItem="KfD-AJ-C0x" firstAttribute="leading" secondItem="beX-pD-DPB" secondAttribute="leading" constant="100" id="lxQ-5m-qgd"/>
+                            <constraint firstItem="beX-pD-DPB" firstAttribute="trailing" secondItem="KfD-AJ-C0x" secondAttribute="trailing" constant="100" id="n1Z-UA-6dj"/>
+                            <constraint firstItem="KfD-AJ-C0x" firstAttribute="top" secondItem="beX-pD-DPB" secondAttribute="top" constant="20" id="vLW-SG-Wuh"/>
                             <constraint firstItem="pyH-Ar-hgN" firstAttribute="leading" secondItem="beX-pD-DPB" secondAttribute="leading" id="zns-pp-x0V"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="beX-pD-DPB"/>

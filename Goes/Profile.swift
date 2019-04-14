@@ -33,10 +33,10 @@ struct Profile {
     
     init(dictionary: [String: Any]){
         self.email = (dictionary["email"] as? String)!
-        self.userID = (dictionary["uid"] as? String)!
-        self.userName = (dictionary["name"] as? String)!
+        self.userID = (dictionary["userID"] as? String)!
+        self.userName = (dictionary["userName"] as? String)!
         self.avatar = (dictionary["avatar"] as? String)!
-        self.phoneNumber = (dictionary["phone"] as? String)!
+        self.phoneNumber = (dictionary["phoneNumber"] as? String)!
     }
 }
 
