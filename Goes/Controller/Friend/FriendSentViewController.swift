@@ -72,8 +72,8 @@ extension FriendSentViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendSentTableViewCell", for: indexPath) as? FriendSentTableViewCell else { return UITableViewCell()}
               
-        queryFriendName(friendUserID: sentFriend[indexPath.row], completionHandler: { friendId in
-            cell.cellLabel.text = friendId
+        queryFriendName(friendUserID: sentFriend[indexPath.row], completionHandler: { friendName in
+            cell.cellLabel.text = friendName
         })
         return cell
     }

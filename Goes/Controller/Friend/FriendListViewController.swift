@@ -7,18 +7,64 @@
 //
 
 import UIKit
+import Firebase
 
 class FriendListViewController: UIViewController {
+    let personalDataManager = PersonalDataManager()
+    var myProfile : MyProfile?
+    var myFriends = [String]()
+     var db = Firestore.firestore()
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        personalDataManager.getPersonalData { (myProfile, error) in
+            self.myProfile = myProfile
+            self.querymyFriends()
+        }
 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "FriendListTableViewCell", bundle: nil), forCellReuseIdentifier: "friendListTableViewCell")
 
     }
+    
+    func querymyFriends() {
+        let userDefaults = UserDefaults.standard
+        if let userID = userDefaults.value(forKey: "uid") as? String {
+            db.collection("users").document(userID).collection("friend").getDocuments {  (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        if let status = document.data()["status"] as? Int {
+                            if  status == 3 {
+                                self.myFriends.append(document.documentID)
+                                self.tableView.reloadData()
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+    }
+    
+    func queryFriendName(friendUserID: String, completionHandler: @escaping (String) -> Void) {
+        var friendName = String()
+        db.collection("users").document(friendUserID).getDocument { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let dbFriendName = querySnapshot?.data()!["userName"] as? String else { return }
+                friendName = dbFriendName
+                completionHandler(friendName)
+            }
+        }
+        
+    }
+
 
 }
 
@@ -26,13 +72,16 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 2
+        return myFriends.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendListTableViewCell", for: indexPath) as? FriendListTableViewCell else {
             return UITableViewCell()
         }
+        queryFriendName(friendUserID: myFriends[indexPath.row], completionHandler: { friendName in
+            cell.cellLabel.text = friendName
+        })
         return cell
     }
 

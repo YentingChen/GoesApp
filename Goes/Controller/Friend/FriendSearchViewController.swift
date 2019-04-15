@@ -81,6 +81,7 @@ class FriendSearchViewController: UIViewController {
             switch self.friendStatusNumber {
             case 1 : self.showAlert(message: "您已經寄出邀請了...")
             case 2 : self.showAlert(message: " = = 請回覆別人的邀請好嗎？")
+            case 3 : self.showAlert(message: "你們已經是朋友了呦 >.^")
             default :
                 self.sentInvite()
                 self.friendRecieve()
