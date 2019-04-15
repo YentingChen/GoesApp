@@ -14,6 +14,7 @@ import FirebaseFirestore
 class FriendSearchViewController: UIViewController {
     @IBOutlet weak var searchFriend: UITextField!
     var db : Firestore!
+    var friendUid = String()
   
     @IBOutlet weak var friendView: UIView!
     @IBOutlet weak var friendName: UILabel!
@@ -24,10 +25,7 @@ class FriendSearchViewController: UIViewController {
         self.friendView.isHidden = true
 
     }
-
     @IBAction func searchBtn(_ sender: Any) {
-        guard let friendEmail = searchFriend.text else { return }
-        
         db.collection("users")
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
@@ -37,9 +35,9 @@ class FriendSearchViewController: UIViewController {
                         if let email = document.data()["email"], let searchEmail = self.searchFriend.text {
                             if  searchEmail == email as? String {
                                 self.friendView.isHidden = false
-                                if let friendName = document.data()["userName"] {
+                                if let friendName = document.data()["userName"], let friendUserId = document.data()["userID"] as? String {
                                     self.friendName.text = friendName as? String
-                                    
+                                    self.friendUid = friendUserId
                                 }
                             }
                         }
@@ -48,13 +46,27 @@ class FriendSearchViewController: UIViewController {
                     }
                 }
         }
-//        Auth.auth().fetchProviders(forEmail: friendEmail) { (providers, error) in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            } else if let providers = providers {
-//                print(providers)
-//            }
-//        }
     }
+    
+    @IBAction func addFriend(_ sender: Any) {
+        sentInvite()
+        friendRecieve()
+    }
+    
+    func sentInvite() {
+        let userDefaults = UserDefaults.standard
+        if let userID = userDefaults.value(forKey: "uid") as? String {
+            db.collection("users").document(userID).collection("friend").document(friendUid).setData(["status":1])
+        }
+    }
+    
+    func friendRecieve() {
+        let userDefaults = UserDefaults.standard
+        if let userID = userDefaults.value(forKey: "uid") as? String {
+            db.collection("users").document(friendUid).collection("friend").document(userID).setData(["status":2])
+        }
+        
+    }
+
 
 }

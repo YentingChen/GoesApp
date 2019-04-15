@@ -148,6 +148,9 @@
                                         <state key="normal" title="加為朋友">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addFriend:" destination="ow6-n6-g4d" eventType="touchUpInside" id="j4c-tX-1I6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

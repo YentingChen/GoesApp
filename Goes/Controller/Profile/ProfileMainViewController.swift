@@ -11,30 +11,57 @@ import Firebase
 import FirebaseAuth
 
 class ProfileMainViewController: UIViewController {
-    var profilePersonalVC = ProfilePersonalDataViewController()
+    
+    var profilePersonalVC: ProfilePersonalDataViewController?
 
     @IBOutlet weak var userName: UILabel!
+    
     @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         scrollView.delegate = self
+
         segmentedControl.addUnderlineForSelectedSegment()
+
         segmentedControl.removeBorder()
-       
+
+        profilePersonalVC?.handler = { (name) in
+            
+            self.userName.text = name
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toPersonalPage" {
+        
+            if let destination = segue.destination as? ProfilePersonalDataViewController {
+
+                self.profilePersonalVC = destination
+            }
+        
+        }
     }
     
     @IBAction func logOutBtn(_ sender: Any) {
+        
         if Auth.auth().currentUser != nil {
+        
             do {
                 try Auth.auth().signOut()
                 let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "SignUp")
+                let viewController = storyboard.instantiateViewController(withIdentifier: "LogIn")
                 self.present(viewController, animated: true, completion: nil)
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
+            
         }
+        
     }
     
     func changeBtnView() {

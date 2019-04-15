@@ -12,32 +12,51 @@ import FirebaseAuth
 
 class ProfilePersonalDataViewController: UIViewController {
     
-    var db : Firestore!
+    var db = Firestore.firestore()
+    
     var myProfile: MyProfile?
+    
+    var handler: CompletionHandler?
     
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
+        
         tableView.dataSource = self
+        
         tableView.register(
-            UINib(nibName: "ProfilePersonalTableViewCell",
-                  bundle: nil),
-            forCellReuseIdentifier: "profilePersonalTableViewCell")
+            UINib(
+                nibName: "ProfilePersonalTableViewCell",
+                bundle: nil
+            ),
+            forCellReuseIdentifier: "profilePersonalTableViewCell"
+        )
+        
         tableView.separatorStyle = .none
-
-        db = Firestore.firestore()
-        showUserInfo()
+        
+        showUserInfo(handler: { [weak self] name in
+            
+            self?.handler?(name)
+        })
     }
-   
-    func showUserInfo() {
+    
+    typealias CompletionHandler = (String) -> Void
+    
+    func showUserInfo(handler: @escaping CompletionHandler) {
         
         Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
+        
             guard user != nil else { return }
+            
             guard let userID = user?.uid else { return }
+            
             let userProfile =  self?.db.collection("users").document(userID)
+            
             userProfile?.getDocument { (document, error) in
+                
                 if let profile = document.flatMap({
                     $0.data().flatMap({ (data) in
                         return Profile(dictionary: data)
@@ -50,11 +69,13 @@ class ProfilePersonalDataViewController: UIViewController {
                     userName: profile.userName,
                     phoneNumber: profile.phoneNumber,
                     avatar: profile.avatar)
+                    handler(profile.userName)
                     print("Profile: \(profile)")
                     self?.tableView.reloadData()
                 } else {
                     print("Document does not exist")
                 }
+                
             }
         }
     }
@@ -75,12 +96,49 @@ extension ProfilePersonalDataViewController: UITableViewDataSource, UITableViewD
         cell.cellTitle.text = title[indexPath.row]
         cell.cellContent.text = content[indexPath.row]
         cell.cellImageView.image = UIImage(named: image[indexPath.row] )
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            showEditingBox(title: "編輯姓名", message: "請輸入您的姓名", placeholder: "在此輸入姓名") { (action) in
+                print("hello")
+            }
+        }
+        
+        if indexPath.row == 1 {
+            showEditingBox(title: " 編輯 email ", message: "請輸入您的電子信箱", placeholder: "在此輸入電子信箱") { (action) in
+                print("cool")
+            }
+        }
+        
+        if indexPath.row == 2 {
+            showEditingBox(title: "編輯手機號碼", message: "請輸入您的手機號碼", placeholder: "在此輸入手機號碼") { (action) in
+                print("cool")
+            }
+        }
+    }
+    
+    func showEditingBox(title: String, message: String, placeholder: String, handler:((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: title,
+                                                message: message, preferredStyle: .alert)
+        alertController.addTextField {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = placeholder
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "確定", style: .default, handler: handler)
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+        
     }
 
 }
