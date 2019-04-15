@@ -8,8 +8,14 @@
 
 import UIKit
 import GooglePlaces
+import Firebase
 
 class ProfileAdressViewController: UIViewController {
+    var db = Firestore.firestore()
+    var placeName = String()
+    var placeLatitude = String()
+    var placeLongtitude = String()
+    var selectItem = ""
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -56,10 +62,25 @@ extension ProfileAdressViewController: UITableViewDelegate, UITableViewDataSourc
         let filter = GMSAutocompleteFilter()
         filter.type = .address
         autocompleteController.autocompleteFilter = filter
-        
+        self.selectItem = "home"
         // Display the autocomplete view controller.
         present(autocompleteController, animated: true, completion: nil)
+        
 //        performSegue(withIdentifier: "toEditAressView", sender: self)
+    }
+    
+    func addAdress(item: String) {
+        let userDefaults = UserDefaults.standard
+        if let userID = userDefaults.value(forKey: "uid") as? String {
+            db.collection("users").document(userID).collection("address").document(item).setData([
+                "placeName": self.placeName,
+                "placeLat": self.placeLatitude,
+                "placeLong": self.placeLatitude])
+//            db.collection("users").document(userID).collection("address").document(item).updateData([
+//                "placeName": self.placeName,
+//                "placeLat": self.placeLatitude,
+//                "placeLong": self.placeLatitude])
+        }
     }
 }
 
@@ -67,14 +88,17 @@ extension ProfileAdressViewController: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        print("Place name: \(place.name)")
-        print("Place ID: \(place.placeID)")
-        print("Place attributions: \(place.attributions)")
-        dismiss(animated: true, completion: nil)
+        if self.selectItem == "home" {
+            placeLatitude = String(place.coordinate.latitude)
+            placeLongtitude = String(place.coordinate.longitude)
+            placeName = String(describing: place.name)
+            addAdress(item: "home")
+            dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        // TODO: handle the error.
         print("Error: ", error.localizedDescription)
     }
     

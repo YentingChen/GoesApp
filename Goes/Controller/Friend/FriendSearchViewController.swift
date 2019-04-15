@@ -13,7 +13,11 @@ import FirebaseFirestore
 
 class FriendSearchViewController: UIViewController {
     @IBOutlet weak var searchFriend: UITextField!
-    var db : Firestore!
+    var personalDataManager = PersonalDataManager()
+    var db = Firestore.firestore()
+    var myProfile: MyProfile?
+    var friendStatusNumber = 0
+
     var friendUid = String()
   
     @IBOutlet weak var friendView: UIView!
@@ -21,10 +25,22 @@ class FriendSearchViewController: UIViewController {
     @IBOutlet weak var addFriendBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-         db = Firestore.firestore()
         self.friendView.isHidden = true
+        personalDataManager.getPersonalData { (myProfile, error) in
+            self.myProfile = myProfile
+        }
 
     }
+    func showAlert(message: String) {
+        let alertController = UIAlertController(title: "錯誤",
+                                                message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "確認", style: .cancel, handler: nil)
+       
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     @IBAction func searchBtn(_ sender: Any) {
         db.collection("users")
             .getDocuments() { (querySnapshot, err) in
@@ -49,11 +65,41 @@ class FriendSearchViewController: UIViewController {
     }
     
     @IBAction func addFriend(_ sender: Any) {
-        sentInvite()
-        friendRecieve()
+        distinguishStatus()
+       
+       
+    }
+    
+    func friendStatus() {
+        db.collection("users").document((myProfile?.userID)!).collection("friend").document(friendUid).getDocument { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                guard let statusNumber = (querySnapshot?.data()!["status"] as? Int)  else { return }
+                self.friendStatusNumber = statusNumber
+            }
+            switch self.friendStatusNumber {
+            case 1 : self.showAlert(message: "您已經寄出邀請了...")
+            case 2 : self.showAlert(message: " = = 請回覆別人的邀請好嗎？")
+            default :
+                self.sentInvite()
+                self.friendRecieve()
+            }
+        }
+    }
+    
+    func distinguishStatus() {
+        guard let friendEmail = self.searchFriend.text else { return }
+        guard friendEmail != "" else { return }
+        guard friendEmail != myProfile?.email else {
+            showAlert(message: "您邊緣人嗎？ 為什麼要加自己成為好友？")
+            return
+        }
+        friendStatus()
     }
     
     func sentInvite() {
+        
         let userDefaults = UserDefaults.standard
         if let userID = userDefaults.value(forKey: "uid") as? String {
             db.collection("users").document(userID).collection("friend").document(friendUid).setData(["status":1])
@@ -67,6 +113,4 @@ class FriendSearchViewController: UIViewController {
         }
         
     }
-
-
 }

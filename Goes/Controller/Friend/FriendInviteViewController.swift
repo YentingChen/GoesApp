@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class FriendInviteViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    var db = Firestore.firestore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +19,28 @@ class FriendInviteViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "FriendInviteTableViewCell", bundle: nil), forCellReuseIdentifier: "friendInviteTableViewCell")
+        queryInviteFriend() 
 
+    }
+    func queryInviteFriend() {
+        let userDefaults = UserDefaults.standard
+        if let userID = userDefaults.value(forKey: "uid") as? String {
+            db.collection("users").document(userID).collection("friend").getDocuments {  (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        if let status = document.data()["status"] as? Int {
+                            if  status == 0 {
+                                print(document.documentID)
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
     }
 
 }

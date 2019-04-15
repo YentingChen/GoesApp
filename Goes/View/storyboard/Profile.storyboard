@@ -29,7 +29,7 @@
                                             <constraint firstAttribute="width" constant="60" id="hE2-af-KDD"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yenting Chen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-hJ-2dv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yenting Chen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-hJ-2dv">
                                         <rect key="frame" x="136" y="92" width="103" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="ode-Os-MTL"/>
@@ -160,7 +160,7 @@
                     <navigationItem key="navigationItem" title="個人資訊" id="bpp-ON-Vbn">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="aqf-ln-53Y">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aE2-lo-bdy">
-                                <rect key="frame" x="276" y="7" width="24" height="23"/>
+                                <rect key="frame" x="325" y="10.5" width="34" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" image="icons_24x_logOut_Normal"/>

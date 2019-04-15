@@ -21,6 +21,7 @@
 		3E3EFD102259186C0078E686 /* FriendSentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EFD0E2259186C0078E686 /* FriendSentTableViewCell.swift */; };
 		3E3EFD112259186C0078E686 /* FriendSentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EFD0F2259186C0078E686 /* FriendSentTableViewCell.xib */; };
 		3E42382C22607BF3004988A1 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E42382B22607BF3004988A1 /* Profile.swift */; };
+		3E424B5E22646DE6003A3123 /* PersonalDataMagager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E424B5D22646DE6003A3123 /* PersonalDataMagager.swift */; };
 		3E45934E2257714A00073210 /* LobbyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E45934D2257714A00073210 /* LobbyFriendViewController.swift */; };
 		3E459351225773EE00073210 /* LobbyFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E45934F225773EE00073210 /* LobbyFriendTableViewCell.swift */; };
 		3E459352225773EE00073210 /* LobbyFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E459350225773EE00073210 /* LobbyFriendTableViewCell.xib */; };
@@ -90,6 +91,7 @@
 		3E3EFD0E2259186C0078E686 /* FriendSentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSentTableViewCell.swift; sourceTree = "<group>"; };
 		3E3EFD0F2259186C0078E686 /* FriendSentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendSentTableViewCell.xib; sourceTree = "<group>"; };
 		3E42382B22607BF3004988A1 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		3E424B5D22646DE6003A3123 /* PersonalDataMagager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataMagager.swift; sourceTree = "<group>"; };
 		3E45934D2257714A00073210 /* LobbyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFriendViewController.swift; sourceTree = "<group>"; };
 		3E45934F225773EE00073210 /* LobbyFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFriendTableViewCell.swift; sourceTree = "<group>"; };
 		3E459350225773EE00073210 /* LobbyFriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LobbyFriendTableViewCell.xib; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				3E609F4D22533EE30031CF81 /* Info.plist */,
 				3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */,
 				3E42382B22607BF3004988A1 /* Profile.swift */,
+				3E424B5D22646DE6003A3123 /* PersonalDataMagager.swift */,
 			);
 			path = Goes;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				3E7B6E28225B52E100646724 /* OrderMyRequestTableViewCell.swift in Sources */,
 				3E7B6E122259FBA200646724 /* ProfileHistoryTableViewCell.swift in Sources */,
 				3E7B6E1A225A645F00646724 /* OrderRequestTableViewCell.swift in Sources */,
+				3E424B5E22646DE6003A3123 /* PersonalDataMagager.swift in Sources */,
 				3E7B6E1F225AE56400646724 /* ProfileMainViewController.swift in Sources */,
 				3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */,
 				3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */,
