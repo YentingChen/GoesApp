@@ -93,4 +93,39 @@ class FireBaseManager {
             
         }
     }
+    
+    func querymyFriends(myUid: String, status: Int , completionHandler: @escaping ([MyProfile]) -> Void) {
+        var friendList = [MyProfile]()
+        db.collection("users").document(myUid).collection("friend").getDocuments
+            {  (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        if let fireStatus = document.data()["status"] as? Int {
+                            if  fireStatus == status {
+                                self.queryUserInfo(userID: document.documentID, completion: { (friendInfo) in
+                                    friendList.append(friendInfo!)
+                                    completionHandler(friendList)
+                                })
+                              
+                            }
+                        }
+                    }
+                    
+                }
+        }
+    }
+    
+    func deleteFriend(myUid: String, friendUid: String, completionHandler: @escaping () -> Void ) {
+        db.collection("users").document(myUid).collection("friend").document(friendUid).delete()
+        db.collection("users").document(friendUid).collection("friend").document(myUid).delete()
+        completionHandler()
+    }
+    
+    func becomeFriend(myUid: String, friendUid: String, completionHandler: @escaping () -> Void ) {
+        db.collection("users").document(myUid).collection("friend").document(friendUid).updateData(["status":3])
+        db.collection("users").document(friendUid).collection("friend").document(myUid).updateData(["status":3])
+
+    }
 }

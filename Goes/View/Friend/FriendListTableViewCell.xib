@@ -34,10 +34,16 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zg8-iN-4og">
+                        <rect key="frame" x="186" y="24" width="31" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="刪除"/>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="cellDeleteBtn" destination="zg8-iN-4og" id="UoQ-Z1-7Sm"/>
                 <outlet property="cellImageView" destination="Os9-ws-fcB" id="rQr-7i-GAL"/>
                 <outlet property="cellLabel" destination="r1O-Hq-7RQ" id="YbL-nG-dur"/>
                 <outlet property="favoriteImageView" destination="JAf-DD-pwB" id="woe-2e-qJh"/>

@@ -10,10 +10,10 @@ import UIKit
 import Firebase
 
 class FriendInviteViewController: UIViewController {
-    
     let personalDataManager = PersonalDataManager()
+    let fireBaseManager = FireBaseManager()
     var myProfile : MyProfile?
-    var inviteFriend = [String]()
+    var inviteFriend = [MyProfile]()
     @IBOutlet weak var tableView: UITableView!
     var db = Firestore.firestore()
 
@@ -21,49 +21,16 @@ class FriendInviteViewController: UIViewController {
         super.viewDidLoad()
         personalDataManager.getPersonalData { (myProfile, error) in
             self.myProfile = myProfile
-            self.queryInviteFriend()
+            self.fireBaseManager.querymyFriends(myUid: (self.myProfile?.userID)!, status: 2, completionHandler: { (friendInfos) in
+                self.inviteFriend = friendInfos
+                self.tableView.reloadData()
+            })
         }
 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "FriendInviteTableViewCell", bundle: nil), forCellReuseIdentifier: "friendInviteTableViewCell")
 
-    }
-    
-    func queryInviteFriend() {
-        guard let myUid = self.myProfile?.userID else { return }
-        
-            db.collection("users").document(myUid).collection("friend").getDocuments {  (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        if let status = document.data()["status"] as? Int {
-                            if  status == 2 {
-                                self.inviteFriend.append(document.documentID)
-                                self.tableView.reloadData()
-                            }
-                        }
-                    }
-                    
-                }
-            }
-        
-        
-    }
-    
-    func queryFriendName(friendUserID: String, completionHandler: @escaping (String) -> Void) {
-        var friendName = String()
-        db.collection("users").document(friendUserID).getDocument { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                guard let dbFriendName = querySnapshot?.data()!["userName"] as? String else { return }
-                friendName = dbFriendName
-                completionHandler(friendName)
-            }
-        }
-        
     }
 
 }
@@ -75,39 +42,30 @@ extension FriendInviteViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendInviteTableViewCell", for: indexPath) as? FriendInviteTableViewCell else { return  UITableViewCell() }
-        queryFriendName(friendUserID: inviteFriend[indexPath.row], completionHandler: { friendName in
-            cell.cellLabel.text = friendName
-        })
-        
+
         cell.checkBtn.tag = indexPath.row
         cell.deleteBtn.tag = indexPath.row
+        cell.cellLabel.text = self.inviteFriend[indexPath.row].userName
         cell.checkBtn.addTarget(self, action: #selector(makeFriend(_:)), for: .touchUpInside)
-        cell.deleteBtn.addTarget(self, action: #selector(cancleInvite(_:)), for: .touchUpInside)
+        cell.deleteBtn.addTarget(self, action: #selector(cancelInvite(_:)), for: .touchUpInside)
         
         return cell
 
     }
     
-    @objc func cancleInvite(_ sendr: UIButton) {
-        db.collection("users").document((self.myProfile?.userID)!).collection("friend").document(inviteFriend[sendr.tag]).delete{ err in
-            if let err = err {
-                print("Error removing document: \(err)")
-            } else {
-                print("Document successfully removed!")
-            }
+    @objc func cancelInvite(_ sendr: UIButton) {
+        self.fireBaseManager.deleteFriend(myUid: (self.myProfile?.userID)!, friendUid: self.inviteFriend[sendr.tag].userID) {
+            self.viewDidLoad()
+            self.tableView.reloadData()
         }
-        db.collection("users").document(inviteFriend[sendr.tag]).collection("friend").document((self.myProfile?.userID)!).delete{ err in
-            if let err = err {
-                print("Error removing document: \(err)")
-            } else {
-                print("Document successfully removed!")
-            }
-        }
+        
     }
     
     @objc func makeFriend(_ sendr: UIButton) {
-        db.collection("users").document((self.myProfile?.userID)!).collection("friend").document(inviteFriend[sendr.tag]).updateData(["status":3])
-        db.collection("users").document(inviteFriend[sendr.tag]).collection("friend").document((self.myProfile?.userID)!).updateData(["status":3])
+        self.fireBaseManager.becomeFriend(myUid: (self.myProfile?.userID)!, friendUid: self.inviteFriend[sendr.tag].userID) {
+            self.viewDidLoad()
+            self.tableView.reloadData()
+        }
     
     }
 

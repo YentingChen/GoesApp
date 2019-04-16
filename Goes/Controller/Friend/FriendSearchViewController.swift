@@ -15,10 +15,7 @@ class FriendSearchViewController: UIViewController {
     @IBOutlet weak var searchFriend: UITextField!
     var personalDataManager = PersonalDataManager()
     var firebaseManager = FireBaseManager()
-    var db = Firestore.firestore()
     var myProfile: MyProfile?
-    var friendStatusNumber = 0
-    var friendUid = String()
     var friendInfo: MyProfile?
   
     @IBOutlet weak var friendView: UIView!
@@ -32,6 +29,7 @@ class FriendSearchViewController: UIViewController {
         }
 
     }
+    
     func showAlert(message: String) {
         let alertController = UIAlertController(title: "錯誤",
                                                 message: message, preferredStyle: .alert)
@@ -78,8 +76,9 @@ class FriendSearchViewController: UIViewController {
             }
         }
     }
+    
     func showFriendView( addBtnEnable: Bool, btnTitle: String) {
-//        self.addFriendBtn.isHidden = true
+
         self.friendView.isHidden = false
         self.friendName.text = self.friendInfo?.userName
         self.addFriendBtn.isEnabled = addBtnEnable
