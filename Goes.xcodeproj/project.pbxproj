@@ -70,6 +70,7 @@
 		3E7B6E25225B517C00646724 /* OrderMyRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */; };
 		3E7B6E28225B52E100646724 /* OrderMyRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */; };
 		3E7B6E29225B52E100646724 /* OrderMyRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */; };
+		3E92662722656A6C009EC3D1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E92662622656A6C009EC3D1 /* FirebaseManager.swift */; };
 		3E95EE81225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E95EE80225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift */; };
 		3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */; };
 		5CA711F534226EDCB52E35CA /* Pods_Goes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DEB760BA8574D01298CE22 /* Pods_Goes.framework */; };
@@ -142,6 +143,7 @@
 		3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyRequestViewController.swift; sourceTree = "<group>"; };
 		3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyRequestTableViewCell.swift; sourceTree = "<group>"; };
 		3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderMyRequestTableViewCell.xib; sourceTree = "<group>"; };
+		3E92662622656A6C009EC3D1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		3E95EE80225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAnswerRequestViewController.swift; sourceTree = "<group>"; };
 		3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		53DEB760BA8574D01298CE22 /* Pods_Goes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,13 +250,12 @@
 				3E6169622253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png */,
 				3E609F69225366FD0031CF81 /* Extension */,
 				3E609F6B2253672C0031CF81 /* Base */,
+				3E92662522656A1F009EC3D1 /* Model */,
 				3E609F6C225367400031CF81 /* View */,
 				3E609F6A225367100031CF81 /* Controller */,
 				3E609F4A22533EE30031CF81 /* LaunchScreen.storyboard */,
 				3E609F4D22533EE30031CF81 /* Info.plist */,
 				3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */,
-				3E42382B22607BF3004988A1 /* Profile.swift */,
-				3E424B5D22646DE6003A3123 /* PersonalDataMagager.swift */,
 			);
 			path = Goes;
 			sourceTree = "<group>";
@@ -275,12 +276,12 @@
 			isa = PBXGroup;
 			children = (
 				3E609F4322533EE10031CF81 /* ViewController.swift */,
+				3E5AE000225F2E3A0003B241 /* LaunchViewController.swift */,
 				3E23588D22590D46004182F0 /* Lobby */,
 				3E7B6E052259221C00646724 /* Friend */,
 				3E7B6E14225A62FF00646724 /* Profile */,
 				3E7B6E2A225B5A7D00646724 /* Order */,
 				3E4639D522638BA8006C9E51 /* Auth */,
-				3E5AE000225F2E3A0003B241 /* LaunchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -361,6 +362,16 @@
 				3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */,
 			);
 			path = Order;
+			sourceTree = "<group>";
+		};
+		3E92662522656A1F009EC3D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3E42382B22607BF3004988A1 /* Profile.swift */,
+				3E424B5D22646DE6003A3123 /* PersonalDataMagager.swift */,
+				3E92662622656A6C009EC3D1 /* FirebaseManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		523BF933A9E08874422EBCD8 /* Frameworks */ = {
@@ -596,6 +607,7 @@
 				3E42382C22607BF3004988A1 /* Profile.swift in Sources */,
 				3E7B6E072259225500646724 /* ProfilePersonalDataViewController.swift in Sources */,
 				3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */,
+				3E92662722656A6C009EC3D1 /* FirebaseManager.swift in Sources */,
 				3E609F642253603E0031CF81 /* UIImage+Extension.swift in Sources */,
 				3E23588822588B51004182F0 /* FriendHomeViewController.swift in Sources */,
 				3E459351225773EE00073210 /* LobbyFriendTableViewCell.swift in Sources */,

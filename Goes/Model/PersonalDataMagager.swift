@@ -26,10 +26,8 @@ class PersonalDataManager {
             
             userProfile?.getDocument { (document, error) in
                 
-                if let profile = document.flatMap({
-                    $0.data().flatMap({ (data) in
+                if let profile = document.flatMap({ $0.data().flatMap({ (data) in
                         return Profile(dictionary: data)
-                        
                     })
                 }) {
                     self?.myProfile = MyProfile(

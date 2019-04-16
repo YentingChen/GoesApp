@@ -31,9 +31,9 @@ class FriendInviteViewController: UIViewController {
     }
     
     func queryInviteFriend() {
-        let userDefaults = UserDefaults.standard
-        if let userID = userDefaults.value(forKey: "uid") as? String {
-            db.collection("users").document(userID).collection("friend").getDocuments {  (querySnapshot, err) in
+        guard let myUid = self.myProfile?.userID else { return }
+        
+            db.collection("users").document(myUid).collection("friend").getDocuments {  (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -48,7 +48,7 @@ class FriendInviteViewController: UIViewController {
                     
                 }
             }
-        }
+        
         
     }
     
@@ -78,10 +78,31 @@ extension FriendInviteViewController: UITableViewDelegate, UITableViewDataSource
         queryFriendName(friendUserID: inviteFriend[indexPath.row], completionHandler: { friendName in
             cell.cellLabel.text = friendName
         })
+        
         cell.checkBtn.tag = indexPath.row
+        cell.deleteBtn.tag = indexPath.row
         cell.checkBtn.addTarget(self, action: #selector(makeFriend(_:)), for: .touchUpInside)
+        cell.deleteBtn.addTarget(self, action: #selector(cancleInvite(_:)), for: .touchUpInside)
+        
         return cell
 
+    }
+    
+    @objc func cancleInvite(_ sendr: UIButton) {
+        db.collection("users").document((self.myProfile?.userID)!).collection("friend").document(inviteFriend[sendr.tag]).delete{ err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+        db.collection("users").document(inviteFriend[sendr.tag]).collection("friend").document((self.myProfile?.userID)!).delete{ err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
     }
     
     @objc func makeFriend(_ sendr: UIButton) {

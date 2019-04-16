@@ -10,10 +10,14 @@ import UIKit
 import Firebase
 
 class FriendListViewController: UIViewController {
+    
     let personalDataManager = PersonalDataManager()
+    
     var myProfile : MyProfile?
+    
     var myFriends = [String]()
-     var db = Firestore.firestore()
+    
+    var dataBase = Firestore.firestore()
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -21,18 +25,22 @@ class FriendListViewController: UIViewController {
         personalDataManager.getPersonalData { (myProfile, error) in
             self.myProfile = myProfile
             self.querymyFriends()
+            print(error as Any)
         }
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "FriendListTableViewCell", bundle: nil), forCellReuseIdentifier: "friendListTableViewCell")
+        tableView.register(
+            UINib(nibName: "FriendListTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "friendListTableViewCell")
 
     }
     
     func querymyFriends() {
-        let userDefaults = UserDefaults.standard
-        if let userID = userDefaults.value(forKey: "uid") as? String {
-            db.collection("users").document(userID).collection("friend").getDocuments {  (querySnapshot, err) in
+        guard let myUid = myProfile?.userID else { return }
+        dataBase.collection("users").document(myUid).collection("friend").getDocuments
+            {  (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -47,13 +55,11 @@ class FriendListViewController: UIViewController {
                     
                 }
             }
-        }
-        
     }
     
     func queryFriendName(friendUserID: String, completionHandler: @escaping (String) -> Void) {
         var friendName = String()
-        db.collection("users").document(friendUserID).getDocument { (querySnapshot, err) in
+        dataBase.collection("users").document(friendUserID).getDocument { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -64,7 +70,24 @@ class FriendListViewController: UIViewController {
         }
         
     }
-
+    
+    func deleteFriend(number: Int) {
+        guard let myUid = myProfile?.userID else { return }
+    dataBase.collection("users").document(myUid).collection("friend").document(myFriends[number]).delete{ err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+    dataBase.collection("users").document(myFriends[number]).collection("friend").document(myUid).delete{ err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+    }
 
 }
 
@@ -76,13 +99,31 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendListTableViewCell", for: indexPath) as? FriendListTableViewCell else {
+        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "friendListTableViewCell",
+            for: indexPath) as? FriendListTableViewCell else {
             return UITableViewCell()
         }
-        queryFriendName(friendUserID: myFriends[indexPath.row], completionHandler: { friendName in
+        
+        queryFriendName(
+            friendUserID: myFriends[indexPath.row],
+            completionHandler: { friendName in
             cell.cellLabel.text = friendName
         })
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "delete") { (action, view, completionHandler) in
+            self.deleteFriend(number: indexPath.row)
+            self.tableView.reloadData()
+            completionHandler(true)
+        }
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeConfiguration
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

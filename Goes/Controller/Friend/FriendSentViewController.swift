@@ -61,6 +61,26 @@ class FriendSentViewController: UIViewController {
         }
         
     }
+    
+    @objc func cancleSent(_ sendr: UIButton) {
+        guard let myUid = self.myProfile?.userID else { return }
+        db.collection("users").document(myUid).collection("friend").document(sentFriend[sendr.tag]).delete{ err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+           
+        }
+        db.collection("users").document(sentFriend[sendr.tag]).collection("friend").document(myUid).delete{ err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+         self.tableView.reloadData()
+    }
    
 }
 
@@ -75,6 +95,9 @@ extension FriendSentViewController: UITableViewDataSource, UITableViewDelegate {
         queryFriendName(friendUserID: sentFriend[indexPath.row], completionHandler: { friendName in
             cell.cellLabel.text = friendName
         })
+        cell.cancleInviteButton.tag = indexPath.row
+        cell.cancleInviteButton.addTarget(self, action: #selector(cancleSent(_:)), for: .touchUpInside)
+        
         return cell
     }
 

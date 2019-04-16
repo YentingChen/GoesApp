@@ -14,11 +14,12 @@ import FirebaseFirestore
 class FriendSearchViewController: UIViewController {
     @IBOutlet weak var searchFriend: UITextField!
     var personalDataManager = PersonalDataManager()
+    var firebaseManager = FireBaseManager()
     var db = Firestore.firestore()
     var myProfile: MyProfile?
     var friendStatusNumber = 0
-
     var friendUid = String()
+    var friendInfo: MyProfile?
   
     @IBOutlet weak var friendView: UIView!
     @IBOutlet weak var friendName: UILabel!
@@ -42,76 +43,64 @@ class FriendSearchViewController: UIViewController {
     }
     
     @IBAction func searchBtn(_ sender: Any) {
-        db.collection("users")
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        if let email = document.data()["email"], let searchEmail = self.searchFriend.text {
-                            if  searchEmail == email as? String {
-                                self.friendView.isHidden = false
-                                if let friendName = document.data()["userName"], let friendUserId = document.data()["userID"] as? String {
-                                    self.friendName.text = friendName as? String
-                                    self.friendUid = friendUserId
-                                }
+        guard let myUid = self.myProfile?.userID else { return }
+        guard let friendEmail = self.searchFriend.text else { return }
+        guard let myEmail = self.myProfile?.email else { return }
+        firebaseManager.queryUsers(email: friendEmail) { (isUser, friUid) in
+            if isUser == true {
+                if myEmail == friendEmail{
+                    print("It's me")
+                }else {
+                    self.firebaseManager.queryUserInfo(userID: friUid, completion: { (userInfo) in
+                        self.friendInfo = userInfo
+                        print(self.friendInfo)
+
+                        self.firebaseManager.queryFriendStatus(friendUid: friUid, myUid: myUid, completionHandler: { (status) in
+                            switch status {
+                            case 1 : print("已經送出")
+                            self.showFriendView(addBtnEnable: false, btnTitle: "已經送出")
+                            case 2 : print("尚未回復")
+                            self.showFriendView(addBtnEnable: false, btnTitle: "尚未回復")
+                            case 3 : print ("已經是好友")
+                            self.showFriendView(addBtnEnable: false, btnTitle: "已經是好友")
+                            case 4 : print("已經是摯友")
+                            self.showFriendView(addBtnEnable: false, btnTitle: "已經是好友")
+                            default : print("prepare 加好友")
+                            self.showFriendView(addBtnEnable: true, btnTitle: "成為好友")
+                                
                             }
-                        }
-                        print("\(document.documentID) => \(document.data())")
-                        print(document.data()["email"])
-                    }
+                        })
+                    })
+                    
+                    
                 }
+                
+            }
         }
     }
+    func showFriendView( addBtnEnable: Bool, btnTitle: String) {
+//        self.addFriendBtn.isHidden = true
+        self.friendView.isHidden = false
+        self.friendName.text = self.friendInfo?.userName
+        self.addFriendBtn.isEnabled = addBtnEnable
+        if addBtnEnable == false {
+            self.addFriendBtn.setTitle(btnTitle, for: .disabled)
+            self.addFriendBtn.backgroundColor = UIColor.white
+            self.addFriendBtn.setTitleColor(UIColor.gray, for: .disabled)
+        } else {
+            self.addFriendBtn.setTitle(btnTitle, for: .normal)
+             self.addFriendBtn.backgroundColor = UIColor.G1
+            self.addFriendBtn.titleLabel?.textColor = UIColor.white
+        }
+       
+    }
+    
     
     @IBAction func addFriend(_ sender: Any) {
-        distinguishStatus()
-       
-       
-    }
-    
-    func friendStatus() {
-        db.collection("users").document((myProfile?.userID)!).collection("friend").document(friendUid).getDocument { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                guard let statusNumber = (querySnapshot?.data()!["status"] as? Int)  else { return }
-                self.friendStatusNumber = statusNumber
-            }
-            switch self.friendStatusNumber {
-            case 1 : self.showAlert(message: "您已經寄出邀請了...")
-            case 2 : self.showAlert(message: " = = 請回覆別人的邀請好嗎？")
-            case 3 : self.showAlert(message: "你們已經是朋友了呦 >.^")
-            default :
-                self.sentInvite()
-                self.friendRecieve()
-            }
-        }
-    }
-    
-    func distinguishStatus() {
-        guard let friendEmail = self.searchFriend.text else { return }
-        guard friendEmail != "" else { return }
-        guard friendEmail != myProfile?.email else {
-            showAlert(message: "您邊緣人嗎？ 為什麼要加自己成為好友？")
-            return
-        }
-        friendStatus()
-    }
-    
-    func sentInvite() {
-        
-        let userDefaults = UserDefaults.standard
-        if let userID = userDefaults.value(forKey: "uid") as? String {
-            db.collection("users").document(userID).collection("friend").document(friendUid).setData(["status":1])
-        }
-    }
-    
-    func friendRecieve() {
-        let userDefaults = UserDefaults.standard
-        if let userID = userDefaults.value(forKey: "uid") as? String {
-            db.collection("users").document(friendUid).collection("friend").document(userID).setData(["status":2])
-        }
+        guard let myUid = self.myProfile?.userID else { return }
+        guard let friendUid = self.friendInfo?.userID else { return }
+       self.firebaseManager.makeFriend(friendUid: friendUid, myUid: myUid)
         
     }
+    
 }
