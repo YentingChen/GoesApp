@@ -26,6 +26,7 @@ class FireAuthManager {
 }
 
 class FireBaseManager {
+    
     var db = Firestore.firestore()
     var userProfile : MyProfile?
    
@@ -50,6 +51,7 @@ class FireBaseManager {
     
     func queryFriendStatus(friendUid: String, myUid: String, completionHandler: @escaping (Int) -> Void) {
         db.collection("users").document(myUid).collection("friend").document(friendUid).getDocument { (document, err) in
+            
             if document?.data() != nil {
                 
                 let status = document?.data()!["status"] as? Int
@@ -57,12 +59,12 @@ class FireBaseManager {
                 completionHandler(friendStatus)
                 
             } else {
+                
                 completionHandler(0)
 
             }
         }
     }
-    
     
     func makeFriend(friendUid: String, myUid: String){
         db.collection("users").document(myUid).collection("friend").document(friendUid).setData(["status":1])
@@ -101,6 +103,12 @@ class FireBaseManager {
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
+                    
+                    if querySnapshot!.documents.count == 0 {
+                        completionHandler([])
+                        return
+                    }
+                    
                     for document in querySnapshot!.documents {
                         if let fireStatus = document.data()["status"] as? Int {
                             if  fireStatus == status {
@@ -126,6 +134,7 @@ class FireBaseManager {
     func becomeFriend(myUid: String, friendUid: String, completionHandler: @escaping () -> Void ) {
         db.collection("users").document(myUid).collection("friend").document(friendUid).updateData(["status":3])
         db.collection("users").document(friendUid).collection("friend").document(myUid).updateData(["status":3])
+        completionHandler()
 
     }
 }

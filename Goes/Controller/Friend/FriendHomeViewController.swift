@@ -11,18 +11,27 @@ import UIKit
 class FriendHomeViewController: UIViewController {
 
     @IBOutlet weak var containerView: UIView!
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var menuBtnIsSelected = [false, false, false, false ]
+    
     var friendSearchViewController: FriendSearchViewController!
+    
+    var selectedViewController: UIViewController!
 
+   
     lazy var friendSentViewController: FriendSentViewController = {
+        
         guard let friendVC = self.storyboard!.instantiateViewController(withIdentifier: "friendSentViewController") as? FriendSentViewController else {
             return FriendSentViewController()
         }
         return friendVC
     }() 
 
+    
     lazy var friendListViewController: FriendListViewController = {
+        
         guard let friendVC = self.storyboard!.instantiateViewController(withIdentifier:  "friendListViewController") as? FriendListViewController else {
             return FriendListViewController()
         }
@@ -41,14 +50,13 @@ class FriendHomeViewController: UIViewController {
         return friendVC
     }()
 
-    var selectedViewController: UIViewController!
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ContainerViewSegue" {
             if let destination = segue.destination as? FriendSearchViewController {
                 self.friendSearchViewController = destination
             }
         }
+        
     }
 
     func changePage(to newViewController: UIViewController) {
@@ -56,7 +64,7 @@ class FriendHomeViewController: UIViewController {
         selectedViewController.willMove(toParent: nil)
         selectedViewController.view.removeFromSuperview()
         selectedViewController.removeFromParent()
-
+        
         // 3. Add new viewController
         addChild(newViewController)
         self.containerView.addSubview(newViewController.view)
@@ -75,6 +83,7 @@ class FriendHomeViewController: UIViewController {
         collectionView.register(UINib(nibName: "FriendMenuCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "friendMenuCollectionViewCell")
         selectedViewController = friendSearchViewController
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         // Auto Select First Item
         self.collectionView.performBatchUpdates(nil) { _ in
@@ -86,6 +95,7 @@ class FriendHomeViewController: UIViewController {
 }
 
 extension FriendHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
@@ -109,7 +119,9 @@ extension FriendHomeViewController: UICollectionViewDelegate, UICollectionViewDa
 
         let cellTitle = ["搜尋好友", "好友邀請", "好友列表", "送出"]
 
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "friendMenuCollectionViewCell", for: indexPath) as? FriendMenuCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "friendMenuCollectionViewCell",
+            for: indexPath) as? FriendMenuCollectionViewCell else { return UICollectionViewCell() }
 
 
         if menuBtnIsSelected[indexPath.row] == true {
@@ -127,20 +139,36 @@ extension FriendHomeViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath)
+        -> CGSize {
         return CGSize(width: 70, height: 70)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "friendMenuCollectionViewCell", for: indexPath) as? FriendMenuCollectionViewCell {
+        
+        if let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "friendMenuCollectionViewCell",
+            for: indexPath) as? FriendMenuCollectionViewCell {
+            
         if indexPath.row == 0 {
+            
             changePage(to: friendSearchViewController)
             menuBtnIsSelected = [false, false, false, false ]
             menuBtnIsSelected[indexPath.row] = true
@@ -151,20 +179,32 @@ extension FriendHomeViewController: UICollectionViewDelegate, UICollectionViewDa
 
         if indexPath.row == 1 {
             changePage(to: friendInviteViewController)
-            menuBtnIsSelected = [false, false, false, false ]
-             menuBtnIsSelected[indexPath.row] = true
-             collectionView.reloadData()
+            
+            friendInviteViewController.loadDataFromDB()
+            friendInviteViewController.loadViewIfNeeded()
+            menuBtnIsSelected = [false, false, false, false]
+            menuBtnIsSelected[indexPath.row] = true
+            collectionView.reloadData()
         }
+            
 
         if indexPath.row == 2 {
             changePage(to: friendListViewController)
+            
+            friendListViewController.loadDataFromDB()
+            friendListViewController.loadViewIfNeeded()
             menuBtnIsSelected = [false, false, false, false ]
-             menuBtnIsSelected[indexPath.row] = true
-             collectionView.reloadData()
+            menuBtnIsSelected[indexPath.row] = true
+            collectionView.reloadData()
         }
 
         if indexPath.row == 3 {
             changePage(to: friendSentViewController)
+            
+            friendSentViewController.dataLoadFromDB()
+//            self.containerView.reloadInputViews()
+            friendSentViewController.loadViewIfNeeded()
+            
             menuBtnIsSelected = [false, false, false, false ]
             menuBtnIsSelected[indexPath.row] = true
             collectionView.reloadData()

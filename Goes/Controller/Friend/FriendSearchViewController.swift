@@ -23,6 +23,8 @@ class FriendSearchViewController: UIViewController {
     @IBOutlet weak var addFriendBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchFriend.delegate = self
+        searchFriend.clearButtonMode = UITextField.ViewMode.whileEditing
         self.friendView.isHidden = true
         personalDataManager.getPersonalData { (myProfile, error) in
             self.myProfile = myProfile
@@ -41,6 +43,10 @@ class FriendSearchViewController: UIViewController {
     }
     
     @IBAction func searchBtn(_ sender: Any) {
+        searchFriendFromDB()
+    }
+    
+    func searchFriendFromDB() {
         guard let myUid = self.myProfile?.userID else { return }
         guard let friendEmail = self.searchFriend.text else { return }
         guard let myEmail = self.myProfile?.email else { return }
@@ -52,7 +58,7 @@ class FriendSearchViewController: UIViewController {
                     self.firebaseManager.queryUserInfo(userID: friUid, completion: { (userInfo) in
                         self.friendInfo = userInfo
                         print(self.friendInfo)
-
+                        
                         self.firebaseManager.queryFriendStatus(friendUid: friUid, myUid: myUid, completionHandler: { (status) in
                             switch status {
                             case 1 : print("已經送出")
@@ -69,7 +75,6 @@ class FriendSearchViewController: UIViewController {
                             }
                         })
                     })
-                    
                     
                 }
                 
@@ -99,7 +104,17 @@ class FriendSearchViewController: UIViewController {
         guard let myUid = self.myProfile?.userID else { return }
         guard let friendUid = self.friendInfo?.userID else { return }
        self.firebaseManager.makeFriend(friendUid: friendUid, myUid: myUid)
-        
+        searchFriendFromDB()
     }
     
+}
+
+extension FriendSearchViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3) {
+            self.friendView.isHidden = true
+        }
+       
+    }
+   
 }

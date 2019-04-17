@@ -29,9 +29,9 @@ class ProfileMainViewController: UIViewController {
 
         segmentedControl.removeBorder()
 
-        profilePersonalVC?.handler = { (name) in
+        profilePersonalVC?.handler = { (myInfo) in
             
-            self.userName.text = name
+            self.userName.text = myInfo?.userName
         }
     }
     

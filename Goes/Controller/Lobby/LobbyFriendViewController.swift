@@ -9,6 +9,12 @@
 import UIKit
 
 class LobbyFriendViewController: UIViewController {
+    
+    let personalDataManager = PersonalDataManager()
+    let fireBaseManager = FireBaseManager()
+    var myProfile : MyProfile?
+    var myFriends = [MyProfile]()
+    
     @IBOutlet weak var collectionView: UICollectionView!
 
     @IBOutlet weak var tableView: UITableView!
@@ -26,13 +32,15 @@ class LobbyFriendViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(
-            UINib(nibName: "LobbyFriendCollectionViewCell",
-                  bundle: nil),
-            forCellWithReuseIdentifier: "lobbyFriendCollectionViewCell")
+        
+        personalDataManager.getPersonalData { (myProfile, error) in
+            self.myProfile = myProfile
+            self.fireBaseManager.querymyFriends(myUid: (self.myProfile?.userID)!, status: 3, completionHandler: { (friendInfos) in
+                self.myFriends = friendInfos
+                self.tableView.reloadData()
+            })
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(
@@ -50,47 +58,16 @@ class LobbyFriendViewController: UIViewController {
 
 }
 
-extension LobbyFriendViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "lobbyFriendCollectionViewCell",
-            for: indexPath) as? LobbyFriendCollectionViewCell else { return UICollectionViewCell() }
-        return cell
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath)
-    -> CGSize {
-        return CGSize(width: 80, height: 80)
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumInteritemSpacingForSectionAt section: Int)
-    -> CGFloat {
-        return 5
-    }
-
-}
-
 extension LobbyFriendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return myFriends.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "lobbyFriendTableViewCell",
             for: indexPath) as? LobbyFriendTableViewCell else { return UITableViewCell() }
+        cell.nameLabel.text = self.myFriends[indexPath.row].userName
         return cell
 
     }

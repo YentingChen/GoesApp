@@ -12,33 +12,58 @@ import Firebase
 class FriendSentViewController: UIViewController {
     let personalDataManager = PersonalDataManager()
     let fireBaseManager = FireBaseManager()
-    var myProfile : MyProfile?
+    var myProfile: MyProfile?
     var sentFriend = [MyProfile]()
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        personalDataManager.getPersonalData { (myProfile, error) in
-            self.myProfile = myProfile
-            self.fireBaseManager.querymyFriends(myUid: (self.myProfile?.userID)!, status: 1, completionHandler: { (friendInfos) in
-                self.sentFriend = friendInfos
-                self.tableView.reloadData()
-            })
-            
-        }
+        
+        dataLoadFromDB()
 
         tableView.dataSource = self
+        
         tableView.delegate = self
-        tableView.register(UINib(nibName: "FriendSentTableViewCell", bundle: nil), forCellReuseIdentifier: "friendSentTableViewCell")
+        
+        tableView.register(
+            UINib(nibName: "FriendSentTableViewCell",
+                  bundle: nil), forCellReuseIdentifier: "friendSentTableViewCell")
         tableView.separatorStyle = .none
         
     }
-
-    @objc func cancleSent(_ sendr: UIButton) {
-        self.fireBaseManager.deleteFriend(myUid: (self.myProfile?.userID)!, friendUid: self.sentFriend[sendr.tag].userID) {
-             self.viewDidLoad()
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        dataLoadFromDB()
+//    }
+//
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        dataLoadFromDB()
+    }
+    
+    @objc func cancelSent(_ sendr: UIButton) {
+        self.fireBaseManager.deleteFriend(
+        myUid: (self.myProfile?.userID)!,
+        friendUid: self.sentFriend[sendr.tag].userID) {
+             self.sentFriend.remove(at: sendr.tag)
              self.tableView.reloadData()
         }
         
+    }
+    
+    func dataLoadFromDB() {
+        personalDataManager.getPersonalData { [weak self]  (myProfile, error) in
+            self?.myProfile = myProfile
+            self?.fireBaseManager.querymyFriends(
+                myUid: (self?.myProfile?.userID)!,
+                status: 1,
+                completionHandler: { (friendInfos) in
+                    self?.sentFriend = friendInfos
+                    self?.tableView.reloadData()
+            })
+            print(error as Any)
+        }
     }
    
 }
@@ -49,10 +74,12 @@ extension FriendSentViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendSentTableViewCell", for: indexPath) as? FriendSentTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "friendSentTableViewCell",
+            for: indexPath) as? FriendSentTableViewCell else { return UITableViewCell()}
         cell.cellLabel.text = self.sentFriend[indexPath.row].userName
         cell.cancleInviteButton.tag = indexPath.row
-        cell.cancleInviteButton.addTarget(self, action: #selector(cancleSent(_:)), for: .touchUpInside)
+        cell.cancleInviteButton.addTarget(self, action: #selector(cancelSent(_:)), for: .touchUpInside)
         return cell
     }
 

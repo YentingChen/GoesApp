@@ -24,11 +24,13 @@ extension EditViewController: GMSAutocompleteViewControllerDelegate {
         print("Place name: \(place.name)")
         print("Place ID: \(place.placeID)")
         print("Place attributions: \(place.attributions)")
+        print(place.coordinate.latitude)
+        print(place.coordinate.longitude)
         dismiss(animated: true, completion: nil)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        // TODO: handle the error.
+        
         print("Error: ", error.localizedDescription)
     }
     

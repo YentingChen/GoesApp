@@ -39,7 +39,7 @@ extension ProfileAdressViewController: UITableViewDelegate, UITableViewDataSourc
         let image = ["home_icon_hollow_24x", "work_icon_hollow_24x", "star_icon_hollow_24x"]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "profilePersonalTableViewCell", for: indexPath) as? ProfilePersonalTableViewCell else { return UITableViewCell() }
         cell.cellTitle.text = title[indexPath.row]
-        cell.cellContent.text = content[indexPath.row]
+//        cell.cellContent.text = content[indexPath.row]
         cell.cellImageView.image = UIImage(named: image[indexPath.row] )
 
         return cell

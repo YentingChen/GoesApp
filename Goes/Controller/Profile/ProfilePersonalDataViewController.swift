@@ -12,17 +12,74 @@ import FirebaseAuth
 
 class ProfilePersonalDataViewController: UIViewController {
     
-    var db = Firestore.firestore()
+   let firebaseManager = FireBaseManager()
+    let personalDataManager = PersonalDataManager()
+//
+//    var db = Firestore.firestore()
     
     var myProfile: MyProfile?
     
+    typealias CompletionHandler = (MyProfile?) -> Void
     var handler: CompletionHandler?
     
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        personalDataManager.getPersonalData { (myProfile, err) in
+            
+            self.myProfile = myProfile
+            self.tableView.reloadData()
+            self.handler!(myProfile)
+            
+        }
+        tableViewSetting()
         
+//        showUserInfo(handler: { [weak self] name in
+//
+//            self?.handler?(name)
+//        })
+    }
+//
+//    typealias CompletionHandler = (String) -> Void
+    
+//    func showUserInfo(handler: @escaping CompletionHandler) {
+//
+//        Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
+//
+//            guard user != nil else { return }
+//
+//            guard let userID = user?.uid else { return }
+//
+//            let userProfile =  self?.db.collection("users").document(userID)
+            
+//            userProfile?.getDocument { (document, error) in
+//
+//                if let profile = document.flatMap({
+//                    $0.data().flatMap({ (data) in
+//                        return Profile(dictionary: data)
+//
+//                    })
+//                }) {
+//                    self?.myProfile = MyProfile(
+//                    email: profile.email,
+//                    userID: profile.userID,
+//                    userName: profile.userName,
+//                    phoneNumber: profile.phoneNumber,
+//                    avatar: profile.avatar)
+//                    handler(profile.userName)
+//                    print("Profile: \(profile)")
+//                    self?.tableView.reloadData()
+//                } else {
+//                    print("Document does not exist")
+//                }
+//
+//            }
+//        }
+//    }
+    
+    fileprivate func tableViewSetting() {
         tableView.delegate = self
         
         tableView.dataSource = self
@@ -36,48 +93,6 @@ class ProfilePersonalDataViewController: UIViewController {
         )
         
         tableView.separatorStyle = .none
-        
-        showUserInfo(handler: { [weak self] name in
-            
-            self?.handler?(name)
-        })
-    }
-    
-    typealias CompletionHandler = (String) -> Void
-    
-    func showUserInfo(handler: @escaping CompletionHandler) {
-        
-        Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
-        
-            guard user != nil else { return }
-            
-            guard let userID = user?.uid else { return }
-            
-            let userProfile =  self?.db.collection("users").document(userID)
-            
-            userProfile?.getDocument { (document, error) in
-                
-                if let profile = document.flatMap({
-                    $0.data().flatMap({ (data) in
-                        return Profile(dictionary: data)
-                        
-                    })
-                }) {
-                    self?.myProfile = MyProfile(
-                    email: profile.email,
-                    userID: profile.userID,
-                    userName: profile.userName,
-                    phoneNumber: profile.phoneNumber,
-                    avatar: profile.avatar)
-                    handler(profile.userName)
-                    print("Profile: \(profile)")
-                    self?.tableView.reloadData()
-                } else {
-                    print("Document does not exist")
-                }
-                
-            }
-        }
     }
 }
 
@@ -95,6 +110,7 @@ extension ProfilePersonalDataViewController: UITableViewDataSource, UITableViewD
             for: indexPath) as? ProfilePersonalTableViewCell else { return UITableViewCell() }
         cell.cellTitle.text = title[indexPath.row]
         cell.cellContent.text = content[indexPath.row]
+        
         cell.cellImageView.image = UIImage(named: image[indexPath.row] )
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
 
@@ -105,25 +121,25 @@ extension ProfilePersonalDataViewController: UITableViewDataSource, UITableViewD
         return 90
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            showEditingBox(title: "編輯姓名", message: "請輸入您的姓名", placeholder: "在此輸入姓名") { (action) in
-                print("hello")
-            }
-        }
-        
-        if indexPath.row == 1 {
-            showEditingBox(title: " 編輯 email ", message: "請輸入您的電子信箱", placeholder: "在此輸入電子信箱") { (action) in
-                print("cool")
-            }
-        }
-        
-        if indexPath.row == 2 {
-            showEditingBox(title: "編輯手機號碼", message: "請輸入您的手機號碼", placeholder: "在此輸入手機號碼") { (action) in
-                print("cool")
-            }
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if indexPath.row == 0 {
+//            showEditingBox(title: "編輯姓名", message: "請輸入您的姓名", placeholder: "在此輸入姓名") { (action) in
+//                print("hello")
+//            }
+//        }
+//        
+//        if indexPath.row == 1 {
+//            showEditingBox(title: " 編輯 email ", message: "請輸入您的電子信箱", placeholder: "在此輸入電子信箱") { (action) in
+//                print("cool")
+//            }
+//        }
+//        
+//        if indexPath.row == 2 {
+//            showEditingBox(title: "編輯手機號碼", message: "請輸入您的手機號碼", placeholder: "在此輸入手機號碼") { (action) in
+//                print("cool")
+//            }
+//        }
+//    }
     
     func showEditingBox(title: String, message: String, placeholder: String, handler:((UIAlertAction) -> Void)?) {
         let alertController = UIAlertController(title: title,

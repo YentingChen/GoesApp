@@ -14,6 +14,7 @@ class PersonalDataManager {
     var myProfile: MyProfile?
     var dataBase = Firestore.firestore()
     typealias CompletionHandler = (MyProfile?, Error?) -> Void
+    
     func getPersonalData(completionHandler completion: @escaping CompletionHandler) {
         
         Auth.auth().addStateDidChangeListener { [weak self] (_, user) in

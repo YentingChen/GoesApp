@@ -12,20 +12,24 @@ import Firebase
 class FriendInviteViewController: UIViewController {
     let personalDataManager = PersonalDataManager()
     let fireBaseManager = FireBaseManager()
-    var myProfile : MyProfile?
+    var myProfile: MyProfile?
     var inviteFriend = [MyProfile]()
     @IBOutlet weak var tableView: UITableView!
     var db = Firestore.firestore()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        personalDataManager.getPersonalData { (myProfile, error) in
-            self.myProfile = myProfile
-            self.fireBaseManager.querymyFriends(myUid: (self.myProfile?.userID)!, status: 2, completionHandler: { (friendInfos) in
-                self.inviteFriend = friendInfos
-                self.tableView.reloadData()
+     func loadDataFromDB() {
+        personalDataManager.getPersonalData { [weak self] (myProfile, error) in
+            self?.myProfile = myProfile
+            self?.fireBaseManager.querymyFriends(myUid: (self?.myProfile?.userID)!, status: 2, completionHandler: { (friendInfos) in
+                self?.inviteFriend = friendInfos
+                self?.tableView.reloadData()
             })
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadDataFromDB()
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -55,7 +59,8 @@ extension FriendInviteViewController: UITableViewDelegate, UITableViewDataSource
     
     @objc func cancelInvite(_ sendr: UIButton) {
         self.fireBaseManager.deleteFriend(myUid: (self.myProfile?.userID)!, friendUid: self.inviteFriend[sendr.tag].userID) {
-            self.viewDidLoad()
+            
+            self.inviteFriend.remove(at: sendr.tag)
             self.tableView.reloadData()
         }
         
@@ -63,8 +68,10 @@ extension FriendInviteViewController: UITableViewDelegate, UITableViewDataSource
     
     @objc func makeFriend(_ sendr: UIButton) {
         self.fireBaseManager.becomeFriend(myUid: (self.myProfile?.userID)!, friendUid: self.inviteFriend[sendr.tag].userID) {
-            self.viewDidLoad()
+            
+            self.inviteFriend.remove(at: sendr.tag)
             self.tableView.reloadData()
+           
         }
     
     }
