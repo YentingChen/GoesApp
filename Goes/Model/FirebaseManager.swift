@@ -139,13 +139,20 @@ class FireBaseManager {
 
     }
     
-    func updateAdress(myUid: String, category: String, placeName: String, placeLng: Double, placeLat: Double, placeID: String,  completionHandler: @escaping () -> Void) {
+    func updateAdress(myUid: String,
+                      category: String,
+                      placeName: String,
+                      placeLng: Double,
+                      placeLat: Double,
+                      placeID: String,
+                      placeformattedAddress: String,
+                      completionHandler: @escaping () -> Void) {
         db.collection("users").document(myUid).collection("address").document(category).setData([
             "placeName" : placeName,
             "placeLat": placeLat,
             "placeLng": placeLng,
-            "placeID": placeID
-            ])
+            "placeID": placeID,
+            "placeformattedAddress": placeformattedAddress])
     }
     
     func queryAdress(myUid: String, category: String, completionHandler: @escaping (Address?) -> Void) {
@@ -160,7 +167,8 @@ class FireBaseManager {
                         placeID: addressInfo.placeID,
                         placeLat: addressInfo.placeLat,
                         placeLng: addressInfo.placeLng,
-                        placeName: addressInfo.placeName
+                        placeName: addressInfo.placeName,
+                        placeformattedAddress: addressInfo.placeformattedAddress
                     )
                     completionHandler(self.address)
                     

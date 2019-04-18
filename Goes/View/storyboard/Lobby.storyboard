@@ -158,24 +158,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Bz-di-nua">
                                 <rect key="frame" x="37.5" y="88" width="300" height="40"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ip7-jI-0af">
-                                        <rect key="frame" x="14.5" y="0.0" width="270" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="6Ih-KX-e2c"/>
-                                            <constraint firstAttribute="width" constant="270" id="X3Z-wJ-7UO"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HM-hr-rhk">
+                                        <rect key="frame" x="8" y="5" width="284" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="addressBtn:" destination="JLf-kq-C3D" eventType="touchUpInside" id="znv-CZ-mlr"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FUa-vp-QNb"/>
                                     <constraint firstAttribute="width" constant="300" id="GRr-YJ-69t"/>
-                                    <constraint firstItem="Ip7-jI-0af" firstAttribute="top" secondItem="0Bz-di-nua" secondAttribute="top" id="OsI-gP-0Ws"/>
-                                    <constraint firstItem="Ip7-jI-0af" firstAttribute="leading" secondItem="0Bz-di-nua" secondAttribute="leading" constant="14.5" id="gi3-w5-zvO"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXu-ua-BTU">
@@ -314,14 +309,30 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addressBtn" destination="3HM-hr-rhk" id="MkW-Gl-KVL"/>
                         <outlet property="adressSegmentedControl" destination="iah-8n-Xw9" id="kM3-0m-WXH"/>
-                        <outlet property="adressTxtField" destination="Ip7-jI-0af" id="ROm-Ii-f59"/>
                         <outlet property="mapView" destination="gNS-4k-R9c" id="GjG-bf-TB0"/>
+                        <segue destination="ApF-hc-1QZ" kind="presentation" identifier="toEditAddressVC" id="aJt-lx-Lef"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00d-iW-dN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5340" y="132.68365817091455"/>
+        </scene>
+        <!--Edit Address View Controller-->
+        <scene sceneID="RCO-CD-auc">
+            <objects>
+                <viewController id="ApF-hc-1QZ" customClass="EditAddressViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i1Z-Lt-HMN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NT5-2i-6GH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adL-uQ-8Yf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5340" y="840"/>
         </scene>
         <!--          -->
         <scene sceneID="oUU-FC-bG7">

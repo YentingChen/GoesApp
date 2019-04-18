@@ -11,14 +11,30 @@ import GoogleMaps
 import GooglePlaces
 
 class LobbyMapViewController: UIViewController {
-
-    @IBOutlet weak var adressTxtField: UITextField!
+    
+    var personalDataManager = PersonalDataManager()
+    var firebaseManager = FireBaseManager()
+    var myProfile: MyProfile?
+    var homeAddress: Address?
+    var workAddress: Address?
+    var favoriteAddress: Address?
+    var editAddressVC: EditAddressViewController?
+    
+    @IBOutlet weak var addressBtn: UIButton!
     @IBOutlet weak var adressSegmentedControl: UISegmentedControl!
     @IBOutlet weak var mapView: GMSMapView!
     
     @IBAction func adressModeChosen(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
-            adressTxtField.text = "我家"
+            addressBtn.setTitle(self.homeAddress?.placeName, for: .normal)
+        }
+        
+        if sender.selectedSegmentIndex == 2 {
+            addressBtn.setTitle(self.workAddress?.placeName, for: .normal)
+        }
+        
+        if sender.selectedSegmentIndex == 3 {
+            addressBtn.setTitle(self.favoriteAddress?.placeName, for: .normal)
         }
     }
    
@@ -36,6 +52,11 @@ class LobbyMapViewController: UIViewController {
         self.mapView.animate(to: camera)
     }
 
+    @IBAction func addressBtn(_ sender: Any) {
+        performSegue(withIdentifier: "toEditAddressVC", sender: self)
+        
+    }
+    
     private let locationManager = CLLocationManager()
 
     private func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D) {
@@ -43,10 +64,12 @@ class LobbyMapViewController: UIViewController {
         let geocoder = GMSGeocoder()
 
         geocoder.reverseGeocodeCoordinate(coordinate) { response, _ in
-            self.adressTxtField.unlock()
+            self.addressBtn.unlock()
+//            self.adressTxtField.unlock()
             guard let address = response?.firstResult(), let lines = address.lines else { return }
+            self.addressBtn.setTitle(lines.joined(separator: "\n"), for: .normal)
 
-            self.adressTxtField.text = lines.joined(separator: "\n")
+//            self.adressTxtField.text = lines.joined(separator: "\n")
 
             UIView.animate(withDuration: 0.25) {
                 self.view.layoutIfNeeded()
@@ -54,8 +77,6 @@ class LobbyMapViewController: UIViewController {
         }
     }
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.isMyLocationEnabled = true
@@ -64,6 +85,44 @@ class LobbyMapViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         
+        loadAdressInfoFromDB()
+        
+    }
+    
+    func loadAdressInfoFromDB() {
+        
+        personalDataManager.getPersonalData { (myProfile, _) in
+            self.myProfile = myProfile
+            self.firebaseManager.queryAdress(myUid: (myProfile?.userID)!, category: "home", completionHandler: { (homeAddress) in
+                self.homeAddress = homeAddress
+            })
+            
+            self.firebaseManager.queryAdress(myUid: (myProfile?.userID)!, category: "work", completionHandler: { (workAddress) in
+                self.workAddress = workAddress
+            })
+            
+            self.firebaseManager.queryAdress(myUid: (myProfile?.userID)!, category: "favorite", completionHandler: { (favoriteAddress) in
+                self.favoriteAddress = favoriteAddress
+            })
+            
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEditAddressVC" {
+            if let destination = segue.destination as? EditAddressViewController {
+                 self.editAddressVC = destination
+                self.editAddressVC?.handler = { (selectedAddress) in
+                    
+                    self.addressBtn.setTitle(selectedAddress?.placeName, for: .normal)
+                    
+                    let camera = GMSCameraPosition.camera(withLatitude: (selectedAddress?.placeLat)!, longitude: (selectedAddress?.placeLng)!, zoom: 16)
+                    self.mapView.animate(to: camera)
+                    
+                }
+            }
+            
+        }
     }
 
 }
@@ -101,9 +160,11 @@ extension LobbyMapViewController: GMSMapViewDelegate {
     }
 
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-        adressTxtField.text = ""
+        addressBtn.setTitle("", for: .normal)
+//        adressTxtField.text = ""
         self.adressSegmentedControl.selectedSegmentIndex = 0
-        adressTxtField.lock()
+        addressBtn.lock()
+//        adressTxtField.lock()
     }
 
 }

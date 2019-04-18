@@ -56,6 +56,7 @@
 		3E662EF5226840770016F962 /* AdressHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF4226840770016F962 /* AdressHomeViewController.swift */; };
 		3E662EF72268408C0016F962 /* AdressWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF62268408C0016F962 /* AdressWorkViewController.swift */; };
 		3E662EF9226840CA0016F962 /* AdressFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */; };
+		3E662EFB22687EA40016F962 /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EFA22687EA40016F962 /* EditAddressViewController.swift */; };
 		3E7B6E072259225500646724 /* ProfilePersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */; };
 		3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */; };
 		3E7B6E0B2259229B00646724 /* ProfilePersonalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */; };
@@ -132,6 +133,7 @@
 		3E662EF4226840770016F962 /* AdressHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressHomeViewController.swift; sourceTree = "<group>"; };
 		3E662EF62268408C0016F962 /* AdressWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressWorkViewController.swift; sourceTree = "<group>"; };
 		3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressFavoriteViewController.swift; sourceTree = "<group>"; };
+		3E662EFA22687EA40016F962 /* EditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
 		3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalDataViewController.swift; sourceTree = "<group>"; };
 		3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalTableViewCell.swift; sourceTree = "<group>"; };
 		3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePersonalTableViewCell.xib; sourceTree = "<group>"; };
@@ -172,10 +174,11 @@
 			isa = PBXGroup;
 			children = (
 				3E609F65225362260031CF81 /* LobbyViewController.swift */,
-				3E6169642254798500786F9F /* LobbyMapViewController.swift */,
 				3E06C21E22575397000F7E5F /* LobbyTimeViewController.swift */,
 				3E45934D2257714A00073210 /* LobbyFriendViewController.swift */,
 				3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */,
+				3E6169642254798500786F9F /* LobbyMapViewController.swift */,
+				3E662EFA22687EA40016F962 /* EditAddressViewController.swift */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				3E3EFD0D225918510078E686 /* FriendSentViewController.swift in Sources */,
 				3E5ADFF9225F12DF0003B241 /* LoginViewController.swift in Sources */,
 				3E7B6E0F2259FB8500646724 /* ProfileHistoryViewController.swift in Sources */,
+				3E662EFB22687EA40016F962 /* EditAddressViewController.swift in Sources */,
 				3E23588522588B1D004182F0 /* FriendMenuCollectionViewCell.swift in Sources */,
 				3E5ADFFB225F130F0003B241 /* ResetPasswordViewController.swift in Sources */,
 				3E5ADFF7225F12490003B241 /* SignUpViewController.swift in Sources */,

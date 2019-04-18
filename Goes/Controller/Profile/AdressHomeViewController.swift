@@ -54,14 +54,14 @@ extension AdressHomeViewController: GMSAutocompleteResultsViewControllerDelegate
         
         searchController?.isActive = false
         
-        let alertController = UIAlertController(title: "編輯地址",
-                                                message: "地址編輯為 \((place.name)!) ？", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "地址變更",
+                                                message: "確認地址編輯為\n \((place.name)!)\n\((place.formattedAddress)!) ？", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         let okAction = UIAlertAction(
             title: "確定",
             style: .default,
-            handler: { (action) in
+            handler: { (_) in
             
             self.firebaseManager.updateAdress(
                 myUid: (self.myProfile?.userID)!,
@@ -69,7 +69,8 @@ extension AdressHomeViewController: GMSAutocompleteResultsViewControllerDelegate
                 placeName: (place.name)!,
                 placeLng: Double(place.coordinate.latitude),
                 placeLat: Double(place.coordinate.longitude),
-                placeID: place.placeID!) {
+                placeID: place.placeID!,
+                placeformattedAddress: place.formattedAddress!) {
                 
                     print("hi")
             }

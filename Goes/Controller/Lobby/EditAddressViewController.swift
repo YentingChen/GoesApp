@@ -1,5 +1,5 @@
 //
-//  AdressWorkViewController.swift
+//  EditAddressViewController.swift
 //  Goes
 //
 //  Created by Yenting Chen on 2019/4/18.
@@ -9,13 +9,10 @@
 import UIKit
 import GooglePlaces
 
-class AdressWorkViewController: UIViewController {
-
-    var profileAddressVC: ProfileAdressViewController?
+class EditAddressViewController: UIViewController {
     
-    let personalDataManager = PersonalDataManager()
-    let firebaseManager = FireBaseManager()
-    var myProfile: MyProfile?
+    typealias CompletionHandler = (Address?) -> Void
+    var handler: CompletionHandler?
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
@@ -23,11 +20,6 @@ class AdressWorkViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        personalDataManager.getPersonalData(completionHandler: { [weak self]  (myProfile, error) in
-            self?.myProfile = myProfile
-        })
-        
         
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
@@ -48,34 +40,25 @@ class AdressWorkViewController: UIViewController {
     }
 }
 
-extension AdressWorkViewController: GMSAutocompleteResultsViewControllerDelegate {
-    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-                           didAutocompleteWith place: GMSPlace) {
-        
-        searchController?.isActive = false
-        
-        let alertController = UIAlertController(title: "地址變更",
-                                                message: "確認地址編輯為\n \((place.name)!)\n\((place.formattedAddress)!) ？", preferredStyle: .alert)
+extension EditAddressViewController: GMSAutocompleteResultsViewControllerDelegate {
+    
+    
+     func showAlert(_ place: GMSPlace, handler: @escaping CompletionHandler) {
+        let alertController = UIAlertController(title: "地址選擇",
+                                                message: "確認地址為\n \((place.name)!)\n\((place.formattedAddress)!) ？", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         let okAction = UIAlertAction(
             title: "確定",
             style: .default,
             handler: { (action) in
-                
-                self.firebaseManager.updateAdress(
-                    myUid: (self.myProfile?.userID)!,
-                    category: "work",
+                let selectedAddress = Address(
+                    placeID: (place.placeID)!,
+                    placeLat: Double(place.coordinate.latitude),
+                    placeLng: Double(place.coordinate.longitude),
                     placeName: (place.name)!,
-                    placeLng: Double(place.coordinate.latitude),
-                    placeLat: Double(place.coordinate.longitude),
-                    placeID: place.placeID!,
-                    placeformattedAddress: place.formattedAddress!) {
-                        
-                        print("hi")
-                }
-                
-                self.profileAddressVC?.loadAdressInfoFromDB()
+                    placeformattedAddress: (place.formattedAddress)!)
+                self.handler?(selectedAddress)
                 self.dismiss(animated: true, completion: nil)
                 
         })
@@ -83,11 +66,22 @@ extension AdressWorkViewController: GMSAutocompleteResultsViewControllerDelegate
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didAutocompleteWith place: GMSPlace) {
+        
+        searchController?.isActive = false
+        
+        showAlert(place, handler: { [weak self] adress in
+            
+            self?.handler!(adress)
+        })
         
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-                           didFailAutocompleteWithError error: Error){
+                           didFailAutocompleteWithError error: Error) {
         
         print("Error: ", error.localizedDescription)
     }
@@ -102,5 +96,5 @@ extension AdressWorkViewController: GMSAutocompleteResultsViewControllerDelegate
         forResultsController resultsController: GMSAutocompleteResultsViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
-
+    
 }
