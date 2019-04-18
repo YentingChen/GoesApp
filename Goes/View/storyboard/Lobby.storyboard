@@ -92,9 +92,6 @@
                                 <state key="normal" image="FindMyFriend">
                                     <color key="titleShadowColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="HJZ-t2-qVX" kind="show" id="i6R-yF-nOU"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -145,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y5c-Qy-JuY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3296.8000000000002" y="838.83058470764627"/>
+            <point key="canvasLocation" x="2702" y="870"/>
         </scene>
         <!--    -->
         <scene sceneID="e2E-rq-8oM">

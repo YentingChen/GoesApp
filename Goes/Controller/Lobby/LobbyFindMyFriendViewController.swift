@@ -13,12 +13,16 @@ import SwiftyJSON
 import Alamofire
 
 class LobbyFindMyFriendViewController: UIViewController, GMSMapViewDelegate{
+    let googleMapManager = GoogleMapManager()
     
     @IBOutlet weak var mapView: GMSMapView!
     private let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        googleMapManager.getCoordinate(placeID: "ChIJu_bztcqrQjQRNi9buVGibBI") { (lat, long) in
+            print(lat,long)
+        }
         
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
@@ -40,8 +44,9 @@ class LobbyFindMyFriendViewController: UIViewController, GMSMapViewDelegate{
     func drawPath(location: CLLocation) {
         let origin = "\(25.075683),\(121.575379)"
         let destination = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
-        
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyD_mMIHbDWkWE2p0c36ZjreWSIG1V4qmYE"
+//
+//        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyD_mMIHbDWkWE2p0c36ZjreWSIG1V4qmYE"
+        let url = "https://maps.googleapis.com/maps/api/place/details/json?input=bar&placeid=ChIJu_bztcqrQjQRNi9buVGibBI&key=AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
 
         Alamofire.request(url).responseJSON { response in
             print(response.request!)  // original URL request
@@ -51,15 +56,16 @@ class LobbyFindMyFriendViewController: UIViewController, GMSMapViewDelegate{
             
             do {
                 let json = try JSON(data: response.data!)
-                let routes = json["routes"].arrayValue
-                
-                for route in routes {
-                    let routeOverviewPolyline = route["overview_polyline"].dictionary
-                    let points = routeOverviewPolyline?["points"]?.stringValue
-                    let path = GMSPath.init(fromEncodedPath: points!)
-                    let polyline = GMSPolyline.init(path: path)
-                    polyline.map = self.mapView
-                }
+                let routes = json["result"]["geometry"]["location"]["lat"].numberValue
+                print(routes)
+//
+//                for route in routes {
+//                    let routeOverviewPolyline = route["overview_polyline"].dictionary
+//                    let points = routeOverviewPolyline?["points"]?.stringValue
+//                    let path = GMSPath.init(fromEncodedPath: points!)
+//                    let polyline = GMSPolyline.init(path: path)
+//                    polyline.map = self.mapView
+//                }
                 
             } catch {
                 print("ERROR: not working")

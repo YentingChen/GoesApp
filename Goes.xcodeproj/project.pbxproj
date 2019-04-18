@@ -31,7 +31,6 @@
 		3E45935E225851B500073210 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E45935D225851B500073210 /* Profile.storyboard */; };
 		3E4593602258565900073210 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E45935F2258565900073210 /* Order.storyboard */; };
 		3E52376D225DD2920090818A /* LobbyFindMyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */; };
-		3E54F2B92261D0A200608770 /* EditAdressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E54F2B82261D0A200608770 /* EditAdressViewController.swift */; };
 		3E5ADFF3225F0B0F0003B241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */; };
 		3E5ADFF5225F11610003B241 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF4225F11610003B241 /* Auth.storyboard */; };
 		3E5ADFF7225F12490003B241 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF6225F12490003B241 /* SignUpViewController.swift */; };
@@ -53,6 +52,10 @@
 		3E6169632253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6169622253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png */; };
 		3E6169652254798500786F9F /* LobbyMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6169642254798500786F9F /* LobbyMapViewController.swift */; };
 		3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E61696622549A1300786F9F /* UIView+Extension.swift */; };
+		3E662ED1226830920016F962 /* GoogleMapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662ED0226830920016F962 /* GoogleMapManager.swift */; };
+		3E662EF5226840770016F962 /* AdressHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF4226840770016F962 /* AdressHomeViewController.swift */; };
+		3E662EF72268408C0016F962 /* AdressWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF62268408C0016F962 /* AdressWorkViewController.swift */; };
+		3E662EF9226840CA0016F962 /* AdressFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */; };
 		3E7B6E072259225500646724 /* ProfilePersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */; };
 		3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */; };
 		3E7B6E0B2259229B00646724 /* ProfilePersonalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */; };
@@ -102,7 +105,6 @@
 		3E45935D225851B500073210 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		3E45935F2258565900073210 /* Order.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFindMyFriendViewController.swift; sourceTree = "<group>"; };
-		3E54F2B82261D0A200608770 /* EditAdressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAdressViewController.swift; sourceTree = "<group>"; };
 		3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E5ADFF4225F11610003B241 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		3E5ADFF6225F12490003B241 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,10 @@
 		3E6169622253A6C100786F9F /* 螢幕快照 2019-04-02 下午10.17.15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "螢幕快照 2019-04-02 下午10.17.15.png"; sourceTree = "<group>"; };
 		3E6169642254798500786F9F /* LobbyMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyMapViewController.swift; sourceTree = "<group>"; };
 		3E61696622549A1300786F9F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		3E662ED0226830920016F962 /* GoogleMapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapManager.swift; sourceTree = "<group>"; };
+		3E662EF4226840770016F962 /* AdressHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressHomeViewController.swift; sourceTree = "<group>"; };
+		3E662EF62268408C0016F962 /* AdressWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressWorkViewController.swift; sourceTree = "<group>"; };
+		3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressFavoriteViewController.swift; sourceTree = "<group>"; };
 		3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalDataViewController.swift; sourceTree = "<group>"; };
 		3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalTableViewCell.swift; sourceTree = "<group>"; };
 		3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePersonalTableViewCell.xib; sourceTree = "<group>"; };
@@ -326,7 +332,9 @@
 				3E7B6E0E2259FB8500646724 /* ProfileHistoryViewController.swift */,
 				3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */,
 				3E7B6E1E225AE56400646724 /* ProfileMainViewController.swift */,
-				3E54F2B82261D0A200608770 /* EditAdressViewController.swift */,
+				3E662EF4226840770016F962 /* AdressHomeViewController.swift */,
+				3E662EF62268408C0016F962 /* AdressWorkViewController.swift */,
+				3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -370,6 +378,7 @@
 				3E42382B22607BF3004988A1 /* Profile.swift */,
 				3E424B5D22646DE6003A3123 /* PersonalDataMagager.swift */,
 				3E92662622656A6C009EC3D1 /* FirebaseManager.swift */,
+				3E662ED0226830920016F962 /* GoogleMapManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -612,15 +621,16 @@
 				3E23588822588B51004182F0 /* FriendHomeViewController.swift in Sources */,
 				3E459351225773EE00073210 /* LobbyFriendTableViewCell.swift in Sources */,
 				3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */,
+				3E662EF5226840770016F962 /* AdressHomeViewController.swift in Sources */,
 				3E52376D225DD2920090818A /* LobbyFindMyFriendViewController.swift in Sources */,
 				3E6169652254798500786F9F /* LobbyMapViewController.swift in Sources */,
 				3E459355225777DE00073210 /* LobbyFriendCollectionViewCell.swift in Sources */,
 				3E23588F22590D74004182F0 /* FriendInviteViewController.swift in Sources */,
+				3E662EF9226840CA0016F962 /* AdressFavoriteViewController.swift in Sources */,
 				3E5AE001225F2E3A0003B241 /* LaunchViewController.swift in Sources */,
 				3E06C21F22575397000F7E5F /* LobbyTimeViewController.swift in Sources */,
 				3E609F66225362260031CF81 /* LobbyViewController.swift in Sources */,
 				3E609F5E22535DDD0031CF81 /* UIStoryboard+Extension.swift in Sources */,
-				3E54F2B92261D0A200608770 /* EditAdressViewController.swift in Sources */,
 				3E45934E2257714A00073210 /* LobbyFriendViewController.swift in Sources */,
 				3E3EFD0D225918510078E686 /* FriendSentViewController.swift in Sources */,
 				3E5ADFF9225F12DF0003B241 /* LoginViewController.swift in Sources */,
@@ -632,12 +642,14 @@
 				3E7B6E21225AE8C700646724 /* OrderMainViewController.swift in Sources */,
 				3E45935C2257BBCA00073210 /* FriendListViewController.swift in Sources */,
 				3E7B6E28225B52E100646724 /* OrderMyRequestTableViewCell.swift in Sources */,
+				3E662EF72268408C0016F962 /* AdressWorkViewController.swift in Sources */,
 				3E7B6E122259FBA200646724 /* ProfileHistoryTableViewCell.swift in Sources */,
 				3E7B6E1A225A645F00646724 /* OrderRequestTableViewCell.swift in Sources */,
 				3E424B5E22646DE6003A3123 /* PersonalDataMagager.swift in Sources */,
 				3E7B6E1F225AE56400646724 /* ProfileMainViewController.swift in Sources */,
 				3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */,
 				3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */,
+				3E662ED1226830920016F962 /* GoogleMapManager.swift in Sources */,
 				3E609F6222535E800031CF81 /* TabBaseViewController.swift in Sources */,
 				3E7B6E25225B517C00646724 /* OrderMyRequestViewController.swift in Sources */,
 			);

@@ -159,7 +159,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="個人資訊" id="bpp-ON-Vbn">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="aqf-ln-53Y">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aE2-lo-bdy">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aE2-lo-bdy">
                                 <rect key="frame" x="325" y="10.5" width="34" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
@@ -199,26 +199,66 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="p3A-68-3mq" id="0Vp-2n-tMD"/>
+                        <segue destination="kMX-Yb-ifP" kind="presentation" identifier="toAdressHomeVC" id="1Fz-ct-wRN"/>
+                        <segue destination="K2J-EX-Dst" kind="presentation" identifier="toAdressWorkVC" id="B5L-ic-u5h"/>
+                        <segue destination="5wo-9B-kf0" kind="presentation" identifier="toAdressFavoriteVC" id="a2e-dK-FrK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxL-ra-zGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1366" y="924"/>
         </scene>
-        <!--Edit Adress View Controller-->
+        <!--Adress Home View Controller-->
         <scene sceneID="M83-qR-f8b">
             <objects>
-                <viewController id="kMX-Yb-ifP" customClass="EditAdressViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kMX-Yb-ifP" customClass="AdressHomeViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dgd-yf-Tdr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDo-Pv-eZ0">
+                                <rect key="frame" x="313" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="7tt-5Q-rub"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaA-ms-N8J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1366" y="1693"/>
+            <point key="canvasLocation" x="562" y="1462"/>
+        </scene>
+        <!--Adress Work View Controller-->
+        <scene sceneID="rUX-DY-rDB">
+            <objects>
+                <viewController id="K2J-EX-Dst" customClass="AdressWorkViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7R6-f3-twp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="pNz-3R-1Jb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X1z-Lb-BN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1252" y="1461"/>
+        </scene>
+        <!--Adress Favorite View Controller-->
+        <scene sceneID="xhm-eQ-C6B">
+            <objects>
+                <viewController id="5wo-9B-kf0" customClass="AdressFavoriteViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fWa-cQ-XKG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="T4u-ZG-8RJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D0z-pH-Xpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2009" y="1460"/>
         </scene>
         <!--Profile History View Controller-->
         <scene sceneID="rRN-3h-c3l">

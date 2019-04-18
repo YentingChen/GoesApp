@@ -28,7 +28,8 @@ class FireAuthManager {
 class FireBaseManager {
     
     var db = Firestore.firestore()
-    var userProfile : MyProfile?
+    var userProfile: MyProfile?
+    var address: Address?
    
     func queryUsers(email: String, completionHandler: @escaping (Bool, String) -> Void) {
         
@@ -137,4 +138,41 @@ class FireBaseManager {
         completionHandler()
 
     }
+    
+    func updateAdress(myUid: String, category: String, placeName: String, placeLng: Double, placeLat: Double, placeID: String,  completionHandler: @escaping () -> Void) {
+        db.collection("users").document(myUid).collection("address").document(category).setData([
+            "placeName" : placeName,
+            "placeLat": placeLat,
+            "placeLng": placeLng,
+            "placeID": placeID
+            ])
+    }
+    
+    func queryAdress(myUid: String, category: String, completionHandler: @escaping (Address?) -> Void) {
+        db.collection("users").document(myUid).collection("address").document(category).getDocument { (document, err) in
+            
+            if document?.data() != nil {
+                if let addressInfo = document.flatMap({ $0.data().flatMap({ (data) in
+                    return AddressFromDB(dictionary: data)
+                })
+                }) {
+                    self.address = Address(
+                        placeID: addressInfo.placeID,
+                        placeLat: addressInfo.placeLat,
+                        placeLng: addressInfo.placeLng,
+                        placeName: addressInfo.placeName
+                    )
+                    completionHandler(self.address)
+                    
+                } else {
+                    print("Document does not exist")
+                }
+                
+            } else {
+                return
+            }
+            
+        }
+    }
+    
 }
