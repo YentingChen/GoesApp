@@ -75,3 +75,10 @@ struct AddressFromDB {
         var placeformattedAddress: String
         
     }
+
+struct DateAndTime {
+    var date: Date
+    var year: Int
+    var month: Int
+    var time: String
+}

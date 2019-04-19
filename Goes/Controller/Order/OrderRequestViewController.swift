@@ -15,7 +15,15 @@ class OrderRequestViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "OrderRequestTableViewCell", bundle: nil), forCellReuseIdentifier: "orderRequestTableViewCell")
+        tableView.register(
+            UINib(nibName: "OrderRequestTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "orderRequestTableViewCell")
+        
+        tableView.register(
+            UINib(nibName: "OrderRequestHeaderTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "orderRequestHeaderTableViewCell")
 
     }
 
@@ -26,19 +34,25 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "待回覆"
-        }
-        if section == 1 {
-            return "進行中"
-        }
-        return String()
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
+        return cell
     }
 
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if section == 0 {
+//            return "待回覆"
+//        }
+//        if section == 1 {
+//            return "進行中"
+//        }
+//        return String()
+//    }
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 44
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1

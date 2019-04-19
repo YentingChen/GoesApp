@@ -9,27 +9,40 @@
 import UIKit
 
 class LobbyTimeViewController: UIViewController {
+    
+    var selectedDateTime : DateAndTime?
+    var laterTxt = "儘快"
     let timeArray = [String]()
     let test = ["今天", "明天"]
-
+    var change = 0
+    @IBOutlet weak var laterLabel: UILabel!
+    
     @IBOutlet weak var aspsBtn: UIButton!
     @IBOutlet weak var pickerView: UIPickerView!
-    
     @IBOutlet weak var laterBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         currentTime()
         showTodayArray()
         showTomorrowArray()
         pickerView.delegate = self
         pickerView.isHidden = true
+        
+        self.selectedDateTime = DateAndTime(
+            date: currentDate,
+            year: currentYear,
+            month: currentMonth,
+            time: "儘快")
+        
     }
 
     @IBAction func aspsBtnFunction(_ sender: Any) {
         laterBtn.setImage(UIImage(named: "Images_24px_RadioBtn_Normal"), for: .normal)
         aspsBtn.setImage(UIImage(named: "Images_24px_RadioBtn_Selected"), for: .normal)
         pickerView.isHidden = true
+        laterLabel.text = "稍後"
         
         loadViewIfNeeded()
     }
@@ -50,21 +63,35 @@ class LobbyTimeViewController: UIViewController {
     
     var currentHour = 0
     var currentMin = 0
-    
+    var currentDate = Date()
+    var currentMonth = 0
+    var currentYear = 0
+    var tomorrowDate = Date()
+    var tomorrowMonth = 0
+    var tomorrowYear = 0
+  
     var todayArray = [String]()
     var tomorrowArray = [String]()
     
     func currentTime() {
         let today = Date()
         let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: today)
+        let tomorrow = today.dayAfter
+        let tomorrowDateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: tomorrow)
         currentHour = dateComponents.hour!
         currentMin = dateComponents.minute!
+        currentDate = dateComponents.date!
+        currentMonth = dateComponents.month!
+        currentYear = dateComponents.year!
+        tomorrowDate = tomorrowDateComponents.date!
+        tomorrowYear = tomorrowDateComponents.year!
+        tomorrowMonth = tomorrowDateComponents.month!
     }
     
     func showTodayArray() {
         
         var minutes = -15
-        var deleteCase = currentMin/15
+        let deleteCase = currentMin/15
         
         for hours in currentHour...23 {
             for _ in 0...3 {
@@ -73,15 +100,16 @@ class LobbyTimeViewController: UIViewController {
                     if minutes == 0 {
                         
                         todayArray.append("0\(hours):0\(minutes)")
-                    }else{
+                    } else {
                         
                         todayArray.append("0\(hours):\(minutes)")
                     }
-                }else{
+                    
+                } else {
                     if minutes == 0 {
                         
                         todayArray.append("\(hours):0\(minutes)")
-                    }else {
+                    } else {
                         
                         todayArray.append("\(hours):\(minutes)")
                     }
@@ -127,15 +155,15 @@ class LobbyTimeViewController: UIViewController {
                     if minutes == 0 {
                         
                         tomorrowArray.append("0\(hours):0\(minutes)")
-                    }else{
+                    } else {
                         
                         tomorrowArray.append("0\(hours):\(minutes)")
                     }
-                }else{
+                } else {
                     if minutes == 0 {
                         
                         tomorrowArray.append("\(hours):0\(minutes)")
-                    }else {
+                    } else {
                         
                         tomorrowArray.append("\(hours):\(minutes)")
                     }
@@ -147,9 +175,7 @@ class LobbyTimeViewController: UIViewController {
         }
     
     }
-    var change = 0
-
-  
+   
 }
 extension LobbyTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -190,24 +216,64 @@ extension LobbyTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        let today = Date()
+        let dateComponents = Calendar.current.dateComponents(
+            in: TimeZone.current,
+            from: today)
+        
+        var time = String()
+        var day = String()
+       
         if component == 0 {
             if change == 0 {
                 change = 1
+                laterLabel.text = "明天的 \(time)"
+                self.selectedDateTime = DateAndTime(
+                    date: tomorrowDate,
+                    year: tomorrowYear,
+                    month: tomorrowMonth,
+                    time: time)
+               
             } else {
                 change = 0
+                laterLabel.text = "今天的 \(time)"
+                
+                self.selectedDateTime = DateAndTime(
+                    date: currentDate,
+                    year: currentYear,
+                    month: currentMonth,
+                    time: time)
+               
             }
             pickerView.reloadComponent(1)
-            print(test[pickerView.selectedRow(inComponent: 0)])
+            day = test[pickerView.selectedRow(inComponent: 0)]
             
         } else {
             if change == 0 {
-                 print(todayArray[pickerView.selectedRow(inComponent: 1)])
+                 time = todayArray[pickerView.selectedRow(inComponent: 1)]
+                laterLabel.text = "今天的 \(time)"
+                
+                self.selectedDateTime = DateAndTime(
+                    date: currentDate,
+                    year: currentYear,
+                    month: currentMonth,
+                    time: time)
                 
             } else {
-                print(tomorrowArray[pickerView.selectedRow(inComponent: 1)])
+                time = tomorrowArray[pickerView.selectedRow(inComponent: 1)]
+                laterLabel.text = "明天的 \(time)"
+                
+                self.selectedDateTime = DateAndTime(
+                    date: tomorrowDate,
+                    year: tomorrowYear,
+                    month: tomorrowMonth,
+                    time: time)
+               
             }
            
         }
+        
     }
 
 }

@@ -249,7 +249,6 @@
                                         </constraints>
                                         <connections>
                                             <action selector="toTimePage:" destination="JLf-kq-C3D" eventType="touchUpInside" id="tQL-sU-Czn"/>
-                                            <segue destination="Ima-1g-ql7" kind="show" identifier="toTimePage" id="1tX-bW-EvQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -314,6 +313,7 @@
                         <outlet property="adressSegmentedControl" destination="iah-8n-Xw9" id="kM3-0m-WXH"/>
                         <outlet property="mapView" destination="gNS-4k-R9c" id="GjG-bf-TB0"/>
                         <segue destination="ApF-hc-1QZ" kind="presentation" identifier="toEditAddressVC" id="aJt-lx-Lef"/>
+                        <segue destination="Ima-1g-ql7" kind="show" identifier="toTimePage" id="8Qs-6V-of2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00d-iW-dN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -441,9 +441,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="稍後" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYO-XF-pgx">
-                                <rect key="frame" x="68" y="176" width="45" height="24"/>
+                                <rect key="frame" x="68" y="176" width="300" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="XML-Qc-Ace"/>
+                                    <constraint firstAttribute="width" constant="300" id="XML-Qc-Ace"/>
                                     <constraint firstAttribute="height" constant="24" id="dhJ-hr-YTr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
@@ -529,6 +529,7 @@
                     <connections>
                         <outlet property="aspsBtn" destination="NWa-hz-y3x" id="egE-be-xa9"/>
                         <outlet property="laterBtn" destination="GOp-UM-Y4C" id="pJP-Og-l4f"/>
+                        <outlet property="laterLabel" destination="AYO-XF-pgx" id="Dos-1L-ekk"/>
                         <outlet property="pickerView" destination="Lbh-sn-Vd7" id="jsI-rf-CPj"/>
                     </connections>
                 </viewController>

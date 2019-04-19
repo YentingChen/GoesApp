@@ -15,7 +15,15 @@ class OrderMyRequestViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "OrderMyRequestTableViewCell", bundle: nil), forCellReuseIdentifier: "orderMyRequestTableViewCell")
+        tableView.register(
+            UINib(nibName: "OrderMyRequestTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "orderMyRequestTableViewCell")
+        
+        tableView.register(
+            UINib(nibName: "OrderRequestHeaderTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "orderRequestHeaderTableViewCell")
 
     }
 
@@ -24,24 +32,34 @@ class OrderMyRequestViewController: UIViewController {
 extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
+            cell.backgroundColor = .white
+            return cell
+        }
+        return UITableViewCell()
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "等待回覆"
-        }
-        if section == 1 {
-            return "請求成功"
-        }
-        if section == 2 {
-            return "請求拒絕"
-        }
-        return String()
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if section == 0 {
+//            return "等待回覆"
+//        }
+//        if section == 1 {
+//            return "請求成功"
+//        }
+//        if section == 2 {
+//            return "請求拒絕"
+//        }
+//        return String()
+//    }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 50
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,6 +70,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "orderMyRequestTableViewCell", for: indexPath) as? OrderMyRequestTableViewCell else {
             return UITableViewCell()
         }
+        
         return cell
     }
 
