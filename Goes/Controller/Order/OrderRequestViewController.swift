@@ -9,10 +9,19 @@
 import UIKit
 
 class OrderRequestViewController: UIViewController {
+    
+    let personalDataManager = PersonalDataManager()
+    let fireBaseManager = FireBaseManager()
+    var myProfile: MyProfile?
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        personalDataManager.getPersonalData { (myProfile, err) in
+            self.myProfile = myProfile
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(

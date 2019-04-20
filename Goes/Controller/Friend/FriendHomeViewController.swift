@@ -20,7 +20,6 @@ class FriendHomeViewController: UIViewController {
     
     var selectedViewController: UIViewController!
 
-   
     lazy var friendSentViewController: FriendSentViewController = {
         
         guard let friendVC = self.storyboard!.instantiateViewController(withIdentifier: "friendSentViewController") as? FriendSentViewController else {
@@ -28,7 +27,6 @@ class FriendHomeViewController: UIViewController {
         }
         return friendVC
     }() 
-
     
     lazy var friendListViewController: FriendListViewController = {
         

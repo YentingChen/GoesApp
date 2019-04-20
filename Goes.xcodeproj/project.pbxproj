@@ -360,8 +360,8 @@
 		3E7B6E2A225B5A7D00646724 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				3E7B6E16225A633E00646724 /* OrderRequestViewController.swift */,
 				3E7B6E20225AE8C700646724 /* OrderMainViewController.swift */,
+				3E7B6E16225A633E00646724 /* OrderRequestViewController.swift */,
 				3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */,
 				3E95EE80225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift */,
 			);

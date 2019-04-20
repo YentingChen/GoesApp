@@ -18,8 +18,6 @@ class LobbyFriendViewController: UIViewController {
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var myFriends = [MyProfile]()
-    
-    @IBOutlet weak var collectionView: UICollectionView!
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -27,15 +25,27 @@ class LobbyFriendViewController: UIViewController {
         
         let selectedTimeAndDate = "\(selectedTime!.year)-\(selectedTime!.month)-\(selectedTime!.day) \(selectedTime!.time)"
         
+        let orderID = "\(createOrderID())"
+        
         let alertController = UIAlertController(
             title: "",
             message: "選擇地點：\(selectedLocation!.placeName)\n選擇時間：\(selectedTimeAndDate)\n選擇朋友：\(selectedFriend!.userName)",
             preferredStyle: .alert)
         
         let doneAction = UIAlertAction(title: "Okay", style: .default) { (_) in
-            self.dismiss(animated: true, completion: nil)
-            self.navigationController?.dismiss(animated: true, completion: nil)
-            self.present(LobbyViewController(), animated: true, completion: nil)
+            
+            self.fireBaseManager.upLoadOrder(
+                orderID: orderID,
+                selectedTime: self.selectedTime!,
+                selectedFriend: self.selectedFriend!,
+                selectedLocation: self.selectedLocation!,
+                myInfo: self.myProfile!,
+                completionHandler: {
+                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.dismiss(animated: true, completion: nil)
+                self.present(LobbyViewController(), animated: true, completion: nil)
+            })
+
         }
         
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -46,12 +56,22 @@ class LobbyFriendViewController: UIViewController {
         
     }
     
+    func createOrderID() -> Int {
+        let now = Date()
+        let timeInterval: TimeInterval = now.timeIntervalSince1970
+        let timeStamp = Int(timeInterval)
+        return timeStamp
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         personalDataManager.getPersonalData { (myProfile, error) in
             self.myProfile = myProfile
-            self.fireBaseManager.querymyFriends(myUid: (self.myProfile?.userID)!, status: 3, completionHandler: { (friendInfos) in
+            self.fireBaseManager.querymyFriends(
+                myUid: (self.myProfile?.userID)!,
+                status: 3,
+                completionHandler: { (friendInfos) in
                 self.myFriends = friendInfos
                 self.tableView.reloadData()
             })
