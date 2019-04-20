@@ -10,11 +10,13 @@ import UIKit
 
 class LobbyTimeViewController: UIViewController {
     
+    var selectedLocation: Address?
     var selectedDateTime : DateAndTime?
     var laterTxt = "儘快"
     let timeArray = [String]()
     let test = ["今天", "明天"]
     var change = 0
+    
     @IBOutlet weak var laterLabel: UILabel!
     
     @IBOutlet weak var aspsBtn: UIButton!
@@ -31,14 +33,16 @@ class LobbyTimeViewController: UIViewController {
         pickerView.isHidden = true
         
         self.selectedDateTime = DateAndTime(
+            
             date: currentDate,
             year: currentYear,
             month: currentMonth,
-            time: "儘快")
+            time: "儘快", day: currentDay)
         
     }
 
     @IBAction func aspsBtnFunction(_ sender: Any) {
+        
         laterBtn.setImage(UIImage(named: "Images_24px_RadioBtn_Normal"), for: .normal)
         aspsBtn.setImage(UIImage(named: "Images_24px_RadioBtn_Selected"), for: .normal)
         pickerView.isHidden = true
@@ -48,6 +52,7 @@ class LobbyTimeViewController: UIViewController {
     }
     
     @IBAction func showClicked(_ sender: Any) {
+        
         aspsBtn.setImage(UIImage(named: "Images_24px_RadioBtn_Normal"), for: .normal)
         laterBtn.setImage(UIImage(named: "Images_24px_RadioBtn_Selected"), for: .normal)
         pickerView.isHidden = false
@@ -56,6 +61,7 @@ class LobbyTimeViewController: UIViewController {
     }
 
     @IBAction func dismissBtn(_ sender: Any) {
+        
         dismiss(animated: true, completion: nil)
         self.navigationController?.dismiss(animated: true, completion: nil)
         present(LobbyViewController(), animated: true, completion: nil)
@@ -66,9 +72,11 @@ class LobbyTimeViewController: UIViewController {
     var currentDate = Date()
     var currentMonth = 0
     var currentYear = 0
+    var currentDay = 0
     var tomorrowDate = Date()
     var tomorrowMonth = 0
     var tomorrowYear = 0
+    var tomorrowDay = 0
   
     var todayArray = [String]()
     var tomorrowArray = [String]()
@@ -83,9 +91,11 @@ class LobbyTimeViewController: UIViewController {
         currentDate = dateComponents.date!
         currentMonth = dateComponents.month!
         currentYear = dateComponents.year!
+        currentDay = dateComponents.day!
         tomorrowDate = tomorrowDateComponents.date!
         tomorrowYear = tomorrowDateComponents.year!
         tomorrowMonth = tomorrowDateComponents.month!
+        tomorrowDay = tomorrowDateComponents.day!
     }
     
     func showTodayArray() {
@@ -117,52 +127,72 @@ class LobbyTimeViewController: UIViewController {
                 }
                 
             }
+            
             minutes = -15
         }
         
         switch deleteCase {
         case 0 :
+            
             todayArray.remove(at: 0)
             todayArray.remove(at: 0)
+            
         case 1 :
+            
             todayArray.remove(at: 0)
             todayArray.remove(at: 0)
             todayArray.remove(at: 0)
+            
         case 2:
+            
             todayArray.remove(at: 0)
             todayArray.remove(at: 0)
             todayArray.remove(at: 0)
             todayArray.remove(at: 0)
+            
         case 3:
+            
             todayArray.remove(at: 0)
             todayArray.remove(at: 0)
             todayArray.remove(at: 0)
             todayArray.remove(at: 0)
             todayArray.remove(at: 0)
+            
         default:
+            
             break
+            
         }
         
-        print(todayArray)
     }
     
     func showTomorrowArray() {
+        
         var minutes = -15
+        
         for hours in 0...23 {
+            
             for _ in 0...3 {
+                
                 minutes += 15
+                
                 if hours/10 < 1 {
+                    
                     if minutes == 0 {
                         
                         tomorrowArray.append("0\(hours):0\(minutes)")
+                        
                     } else {
                         
                         tomorrowArray.append("0\(hours):\(minutes)")
                     }
+                    
                 } else {
+                    
                     if minutes == 0 {
                         
                         tomorrowArray.append("\(hours):0\(minutes)")
+                        
                     } else {
                         
                         tomorrowArray.append("\(hours):\(minutes)")
@@ -171,19 +201,36 @@ class LobbyTimeViewController: UIViewController {
                 }
                 
             }
+            
             minutes = -15
         }
     
     }
+    @IBAction func toSelectFriendPage(_ sender: Any) {
+        performSegue(withIdentifier: "toSelectFriendPage", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSelectFriendPage" {
+            if let destination = segue.destination as? LobbyFriendViewController {
+                destination.selectedLocation = self.selectedLocation
+                destination.selectedTime = self.selectedDateTime
+            }
+        }
+    }
    
 }
+
 extension LobbyTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
         return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
         if component == 0 {
+            
             return 2
         }
         if component == 1 {
@@ -195,80 +242,99 @@ extension LobbyTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
             }
            
         }
+        
         return Int()
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         if component == 0 {
+            
             return test[row]
         }
         
         if component == 1 {
+            
             if change == 0 {
+                
                 return todayArray[row]
+                
             } else {
+                
                 return tomorrowArray[row]
             }
             
         }
+        
         return String()
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         let today = Date()
+        
         let dateComponents = Calendar.current.dateComponents(
             in: TimeZone.current,
             from: today)
         
         var time = String()
+        
         var day = String()
        
         if component == 0 {
+            
             if change == 0 {
+                
                 change = 1
                 laterLabel.text = "明天的 \(time)"
                 self.selectedDateTime = DateAndTime(
                     date: tomorrowDate,
                     year: tomorrowYear,
                     month: tomorrowMonth,
-                    time: time)
+                    time: time, day: tomorrowDay)
                
             } else {
+                
                 change = 0
+                
                 laterLabel.text = "今天的 \(time)"
                 
                 self.selectedDateTime = DateAndTime(
                     date: currentDate,
                     year: currentYear,
                     month: currentMonth,
-                    time: time)
+                    time: time, day: currentDay)
                
             }
+            
             pickerView.reloadComponent(1)
             day = test[pickerView.selectedRow(inComponent: 0)]
             
         } else {
+            
             if change == 0 {
+                
                  time = todayArray[pickerView.selectedRow(inComponent: 1)]
+                
                 laterLabel.text = "今天的 \(time)"
                 
                 self.selectedDateTime = DateAndTime(
                     date: currentDate,
                     year: currentYear,
                     month: currentMonth,
-                    time: time)
+                    time: time, day: currentDay)
                 
             } else {
+                
                 time = tomorrowArray[pickerView.selectedRow(inComponent: 1)]
+                
                 laterLabel.text = "明天的 \(time)"
                 
                 self.selectedDateTime = DateAndTime(
                     date: tomorrowDate,
                     year: tomorrowYear,
                     month: tomorrowMonth,
-                    time: time)
+                    time: time, day: tomorrowDay)
                
             }
            

@@ -10,9 +10,13 @@ import UIKit
 
 class LobbyFriendViewController: UIViewController {
     
+    var selectedLocation: Address?
+    var selectedTime: DateAndTime?
+    var selectedFriend: MyProfile?
+    
     let personalDataManager = PersonalDataManager()
     let fireBaseManager = FireBaseManager()
-    var myProfile : MyProfile?
+    var myProfile: MyProfile?
     var myFriends = [MyProfile]()
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,16 +24,28 @@ class LobbyFriendViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     @IBAction func checkBtn(_ sender: Any) {
-        let alertController = UIAlertController(title: "", message: "選擇地點：\n台北市大安區100巷\n選擇時間：盡快抵達\n選擇朋友：Xian Wu", preferredStyle: .alert)
+        
+        let selectedTimeAndDate = "\(selectedTime!.year)-\(selectedTime!.month)-\(selectedTime!.day) \(selectedTime!.time)"
+        
+        let alertController = UIAlertController(
+            title: "",
+            message: "選擇地點：\(selectedLocation!.placeName)\n選擇時間：\(selectedTimeAndDate)\n選擇朋友：\(selectedFriend!.userName)",
+            preferredStyle: .alert)
+        
         let doneAction = UIAlertAction(title: "Okay", style: .default) { (_) in
             self.dismiss(animated: true, completion: nil)
             self.navigationController?.dismiss(animated: true, completion: nil)
             self.present(LobbyViewController(), animated: true, completion: nil)
         }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
         alertController.addAction(doneAction)
+        alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,6 +90,10 @@ extension LobbyFriendViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedFriend = self.myFriends[indexPath.row]
     }
 
 }

@@ -384,7 +384,7 @@
                                             <constraint firstAttribute="width" constant="50" id="Lnv-XG-XV7"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="oDo-gR-yDl" kind="show" id="Pjn-Vs-l2n"/>
+                                            <action selector="toSelectFriendPage:" destination="Ima-1g-ql7" eventType="touchUpInside" id="YNj-sE-tfY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -531,6 +531,7 @@
                         <outlet property="laterBtn" destination="GOp-UM-Y4C" id="pJP-Og-l4f"/>
                         <outlet property="laterLabel" destination="AYO-XF-pgx" id="Dos-1L-ekk"/>
                         <outlet property="pickerView" destination="Lbh-sn-Vd7" id="jsI-rf-CPj"/>
+                        <segue destination="oDo-gR-yDl" kind="show" identifier="toSelectFriendPage" id="AXe-Dj-9QX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXf-PC-d7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -696,7 +697,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxy-my-ERd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6740" y="132.68365817091455"/>
+            <point key="canvasLocation" x="6978" y="133"/>
         </scene>
         <!--No Underline Navigation Controller-->
         <scene sceneID="o25-ph-WiD">

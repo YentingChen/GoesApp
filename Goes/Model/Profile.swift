@@ -81,4 +81,5 @@ struct DateAndTime {
     var year: Int
     var month: Int
     var time: String
+    var day: Int
 }

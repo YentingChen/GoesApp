@@ -89,7 +89,7 @@ class LobbyMapViewController: UIViewController {
     }
     
     @IBAction func toTimePage(_ sender: Any) {
-//        userDefaults.set(self.selectedLocation, forKey: "selectedLocation")
+      
         performSegue(withIdentifier: "toTimePage", sender: self)
     }
     override func viewDidLoad() {
@@ -147,6 +147,12 @@ class LobbyMapViewController: UIViewController {
                 }
             }
             
+        }
+        
+        if segue.identifier == "toTimePage" {
+            if let destination = segue.destination as? LobbyTimeViewController {
+                destination.selectedLocation = self.selectedLocation
+            }
         }
     }
 
