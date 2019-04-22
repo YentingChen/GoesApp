@@ -69,11 +69,11 @@ class LobbyTimeViewController: UIViewController {
     
     var currentHour = 0
     var currentMin = 0
-    var currentDate = Date()
+    var currentDate = Int()
     var currentMonth = 0
     var currentYear = 0
     var currentDay = 0
-    var tomorrowDate = Date()
+    var tomorrowDate = Int()
     var tomorrowMonth = 0
     var tomorrowYear = 0
     var tomorrowDay = 0
@@ -88,11 +88,11 @@ class LobbyTimeViewController: UIViewController {
         let tomorrowDateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: tomorrow)
         currentHour = dateComponents.hour!
         currentMin = dateComponents.minute!
-        currentDate = dateComponents.date!
+        currentDate = Int((dateComponents.date?.timeIntervalSince1970)!)
         currentMonth = dateComponents.month!
         currentYear = dateComponents.year!
         currentDay = dateComponents.day!
-        tomorrowDate = tomorrowDateComponents.date!
+        tomorrowDate = Int((tomorrowDateComponents.date?.timeIntervalSince1970)!)
         tomorrowYear = tomorrowDateComponents.year!
         tomorrowMonth = tomorrowDateComponents.month!
         tomorrowDay = tomorrowDateComponents.day!

@@ -10,6 +10,10 @@ import UIKit
 
 class OrderRequestTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var requestName: UILabel!
+    
+    @IBOutlet weak var requestTime: UILabel!
+    @IBOutlet weak var requestLocation: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

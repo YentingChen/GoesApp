@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class LobbyFriendViewController: UIViewController {
     
     var selectedLocation: Address?
     var selectedTime: DateAndTime?
     var selectedFriend: MyProfile?
+    var isSearching = false
     
+    var result = [MyProfile]()
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     let personalDataManager = PersonalDataManager()
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var myFriends = [MyProfile]()
+    var myFriendName = [String]()
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -75,8 +81,9 @@ class LobbyFriendViewController: UIViewController {
                 self.myFriends = friendInfos
                 self.tableView.reloadData()
             })
+            
         }
-        
+        self.searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(
@@ -96,14 +103,26 @@ class LobbyFriendViewController: UIViewController {
 
 extension LobbyFriendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myFriends.count
+        
+        if isSearching {
+            return result.count
+        } else {
+            return myFriends.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "lobbyFriendTableViewCell",
             for: indexPath) as? LobbyFriendTableViewCell else { return UITableViewCell() }
-        cell.nameLabel.text = self.myFriends[indexPath.row].userName
+        if isSearching {
+            cell.nameLabel.text = self.result[indexPath.row].userName
+            
+        } else {
+            
+            cell.nameLabel.text = self.myFriends[indexPath.row].userName
+        }
+        
         return cell
 
     }
@@ -116,4 +135,37 @@ extension LobbyFriendViewController: UITableViewDelegate, UITableViewDataSource 
         self.selectedFriend = self.myFriends[indexPath.row]
     }
 
+}
+
+extension LobbyFriendViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        
+        if searchText == "" {
+            
+        } else {
+            self.result = []
+            isSearching = true
+            
+            for name in self.myFriends.filter(( {$0.userName.lowercased().hasPrefix(searchText.lowercased())} )) {
+
+                self.result.append(name)
+                
+            }
+
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    private func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        
+        searchBar.text = ""
+        
+        isSearching = false
+        
+        self.tableView.reloadData()
+        
+    }
 }

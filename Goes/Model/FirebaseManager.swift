@@ -29,6 +29,7 @@ class FireBaseManager {
     
     var db = Firestore.firestore()
     var userProfile: MyProfile?
+    var userOrder: OrderDetail?
     var address: Address?
    
     func queryUsers(email: String, completionHandler: @escaping (Bool, String) -> Void) {
@@ -75,6 +76,7 @@ class FireBaseManager {
     
     typealias CompletionHandler = (MyProfile?) -> Void
     func queryUserInfo(userID: String, completion: @escaping CompletionHandler) {
+        
         let userProfile =  db.collection("users").document(userID)
         userProfile.getDocument { (document, error) in
             
@@ -195,14 +197,16 @@ class FireBaseManager {
     db.collection("users").document(myInfo.userID).collection("orders").document(orderID).setData(["status":1])
         
     db.collection("users").document(selectedFriend.userID).collection("orders").document(orderID).setData(["status":2])
-        
+      
         db.collection("orders").document(orderID).setData([
             "driverUid": selectedFriend.userID,
+            "order_ID": orderID,
             "riderUid": myInfo.userID,
             "location_formattedAddress": selectedLocation.placeformattedAddress,
             "selected_location_lat": selectedLocation.placeLat,
             "selected_location_lng": selectedLocation.placeLng,
             "selected_location_name": selectedLocation.placeName,
+            "selected_location_placeID": selectedLocation.placeID,
             "selected_time_date": selectedTime.date,
             "selected_time_year": selectedTime.year,
             "selected_time_month": selectedTime.month,
@@ -213,27 +217,53 @@ class FireBaseManager {
         
     }
     
-    func queryMyOrders(myUid: String, status: Int, completionHandler: @escaping () -> Void) {
+    let group = DispatchGroup()
+    
+    func queryMyOrders(myUid: String, status: Int, completionHandler: @escaping ([OrderDetail]) -> Void) {
+        
+        var myOrders = [OrderDetail]()
+        
         db.collection("users").document(myUid).collection("orders").getDocuments { (querySnapshot, err) in
+            
             if querySnapshot!.documents.count == 0 {
-                completionHandler()
+                completionHandler([])
                 return
             }
+            
             for document in querySnapshot!.documents {
                 
                 if let fireStatus = document.data()["status"] as? Int {
+                    
                     if fireStatus == status {
+                    
+                        self.group.enter()
                         
+                        self.queryOrderDetail(
+                        
+                            orderID: document.documentID,
+                            
+                            completionHandler: { (orderDetail) in
+                                
+                                myOrders.append(orderDetail!)
+                                
+                                self.group.leave()
+                                
+                        })
                     }
                 }
                 
             }
+            
+            self.group.notify(queue: .main, execute: {
+                
+                completionHandler(myOrders)
+            })
         }
     }
     
-    func queryOrderDetail(orderID: String, completionHandler: @escaping (MyProfile?) -> Void) {
+    func queryOrderDetail(orderID: String, completionHandler: @escaping (OrderDetail?) -> Void) {
         
-        let docRef = db.collection("users").document(orderID)
+        let docRef = db.collection("orders").document(orderID)
         
         docRef.getDocument { (document, error) in
             if let order = document.flatMap({
@@ -241,41 +271,41 @@ class FireBaseManager {
                     return OrderFromDB(dictionary: data)
                 })
             }) {
-                print(order)
+                self.userOrder = OrderDetail(
+                    driverUid: order.driverUid,
+                    riderUid: order.riderUid,
+                    locationFormattedAddress: order.locationFormattedAddress,
+                    selectedLat: order.selectedLat,
+                    selectedLng: order.selectedLng,
+                    locationName: order.locationName,
+                    locationPlaceID: order.locationPlaceID,
+                    selectTimeDate: order.selectTimeDate,
+                    selectTimeDay: order.selectTimeDay,
+                    selectTimeYear: order.selectTimeYear,
+                    selectTimeMonth: order.selectTimeMonth,
+                    selectTimeTime: order.selectTimeTime,
+                    orderID: order.orderID)
+        
+                completionHandler(self.userOrder)
                 
             } else {
                 print("Document does not exist")
             }
         }
 
+    }
+    
+    func orderDeal(myUid: String, friendUid: String, orderID: String, completionHandler: @escaping () -> Void ) {
+        db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status":3])
+        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":3])
+        
+        completionHandler()
         
     }
     
-    
-
+    func updateDriverLocation(orderID: String, lat: Double, lag: Double ) {
+        db.collection("orders").document(orderID).updateData(["driverLat":lat, "driverLag":lag])
+       
+    }
     
 }
-
-//typealias CompletionHandler = (MyProfile?) -> Void
-//func queryUserInfo(userID: String, completion: @escaping CompletionHandler) {
-//    let userProfile =  db.collection("users").document(userID)
-//    userProfile.getDocument { (document, error) in
-//
-//        if let profile = document.flatMap({ $0.data().flatMap({ (data) in
-//            return Profile(dictionary: data)
-//        })
-//        }) {
-//            self.userProfile = MyProfile(
-//                email: profile.email,
-//                userID: profile.userID,
-//                userName: profile.userName,
-//                phoneNumber: profile.phoneNumber,
-//                avatar: profile.avatar)
-//            print("Profile: \(profile)")
-//            completion(self.userProfile)
-//        } else {
-//            print("Document does not exist")
-//        }
-//
-//    }
-//}

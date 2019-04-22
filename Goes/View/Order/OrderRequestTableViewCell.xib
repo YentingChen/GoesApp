@@ -13,56 +13,84 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderRequestTableViewCell" rowHeight="117" id="KGk-i7-Jjw" customClass="OrderRequestTableViewCell" customModule="Goes" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="401" height="117"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderRequestTableViewCell" rowHeight="121" id="KGk-i7-Jjw" customClass="OrderRequestTableViewCell" customModule="Goes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="401" height="116.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="120.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="cNI-Lv-mD2">
-                        <rect key="frame" x="38" y="17" width="50" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="cNI-Lv-mD2">
+                        <rect key="frame" x="40" y="27" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="a8a-mx-krQ"/>
+                            <constraint firstAttribute="width" constant="50" id="ctp-yp-qvR"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yenting Chen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OE-hV-E5M">
-                        <rect key="frame" x="20" y="81" width="87" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yenting Chen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OE-hV-E5M">
+                        <rect key="frame" x="22" y="85" width="86.5" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="KTm-Qz-vHy"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="接送地點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFW-c7-bXX">
-                        <rect key="frame" x="140" y="11" width="50" height="15"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="接送地點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFW-c7-bXX">
+                        <rect key="frame" x="131" y="59" width="50" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" name="B3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="台北市信義區基隆路一段180號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOB-Fx-3f5">
-                        <rect key="frame" x="140" y="31" width="209" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台北市信義區基隆路一段180號" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOB-Fx-3f5">
+                        <rect key="frame" x="131" y="76" width="220" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="220" id="ZtZ-1w-sAb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="0.0" height="-2"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="今天的下午 3 時" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPQ-vv-hm5">
-                        <rect key="frame" x="140" y="86" width="109" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="接送時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNo-DZ-2WH">
-                        <rect key="frame" x="140" y="68" width="50" height="15"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="接送時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNo-DZ-2WH">
+                        <rect key="frame" x="131" y="19" width="50" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="geG-h4-OJX"/>
+                            <constraint firstAttribute="height" constant="10" id="q43-yD-4FS"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" name="B3"/>
                         <color key="highlightedColor" name="B3"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天的下午 3 時" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPQ-vv-hm5">
+                        <rect key="frame" x="131" y="33" width="102" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="KOB-Fx-3f5" firstAttribute="leading" secondItem="tFW-c7-bXX" secondAttribute="leading" id="4zS-jX-IZz"/>
+                    <constraint firstItem="BPQ-vv-hm5" firstAttribute="leading" secondItem="NNo-DZ-2WH" secondAttribute="leading" id="9Tm-f1-VMf"/>
+                    <constraint firstItem="cNI-Lv-mD2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="Dbt-dc-ARy"/>
+                    <constraint firstItem="BPQ-vv-hm5" firstAttribute="top" secondItem="NNo-DZ-2WH" secondAttribute="bottom" constant="4" id="KUG-Py-IQm"/>
+                    <constraint firstItem="tFW-c7-bXX" firstAttribute="leading" secondItem="NNo-DZ-2WH" secondAttribute="leading" id="X2X-Gp-eyc"/>
+                    <constraint firstItem="2OE-hV-E5M" firstAttribute="top" secondItem="cNI-Lv-mD2" secondAttribute="bottom" constant="8" id="a5U-Uc-8JE"/>
+                    <constraint firstAttribute="trailing" secondItem="KOB-Fx-3f5" secondAttribute="trailing" constant="24" id="ape-0B-I5q"/>
+                    <constraint firstItem="cNI-Lv-mD2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="24" id="b00-jT-JGf"/>
+                    <constraint firstItem="2OE-hV-E5M" firstAttribute="centerX" secondItem="cNI-Lv-mD2" secondAttribute="centerX" id="ko1-2C-1SQ"/>
+                    <constraint firstItem="tFW-c7-bXX" firstAttribute="top" secondItem="NNo-DZ-2WH" secondAttribute="bottom" constant="30" id="lbL-h6-viw"/>
+                    <constraint firstItem="KOB-Fx-3f5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="76" id="mDU-2R-Vkn"/>
+                    <constraint firstItem="NNo-DZ-2WH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="t9H-i4-eG7"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="202.40000000000001" y="213.64317841079463"/>
+            <connections>
+                <outlet property="requestLocation" destination="KOB-Fx-3f5" id="3JR-Fc-FPy"/>
+                <outlet property="requestName" destination="2OE-hV-E5M" id="yUB-5W-Oo0"/>
+                <outlet property="requestTime" destination="BPQ-vv-hm5" id="3cx-xG-fC0"/>
+            </connections>
+            <point key="canvasLocation" x="202.40000000000001" y="208.24587706146929"/>
         </tableViewCell>
     </objects>
     <resources>

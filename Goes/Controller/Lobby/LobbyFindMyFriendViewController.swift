@@ -29,7 +29,6 @@ class LobbyFindMyFriendViewController: UIViewController, GMSMapViewDelegate{
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         
-        
 //        let lat = 43.1561681
 //        let lng = -75.8449946
 //
@@ -44,9 +43,7 @@ class LobbyFindMyFriendViewController: UIViewController, GMSMapViewDelegate{
     func drawPath(location: CLLocation) {
         let origin = "\(25.075683),\(121.575379)"
         let destination = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
-//
-//        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyD_mMIHbDWkWE2p0c36ZjreWSIG1V4qmYE"
-        let url = "https://maps.googleapis.com/maps/api/place/details/json?input=bar&placeid=ChIJu_bztcqrQjQRNi9buVGibBI&key=AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
 
         Alamofire.request(url).responseJSON { response in
             print(response.request!)  // original URL request

@@ -20,24 +20,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   待回覆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htY-fo-k23">
-                        <rect key="frame" x="0.0" y="9.5" width="84" height="25"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htY-fo-k23">
+                        <rect key="frame" x="16" y="11" width="0.0" height="22"/>
                         <color key="backgroundColor" name="G1"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="84" id="blb-ES-2v0"/>
-                            <constraint firstAttribute="height" constant="25" id="l2c-7m-TCW"/>
+                            <constraint firstAttribute="height" constant="22" id="l2c-7m-TCW"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="htY-fo-k23" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bfa-Ui-zFQ"/>
-                    <constraint firstItem="htY-fo-k23" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="i1f-Qv-DyN"/>
+                    <constraint firstItem="htY-fo-k23" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="i1f-Qv-DyN"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="headerTxt" destination="htY-fo-k23" id="BOa-tO-VLo"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="132.23388305847078"/>
         </tableViewCell>
     </objects>
     <resources>

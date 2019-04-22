@@ -10,6 +10,12 @@ import UIKit
 
 class OrderRequestHeaderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var headerTxt: UILabel! {
+        didSet {
+            self.headerTxt.layer.cornerRadius = 8
+            self.headerTxt.layer.masksToBounds = true
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

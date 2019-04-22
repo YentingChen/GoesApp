@@ -28,6 +28,7 @@ class LobbyMapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     
     @IBAction func adressModeChosen(_ sender: UISegmentedControl) {
+        
         if sender.selectedSegmentIndex == 1 {
             addressBtn.setTitle(self.homeAddress?.placeName, for: .normal)
             selectedLocation = self.homeAddress
@@ -51,15 +52,19 @@ class LobbyMapViewController: UIViewController {
     }
     
     @IBAction func mylocationBtn(_ sender: Any) {
+        
         guard let lat = self.mapView.myLocation?.coordinate.latitude,
             let lng = self.mapView.myLocation?.coordinate.longitude else { return }
         
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 16)
         self.mapView.animate(to: camera)
+        
     }
 
     @IBAction func addressBtn(_ sender: Any) {
+        
         performSegue(withIdentifier: "toEditAddressVC", sender: self)
+        
     }
     
     private let locationManager = CLLocationManager()
@@ -92,8 +97,10 @@ class LobbyMapViewController: UIViewController {
       
         performSegue(withIdentifier: "toTimePage", sender: self)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.mapView.isMyLocationEnabled = true
         mapView.delegate = self
 
@@ -133,6 +140,7 @@ class LobbyMapViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "toEditAddressVC" {
             if let destination = segue.destination as? EditAddressViewController {
                  self.editAddressVC = destination
@@ -150,8 +158,10 @@ class LobbyMapViewController: UIViewController {
         }
         
         if segue.identifier == "toTimePage" {
+            
             if let destination = segue.destination as? LobbyTimeViewController {
                 destination.selectedLocation = self.selectedLocation
+                
             }
         }
     }
@@ -162,9 +172,7 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 
-        guard status == .authorizedWhenInUse else {
-            return
-        }
+        guard status == .authorizedWhenInUse else { return }
 
         locationManager.startUpdatingLocation()
 
@@ -173,11 +181,13 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         guard let location = locations.first else { return }
 
         mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
 
         locationManager.stopUpdatingLocation()
+        
     }
 }
 
@@ -185,17 +195,22 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
 extension LobbyMapViewController: GMSMapViewDelegate {
 
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        
         reverseGeocodeCoordinate(position.target)
+        
         self.mapView.padding = UIEdgeInsets(top: 0, left: 0,
                                             bottom: 85, right: 0)
+        
     }
 
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        
         addressBtn.setTitle("", for: .normal)
-//        adressTxtField.text = ""
+
         self.adressSegmentedControl.selectedSegmentIndex = 0
+        
         addressBtn.lock()
-//        adressTxtField.lock()
+
     }
 
 }

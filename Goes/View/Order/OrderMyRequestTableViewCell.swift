@@ -9,7 +9,8 @@
 import UIKit
 
 class OrderMyRequestTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var driverName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

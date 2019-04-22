@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import IQKeyboardManagerSwift
 
 class FriendListViewController: UIViewController {
     
@@ -15,11 +16,18 @@ class FriendListViewController: UIViewController {
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var myFriends = [MyProfile]()
+    
+    var result = [MyProfile]()
+    var isSearching = false
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDataFromDB()
+        
+        searchBar.delegate = self
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -82,8 +90,16 @@ class FriendListViewController: UIViewController {
 extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearching {
+            
+            return result.count
+            
+        } else {
+            
+            return myFriends.count
+        }
 
-        return myFriends.count
+      
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,16 +109,23 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
             for: indexPath) as? FriendListTableViewCell else {
             return UITableViewCell()
         }
+        if isSearching {
+            
+            cell.cellLabel.text = self.result[indexPath.row].userName
+            
+            
+        } else {
+            
+            cell.cellLabel.text = self.myFriends[indexPath.row].userName
+            
+        }
         
-        cell.cellLabel.text = self.myFriends[indexPath.row].userName
-       
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
-    
     
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
@@ -120,4 +143,40 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
         return swipeConfiguration
     }
 
+}
+
+extension FriendListViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        
+        if searchText == "" {
+            isSearching = false
+            
+        } else {
+            self.result = []
+            isSearching = true
+            
+            for name in self.myFriends.filter(( {$0.userName.lowercased().hasPrefix(searchText.lowercased())} )) {
+                
+                self.result.append(name)
+                
+            }
+            
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    private func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        
+        searchBar.text = ""
+        
+        isSearching = false
+        
+        self.tableView.reloadData()
+        
+    }
+    
+    
 }

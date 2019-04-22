@@ -692,6 +692,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="Jf2-8y-bmc" id="nLu-PF-ECq"/>
                         <outlet property="tableView" destination="vVR-wT-JFV" id="PKQ-v5-Pop"/>
                     </connections>
                 </viewController>
