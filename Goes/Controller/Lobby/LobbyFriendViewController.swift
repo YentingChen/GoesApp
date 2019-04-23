@@ -140,7 +140,6 @@ extension LobbyFriendViewController: UITableViewDelegate, UITableViewDataSource 
 extension LobbyFriendViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
         
         if searchText == "" {
             

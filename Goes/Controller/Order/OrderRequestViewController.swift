@@ -15,59 +15,13 @@ class OrderRequestViewController: UIViewController {
     var myProfile: MyProfile?
     var myOrders = [OrderDetail]()
     var myEvents = [OrderDetail]()
-    var riders = [MyProfile](){
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    var ridersIng = [MyProfile]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var riders = [MyProfile]()
+    var ridersIng = [MyProfile]()
     
     var selectedOrder: OrderDetail?
     var selectedRider: MyProfile?
    
     @IBOutlet weak var tableView: UITableView!
-    
-     func loadDataFromDB() {
-        personalDataManager.getPersonalData { (myProfile, _) in
-            self.myProfile = myProfile
-            
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 2, completionHandler: { (orders) in
-                
-                self.myOrders = orders
-                
-                for order in orders {
-                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
-                        self.riders.append(rider!)
-                        print(rider as Any)
-                        self.tableView.reloadData()
-                        
-                    })
-                }
-                
-            })
-            
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 3, completionHandler: { (orders) in
-                
-                self.myEvents = orders
-                
-                for order in orders {
-                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
-                        self.ridersIng.append(rider!)
-                        print(rider as Any)
-                        self.tableView.reloadData()
-                        
-                    })
-                }
-                
-            })
-            
-        }
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,6 +65,48 @@ class OrderRequestViewController: UIViewController {
                 destination.orderRequestVC = self
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadDataFromDB()
+    }
+    
+    func loadDataFromDB() {
+        personalDataManager.getPersonalData { (myProfile, _) in
+            self.myProfile = myProfile
+            
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 2, completionHandler: { (orders) in
+                
+                self.myOrders = orders
+                
+                for order in orders {
+                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
+                        self.riders.append(rider!)
+                        print(rider as Any)
+                        self.tableView.reloadData()
+                        
+                    })
+                }
+                
+            })
+            
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 3, completionHandler: { (orders) in
+                
+                self.myEvents = orders
+                
+                for order in orders {
+                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
+                        self.ridersIng.append(rider!)
+                        print(rider as Any)
+                        self.tableView.reloadData()
+                        
+                    })
+                }
+                
+            })
+            
+        }
+        
     }
 
 }

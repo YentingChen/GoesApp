@@ -284,7 +284,11 @@ class FireBaseManager {
                     selectTimeYear: order.selectTimeYear,
                     selectTimeMonth: order.selectTimeMonth,
                     selectTimeTime: order.selectTimeTime,
-                    orderID: order.orderID)
+                    orderID: order.orderID,
+                    driverLat: order.driverLat,
+                    driverLag: order.driverLag,
+                    riderLat: order.riderLat,
+                    riderLag: order.riderLag)
         
                 completionHandler(self.userOrder)
                 
@@ -297,15 +301,74 @@ class FireBaseManager {
     
     func orderDeal(myUid: String, friendUid: String, orderID: String, completionHandler: @escaping () -> Void ) {
         db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status":3])
-        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":3])
+        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":4])
         
         completionHandler()
         
     }
     
+    func orderCancel(myUid: String, friendUid: String, orderID: String, completionHandler: @escaping () -> Void ) {
+        db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status":0])
+        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":0])
+        
+        completionHandler()
+    }
+    
     func updateDriverLocation(orderID: String, lat: Double, lag: Double ) {
         db.collection("orders").document(orderID).updateData(["driverLat":lat, "driverLag":lag])
        
+    }
+    
+    func listenDriverLocation(orderID: String,  completionHandler: @escaping (OrderDetail?) -> Void ) {
+        
+        db.collection("orders").document(orderID).addSnapshotListener { documentSnapshot, error in
+            
+                guard let document = documentSnapshot else {
+                    
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+            
+                guard let data = document.data() else {
+                    
+                    print("Document data was empty.")
+                    return
+                }
+            
+            if let order = documentSnapshot.flatMap({
+                
+                $0.data().flatMap({ (data) in
+                    
+                    return OrderFromDB(dictionary: data)
+                    
+                })
+            }) {
+                self.userOrder = OrderDetail(
+                    driverUid: order.driverUid,
+                    riderUid: order.riderUid,
+                    locationFormattedAddress: order.locationFormattedAddress,
+                    selectedLat: order.selectedLat,
+                    selectedLng: order.selectedLng,
+                    locationName: order.locationName,
+                    locationPlaceID: order.locationPlaceID,
+                    selectTimeDate: order.selectTimeDate,
+                    selectTimeDay: order.selectTimeDay,
+                    selectTimeYear: order.selectTimeYear,
+                    selectTimeMonth: order.selectTimeMonth,
+                    selectTimeTime: order.selectTimeTime,
+                    orderID: order.orderID,
+                    driverLat: order.driverLat,
+                    driverLag: order.driverLag,
+                    riderLat: order.riderLat,
+                    riderLag: order.riderLag)
+                
+               completionHandler(self.userOrder)
+                
+            } else {
+                print("Document does not exist")
+            }
+
+        }
     }
     
 }

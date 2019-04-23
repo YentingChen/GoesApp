@@ -14,6 +14,7 @@ import SwiftyJSON
 import Alamofire
 
 class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate {
+
     
     @IBOutlet weak var googleMap: GMSMapView!
     @IBOutlet weak var riderName: UILabel!
@@ -30,19 +31,46 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
     var order: OrderDetail?
     var rider: MyProfile?
 
+    @IBAction func cancelOrder(_ sender: Any) {
+        
+        self.fireBaseManager.orderCancel(
+        myUid: (self.myProfile?.userID)!,
+        friendUid: (self.rider?.userID)!,
+        orderID: (self.order?.orderID)!) {
+            
+            self.orderRequestVC?.myOrders = []
+            self.orderRequestVC?.riders = []
+            self.orderRequestVC?.myEvents = []
+            self.orderRequestVC?.ridersIng = []
+            self.orderRequestVC?.loadDataFromDB()
+            
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+    }
+    
     func mtSlideToOpenDelegateDidFinish(_ sender: MTSlideToOpenView) {
         let alertController = UIAlertController(title: "", message: "Done!", preferredStyle: .alert)
         let doneAction = UIAlertAction(title: "Okay", style: .default) { (_) in
         
-            self.fireBaseManager.orderDeal(myUid: self.myProfile!.userID, friendUid: self.rider!.userID, orderID: (self.order?.orderID)!, completionHandler: {
+            self.fireBaseManager.orderDeal(
+                myUid: self.myProfile!.userID,
+                friendUid: self.rider!.userID,
+                orderID: (self.order?.orderID)!,
+                completionHandler: {
                 
                 self.orderRequestVC?.myOrders = []
+                self.orderRequestVC?.riders = []
+                self.orderRequestVC?.myEvents = []
+                self.orderRequestVC?.ridersIng = []
                 self.orderRequestVC?.loadDataFromDB()
                
                 self.navigationController?.popViewController(animated: true)
             })
         }
+        
         alertController.addAction(doneAction)
+        
         self.present(alertController, animated: true, completion: nil)
     }
 
@@ -54,8 +82,11 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
                           height: self.slideButtonView.frame.height))
         
         slide.sliderViewTopDistance = 0
+        
         slide.sliderCornerRadious = 20
+        
         slide.thumbnailViewLeadingDistance = 10
+        
         slide.thumnailImageView.backgroundColor = UIColor(red: 109/255, green: 203/255, blue: 224/255, alpha: 1.0)
         slide.draggedView.backgroundColor = UIColor(red: 109/255, green: 203/255, blue: 224/255, alpha: 1.0)
 
@@ -66,6 +97,7 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
         slide.sliderHolderView.backgroundColor = UIColor(red: 109/255, green: 203/255, blue: 224/255, alpha: 0.3)
 
         return slide
+        
     }()
 
     override func viewDidLoad() {
@@ -97,9 +129,7 @@ extension OrderAnswerRequestViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
-        guard status == .authorizedWhenInUse else {
-            return
-        }
+        guard status == .authorizedWhenInUse else { return }
         
         locationManager.startUpdatingLocation()
         
@@ -112,7 +142,7 @@ extension OrderAnswerRequestViewController: CLLocationManagerDelegate {
         guard let location = locations.first else { return }
         
         googleMap.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-        drawPath(location: location)
+//        drawPath(location: location)
         
         locationManager.stopUpdatingLocation()
         
@@ -125,11 +155,7 @@ extension OrderAnswerRequestViewController: CLLocationManagerDelegate {
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
 
         Alamofire.request(url).responseJSON { response in
-            print(response.request!)  // original URL request
-            print(response.response!) // HTTP URL response
-            print(response.data!)     // server data
-            print(response.result)   // result of response serialization
-            
+        
             do {
                 let json = try JSON(data: response.data!)
                 let routes = json["routes"].arrayValue

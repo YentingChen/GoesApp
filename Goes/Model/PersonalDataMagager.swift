@@ -38,7 +38,7 @@ class PersonalDataManager {
                         phoneNumber: profile.phoneNumber,
                         avatar: profile.avatar)
                     completion(self?.myProfile, nil)
-                    print("Profile: \(profile)")
+
                 } else {
                     print("Document does not exist")
                 }

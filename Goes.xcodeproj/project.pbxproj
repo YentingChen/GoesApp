@@ -80,6 +80,7 @@
 		3E9CCE80226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9CCE7E226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.xib */; };
 		3E9CCE82226A209C000BE5F6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CCE81226A209C000BE5F6 /* Date.swift */; };
 		3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */; };
+		3EA3B553226ED07E0072F432 /* OrderRidingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3B552226ED07E0072F432 /* OrderRidingViewController.swift */; };
 		5CA711F534226EDCB52E35CA /* Pods_Goes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DEB760BA8574D01298CE22 /* Pods_Goes.framework */; };
 /* End PBXBuildFile section */
 
@@ -160,6 +161,7 @@
 		3E9CCE7E226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderRequestHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		3E9CCE81226A209C000BE5F6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
+		3EA3B552226ED07E0072F432 /* OrderRidingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRidingViewController.swift; sourceTree = "<group>"; };
 		53DEB760BA8574D01298CE22 /* Pods_Goes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFD64D319E200998BB050F3 /* Pods-Goes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goes.release.xcconfig"; path = "Target Support Files/Pods-Goes/Pods-Goes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -367,6 +369,7 @@
 				3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */,
 				3E95EE80225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift */,
 				3E8C8C83226DE54F00063208 /* OrderDrivingViewController.swift */,
+				3EA3B552226ED07E0072F432 /* OrderRidingViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */,
 				3E662ED1226830920016F962 /* GoogleMapManager.swift in Sources */,
 				3E609F6222535E800031CF81 /* TabBaseViewController.swift in Sources */,
+				3EA3B553226ED07E0072F432 /* OrderRidingViewController.swift in Sources */,
 				3E8C8C84226DE54F00063208 /* OrderDrivingViewController.swift in Sources */,
 				3E7B6E25225B517C00646724 /* OrderMyRequestViewController.swift in Sources */,
 			);

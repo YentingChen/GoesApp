@@ -99,28 +99,35 @@ struct OrderFromDB {
     var selectTimeMonth: Int
     var selectTimeTime: String
     var orderID: String
+    var driverLat: Double
+    var driverLag: Double
+    var riderLat: Double
+    var riderLag: Double
     
     init(dictionary: [String: Any]) {
         
         self.driverUid = (dictionary["driverUid"] as? String)!
         self.riderUid = (dictionary["riderUid"] as? String)!
         self.locationFormattedAddress = (dictionary["location_formattedAddress"] as? String)!
-        self.selectedLat = Double((dictionary["selected_location_lat"] as? NSNumber)!)
+        self.selectedLat = Double((dictionary["selected_location_lat"] as? NSNumber ?? 0))
         self.selectedLng = Double((dictionary["selected_location_lng"] as? NSNumber)!)
         self.locationName = (dictionary["selected_location_name"] as? String)!
-        self.locationPlaceID = (dictionary["selected_location_placeID"] as? String)!
-        self.selectTimeDate = Int(((dictionary["selected_time_date"] as? NSNumber )!))
-        self.selectTimeDay = Int((dictionary["selected_time_day"] as? NSNumber)!)
-        self.selectTimeYear =  Int((dictionary["selected_time_year"] as? NSNumber)!)
+        self.locationPlaceID = (dictionary["selected_location_placeID"] as? String ?? "")
+        self.selectTimeDate = Int(dictionary["selected_time_date"] as? NSNumber ?? 0)
+        self.selectTimeDay = Int(dictionary["selected_time_day"] as? NSNumber ?? 0)
+        self.selectTimeYear =  Int((dictionary["selected_time_year"] as? NSNumber ?? 0))
         self.selectTimeMonth = Int((dictionary["selected_time_month"] as? NSNumber)!)
-        self.selectTimeTime = (dictionary["selected_time_time"] as? String)!
-        self.orderID = (dictionary["order_ID"] as? String)!
+        self.selectTimeTime = (dictionary["selected_time_time"] as? String ?? "")
+        self.orderID = (dictionary["order_ID"] as? String ?? "")
+        self.driverLag = Double(dictionary["driverLag"] as? NSNumber ?? 0)
+        self.driverLat = Double(dictionary["driverLat"] as? NSNumber ?? 0)
+        self.riderLag = Double(dictionary["riderLag"] as? NSNumber ?? 0)
+        self.riderLat = Double(dictionary["riderLat"] as? NSNumber ?? 0)
 
     }
 }
 
 struct OrderDetail {
-    
     var driverUid: String
     var riderUid: String
     var locationFormattedAddress: String
@@ -134,4 +141,8 @@ struct OrderDetail {
     var selectTimeMonth: Int
     var selectTimeTime: String
     var orderID: String
+    var driverLat: Double
+    var driverLag: Double
+    var riderLat: Double
+    var riderLag: Double
 }

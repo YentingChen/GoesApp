@@ -17,39 +17,17 @@ class OrderMyRequestViewController: UIViewController {
     var myEvents = [OrderDetail]()
     var drivers = [MyProfile]()
     var driverIng = [MyProfile]()
-
+    var selectedOrder: OrderDetail?
+    var selectedDriver: MyProfile?
+    
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         
-        personalDataManager.getPersonalData { (myProfile, err) in
-            self.myProfile = myProfile
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 1, completionHandler: { (orders) in
-                self.myOrders = orders
-                for order in orders {
-                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
-                        self.drivers.append(driver!)
-                        self.tableView.reloadData()
-                    })
-                }
-                
-            })
-            
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 3, completionHandler: { (orders) in
-                self.myEvents = orders
-                
-                for order in orders {
-                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
-                        self.driverIng.append(driver!)
-                        print(driver as Any)
-                        self.tableView.reloadData()
-                        
-                    })
-                }
-            })
-            
-        }
-        
         super.viewDidLoad()
+        
+        loadDataFromDB()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(
@@ -64,6 +42,51 @@ class OrderMyRequestViewController: UIViewController {
 
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMyOrderDetail" {
+            if let destination = segue.destination as? OrderRidingViewController {
+                
+                destination.orderMyRequestVC = self
+                destination.myProfile = self.myProfile
+                destination.order = self.selectedOrder
+                
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadDataFromDB()
+    }
+    
+    func loadDataFromDB() {
+        personalDataManager.getPersonalData { (myProfile, _) in
+            self.myProfile = myProfile
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 1, completionHandler: { (orders) in
+                self.myOrders = orders
+                for order in orders {
+                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
+                        self.drivers.append(driver!)
+                        self.tableView.reloadData()
+                    })
+                }
+                
+            })
+            
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 4, completionHandler: { (orders) in
+                self.myEvents = orders
+                
+                for order in orders {
+                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
+                        self.driverIng.append(driver!)
+                        print(driver as Any)
+                        self.tableView.reloadData()
+                        
+                    })
+                }
+            })
+            
+        }
+    }
 }
 
 extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSource {
@@ -110,7 +133,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
         
         if section == 1 {
             if myEvents.count != 0, driverIng.count != 0, myEvents.count == driverIng.count {
-
+                
                 return self.myEvents.count
             } else {
                 
@@ -148,7 +171,11 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            performSegue(withIdentifier: "test3", sender: self)
+           
+            self.selectedOrder = self.myEvents[indexPath.row]
+            self.selectedDriver = self.driverIng[indexPath.row]
+            
+             performSegue(withIdentifier: "toMyOrderDetail", sender: self)
         }
     }
 
