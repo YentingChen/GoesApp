@@ -7,13 +7,27 @@
 //
 
 import UIKit
+import Lottie
 
 class LobbyViewController: UIViewController {
-
+//4966-onboarding-car
+    @IBOutlet weak var carView: UIView!
+    
+    let animationView = LOTAnimationView(name: "animation-w300-h300-2")
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        animationView.frame = CGRect(x: 0, y: 0, width: carView.frame.width, height:  carView.frame.height)
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopAnimation = true
+        animationView.animationSpeed = 1
+        self.carView.addSubview(animationView)
+        animationView.play()
     }
 
 }

@@ -56,6 +56,9 @@
 		3E662EF72268408C0016F962 /* AdressWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF62268408C0016F962 /* AdressWorkViewController.swift */; };
 		3E662EF9226840CA0016F962 /* AdressFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */; };
 		3E662EFB22687EA40016F962 /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EFA22687EA40016F962 /* EditAddressViewController.swift */; };
+		3E70852B226F127B006002CB /* 4966-onboarding-car.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852A226F127B006002CB /* 4966-onboarding-car.json */; };
+		3E70852D226F17D0006002CB /* animation-w300-h300.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852C226F17D0006002CB /* animation-w300-h300.json */; };
+		3E70852F226F1903006002CB /* animation-w300-h300-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852E226F1902006002CB /* animation-w300-h300-2.json */; };
 		3E7B6E072259225500646724 /* ProfilePersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */; };
 		3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */; };
 		3E7B6E0B2259229B00646724 /* ProfilePersonalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */; };
@@ -137,6 +140,9 @@
 		3E662EF62268408C0016F962 /* AdressWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressWorkViewController.swift; sourceTree = "<group>"; };
 		3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressFavoriteViewController.swift; sourceTree = "<group>"; };
 		3E662EFA22687EA40016F962 /* EditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
+		3E70852A226F127B006002CB /* 4966-onboarding-car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "4966-onboarding-car.json"; sourceTree = "<group>"; };
+		3E70852C226F17D0006002CB /* animation-w300-h300.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-w300-h300.json"; sourceTree = "<group>"; };
+		3E70852E226F1902006002CB /* animation-w300-h300-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-w300-h300-2.json"; sourceTree = "<group>"; };
 		3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalDataViewController.swift; sourceTree = "<group>"; };
 		3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalTableViewCell.swift; sourceTree = "<group>"; };
 		3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePersonalTableViewCell.xib; sourceTree = "<group>"; };
@@ -263,6 +269,9 @@
 			isa = PBXGroup;
 			children = (
 				3E609F4122533EE10031CF81 /* AppDelegate.swift */,
+				3E70852C226F17D0006002CB /* animation-w300-h300.json */,
+				3E70852E226F1902006002CB /* animation-w300-h300-2.json */,
+				3E70852A226F127B006002CB /* 4966-onboarding-car.json */,
 				3E609F5B22535AE40031CF81 /* Assets.xcassets */,
 				3E609F69225366FD0031CF81 /* Extension */,
 				3E609F6B2253672C0031CF81 /* Base */,
@@ -477,6 +486,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E70852F226F1903006002CB /* animation-w300-h300-2.json in Resources */,
+				3E70852D226F17D0006002CB /* animation-w300-h300.json in Resources */,
 				3E23588C22590C0B004182F0 /* FriendInviteTableViewCell.xib in Resources */,
 				3E06C21D22571895000F7E5F /* Friend.storyboard in Resources */,
 				3E5AE003225F2FC70003B241 /* LStoryboard.storyboard in Resources */,
@@ -485,6 +496,7 @@
 				3E3EFD112259186C0078E686 /* FriendSentTableViewCell.xib in Resources */,
 				3E45935E225851B500073210 /* Profile.storyboard in Resources */,
 				3E609F6022535E2A0031CF81 /* Lobby.storyboard in Resources */,
+				3E70852B226F127B006002CB /* 4966-onboarding-car.json in Resources */,
 				3E7B6E132259FBA200646724 /* ProfileHistoryTableViewCell.xib in Resources */,
 				3E459356225777DE00073210 /* LobbyFriendCollectionViewCell.xib in Resources */,
 				3E7B6E1B225A645F00646724 /* OrderRequestTableViewCell.xib in Resources */,
@@ -566,6 +578,7 @@
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -583,6 +596,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
