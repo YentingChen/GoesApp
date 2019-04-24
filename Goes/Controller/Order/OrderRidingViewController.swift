@@ -14,6 +14,7 @@ import SwiftyJSON
 import Alamofire
 
 class OrderRidingViewController: UIViewController {
+    
     @IBOutlet weak var mapView: GMSMapView!
     
     private let locationManager = CLLocationManager()
@@ -24,10 +25,11 @@ class OrderRidingViewController: UIViewController {
     var myProfile: MyProfile?
     var order: OrderDetail?
     var rider: MyProfile?
+    var driverFirstLocation: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.mapView.delegate = self
         self.mapView.isMyLocationEnabled = true
         self.locationManager.delegate = self
@@ -38,7 +40,6 @@ class OrderRidingViewController: UIViewController {
             self.order = order
             
             self.mapView.isMyLocationEnabled = false
-            
             let camera = GMSCameraPosition.camera(withLatitude:(order?.driverLat)!,
                                                   longitude: (order?.driverLag)!,
                                                   zoom: 16)
@@ -48,6 +49,24 @@ class OrderRidingViewController: UIViewController {
             let marker = GMSMarker(position: position)
             marker.icon = UIImage(named: "Images_60x_Driver_Normal")
             marker.map = self.mapView
+            
+            if self.driverFirstLocation == nil {
+                
+                self.driverFirstLocation = CLLocationCoordinate2D(latitude: (order?.driverLat)!, longitude: (order?.driverLag)!)
+                
+                var region = GMSVisibleRegion()
+                
+                region.nearLeft = CLLocationCoordinate2DMake((self.order?.selectedLat)!, (self.order?.selectedLng)!)
+                
+                region.farRight = self.driverFirstLocation!
+                
+                let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
+                
+                let camera = mapView!.camera(for: bounds, insets:UIEdgeInsets.zero)
+                
+                mapView!.camera = camera!
+    
+            }
 //            let driverLocation = GMSCameraPosition.camera(withLatitude: (self.order?.driverLat)!,longitude: (self.order?.driverLag)!,zoom: 15)
 //            mapView!.camera = driverLocation
             
@@ -73,7 +92,7 @@ extension OrderRidingViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let location = locations.first else { return }
-        
+
         var region:GMSVisibleRegion = GMSVisibleRegion()
         region.nearLeft = CLLocationCoordinate2DMake((self.order?.selectedLat)!, (self.order?.selectedLng)!)
         region.farRight = CLLocationCoordinate2DMake(self.order!.driverLat,self.order!.driverLag)

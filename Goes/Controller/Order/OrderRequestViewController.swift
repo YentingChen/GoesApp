@@ -13,10 +13,14 @@ class OrderRequestViewController: UIViewController {
     let personalDataManager = PersonalDataManager()
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
-    var myOrders = [OrderDetail]()
-    var myEvents = [OrderDetail]()
-    var riders = [MyProfile]()
-    var ridersIng = [MyProfile]()
+    
+    var myOrdersS2 = [OrderDetail]()
+    var myOrdersS3 = [OrderDetail]()
+    var myOrdersS6 = [OrderDetail]()
+    
+    var ridersS2 = [MyProfile]()
+    var ridersS3 = [MyProfile]()
+    var ridersS6 = [MyProfile]()
     
     var selectedOrder: OrderDetail?
     var selectedRider: MyProfile?
@@ -25,11 +29,10 @@ class OrderRequestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadDataFromDB()
-        
+    
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         
         tableView.register(
             UINib(nibName: "OrderRequestTableViewCell",
@@ -40,6 +43,11 @@ class OrderRequestViewController: UIViewController {
             UINib(nibName: "OrderRequestHeaderTableViewCell",
                   bundle: nil),
             forCellReuseIdentifier: "orderRequestHeaderTableViewCell")
+        
+        tableView.register(
+            UINib(nibName: "OrderRequestPlaceholderTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "orderRequestPlaceholderTableViewCell")
 
     }
     
@@ -68,21 +76,37 @@ class OrderRequestViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        myOrdersS2 = []
+        myOrdersS3 = []
+        myOrdersS6 = []
+       
+        ridersS2 = []
+        ridersS3 = []
+        ridersS6 = []
+        
+        tableView.reloadData()
         loadDataFromDB()
+        
     }
     
     func loadDataFromDB() {
+        
         personalDataManager.getPersonalData { (myProfile, _) in
             self.myProfile = myProfile
             
             self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 2, completionHandler: { (orders) in
-                
-                self.myOrders = orders
+
+                self.myOrdersS2 = orders
                 
                 for order in orders {
+                    
                     self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
-                        self.riders.append(rider!)
+                        
+                        self.ridersS2.append(rider!)
+                        
                         print(rider as Any)
+                        
                         self.tableView.reloadData()
                         
                     })
@@ -92,11 +116,27 @@ class OrderRequestViewController: UIViewController {
             
             self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 3, completionHandler: { (orders) in
                 
-                self.myEvents = orders
+                self.myOrdersS3 = orders
+                
+                for order in orders {
+                    
+                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
+                        self.ridersS3.append(rider!)
+                        print(rider as Any)
+                        self.tableView.reloadData()
+                        
+                    })
+                }
+                
+            })
+            
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 6, completionHandler: { (orders) in
+
+                self.myOrdersS6 = orders
                 
                 for order in orders {
                     self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
-                        self.ridersIng.append(rider!)
+                        self.ridersS6.append(rider!)
                         print(rider as Any)
                         self.tableView.reloadData()
                         
@@ -114,10 +154,11 @@ class OrderRequestViewController: UIViewController {
 extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         if section == 0 {
             
             guard let cell = tableView.dequeueReusableCell(
@@ -129,6 +170,16 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
         }
         
         if section == 1 {
+            
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
+            cell.headerTxt.text = "  準備中   "
+            
+            return cell
+            
+        }
+        
+        if section == 2 {
             
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
@@ -149,22 +200,42 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
     
             if section == 0 {
                 
-                if myOrders.count != 0, riders.count != 0, myOrders.count == riders.count {
-                    return self.myOrders.count
+                if myOrdersS2.count != 0,
+                    ridersS2.count != 0,
+                    myOrdersS2.count == ridersS2.count{
+                    
+                    return self.myOrdersS2.count
                 }
-                return 0
+                return 1
                 
             }
             
             if section == 1 {
-                if myEvents.count != 0, ridersIng.count != 0, myEvents.count == ridersIng.count {
+                if myOrdersS3.count != 0,
+                    ridersS3.count != 0,
+                    myOrdersS3.count == ridersS3.count{
                     
-                    return self.myEvents.count
+                    return self.myOrdersS3.count
                 } else {
                     
                     return 0
                 }
             }
+        
+        if section == 2 {
+            
+            if myOrdersS6.count != 0,
+                ridersS6.count != 0,
+                myOrdersS6.count == ridersS6.count{
+                
+                return self.myOrdersS6.count
+            } else {
+                
+                return 0
+            }
+            
+        }
+        
 
         return Int()
     }
@@ -173,14 +244,27 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
         
         if indexPath.section == 0 {
             
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "orderRequestTableViewCell",
-                for: indexPath) as? OrderRequestTableViewCell else { return UITableViewCell() }
+            if myOrdersS2.count != 0,
+                ridersS2.count != 0,
+                myOrdersS2.count == ridersS2.count{
+                
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: "orderRequestTableViewCell",
+                    for: indexPath) as? OrderRequestTableViewCell else { return UITableViewCell() }
+                
+                
+                let year = self.myOrdersS2[indexPath.row].selectTimeYear
+                
+                cell.requestName.text = ridersS2[indexPath.row].userName
+                
+                cell.requestTime.text = "\(year)/\(self.myOrdersS2[indexPath.row].selectTimeMonth)/\(self.myOrdersS2[indexPath.row].selectTimeDay) \(self.myOrdersS2[indexPath.row].selectTimeTime)"
+                
+                cell.requestLocation.text = "\(self.myOrdersS2[indexPath.row].locationFormattedAddress)"
+                
+                return cell
+            }
             
-            let year = self.myOrders[indexPath.row].selectTimeYear
-            cell.requestName.text = riders[indexPath.row].userName
-            cell.requestTime.text = "\(year)/\(self.myOrders[indexPath.row].selectTimeMonth)/\(self.myOrders[indexPath.row].selectTimeDay) \(self.myOrders[indexPath.row].selectTimeTime)"
-            cell.requestLocation.text = "\(self.myOrders[indexPath.row].locationFormattedAddress)"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "orderRequestPlaceholderTableViewCell") as? OrderRequestPlaceholderTableViewCell else { return UITableViewCell() }
             
             return cell
 
@@ -192,36 +276,78 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
                 withIdentifier: "orderRequestTableViewCell",
                 for: indexPath) as? OrderRequestTableViewCell else { return UITableViewCell() }
             
-            let year = self.myEvents[indexPath.row].selectTimeYear
-            cell.requestName.text = ridersIng[indexPath.row].userName
-            cell.requestTime.text = "\(year)/\(self.myEvents[indexPath.row].selectTimeMonth)/\(self.myEvents[indexPath.row].selectTimeDay) \(self.myEvents[indexPath.row].selectTimeTime)"
-            cell.requestLocation.text = "\(self.myEvents[indexPath.row].locationFormattedAddress)"
+            
+            let year = self.myOrdersS3[indexPath.row].selectTimeYear
+            cell.requestName.text = ridersS3[indexPath.row].userName
+            cell.requestTime.text = "\(year)/\(self.myOrdersS3[indexPath.row].selectTimeMonth)/\(self.myOrdersS3[indexPath.row].selectTimeDay) \(self.myOrdersS3[indexPath.row].selectTimeTime)"
+            cell.requestLocation.text = "\(self.myOrdersS3[indexPath.row].locationFormattedAddress)"
             
             return cell
             
         }
+        
+        
+        if indexPath.section == 2 {
+            
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "orderRequestTableViewCell",
+                for: indexPath) as? OrderRequestTableViewCell else { return UITableViewCell() }
+            
+            
+            let year = self.myOrdersS6[indexPath.row].selectTimeYear
+            cell.requestName.text = ridersS6[indexPath.row].userName
+            cell.requestTime.text = "\(year)/\(self.myOrdersS6[indexPath.row].selectTimeMonth)/\(self.myOrdersS6[indexPath.row].selectTimeDay) \(self.myOrdersS6[indexPath.row].selectTimeTime)"
+            cell.requestLocation.text = "\(self.myOrdersS6[indexPath.row].locationFormattedAddress)"
+            
+            return cell
+            
+        }
+        
         return UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            
+            if myOrdersS2.count != 0,
+                ridersS2.count != 0,
+                myOrdersS2.count == ridersS2.count{
+                
+                return 120
+            } else {
+                return 21
+            }
+        } else {
+            return 120
+        }
         
-        return 120
+        return CGFloat()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
             
-             self.selectedOrder = myOrders[indexPath.row]
-             self.selectedRider = riders[indexPath.row]
+             self.selectedOrder = myOrdersS2[indexPath.row]
+             self.selectedRider = ridersS2[indexPath.row]
              performSegue(withIdentifier: "toBeAnswered", sender: self)
             
         }
         
         if indexPath.section == 1 {
-            self.selectedOrder = myEvents[indexPath.row]
-            self.selectedRider = ridersIng[indexPath.row]
+            
+            self.selectedOrder = myOrdersS3[indexPath.row]
+            self.selectedRider = ridersS3[indexPath.row]
             performSegue(withIdentifier: "toDrivingView", sender: self)
+            
+        }
+        
+        if indexPath.section == 2 {
+            
+            self.selectedOrder = myOrdersS6[indexPath.row]
+            self.selectedRider = ridersS6[indexPath.row]
+            performSegue(withIdentifier: "toDrivingView", sender: self)
+            
         }
 
     }

@@ -13,10 +13,12 @@ class OrderMyRequestViewController: UIViewController {
     let personalDataManager = PersonalDataManager()
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
-    var myOrders = [OrderDetail]()
-    var myEvents = [OrderDetail]()
-    var drivers = [MyProfile]()
-    var driverIng = [MyProfile]()
+    var myOrdersS1 = [OrderDetail]()
+    var myOrdersS4 = [OrderDetail]()
+    var myOrdersS5 = [OrderDetail]()
+    var driversS1 = [MyProfile]()
+    var driverS4 = [MyProfile]()
+    var driverS5 = [MyProfile]()
     var selectedOrder: OrderDetail?
     var selectedDriver: MyProfile?
     
@@ -25,8 +27,6 @@ class OrderMyRequestViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        loadDataFromDB()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -55,36 +55,66 @@ class OrderMyRequestViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        self.myOrdersS1 = []
+        self.myOrdersS4 = []
+        self.myOrdersS5 = []
+        self.driversS1 = []
+        self.driverS4 = []
+        self.driverS5 = []
+        
         loadDataFromDB()
     }
     
     func loadDataFromDB() {
+        
         personalDataManager.getPersonalData { (myProfile, _) in
             self.myProfile = myProfile
+            
             self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 1, completionHandler: { (orders) in
-                self.myOrders = orders
+                
+                self.myOrdersS1 = orders
+                
                 for order in orders {
                     self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
-                        self.drivers.append(driver!)
+                        
+                        self.driversS1.append(driver!)
+                        
                         self.tableView.reloadData()
+                        
                     })
                 }
                 
             })
             
             self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 4, completionHandler: { (orders) in
-                self.myEvents = orders
+                self.myOrdersS4 = orders
+                for order in orders {
+                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
+                        
+                        self.driverS4.append(driver!)
+    
+                        self.tableView.reloadData()
+                        
+                    })
+                }
+                
+            })
+            
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 5, completionHandler: { (orders) in
+                self.myOrdersS5 = orders
                 
                 for order in orders {
                     self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
-                        self.driverIng.append(driver!)
-                        print(driver as Any)
+                        
+                        self.driverS5.append(driver!)
+                      
                         self.tableView.reloadData()
                         
                     })
                 }
             })
-            
         }
     }
 }
@@ -92,28 +122,50 @@ class OrderMyRequestViewController: UIViewController {
 extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+
         if section == 0 {
+
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
+
             cell.headerTxt.text = "  待回覆  "
+
             cell.backgroundColor = .white
+
             return cell
+
         }
-        
+
         if section == 1 {
-            
+
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
-            cell.headerTxt.text = "  進行中  "
+
+            cell.headerTxt.text = "  待接送  "
+
             cell.backgroundColor = .white
+
             return cell
+
         }
-        
+
+        if section == 2 {
+
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
+
+            cell.headerTxt.text = "  前往中  "
+
+            cell.backgroundColor = .white
+
+            return cell
+
+        }
+
         return UITableViewCell()
     }
 
@@ -124,17 +176,36 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             
-            if myOrders.count != 0, drivers.count != 0, myOrders.count == drivers.count {
-                return self.myOrders.count
+            if myOrdersS1.count != 0,
+                driversS1.count != 0,
+                myOrdersS1.count == driversS1.count {
+                
+                return self.myOrdersS1.count
+                
             }
+            
             return 0
             
         }
         
         if section == 1 {
-            if myEvents.count != 0, driverIng.count != 0, myEvents.count == driverIng.count {
+            
+            if myOrdersS4.count != 0, driverS4.count != 0, driverS4.count == myOrdersS4.count {
                 
-                return self.myEvents.count
+                return self.myOrdersS4.count
+                
+            } else {
+                
+                return 0
+            }
+        }
+        
+        if section == 2 {
+            
+            if myOrdersS5.count != 0, driverS5.count != 0, driverS5.count == myOrdersS5.count {
+                
+                return self.myOrdersS5.count
+                
             } else {
                 
                 return 0
@@ -152,30 +223,40 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
         
         if indexPath.section == 0 {
             
-            cell.driverName.text = self.drivers[indexPath.row].userName
-            
-            return cell
+            cell.driverName.text = self.driversS1[indexPath.row].userName
         }
         
         if indexPath.section == 1 {
-            cell.driverName.text = self.driverIng[indexPath.row].userName
+            
+            cell.driverName.text = self.driverS4[indexPath.row].userName
+            
         }
         
-        return UITableViewCell()
+        if indexPath.section == 2 {
+            
+            cell.driverName.text = self.driverS5[indexPath.row].userName
+            
+        }
+        
+        return cell
         
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 90
+        
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        
+        if indexPath.section == 2 {
            
-            self.selectedOrder = self.myEvents[indexPath.row]
-            self.selectedDriver = self.driverIng[indexPath.row]
+            self.selectedOrder = self.myOrdersS5[indexPath.row]
+            self.selectedDriver = self.driverS5[indexPath.row]
             
              performSegue(withIdentifier: "toMyOrderDetail", sender: self)
+            
         }
     }
 

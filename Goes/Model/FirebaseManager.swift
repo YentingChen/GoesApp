@@ -288,7 +288,8 @@ class FireBaseManager {
                     driverLat: order.driverLat,
                     driverLag: order.driverLag,
                     riderLat: order.riderLat,
-                    riderLag: order.riderLag)
+                    riderLag: order.riderLag,
+                    setOff: order.setOff)
         
                 completionHandler(self.userOrder)
                 
@@ -304,6 +305,15 @@ class FireBaseManager {
         db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":4])
         
         completionHandler()
+        
+    }
+    
+    func orderSetOff(myUid: String, friendUid: String, orderID: String, completionHandler: @escaping () -> Void ) {
+        
+        db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status":6])
+        
+        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":5])
+        db.collection("orders").document(orderID).updateData(["setOff":true])
         
     }
     
@@ -360,7 +370,8 @@ class FireBaseManager {
                     driverLat: order.driverLat,
                     driverLag: order.driverLag,
                     riderLat: order.riderLat,
-                    riderLag: order.riderLag)
+                    riderLag: order.riderLag,
+                    setOff: order.setOff)
                 
                completionHandler(self.userOrder)
                 

@@ -16,6 +16,7 @@ import Alamofire
 class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate {
 
     
+    @IBOutlet weak var estimateTimeLabel: UILabel!
     @IBOutlet weak var googleMap: GMSMapView!
     @IBOutlet weak var riderName: UILabel!
     @IBOutlet weak var locationAddress: UILabel!
@@ -30,6 +31,7 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
     var myProfile: MyProfile?
     var order: OrderDetail?
     var rider: MyProfile?
+    var myLocation: CLLocationCoordinate2D?
 
     @IBAction func cancelOrder(_ sender: Any) {
         
@@ -38,10 +40,13 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
         friendUid: (self.rider?.userID)!,
         orderID: (self.order?.orderID)!) {
             
-            self.orderRequestVC?.myOrders = []
-            self.orderRequestVC?.riders = []
-            self.orderRequestVC?.myEvents = []
-            self.orderRequestVC?.ridersIng = []
+            self.orderRequestVC?.myOrdersS2 = []
+            self.orderRequestVC?.ridersS2 = []
+            self.orderRequestVC?.myOrdersS3 = []
+            self.orderRequestVC?.ridersS3 = []
+            self.orderRequestVC?.myOrdersS6 = []
+            self.orderRequestVC?.ridersS6 = []
+            
             self.orderRequestVC?.loadDataFromDB()
             
             self.navigationController?.popViewController(animated: true)
@@ -59,11 +64,12 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
                 orderID: (self.order?.orderID)!,
                 completionHandler: {
                 
-                self.orderRequestVC?.myOrders = []
-                self.orderRequestVC?.riders = []
-                self.orderRequestVC?.myEvents = []
-                self.orderRequestVC?.ridersIng = []
-                self.orderRequestVC?.loadDataFromDB()
+                    self.orderRequestVC?.myOrdersS2 = []
+                    self.orderRequestVC?.ridersS2 = []
+                    self.orderRequestVC?.myOrdersS3 = []
+                    self.orderRequestVC?.ridersS3 = []
+                    self.orderRequestVC?.myOrdersS6 = []
+                    self.orderRequestVC?.ridersS6 = []
                
                 self.navigationController?.popViewController(animated: true)
             })
@@ -120,7 +126,43 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
         self.arrivingTime.text = "\(year)-\(month)-\(day) \(time)"
         
         self.locationAddress.text = order?.locationFormattedAddress
-       
+        
+    }
+    
+    func drawPath(location: CLLocation) {
+        
+        let position = CLLocationCoordinate2D(latitude: (order?.selectedLat)!, longitude: (order?.selectedLng)!)
+        let marker = GMSMarker(position: position)
+        marker.icon = UIImage(named: "Images_60x_Rider_Normal")
+        marker.map = self.googleMap
+        
+        let origin = "\(self.order!.selectedLat),\(self.order!.selectedLng)"
+        let destination = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
+        
+        Alamofire.request(url).responseJSON { response in
+            
+            do {
+                let json = try JSON(data: response.data!)
+                let routes = json["routes"].arrayValue
+                let timeTxt = json["routes"][0]["legs"][0]["duration"]["text"].stringValue
+                self.estimateTimeLabel.text = "預計: \(timeTxt)"
+                
+                for route in routes {
+                    let routeOverviewPolyline = route["overview_polyline"].dictionary
+                    let points = routeOverviewPolyline?["points"]?.stringValue
+                    let path = GMSPath.init(fromEncodedPath: points!)
+                    let polyline = GMSPolyline.init(path: path)
+                    polyline.map = self.googleMap
+                    polyline.strokeColor = #colorLiteral(red: 0.6, green: 0.1960784314, blue: 0.2352941176, alpha: 1)
+                    polyline.strokeWidth = 6
+                }
+                
+            } catch {
+                print("ERROR: not working")
+            }
+        }
+        
     }
 
 }
@@ -142,40 +184,24 @@ extension OrderAnswerRequestViewController: CLLocationManagerDelegate {
         guard let location = locations.first else { return }
         
         googleMap.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-//        drawPath(location: location)
         
         locationManager.stopUpdatingLocation()
         
+        var region = GMSVisibleRegion()
+        
+        region.nearLeft = CLLocationCoordinate2DMake((self.order?.selectedLat)!, (self.order?.selectedLng)!)
+        
+        region.farRight = location.coordinate
+        
+        let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
+        
+        let camera = googleMap!.camera(for: bounds, insets:UIEdgeInsets(top: 36, left: 18 , bottom: 100,  right: 18 ))
+        googleMap!.camera = camera!
+        
+        drawPath(location: location)
+        
     }
     
-    func drawPath(location: CLLocation) {
-        
-        let origin = "\(self.order!.selectedLat),\(self.order!.selectedLng)"
-        let destination = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
-
-        Alamofire.request(url).responseJSON { response in
-        
-            do {
-                let json = try JSON(data: response.data!)
-                let routes = json["routes"].arrayValue
-                
-                for route in routes {
-                    let routeOverviewPolyline = route["overview_polyline"].dictionary
-                    let points = routeOverviewPolyline?["points"]?.stringValue
-                    let path = GMSPath.init(fromEncodedPath: points!)
-                    let polyline = GMSPolyline.init(path: path)
-                    polyline.map = self.googleMap
-                    polyline.strokeColor = UIColor.G1!
-                    polyline.strokeWidth = 3
-                }
-                
-            } catch {
-                print("ERROR: not working")
-            }
-        }
-        
-    }
 }
 
 extension OrderAnswerRequestViewController: GMSMapViewDelegate {
