@@ -64,10 +64,31 @@ class OrderDrivingViewController: UIViewController {
         self.riderName.text = self.rider?.userName
         
         updateDriverLocation()
+        
+        self.fireBaseManager.listenDriverLocation(orderID: (self.order?.orderID)!) { (order) in
+            if let order = order, order.setOff == 2 {
+                
+                let alertController = UIAlertController(title: "接送成功",
+                                                        message: "您已接送成功", preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(
+                    title: "確定",
+                    style: .default,
+                    handler: { (action) in
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "Goes")
+                        self.present(vc, animated: true, completion: nil)
+                })
+                
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+                
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if let isSetOff = order?.setOff, isSetOff {
+        if let isSetOff = order?.setOff, isSetOff == 1 {
             self.grayView.isHidden = true
         } else {
             self.grayView.isHidden = false

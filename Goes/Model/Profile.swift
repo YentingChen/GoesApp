@@ -103,7 +103,7 @@ struct OrderFromDB {
     var driverLag: Double
     var riderLat: Double
     var riderLag: Double
-    var setOff: Bool
+    var setOff: Int
     
     init(dictionary: [String: Any]) {
         
@@ -124,7 +124,7 @@ struct OrderFromDB {
         self.driverLat = Double(dictionary["driverLat"] as? NSNumber ?? 0)
         self.riderLag = Double(dictionary["riderLag"] as? NSNumber ?? 0)
         self.riderLat = Double(dictionary["riderLat"] as? NSNumber ?? 0)
-        self.setOff = dictionary["setOff"] as? Bool ?? false
+        self.setOff = Int(dictionary["setOff"] as? NSNumber ?? 0)
 
     }
 }
@@ -148,6 +148,6 @@ struct OrderDetail {
     var driverLag: Double
     var riderLat: Double
     var riderLag: Double
-    var setOff: Bool
+    var setOff: Int
     
 }

@@ -63,6 +63,7 @@ class OrderMyRequestViewController: UIViewController {
         self.driversS1 = []
         self.driverS4 = []
         self.driverS5 = []
+        tableView.reloadData()
         
         loadDataFromDB()
     }

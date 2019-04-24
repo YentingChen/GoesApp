@@ -61,6 +61,7 @@
 		3E70852F226F1903006002CB /* animation-w300-h300-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852E226F1902006002CB /* animation-w300-h300-2.json */; };
 		3E77D85B227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D859227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift */; };
 		3E77D85C227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E77D85A227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib */; };
+		3E77D85E22709FFC0080CE6F /* 5184-success.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E77D85D22709FFC0080CE6F /* 5184-success.json */; };
 		3E7B6E072259225500646724 /* ProfilePersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */; };
 		3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */; };
 		3E7B6E0B2259229B00646724 /* ProfilePersonalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */; };
@@ -147,6 +148,7 @@
 		3E70852E226F1902006002CB /* animation-w300-h300-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-w300-h300-2.json"; sourceTree = "<group>"; };
 		3E77D859227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequestPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		3E77D85A227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderRequestPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
+		3E77D85D22709FFC0080CE6F /* 5184-success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "5184-success.json"; sourceTree = "<group>"; };
 		3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalDataViewController.swift; sourceTree = "<group>"; };
 		3E7B6E082259229B00646724 /* ProfilePersonalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersonalTableViewCell.swift; sourceTree = "<group>"; };
 		3E7B6E092259229B00646724 /* ProfilePersonalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePersonalTableViewCell.xib; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				3E70852C226F17D0006002CB /* animation-w300-h300.json */,
 				3E70852E226F1902006002CB /* animation-w300-h300-2.json */,
 				3E70852A226F127B006002CB /* 4966-onboarding-car.json */,
+				3E77D85D22709FFC0080CE6F /* 5184-success.json */,
 				3E609F5B22535AE40031CF81 /* Assets.xcassets */,
 				3E609F69225366FD0031CF81 /* Extension */,
 				3E609F6B2253672C0031CF81 /* Base */,
@@ -509,6 +512,7 @@
 				3E4593602258565900073210 /* Order.storyboard in Resources */,
 				3E23588622588B1D004182F0 /* FriendMenuCollectionViewCell.xib in Resources */,
 				3E5ADFF3225F0B0F0003B241 /* GoogleService-Info.plist in Resources */,
+				3E77D85E22709FFC0080CE6F /* 5184-success.json in Resources */,
 				3E5ADFF5225F11610003B241 /* Auth.storyboard in Resources */,
 				3E7B6E0B2259229B00646724 /* ProfilePersonalTableViewCell.xib in Resources */,
 				3E77D85C227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib in Resources */,

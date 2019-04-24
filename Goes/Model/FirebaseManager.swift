@@ -313,7 +313,7 @@ class FireBaseManager {
         db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status":6])
         
         db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":5])
-        db.collection("orders").document(orderID).updateData(["setOff":true])
+        db.collection("orders").document(orderID).updateData(["setOff":1])
         
     }
     

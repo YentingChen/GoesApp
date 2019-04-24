@@ -208,8 +208,7 @@ extension OrderAnswerRequestViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         
-        self.googleMap.padding = UIEdgeInsets(top: 0, left: 0,
-                                            bottom: 0, right: 0)
+        self.googleMap.padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
     }
     
