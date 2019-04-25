@@ -49,6 +49,7 @@ class OrderMyRequestViewController: UIViewController {
                 destination.orderMyRequestVC = self
                 destination.myProfile = self.myProfile
                 destination.order = self.selectedOrder
+                destination.driver = self.selectedDriver
                 
             }
         }
@@ -133,7 +134,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
 
-            cell.headerTxt.text = "  待回覆  "
+            cell.titleLabel.text = "待回覆"
 
             cell.backgroundColor = .white
 
@@ -146,7 +147,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
 
-            cell.headerTxt.text = "  待接送  "
+            cell.titleLabel.text = "待接送"
 
             cell.backgroundColor = .white
 
@@ -159,7 +160,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
 
-            cell.headerTxt.text = "  前往中  "
+            cell.titleLabel.text = "前往中"
 
             cell.backgroundColor = .white
 
@@ -171,7 +172,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 23
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

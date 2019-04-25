@@ -90,8 +90,11 @@ class OrderDrivingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let isSetOff = order?.setOff, isSetOff == 1 {
             self.grayView.isHidden = true
+            self.isSettingOff = true
+
         } else {
             self.grayView.isHidden = false
+            self.isSettingOff = false
         }
 
     }
@@ -132,6 +135,25 @@ extension OrderDrivingViewController: CLLocationManagerDelegate {
         mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         
         if isSettingOff {
+            
+            self.mapView.clear()
+            
+            let position = CLLocationCoordinate2D(latitude: (order?.selectedLat)!, longitude: (order?.selectedLng)!)
+            let marker = GMSMarker(position: position)
+            marker.icon = UIImage(named: "Images_60x_Rider_Normal")
+            marker.map = self.mapView
+            
+            var region = GMSVisibleRegion()
+            
+            region.nearLeft = CLLocationCoordinate2DMake((self.order?.selectedLat)!, (self.order?.selectedLng)!)
+            
+            region.farRight = location.coordinate
+            
+            let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
+            
+            let camera = mapView!.camera(for: bounds, insets:UIEdgeInsets(top: 36, left: 18 , bottom: 100,  right: 18 ))
+            mapView!.camera = camera!
+
             
             self.updateLat = Double(location.coordinate.latitude)
             self.updateLag = Double(location.coordinate.longitude)

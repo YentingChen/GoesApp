@@ -26,7 +26,7 @@ class OrderRidingViewController: UIViewController {
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var order: OrderDetail?
-    var rider: MyProfile?
+    var driver: MyProfile?
     var driverFirstLocation: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
@@ -94,6 +94,13 @@ class OrderRidingViewController: UIViewController {
         if sender.state == .ended {
            animationView.stop()
             print("ok")
+           
+                self.fireBaseManager.orderComplete(myUid: self.myProfile?.userID ?? "" , friendUid: self.driver?.userID ?? "", orderID: self.order?.orderID ?? "", completionHandler: {
+                    print("driver arrive")
+                })
+            
+            
+        
         }
         
         

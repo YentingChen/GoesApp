@@ -313,8 +313,9 @@ extension LobbyTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         } else {
             
             if change == 0 {
+                if todayArray.count == 0 { return }
                 
-                 time = todayArray[pickerView.selectedRow(inComponent: 1)]
+                time = todayArray[pickerView.selectedRow(inComponent: 1)]
                 
                 laterLabel.text = "今天的 \(time)"
                 
@@ -326,6 +327,7 @@ extension LobbyTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 
             } else {
                 
+                if tomorrowArray.count == 0 { return }
                 time = tomorrowArray[pickerView.selectedRow(inComponent: 1)]
                 
                 laterLabel.text = "明天的 \(time)"

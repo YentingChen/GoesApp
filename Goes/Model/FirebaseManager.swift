@@ -324,6 +324,15 @@ class FireBaseManager {
         completionHandler()
     }
     
+    func orderComplete(myUid: String, friendUid: String, orderID: String, completionHandler: @escaping () -> Void) {
+        
+        db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status":7])
+        
+        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":7])
+        db.collection("orders").document(orderID).updateData(["setOff":2])
+        
+    }
+    
     func updateDriverLocation(orderID: String, lat: Double, lag: Double ) {
         db.collection("orders").document(orderID).updateData(["driverLat":lat, "driverLag":lag])
        
