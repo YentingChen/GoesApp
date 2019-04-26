@@ -49,6 +49,15 @@ class OrderDrivingViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var arrivingAddress: UILabel!
     
+    @IBAction func callBtn(_ sender: Any) {
+        guard let riderPhone = rider?.phoneNumber else {
+            return
+        }
+        guard let number = URL(string: "tel://" + "\(riderPhone)") else {
+            return
+        }
+        UIApplication.shared.open(number)
+    }
     @IBAction func startDriving(_ sender: Any) {
         
         self.grayView.isHidden = true

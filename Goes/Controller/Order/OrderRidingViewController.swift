@@ -133,6 +133,15 @@ class OrderRidingViewController: UIViewController {
         self.completeTime = Int(now.timeIntervalSince1970)
         
     }
+    @IBAction func callBtn(_ sender: Any) {
+        guard let riderPhone = driver?.phoneNumber else {
+            return
+        }
+        guard let number = URL(string: "tel://" + "\(riderPhone)") else {
+            return
+        }
+        UIApplication.shared.open(number)
+    }
     
     @objc func longPressAction(_ sender: UIGestureRecognizer) {
         

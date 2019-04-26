@@ -18,6 +18,7 @@ class FriendInviteViewController: UIViewController {
     var db = Firestore.firestore()
 
      func loadDataFromDB() {
+        
         personalDataManager.getPersonalData { [weak self] (myProfile, error) in
             self?.myProfile = myProfile
             self?.fireBaseManager.querymyFriends(myUid: (self?.myProfile?.userID)!, status: 2, completionHandler: { (friendInfos) in
@@ -29,6 +30,7 @@ class FriendInviteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadDataFromDB()
 
         tableView.delegate = self

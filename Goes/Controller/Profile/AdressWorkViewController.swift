@@ -67,8 +67,8 @@ extension AdressWorkViewController: GMSAutocompleteResultsViewControllerDelegate
                     myUid: (self.myProfile?.userID)!,
                     category: "work",
                     placeName: (place.name)!,
-                    placeLng: Double(place.coordinate.latitude),
-                    placeLat: Double(place.coordinate.longitude),
+                    placeLng: Double(place.coordinate.longitude),
+                    placeLat: Double(place.coordinate.latitude),
                     placeID: place.placeID!,
                     placeformattedAddress: place.formattedAddress!) {
                         

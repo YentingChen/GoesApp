@@ -28,6 +28,17 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
     
     @IBOutlet weak var slideButtonView: UIView!
     
+    @IBAction func callBtn(_ sender: Any) {
+        
+        guard let riderPhone = rider?.phoneNumber else {
+            return
+        }
+        guard let number = URL(string: "tel://" + "\(riderPhone)") else {
+            return
+        }
+        UIApplication.shared.open(number)
+    }
+    
     private let locationManager = CLLocationManager()
     var orderRequestVC: OrderRequestViewController?
     let personalDataManager = PersonalDataManager()
@@ -118,12 +129,7 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
 
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-//
-//        let year = order!.selectTimeYear
-//        let month = order!.selectTimeMonth
-//        let day = order!.selectTimeDay
-//        let time = order!.selectTimeTime
-
+        
         self.slideButtonView.addSubview(slideToOpen)
         self.riderName.text = self.rider?.userName
         
@@ -150,16 +156,32 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
                 return "\(year)/\(month)/\(day)   \(time)"
         }
     
-    func drawPath(location: CLLocation) {
+    func drawPath(location: CLLocationCoordinate2D) {
         
-        let position = CLLocationCoordinate2D(latitude: (order?.selectedLat)!, longitude: (order?.selectedLng)!)
-        let marker = GMSMarker(position: position)
+        let origin = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        
+        let destination = CLLocationCoordinate2D(latitude: self.order!.selectedLat, longitude: self.order!.selectedLng)
+        
+        var region = GMSVisibleRegion()
+        
+        region.nearLeft = destination
+        
+        region.farRight = origin
+        
+        let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
+        
+        guard let camera = googleMap.camera(for: bounds, insets: UIEdgeInsets(top: 50, left: 100 , bottom: 50,  right: 100 )) else { return }
+        
+        self.googleMap.camera = camera
+        
+        let marker = GMSMarker(position: destination)
         marker.icon = UIImage(named: "Images_60x_Rider_Normal")
         marker.map = self.googleMap
+        let originCoordinate = "\(origin.latitude),\(origin.longitude)"
+        let destinationCoordinate = "\(destination.latitude),\(destination.longitude)"
         
-        let origin = "\(self.order!.selectedLat),\(self.order!.selectedLng)"
-        let destination = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(originCoordinate)&destination=\(destinationCoordinate)&mode=driving&key=AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
+        print(url)
         
         Alamofire.request(url).responseJSON { response in
             
@@ -206,22 +228,10 @@ extension OrderAnswerRequestViewController: CLLocationManagerDelegate {
         guard let location = locations.first else { return }
         
         googleMap.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-        
+    
         locationManager.stopUpdatingLocation()
         
-        var region = GMSVisibleRegion()
-        
-        region.nearLeft = CLLocationCoordinate2DMake((self.order?.selectedLat)!, (self.order?.selectedLng)!)
-        
-        region.farRight = location.coordinate
-        
-        let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
-        
-        let camera = googleMap!.camera(for: bounds, insets:UIEdgeInsets(top: 50, left: 100 , bottom: 50,  right: 100 ))
-        
-        googleMap!.camera = camera!
-        
-        drawPath(location: location)
+        drawPath(location: location.coordinate)
         
     }
     
