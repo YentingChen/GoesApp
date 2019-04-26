@@ -11,6 +11,7 @@ import UIKit
 class OrderMyRequestTableViewCell: UITableViewCell {
     @IBOutlet weak var driverName: UILabel!
     
+    @IBOutlet weak var moreInfoImageVIew: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

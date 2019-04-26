@@ -21,8 +21,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前無資料" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYO-o3-Tlg">
-                        <rect key="frame" x="116.5" y="9.5" width="87" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="16" y="11.5" width="71.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="B3"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -30,7 +30,7 @@
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="xYO-o3-Tlg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MWh-IQ-MwE"/>
-                    <constraint firstItem="xYO-o3-Tlg" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="iAR-UK-7Ou"/>
+                    <constraint firstItem="xYO-o3-Tlg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="jxZ-Zp-HuG"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

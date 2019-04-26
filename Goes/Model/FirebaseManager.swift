@@ -289,8 +289,12 @@ class FireBaseManager {
                     driverLag: order.driverLag,
                     riderLat: order.riderLat,
                     riderLag: order.riderLag,
-                    setOff: order.setOff)
-        
+                    setOff: order.setOff,
+                    driverStartLat: order.driverStartLat,
+                    driverStartLag: order.driverStartLag,
+                    driverStartTime: order.driverStartTime,
+                    completeTime: order.completeTime)
+                
                 completionHandler(self.userOrder)
                 
             } else {
@@ -301,40 +305,54 @@ class FireBaseManager {
     }
     
     func orderDeal(myUid: String, friendUid: String, orderID: String, completionHandler: @escaping () -> Void ) {
-        db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status":3])
-        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":4])
+        db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status": 3])
+        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status": 4])
         
         completionHandler()
         
     }
     
-    func orderSetOff(myUid: String, friendUid: String, orderID: String, completionHandler: @escaping () -> Void ) {
+    func orderSetOff(myUid: String,
+                     friendUid: String,
+                     orderID: String,
+                     driverStartAt:Int,
+                     startLat: Double,
+                     startLag: Double,
+                     completionHandler: @escaping ()
+        -> Void ) {
         
-        db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status":6])
+    db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status": 6])
+    db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status": 5])
         
-        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":5])
-        db.collection("orders").document(orderID).updateData(["setOff":1])
+        db.collection("orders").document(orderID).updateData(["setOff": 1])
+        
+        db.collection("orders").document(orderID).updateData(["driver_start_time": driverStartAt])
+        
+        db.collection("orders").document(orderID).updateData(["driver_start_Lat":startLat, "driver_start_lag": startLag])
         
     }
     
     func orderCancel(myUid: String, friendUid: String, orderID: String, completionHandler: @escaping () -> Void ) {
-        db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status":0])
-        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":0])
+        db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status": 0])
+        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status": 0])
         
         completionHandler()
     }
     
-    func orderComplete(myUid: String, friendUid: String, orderID: String, completionHandler: @escaping () -> Void) {
+    func orderComplete(myUid: String, friendUid: String, orderID: String, completeTime: Int, completionHandler: @escaping () -> Void) {
         
-        db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status":7])
+        db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status": 7])
         
-        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status":7])
-        db.collection("orders").document(orderID).updateData(["setOff":2])
+        db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status": 7])
+        
+        db.collection("orders").document(orderID).updateData(["setOff": 2])
+        db.collection("orders").document(orderID).updateData(["complete_time": completeTime])
         
     }
     
-    func updateDriverLocation(orderID: String, lat: Double, lag: Double ) {
-        db.collection("orders").document(orderID).updateData(["driverLat":lat, "driverLag":lag])
+    func updateDriverLocation(orderID: String, lat: Double, lag: Double) {
+        
+        db.collection("orders").document(orderID).updateData(["driverLat":lat, "driverLag": lag])
        
     }
     
@@ -380,7 +398,11 @@ class FireBaseManager {
                     driverLag: order.driverLag,
                     riderLat: order.riderLat,
                     riderLag: order.riderLag,
-                    setOff: order.setOff)
+                    setOff: order.setOff,
+                    driverStartLat: order.driverStartLat,
+                    driverStartLag: order.driverStartLag,
+                    driverStartTime: order.driverStartTime,
+                    completeTime: order.completeTime)
                 
                completionHandler(self.userOrder)
                 

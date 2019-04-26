@@ -104,6 +104,10 @@ struct OrderFromDB {
     var riderLat: Double
     var riderLag: Double
     var setOff: Int
+    var driverStartLat: Double
+    var driverStartLag: Double
+    var driverStartTime: Int
+    var completeTime: Int
     
     init(dictionary: [String: Any]) {
         
@@ -125,7 +129,10 @@ struct OrderFromDB {
         self.riderLag = Double(dictionary["riderLag"] as? NSNumber ?? 0)
         self.riderLat = Double(dictionary["riderLat"] as? NSNumber ?? 0)
         self.setOff = Int(dictionary["setOff"] as? NSNumber ?? 0)
-
+        self.driverStartLat = Double(dictionary["driver_start_Lat"] as? NSNumber ?? 0)
+        self.driverStartLag = Double(dictionary["driver_start_lag"] as? NSNumber ?? 0)
+        self.driverStartTime = Int(dictionary["driver_start_time"] as? NSNumber ?? 0)
+        self.completeTime = Int(dictionary["complete_time"] as? NSNumber ?? 0)
     }
 }
 
@@ -138,7 +145,7 @@ struct OrderDetail {
     var selectedLng: Double
     var locationName: String
     var locationPlaceID: String
-    var selectTimeDate : Int
+    var selectTimeDate: Int
     var selectTimeDay: Int
     var selectTimeYear: Int
     var selectTimeMonth: Int
@@ -149,5 +156,9 @@ struct OrderDetail {
     var riderLat: Double
     var riderLag: Double
     var setOff: Int
+    var driverStartLat: Double
+    var driverStartLag: Double
+    var driverStartTime: Int
+    var completeTime: Int
     
 }

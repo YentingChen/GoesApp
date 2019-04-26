@@ -14,8 +14,12 @@ import SwiftyJSON
 import Alamofire
 
 class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate {
-
     
+    @IBOutlet weak var timeBackgroundView: UIView!{
+        didSet {
+            self.timeBackgroundView.roundCorners(20)
+        }
+    }
     @IBOutlet weak var estimateTimeLabel: UILabel!
     @IBOutlet weak var googleMap: GMSMapView!
     @IBOutlet weak var riderName: UILabel!
@@ -114,20 +118,37 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
 
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        
-        let year = order!.selectTimeYear
-        let month = order!.selectTimeMonth
-        let day = order!.selectTimeDay
-        let time = order!.selectTimeTime
+//
+//        let year = order!.selectTimeYear
+//        let month = order!.selectTimeMonth
+//        let day = order!.selectTimeDay
+//        let time = order!.selectTimeTime
 
         self.slideButtonView.addSubview(slideToOpen)
         self.riderName.text = self.rider?.userName
         
-        self.arrivingTime.text = "\(year)-\(month)-\(day) \(time)"
-        
-        self.locationAddress.text = order?.locationFormattedAddress
+        guard let order = self.order else { return }
+        self.arrivingTime.text = produceTime(orders: order)
+
+        self.locationAddress.text = order.locationFormattedAddress
         
     }
+    
+        func produceTime(orders:OrderDetail)
+            -> String {
+    
+                let year = orders.selectTimeYear
+                let month = { () -> String in
+                    if orders.selectTimeMonth < 10 {
+                        return "0\(orders.selectTimeMonth)"
+                    } else {
+                        return "\(orders.selectTimeMonth)"
+                    }
+                }()
+                let day = orders.selectTimeDay
+                let time = orders.selectTimeTime
+                return "\(year)/\(month)/\(day)   \(time)"
+        }
     
     func drawPath(location: CLLocation) {
         
@@ -146,7 +167,7 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
                 let json = try JSON(data: response.data!)
                 let routes = json["routes"].arrayValue
                 let timeTxt = json["routes"][0]["legs"][0]["duration"]["text"].stringValue
-                self.estimateTimeLabel.text = "預計: \(timeTxt)"
+                self.estimateTimeLabel.text = "開車預計: \(timeTxt)"
                 
                 for route in routes {
                     let routeOverviewPolyline = route["overview_polyline"].dictionary
@@ -181,6 +202,7 @@ extension OrderAnswerRequestViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         guard let location = locations.first else { return }
         
         googleMap.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
@@ -195,7 +217,8 @@ extension OrderAnswerRequestViewController: CLLocationManagerDelegate {
         
         let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
         
-        let camera = googleMap!.camera(for: bounds, insets:UIEdgeInsets(top: 36, left: 18 , bottom: 100,  right: 18 ))
+        let camera = googleMap!.camera(for: bounds, insets:UIEdgeInsets(top: 50, left: 100 , bottom: 50,  right: 100 ))
+        
         googleMap!.camera = camera!
         
         drawPath(location: location)

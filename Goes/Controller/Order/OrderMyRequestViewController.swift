@@ -30,6 +30,8 @@ class OrderMyRequestViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
+        
         tableView.register(
             UINib(nibName: "OrderMyRequestTableViewCell",
                   bundle: nil),
@@ -39,6 +41,11 @@ class OrderMyRequestViewController: UIViewController {
             UINib(nibName: "OrderRequestHeaderTableViewCell",
                   bundle: nil),
             forCellReuseIdentifier: "orderRequestHeaderTableViewCell")
+        
+        tableView.register(
+            UINib(nibName: "OrderRequestPlaceholderTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "orderRequestPlaceholderTableViewCell")
 
     }
     
@@ -58,6 +65,7 @@ class OrderMyRequestViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
         self.myOrdersS1 = []
         self.myOrdersS4 = []
         self.myOrdersS5 = []
@@ -128,50 +136,34 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
+         cell.backgroundColor = .white
 
         if section == 0 {
-
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
-
+            
             cell.titleLabel.text = "待回覆"
-
-            cell.backgroundColor = .white
-
-            return cell
-
+    
         }
 
         if section == 1 {
 
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
-
             cell.titleLabel.text = "待接送"
-
-            cell.backgroundColor = .white
-
-            return cell
 
         }
 
         if section == 2 {
 
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
-
             cell.titleLabel.text = "前往中"
-
-            cell.backgroundColor = .white
-
-            return cell
 
         }
 
-        return UITableViewCell()
+        return cell
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
         return 23
     }
 
@@ -186,67 +178,162 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                 
             }
             
-            return 0
+            return 1
             
         }
         
         if section == 1 {
             
-            if myOrdersS4.count != 0, driverS4.count != 0, driverS4.count == myOrdersS4.count {
+            if myOrdersS4.count != 0,
+                driverS4.count != 0,
+                driverS4.count == myOrdersS4.count {
                 
                 return self.myOrdersS4.count
                 
             } else {
                 
-                return 0
+                return 1
             }
         }
         
         if section == 2 {
             
-            if myOrdersS5.count != 0, driverS5.count != 0, driverS5.count == myOrdersS5.count {
+            if myOrdersS5.count != 0,
+                driverS5.count != 0,
+                driverS5.count == myOrdersS5.count {
                 
                 return self.myOrdersS5.count
                 
             } else {
                 
-                return 0
+                return 1
             }
         }
         
         return Int()
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "orderMyRequestTableViewCell", for: indexPath) as? OrderMyRequestTableViewCell else {
-            return UITableViewCell()
-        }
-        
         if indexPath.section == 0 {
+            if myOrdersS1.count != 0,
+                driversS1.count != 0,
+                myOrdersS1.count == driversS1.count {
+                
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: "orderMyRequestTableViewCell",
+                    for: indexPath) as? OrderMyRequestTableViewCell else {
+                    return UITableViewCell()
+                }
+                
+                cell.driverName.text = self.driversS1[indexPath.row].userName
+                cell.moreInfoImageVIew.isHidden = true
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                return cell
+                
+            }
             
-            cell.driverName.text = self.driversS1[indexPath.row].userName
         }
         
         if indexPath.section == 1 {
             
-            cell.driverName.text = self.driverS4[indexPath.row].userName
+           
+                if myOrdersS4.count != 0,
+                    driverS4.count != 0,
+                    myOrdersS4.count == driverS4.count {
+                    
+                    guard let cell = tableView.dequeueReusableCell(
+                        withIdentifier: "orderMyRequestTableViewCell",
+                        for: indexPath) as? OrderMyRequestTableViewCell else {
+                        return UITableViewCell()
+                        
+                    }
+                    
+                    cell.driverName.text = self.driverS4[indexPath.row].userName
+                    cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                    cell.moreInfoImageVIew.isHidden = true
+                    return cell
+                    
+            }
             
         }
         
         if indexPath.section == 2 {
-            
-            cell.driverName.text = self.driverS5[indexPath.row].userName
+        
+                if myOrdersS5.count != 0,
+                    driverS5.count != 0,
+                    myOrdersS5.count == driverS5.count {
+                    
+                    guard let cell = tableView.dequeueReusableCell(
+                        withIdentifier: "orderMyRequestTableViewCell",
+                        for: indexPath) as? OrderMyRequestTableViewCell else {
+                        return UITableViewCell()
+                        
+                    }
+                    cell.driverName.text = self.driverS5[indexPath.row].userName
+                    cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                    return cell
+                
+            }
             
         }
         
-        return cell
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "orderRequestPlaceholderTableViewCell") as? OrderRequestPlaceholderTableViewCell else {
+                return UITableViewCell()
+        }
         
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        
+        return cell
+    
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 90
+        if indexPath.section == 0 {
+            
+            if myOrdersS1.count != 0,
+                driversS1.count != 0,
+                myOrdersS1.count == driversS1.count {
+                
+                return 100
+                
+            } else {
+                
+                return 40
+            }
+        }
+        
+        if indexPath.section == 1 {
+            
+            if myOrdersS4.count != 0,
+                driverS4.count != 0,
+                myOrdersS4.count == driverS4.count {
+                
+                return 100
+                
+            } else {
+                
+                return 40
+            }
+        }
+        
+        if indexPath.section == 2 {
+            
+            if myOrdersS5.count != 0,
+                driverS5.count != 0,
+                myOrdersS5.count == driverS5.count {
+                
+                return 100
+                
+            } else {
+                
+                return 40
+            }
+        }
+        
+        return CGFloat()
         
     }
 

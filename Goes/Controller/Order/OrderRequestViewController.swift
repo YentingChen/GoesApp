@@ -31,16 +31,17 @@ class OrderRequestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        activityIndicator = UIActivityIndicatorView(style:
-            UIActivityIndicatorView.Style.gray)
-        activityIndicator.center=self.view.center
-        self.view.addSubview(activityIndicator)
        
+        tableViewSetting()
+
+    }
+    
+    fileprivate func tableViewSetting() {
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-
+        
         tableView.register(
             UINib(nibName: "OrderRequestTableViewCell",
                   bundle: nil),
@@ -55,10 +56,10 @@ class OrderRequestViewController: UIViewController {
             UINib(nibName: "OrderRequestPlaceholderTableViewCell",
                   bundle: nil),
             forCellReuseIdentifier: "orderRequestPlaceholderTableViewCell")
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "toBeAnswered" {
             
             if let destination = segue.destination as? OrderAnswerRequestViewController {
@@ -99,6 +100,7 @@ class OrderRequestViewController: UIViewController {
     
     func produceTime(orders:[OrderDetail], number: Int)
     -> String {
+        
         let year = orders[number].selectTimeYear
         let month = { () -> String in
             if orders[number].selectTimeMonth < 10 {
@@ -227,7 +229,7 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
                 
                 if myOrdersS2.count != 0,
                     ridersS2.count != 0,
-                    myOrdersS2.count == ridersS2.count{
+                    myOrdersS2.count == ridersS2.count {
                     
                     return self.myOrdersS2.count
                 }
@@ -240,7 +242,7 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
                 
                 if myOrdersS3.count != 0,
                     ridersS3.count != 0,
-                    myOrdersS3.count == ridersS3.count{
+                    myOrdersS3.count == ridersS3.count {
                     
                     return self.myOrdersS3.count
                     
@@ -254,7 +256,7 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
             
             if myOrdersS6.count != 0,
                 ridersS6.count != 0,
-                myOrdersS6.count == ridersS6.count{
+                myOrdersS6.count == ridersS6.count {
                 
                 return self.myOrdersS6.count
                 
@@ -338,7 +340,9 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
             
         }
         
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "orderRequestPlaceholderTableViewCell") as? OrderRequestPlaceholderTableViewCell else { return UITableViewCell()
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "orderRequestPlaceholderTableViewCell") as? OrderRequestPlaceholderTableViewCell else {
+                    return UITableViewCell()
             }
              cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
@@ -353,7 +357,7 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
             
             if myOrdersS2.count != 0,
                 ridersS2.count != 0,
-                myOrdersS2.count == ridersS2.count{
+                myOrdersS2.count == ridersS2.count {
                 
                 return 140
                 
@@ -381,7 +385,7 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
                 
                 if myOrdersS6.count != 0,
                     ridersS6.count != 0,
-                    myOrdersS6.count == ridersS6.count{
+                    myOrdersS6.count == ridersS6.count {
                     
                     return 140
                     
@@ -391,7 +395,6 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
                 }
             }
             
-        
         return CGFloat()
     }
 
@@ -439,5 +442,4 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
         }
 
     }
-
 }

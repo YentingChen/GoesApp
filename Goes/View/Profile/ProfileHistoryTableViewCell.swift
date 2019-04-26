@@ -10,6 +10,13 @@ import UIKit
 
 class ProfileHistoryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var greenView: UIView! {
+        didSet {
+            greenView.roundCorners(20)
+        }
+    }
+    
+    @IBOutlet weak var dateLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

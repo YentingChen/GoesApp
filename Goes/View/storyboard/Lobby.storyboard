@@ -144,7 +144,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HM-hr-rhk">
                                         <rect key="frame" x="8" y="5" width="284" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="addressBtn:" destination="JLf-kq-C3D" eventType="touchUpInside" id="znv-CZ-mlr"/>
                                         </connections>
