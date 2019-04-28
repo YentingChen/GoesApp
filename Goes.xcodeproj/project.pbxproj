@@ -82,6 +82,7 @@
 		3E8C8C84226DE54F00063208 /* OrderDrivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C8C83226DE54F00063208 /* OrderDrivingViewController.swift */; };
 		3E92662722656A6C009EC3D1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E92662622656A6C009EC3D1 /* FirebaseManager.swift */; };
 		3E95EE81225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E95EE80225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift */; };
+		3E9670BB2274070E005B6DCB /* AskLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9670BA2274070E005B6DCB /* AskLogInViewController.swift */; };
 		3E9CCE7F226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CCE7D226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.swift */; };
 		3E9CCE80226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9CCE7E226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.xib */; };
 		3E9CCE82226A209C000BE5F6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CCE81226A209C000BE5F6 /* Date.swift */; };
@@ -170,6 +171,7 @@
 		3E8C8C83226DE54F00063208 /* OrderDrivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDrivingViewController.swift; sourceTree = "<group>"; };
 		3E92662622656A6C009EC3D1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		3E95EE80225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAnswerRequestViewController.swift; sourceTree = "<group>"; };
+		3E9670BA2274070E005B6DCB /* AskLogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskLogInViewController.swift; sourceTree = "<group>"; };
 		3E9CCE7D226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequestHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		3E9CCE7E226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderRequestHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		3E9CCE81226A209C000BE5F6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				3E5ADFF6225F12490003B241 /* SignUpViewController.swift */,
 				3E5ADFF8225F12DF0003B241 /* LoginViewController.swift */,
 				3E5ADFFA225F130F0003B241 /* ResetPasswordViewController.swift */,
+				3E9670BA2274070E005B6DCB /* AskLogInViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				3E7B6E122259FBA200646724 /* ProfileHistoryTableViewCell.swift in Sources */,
 				3E7B6E1A225A645F00646724 /* OrderRequestTableViewCell.swift in Sources */,
 				3E424B5E22646DE6003A3123 /* PersonalDataMagager.swift in Sources */,
+				3E9670BB2274070E005B6DCB /* AskLogInViewController.swift in Sources */,
 				3E7B6E1F225AE56400646724 /* ProfileMainViewController.swift in Sources */,
 				3EA52B492272F56F003A5390 /* ProfileHistoryDetailViewController.swift in Sources */,
 				3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */,

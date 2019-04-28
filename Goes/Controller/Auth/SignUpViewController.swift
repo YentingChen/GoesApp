@@ -17,14 +17,37 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var signUpBtn: UIButton!
-    @IBOutlet weak var squareView: UIView!
+    @IBOutlet weak var signUpBtn: UIButton! {
+        didSet {
+            self.signUpBtn.roundCorners(5)
+        }
+    }
+    @IBOutlet weak var squareView: UIView! {
+        didSet {
+            self.squareView.roundCorners(20)
+        }
+    }
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
+    @IBAction func toLogin(_ sender: Any) {
+        view.removeFromSuperview()
+        
+        removeFromParent()
+        
+        didMove(toParent: nil)
+    }
+    
+    @IBAction func dismiss(_ sender: Any) {
+        
+      self.parent?.presentingViewController?.dismiss(animated: true, completion: nil)
+
+    }
+    
     //Sign Up Action for email
     @IBAction func createAccountAction(_ sender: AnyObject) {
         if emailTextField.text == "" {
+            
             let alertController = UIAlertController(
                 title: "Error",
                 message: "Please enter your email and password",
@@ -66,13 +89,11 @@ class SignUpViewController: UIViewController {
             }
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        db = Firestore.firestore() 
-        
-        addShadow()
-        roundCorner()
+        db = Firestore.firestore()
        
     }
     
@@ -80,9 +101,10 @@ class SignUpViewController: UIViewController {
         
     }
     
-    
     func addShadow() {
+        
         self.squareView.dropShadow(color: UIColor.gray, opacity: 0.3, offSet: CGSize(width: 20, height: 20), radius:20 , scale: true)
+        
         self.signUpBtn.dropShadow(color: UIColor.gray, opacity: 0.3, offSet: CGSize(width: 20, height: 20), radius: 20, scale: true)
     }
     

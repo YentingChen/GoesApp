@@ -11,7 +11,27 @@ import Firebase
 import FirebaseAuth
 
 class ResetPasswordViewController: UIViewController {
+    @IBOutlet weak var submitBtn: UIButton! {
+        didSet {
+            self.submitBtn.roundCorners(5)
+        }
+    }
+    @IBOutlet weak var whiteView: UIView! {
+        didSet {
+            self.whiteView.roundCorners(20)
+        }
+    }
     
+    @IBAction func dismiss(_ sender: Any) {
+        self.parent?.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func toLogIn(_ sender: Any) {
+        view.removeFromSuperview()
+        
+        removeFromParent()
+        
+        didMove(toParent: nil)
+    }
     // Outlets
     @IBOutlet weak var emailTextField: UITextField!
     

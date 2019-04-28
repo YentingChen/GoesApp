@@ -18,6 +18,9 @@ class EditAddressViewController: UIViewController {
     var searchController: UISearchController?
     var resultView: UITextView?
     
+    @IBAction func dismiss(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

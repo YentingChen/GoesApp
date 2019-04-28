@@ -77,8 +77,12 @@ private enum Tab {
 }
 
 class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
-    //, .product, .trolley, .profile
+   
     private let tabs: [Tab] = [.lobby, .order, .friend, .profile]
+    
+    let fireAuthManager = FireAuthManager()
+    
+    var membmer = Bool()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,28 +91,37 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
         delegate = self
         self.tabBar.backgroundColor = .clear
+        
+        self.fireAuthManager.addSignUpListener { (isMember) in
+            self.membmer = isMember
+        }
+        
     }
 
     // MARK: - UITabBarControllerDelegate
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-
-//        guard let navVC = viewController as? UINavigationController,
-//            let _ = navVC.viewControllers.first as? ProfileViewController
-//            else { return true }
-
-//        guard KeyChainManager.shared.token != nil else {
-//
-//            if let vc = UIStoryboard.auth.instantiateInitialViewController() {
-//
-//                vc.modalPresentationStyle = .overCurrentContext
-//
-//                present(vc, animated: false, completion: nil)
-//            }
-//
-//            return false
-//        }
-
+        
+        let navVC = viewController as? UINavigationController
+        
+        if navVC?.viewControllers.first as? ProfileMainViewController == nil
+        && navVC?.viewControllers.first as? FriendHomeViewController == nil{
+            return true
+        }
+        
+        
+        guard self.membmer != false else {
+            
+            if let vc = UIStoryboard.auth.instantiateInitialViewController() {
+                
+                vc.modalPresentationStyle = .overCurrentContext
+                
+                present(vc, animated: false, completion: nil)
+            }
+            
+            return false
+        }
+        
         return true
     }
 }

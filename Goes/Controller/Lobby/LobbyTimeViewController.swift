@@ -10,6 +10,8 @@ import UIKit
 
 class LobbyTimeViewController: UIViewController {
     
+    let fireAuthManager = FireAuthManager()
+    
     var selectedLocation: Address?
     var selectedDateTime : DateAndTime?
     var laterTxt = "儘快"
@@ -23,6 +25,29 @@ class LobbyTimeViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var laterBtn: UIButton!
     
+    @IBAction func toFriendView(_ sender: Any) {
+        self.fireAuthManager.addSignUpListener { (isMember) in
+            if isMember {
+                
+                self.performSegue(withIdentifier: "toSelectFriendPage", sender: self)
+                
+            }
+            
+            if isMember == false {
+                
+                let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+                let loginVC = storyboard.instantiateViewController(withIdentifier: "askLogIn")
+                    as? AskLogInViewController
+                loginVC?.modalPresentationStyle = .overCurrentContext
+                
+                self.present(loginVC!, animated: false, completion: nil)
+                
+                
+            }
+        }
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -206,9 +231,7 @@ class LobbyTimeViewController: UIViewController {
         }
     
     }
-    @IBAction func toSelectFriendPage(_ sender: Any) {
-        performSegue(withIdentifier: "toSelectFriendPage", sender: self)
-    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSelectFriendPage" {
