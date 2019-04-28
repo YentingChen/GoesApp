@@ -22,6 +22,10 @@ class AdressFavoriteViewController: UIViewController {
     var searchController: UISearchController?
     var resultView: UITextView?
     
+    @IBAction func dismissAction(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

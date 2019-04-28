@@ -53,9 +53,15 @@ class ProfileMainViewController: UIViewController {
         
             do {
                 try Auth.auth().signOut()
-                let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "LogIn")
-                self.present(viewController, animated: true, completion: nil)
+                let alert = UIAlertController(title: "", message: "你已經成功登出", preferredStyle: .alert)
+                let action = UIAlertAction(title: "確定", style: .default) { (action) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Goes")
+                    self.present(viewController, animated: true, completion: nil)
+                }
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+                
             } catch let error as NSError {
                 print(error.localizedDescription)
             }

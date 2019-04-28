@@ -29,36 +29,53 @@ class LobbyFriendViewController: UIViewController {
 
     @IBAction func checkBtn(_ sender: Any) {
         
-        let selectedTimeAndDate = "\(selectedTime!.year)-\(selectedTime!.month)-\(selectedTime!.day) \(selectedTime!.time)"
-        
-        let orderID = "\(createOrderID())"
-        
-        let alertController = UIAlertController(
-            title: "",
-            message: "選擇地點：\(selectedLocation!.placeName)\n選擇時間：\(selectedTimeAndDate)\n選擇朋友：\(selectedFriend!.userName)",
-            preferredStyle: .alert)
-        
-        let doneAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+        if selectedFriend == nil {
             
-            self.fireBaseManager.upLoadOrder(
-                orderID: orderID,
-                selectedTime: self.selectedTime!,
-                selectedFriend: self.selectedFriend!,
-                selectedLocation: self.selectedLocation!,
-                myInfo: self.myProfile!,
-                completionHandler: {
-                self.dismiss(animated: true, completion: nil)
-                self.navigationController?.dismiss(animated: true, completion: nil)
-                self.present(LobbyViewController(), animated: true, completion: nil)
-            })
-
+            let alertController = UIAlertController(
+                title: "請選擇朋友",
+                message: "選擇朋友後，方能使用該功能",
+                preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "確定", style: .cancel, handler: nil)
+            
+           
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+        } else {
+            let selectedTimeAndDate = "\(selectedTime!.year)-\(selectedTime!.month)-\(selectedTime!.day) \(selectedTime!.time)"
+            
+            let orderID = "\(createOrderID())"
+            
+            let alertController = UIAlertController(
+                title: "",
+                message: "選擇地點：\(selectedLocation!.placeName)\n選擇時間：\(selectedTimeAndDate)\n選擇朋友：\(selectedFriend!.userName)",
+                preferredStyle: .alert)
+            
+            let doneAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+                
+                self.fireBaseManager.upLoadOrder(
+                    orderID: orderID,
+                    selectedTime: self.selectedTime!,
+                    selectedFriend: self.selectedFriend!,
+                    selectedLocation: self.selectedLocation!,
+                    myInfo: self.myProfile!,
+                    completionHandler: {
+                        self.dismiss(animated: true, completion: nil)
+                        self.navigationController?.dismiss(animated: true, completion: nil)
+                        self.present(LobbyViewController(), animated: true, completion: nil)
+                })
+                
+            }
+            
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            
+            alertController.addAction(doneAction)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
         }
         
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         
-        alertController.addAction(doneAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
         
     }
     
