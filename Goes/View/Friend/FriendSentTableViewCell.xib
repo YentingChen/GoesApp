@@ -19,27 +19,40 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Xian Wu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fT2-Wu-vVt">
-                        <rect key="frame" x="97" y="22" width="64" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xian Wu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fT2-Wu-vVt">
+                        <rect key="frame" x="96" y="23.5" width="64" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gx-AB-IQu">
-                        <rect key="frame" x="295" y="20" width="64" height="26"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gx-AB-IQu">
+                        <rect key="frame" x="295" y="21" width="64" height="26"/>
                         <color key="backgroundColor" red="0.43137254899999999" green="0.80392156859999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="3LT-Ug-BzZ"/>
+                            <constraint firstAttribute="height" constant="26" id="HXR-58-4zC"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" title="取消邀請">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="sPi-bf-bYs">
-                        <rect key="frame" x="30" y="13" width="40" height="40"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="sPi-bf-bYs">
+                        <rect key="frame" x="40" y="14" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Kh5-Fy-4iQ"/>
+                            <constraint firstAttribute="width" constant="40" id="XHE-Ng-0pf"/>
+                        </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="fT2-Wu-vVt" firstAttribute="leading" secondItem="sPi-bf-bYs" secondAttribute="trailing" constant="16" id="Dlh-Qm-cIm"/>
+                    <constraint firstItem="fT2-Wu-vVt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FLr-5Y-7wb"/>
+                    <constraint firstAttribute="trailing" secondItem="1Gx-AB-IQu" secondAttribute="trailing" constant="16" id="Ql5-iP-anf"/>
+                    <constraint firstItem="1Gx-AB-IQu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ooy-m2-SGA"/>
+                    <constraint firstItem="sPi-bf-bYs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="24" id="se9-yd-SWR"/>
+                    <constraint firstItem="sPi-bf-bYs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xK9-kE-4e6"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

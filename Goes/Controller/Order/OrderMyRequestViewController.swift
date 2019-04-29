@@ -132,6 +132,7 @@ class OrderMyRequestViewController: UIViewController {
 extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return 3
     }
     
@@ -139,6 +140,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
         
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
+        
          cell.backgroundColor = .white
 
         if section == 0 {
@@ -237,7 +239,6 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
         
         if indexPath.section == 1 {
             
-           
                 if myOrdersS4.count != 0,
                     driverS4.count != 0,
                     myOrdersS4.count == driverS4.count {
@@ -270,6 +271,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                         return UITableViewCell()
                         
                     }
+                    cell.moreInfoImageVIew.isHidden = false
                     cell.driverName.text = self.driverS5[indexPath.row].userName
                     cell.selectionStyle = UITableViewCell.SelectionStyle.none
                     return cell

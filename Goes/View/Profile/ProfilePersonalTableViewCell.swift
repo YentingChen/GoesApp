@@ -10,7 +10,8 @@ import UIKit
 
 class ProfilePersonalTableViewCell: UITableViewCell {
     @IBOutlet weak var cellImageView: UIImageView!
-
+    @IBOutlet weak var editImageView: UIImageView!
+    
     @IBOutlet weak var cellTitle: UILabel!
     @IBOutlet weak var cellContent: UILabel!
     override func awakeFromNib() {

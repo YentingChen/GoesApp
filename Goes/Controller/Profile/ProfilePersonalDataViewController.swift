@@ -113,6 +113,7 @@ extension ProfilePersonalDataViewController: UITableViewDataSource, UITableViewD
         
         cell.cellImageView.image = UIImage(named: image[indexPath.row] )
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.editImageView.isHidden = true
 
         return cell
     }

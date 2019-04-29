@@ -28,7 +28,15 @@ class FriendSentViewController: UIViewController {
         tableView.register(
             UINib(nibName: "FriendSentTableViewCell",
                   bundle: nil), forCellReuseIdentifier: "friendSentTableViewCell")
+        
+        tableView.register(
+            UINib(nibName: "FriendPlaceholderTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "friendPlaceholderTableViewCell")
+        
         tableView.separatorStyle = .none
+        
+        tableView.backgroundColor = .white
         
     }
     
@@ -53,6 +61,7 @@ class FriendSentViewController: UIViewController {
     }
     
     func dataLoadFromDB() {
+        
         personalDataManager.getPersonalData { [weak self]  (myProfile, error) in
             self?.myProfile = myProfile
             self?.fireBaseManager.querymyFriends(
@@ -70,21 +79,53 @@ class FriendSentViewController: UIViewController {
 
 extension FriendSentViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sentFriend.count
+        
+        if sentFriend.count == 0 {
+            
+            return 1 
+            
+        } else {
+            
+            return sentFriend.count
+        }
+    
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "friendSentTableViewCell",
-            for: indexPath) as? FriendSentTableViewCell else { return UITableViewCell()}
-        cell.cellLabel.text = self.sentFriend[indexPath.row].userName
-        cell.cancleInviteButton.tag = indexPath.row
-        cell.cancleInviteButton.addTarget(self, action: #selector(cancelSent(_:)), for: .touchUpInside)
-        return cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell {
+            if sentFriend.count == 0 {
+                
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendPlaceholderTableViewCell") as? FriendPlaceholderTableViewCell else { return UITableViewCell() }
+                
+                 cell.selectionStyle = .none
+                
+                return cell
+                
+            } else {
+                
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: "friendSentTableViewCell",
+                    for: indexPath) as? FriendSentTableViewCell else { return UITableViewCell()}
+                
+                cell.cellLabel.text = self.sentFriend[indexPath.row].userName
+                
+                cell.cancleInviteButton.tag = indexPath.row
+                
+                cell.cancleInviteButton.addTarget(self, action: #selector(cancelSent(_:)), for: .touchUpInside)
+                
+                 cell.selectionStyle = .none
+                
+                return cell
+                
+            }
+        
+      
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 90
+        
     }
 
 }

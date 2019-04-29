@@ -30,25 +30,35 @@ class LobbyMapViewController: UIViewController {
     @IBAction func adressModeChosen(_ sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 1 {
+            
             addressBtn.setTitle(self.homeAddress?.placeName, for: .normal)
+            
             selectedLocation = self.homeAddress
         }
         
         if sender.selectedSegmentIndex == 2 {
+            
             addressBtn.setTitle(self.workAddress?.placeName, for: .normal)
+            
             selectedLocation = self.workAddress
         }
         
         if sender.selectedSegmentIndex == 3 {
+            
             addressBtn.setTitle(self.favoriteAddress?.placeName, for: .normal)
+            
             selectedLocation = self.favoriteAddress
         }
     }
    
     @IBAction func dismiss(_ sender: Any) {
+        
         dismiss(animated: true, completion: nil)
+        
         self.navigationController?.dismiss(animated: true, completion: nil)
+        
         present(LobbyViewController(), animated: true, completion: nil)
+        
     }
     
     @IBAction func mylocationBtn(_ sender: Any) {
@@ -57,6 +67,7 @@ class LobbyMapViewController: UIViewController {
             let lng = self.mapView.myLocation?.coordinate.longitude else { return }
         
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 16)
+        
         self.mapView.animate(to: camera)
         
     }
@@ -74,6 +85,7 @@ class LobbyMapViewController: UIViewController {
         let geocoder = GMSGeocoder()
 
         geocoder.reverseGeocodeCoordinate(coordinate) { response, _ in
+            
             self.addressBtn.unlock()
 
             guard let address = response?.firstResult(), let lines = address.lines else { return }
@@ -102,9 +114,11 @@ class LobbyMapViewController: UIViewController {
         super.viewDidLoad()
         
         self.mapView.isMyLocationEnabled = true
+        
         mapView.delegate = self
 
         locationManager.delegate = self
+        
         locationManager.requestWhenInUseAuthorization()
         
         loadAdressInfoFromDB()
@@ -114,7 +128,9 @@ class LobbyMapViewController: UIViewController {
     func loadAdressInfoFromDB() {
         
         personalDataManager.getPersonalData { (myProfile, _) in
+            
             self.myProfile = myProfile
+            
             self.firebaseManager.queryAdress(
                 myUid: (myProfile?.userID)!,
                 category: "home",
@@ -142,14 +158,19 @@ class LobbyMapViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toEditAddressVC" {
+            
             if let destination = segue.destination as? EditAddressViewController {
-                 self.editAddressVC = destination
+                
+                self.editAddressVC = destination
+                
                 self.editAddressVC?.handler = { (selectedAddress) in
                     
                     self.addressBtn.setTitle(selectedAddress?.placeName, for: .normal)
+                    
                     self.selectedLocation = selectedAddress
                     
                     let camera = GMSCameraPosition.camera(withLatitude: (selectedAddress?.placeLat)!, longitude: (selectedAddress?.placeLng)!, zoom: 16)
+                    
                     self.mapView.animate(to: camera)
                     
                 }
@@ -160,6 +181,7 @@ class LobbyMapViewController: UIViewController {
         if segue.identifier == "toTimePage" {
             
             if let destination = segue.destination as? LobbyTimeViewController {
+                
                 destination.selectedLocation = self.selectedLocation
                 
             }
@@ -184,7 +206,11 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
         
         guard let location = locations.first else { return }
 
-        mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        mapView.camera = GMSCameraPosition(
+            target: location.coordinate,
+            zoom: 15,
+            bearing: 0,
+            viewingAngle: 0)
 
         locationManager.stopUpdatingLocation()
         

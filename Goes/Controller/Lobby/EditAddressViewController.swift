@@ -45,29 +45,34 @@ class EditAddressViewController: UIViewController {
 
 extension EditAddressViewController: GMSAutocompleteResultsViewControllerDelegate {
     
-    
      func showAlert(_ place: GMSPlace, handler: @escaping CompletionHandler) {
         let alertController = UIAlertController(title: "地址選擇",
                                                 message: "確認地址為\n \((place.name)!)\n\((place.formattedAddress)!) ？", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
         let okAction = UIAlertAction(
             title: "確定",
             style: .default,
             handler: { (action) in
+                
                 let selectedAddress = Address(
                     placeID: (place.placeID)!,
                     placeLat: Double(place.coordinate.latitude),
                     placeLng: Double(place.coordinate.longitude),
                     placeName: (place.name)!,
                     placeformattedAddress: (place.formattedAddress)!)
+                
                 self.handler?(selectedAddress)
+                
                 self.dismiss(animated: true, completion: nil)
                 
         })
         
         alertController.addAction(cancelAction)
+        
         alertController.addAction(okAction)
+        
         self.present(alertController, animated: true, completion: nil)
     }
     

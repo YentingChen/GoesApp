@@ -56,6 +56,8 @@
 		3E662EF72268408C0016F962 /* AdressWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF62268408C0016F962 /* AdressWorkViewController.swift */; };
 		3E662EF9226840CA0016F962 /* AdressFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */; };
 		3E662EFB22687EA40016F962 /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EFA22687EA40016F962 /* EditAddressViewController.swift */; };
+		3E6C39762275F85E005A8117 /* FriendPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6C39742275F85E005A8117 /* FriendPlaceholderTableViewCell.swift */; };
+		3E6C39772275F85E005A8117 /* FriendPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6C39752275F85E005A8117 /* FriendPlaceholderTableViewCell.xib */; };
 		3E70852B226F127B006002CB /* 4966-onboarding-car.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852A226F127B006002CB /* 4966-onboarding-car.json */; };
 		3E70852D226F17D0006002CB /* animation-w300-h300.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852C226F17D0006002CB /* animation-w300-h300.json */; };
 		3E70852F226F1903006002CB /* animation-w300-h300-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852E226F1902006002CB /* animation-w300-h300-2.json */; };
@@ -145,6 +147,8 @@
 		3E662EF62268408C0016F962 /* AdressWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressWorkViewController.swift; sourceTree = "<group>"; };
 		3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressFavoriteViewController.swift; sourceTree = "<group>"; };
 		3E662EFA22687EA40016F962 /* EditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
+		3E6C39742275F85E005A8117 /* FriendPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
+		3E6C39752275F85E005A8117 /* FriendPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
 		3E70852A226F127B006002CB /* 4966-onboarding-car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "4966-onboarding-car.json"; sourceTree = "<group>"; };
 		3E70852C226F17D0006002CB /* animation-w300-h300.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-w300-h300.json"; sourceTree = "<group>"; };
 		3E70852E226F1902006002CB /* animation-w300-h300-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-w300-h300-2.json"; sourceTree = "<group>"; };
@@ -243,6 +247,8 @@
 				3E3EFD09225914B40078E686 /* FriendListTableViewCell.xib */,
 				3E3EFD0E2259186C0078E686 /* FriendSentTableViewCell.swift */,
 				3E3EFD0F2259186C0078E686 /* FriendSentTableViewCell.xib */,
+				3E6C39742275F85E005A8117 /* FriendPlaceholderTableViewCell.swift */,
+				3E6C39752275F85E005A8117 /* FriendPlaceholderTableViewCell.xib */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E6C39772275F85E005A8117 /* FriendPlaceholderTableViewCell.xib in Resources */,
 				3E70852F226F1903006002CB /* animation-w300-h300-2.json in Resources */,
 				3E70852D226F17D0006002CB /* animation-w300-h300.json in Resources */,
 				3E23588C22590C0B004182F0 /* FriendInviteTableViewCell.xib in Resources */,
@@ -691,6 +698,7 @@
 				3E45935C2257BBCA00073210 /* FriendListViewController.swift in Sources */,
 				3E7B6E28225B52E100646724 /* OrderMyRequestTableViewCell.swift in Sources */,
 				3E9CCE82226A209C000BE5F6 /* Date.swift in Sources */,
+				3E6C39762275F85E005A8117 /* FriendPlaceholderTableViewCell.swift in Sources */,
 				3E662EF72268408C0016F962 /* AdressWorkViewController.swift in Sources */,
 				3E77D85B227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift in Sources */,
 				3E7B6E122259FBA200646724 /* ProfileHistoryTableViewCell.swift in Sources */,
@@ -855,6 +863,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UNAH767L53;
 				INFOPLIST_FILE = Goes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -862,7 +871,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yeinting.Goes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -874,6 +883,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UNAH767L53;
 				INFOPLIST_FILE = Goes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -881,7 +891,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yeinting.Goes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

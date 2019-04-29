@@ -35,6 +35,12 @@ class FriendListViewController: UIViewController {
             UINib(nibName: "FriendListTableViewCell",
                   bundle: nil),
             forCellReuseIdentifier: "friendListTableViewCell")
+        tableView.register(
+            UINib(nibName: "FriendPlaceholderTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "friendPlaceholderTableViewCell")
+        tableView.backgroundColor = .white
+
 
     }
     
@@ -90,37 +96,58 @@ class FriendListViewController: UIViewController {
 extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching {
+        
+        if self.myFriends.count == 0 {
             
-            return result.count
+           return 1
             
         } else {
             
-            return myFriends.count
-        }
+            if isSearching {
+                
+                return result.count
+                
+            } else {
+                
+                return myFriends.count
+            }
 
-      
+        }
+        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "friendListTableViewCell",
-            for: indexPath) as? FriendListTableViewCell else {
-            return UITableViewCell()
-        }
-        if isSearching {
+        if self.myFriends.count == 0 {
             
-            cell.cellLabel.text = self.result[indexPath.row].userName
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendPlaceholderTableViewCell") as? FriendPlaceholderTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
             
+            return cell
             
+
         } else {
             
-            cell.cellLabel.text = self.myFriends[indexPath.row].userName
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "friendListTableViewCell",
+                for: indexPath) as? FriendListTableViewCell else {
+                    return UITableViewCell()
+            }
+            cell.selectionStyle = .none
+            if isSearching {
+                
+                cell.cellLabel.text = self.result[indexPath.row].userName
+                
+                
+            } else {
+                
+                cell.cellLabel.text = self.myFriends[indexPath.row].userName
+                
+            }
             
+            return cell
         }
         
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -131,17 +158,27 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
     -> UISwipeActionsConfiguration? {
         
-        let deleteAction = UIContextualAction(
-        style: .normal,
-        title: "刪除好友") { (action, sourceView, completionHandler) in
-            self.showAlert(number: indexPath.row)
-            completionHandler(true)
+        if myFriends.count != 0 {
+            
+            let deleteAction = UIContextualAction(
+                style: .normal,
+                title: "刪除好友") { (action, sourceView, completionHandler) in
+                    self.showAlert(number: indexPath.row)
+                    completionHandler(true)
+            }
+            
+            let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+            
+            return swipeConfiguration
+        } else {
+            let swipeAction = UISwipeActionsConfiguration(actions: [])
+            swipeAction.performsFirstActionWithFullSwipe = false // This is the line which disables full swipe
+            return swipeAction
         }
-        
-        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
-        
-        return swipeConfiguration
+            
     }
+        
+       
 
 }
 

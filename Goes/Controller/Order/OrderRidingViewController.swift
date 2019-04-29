@@ -71,6 +71,7 @@ class OrderRidingViewController: UIViewController {
             if self.driverFirstLocation == nil {
 
                 self.driverFirstLocation = CLLocationCoordinate2D(latitude: (order?.driverLat)!, longitude: (order?.driverLag)!)
+                
                 guard let driverFirstLocation = self.driverFirstLocation else { return }
 
                 var region = GMSVisibleRegion()
@@ -80,10 +81,12 @@ class OrderRidingViewController: UIViewController {
                 region.farRight = driverFirstLocation
 
                 let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
-                let camera = self.mapView.camera(for: bounds, insets:UIEdgeInsets(top: 50, left: 100, bottom: 50, right: 100))
+                
+                guard let camera = self.mapView.camera(for: bounds, insets:UIEdgeInsets(top: 50, left: 100, bottom: 50, right: 100)) else { return }
+                
                 self.getArrivingTime(location: driverFirstLocation)
 
-                self.mapView.camera = camera!
+                self.mapView.camera = camera
 
             }
             

@@ -34,6 +34,10 @@ class ProfileHistoryViewController: UIViewController {
             UINib(nibName: "ProfileHistoryTableViewCell",
                   bundle: nil),
             forCellReuseIdentifier: "profileHistoryTableViewCell")
+        tableView.register(
+            UINib(nibName: "FriendPlaceholderTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "friendPlaceholderTableViewCell")
         tableView.separatorStyle = .none
         
         self.personalDataManager.getPersonalData { (myProfile, _) in
@@ -90,9 +94,14 @@ extension ProfileHistoryViewController: UITableViewDelegate, UITableViewDataSour
     
             return cell
             
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendPlaceholderTableViewCell") as? FriendPlaceholderTableViewCell else { return UITableViewCell() }
+            return cell
+            
         }
         
         return UITableViewCell()
+        
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

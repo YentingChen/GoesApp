@@ -190,5 +190,4 @@ extension ProfileHistoryDetailViewController: GMSMapViewDelegate {
         
     }
 
-    
 }

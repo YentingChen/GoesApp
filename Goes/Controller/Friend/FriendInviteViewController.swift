@@ -35,7 +35,14 @@ class FriendInviteViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "FriendInviteTableViewCell", bundle: nil), forCellReuseIdentifier: "friendInviteTableViewCell")
+        tableView.register(
+            UINib(nibName: "FriendInviteTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "friendInviteTableViewCell")
+        tableView.register(
+            UINib(nibName: "FriendPlaceholderTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: "friendPlaceholderTableViewCell")
 
     }
 
@@ -43,20 +50,44 @@ class FriendInviteViewController: UIViewController {
 
 extension FriendInviteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return inviteFriend.count
+        
+        if self.inviteFriend.count == 0 {
+            
+            return 1
+            
+        } else {
+            
+            return inviteFriend.count
+        }
+        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendInviteTableViewCell", for: indexPath) as? FriendInviteTableViewCell else { return  UITableViewCell() }
-
-        cell.checkBtn.tag = indexPath.row
-        cell.deleteBtn.tag = indexPath.row
-        cell.cellLabel.text = self.inviteFriend[indexPath.row].userName
-        cell.checkBtn.addTarget(self, action: #selector(makeFriend(_:)), for: .touchUpInside)
-        cell.deleteBtn.addTarget(self, action: #selector(cancelInvite(_:)), for: .touchUpInside)
         
-        return cell
-
+        if self.inviteFriend.count == 0 {
+            
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "friendPlaceholderTableViewCell") as? FriendPlaceholderTableViewCell else {
+                    return UITableViewCell()
+            }
+            cell.selectionStyle = .none
+            
+            return cell
+            
+        } else {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendInviteTableViewCell", for: indexPath) as? FriendInviteTableViewCell else { return  UITableViewCell() }
+            
+            cell.checkBtn.tag = indexPath.row
+            cell.deleteBtn.tag = indexPath.row
+            cell.cellLabel.text = self.inviteFriend[indexPath.row].userName
+            cell.checkBtn.addTarget(self, action: #selector(makeFriend(_:)), for: .touchUpInside)
+            cell.deleteBtn.addTarget(self, action: #selector(cancelInvite(_:)), for: .touchUpInside)
+            cell.selectionStyle = .none
+            
+            return cell
+        }
+        
     }
     
     @objc func cancelInvite(_ sendr: UIButton) {

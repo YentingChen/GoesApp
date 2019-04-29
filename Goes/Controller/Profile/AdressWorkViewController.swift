@@ -22,9 +22,12 @@ class AdressWorkViewController: UIViewController {
     var resultView: UITextView?
     
     @IBAction func dismissAction(_ sender: Any) {
+        
         self.dismiss(animated: true, completion: nil)
+        
     }
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         personalDataManager.getPersonalData(completionHandler: { [weak self]  (myProfile, error) in
@@ -33,16 +36,21 @@ class AdressWorkViewController: UIViewController {
         
         
         resultsViewController = GMSAutocompleteResultsViewController()
+        
         resultsViewController?.delegate = self
         
         searchController = UISearchController(searchResultsController: resultsViewController)
+        
         searchController?.searchResultsUpdater = resultsViewController
         
         let subView = UIView(frame: CGRect(x: 0, y: 65.0, width: 350.0, height: 45.0))
         
         subView.addSubview((searchController?.searchBar)!)
+        
         view.addSubview(subView)
+        
         searchController?.searchBar.sizeToFit()
+        
         searchController?.hidesNavigationBarDuringPresentation = false
         
         // When UISearchController presents the results view, present it in
@@ -52,6 +60,7 @@ class AdressWorkViewController: UIViewController {
 }
 
 extension AdressWorkViewController: GMSAutocompleteResultsViewControllerDelegate {
+    
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didAutocompleteWith place: GMSPlace) {
         
@@ -61,7 +70,9 @@ extension AdressWorkViewController: GMSAutocompleteResultsViewControllerDelegate
                                                 message: "確認地址編輯為\n \((place.name)!)\n\((place.formattedAddress)!) ？", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
         let okAction = UIAlertAction(
+            
             title: "確定",
             style: .default,
             handler: { (action) in
@@ -84,7 +95,9 @@ extension AdressWorkViewController: GMSAutocompleteResultsViewControllerDelegate
         })
         
         alertController.addAction(cancelAction)
+        
         alertController.addAction(okAction)
+        
         self.present(alertController, animated: true, completion: nil)
         
     }

@@ -56,6 +56,7 @@ class ProfileAdressViewController: UIViewController {
             UINib(nibName: "ProfilePersonalTableViewCell",
                   bundle: nil),
             forCellReuseIdentifier: "profilePersonalTableViewCell")
+        tableView.separatorStyle = .none
 
     }
     
@@ -115,12 +116,16 @@ extension ProfileAdressViewController: UITableViewDelegate, UITableViewDataSourc
         cell.cellContent.text = content[indexPath.row]
         
         cell.cellImageView.image = UIImage(named: image[indexPath.row] )
+        
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 90
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

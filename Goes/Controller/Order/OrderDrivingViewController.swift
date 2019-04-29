@@ -36,6 +36,7 @@ class OrderDrivingViewController: UIViewController {
     var isSettingOff = false
     
     var firstLocation: CLLocationCoordinate2D?
+    var secondStartLocation: CLLocationCoordinate2D?
     
     @IBOutlet weak var grayView: UIView!
     @IBOutlet weak var riderName: UILabel!
@@ -43,9 +44,11 @@ class OrderDrivingViewController: UIViewController {
     
     @IBOutlet weak var timeBackgroundView: UIView!{
         didSet {
+            
             timeBackgroundView.roundCorners(25)
         }
     }
+    
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var arrivingAddress: UILabel!
     
@@ -56,8 +59,10 @@ class OrderDrivingViewController: UIViewController {
         guard let number = URL(string: "tel://" + "\(riderPhone)") else {
             return
         }
+        
         UIApplication.shared.open(number)
     }
+    
     @IBAction func startDriving(_ sender: Any) {
         
         self.grayView.isHidden = true
@@ -77,11 +82,59 @@ class OrderDrivingViewController: UIViewController {
         orderID: orderID, driverStartAt: self.startDrivingTime!,
         startLat: Double((driverStartLocation?.latitude)!),
         startLag: Double((driverStartLocation?.longitude)!)) {
-            print("i am driving")
-            print(self.updateLag, self.updateLat)
-            print(self.startDrivingTime)
+            
+            self.updateLat = self.driverStartLocation?.latitude
+            self.updateLag = self.driverStartLocation?.longitude
+            
+            if self.updateLat != nil, self.updateLag != nil {
+                
+                self.fireBaseManager.updateDriverLocation(
+                    orderID: (self.order?.orderID)!,
+                    lat: self.updateLat!,
+                    lag: self.updateLag!)
+                
+            }
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let isSetOff = order?.setOff, isSetOff == 1 {
+            
+            self.grayView.isHidden = true
+            self.isSettingOff = true
+            locationManager.startUpdatingLocation()
+            
+        } else {
+            self.grayView.isHidden = false
+            self.isSettingOff = false
+        }
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.mapView.delegate = self
+        self.mapView.isMyLocationEnabled = true
+        self.locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        self.arrivingAddress.text = self.order?.locationFormattedAddress
+        self.riderName.text = self.rider?.userName
+        
+        updateDriverLocation()
+        
+        self.fireBaseManager.listenDriverLocation(orderID: (self.order?.orderID)!) { (order) in
+            if let order = order, order.setOff == 2 {
+                
+                self.timer?.invalidate()
+                
+                self.showAlert(title: "接送成功", message: "您已成功接到對方")
+                
+            }
+        }
     }
     
     func nowTimeStamp() {
@@ -107,29 +160,7 @@ class OrderDrivingViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.mapView.delegate = self
-        self.mapView.isMyLocationEnabled = true
-        self.locationManager.delegate = self
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        self.arrivingAddress.text = self.order?.locationFormattedAddress
-        self.riderName.text = self.rider?.userName
-        
-        updateDriverLocation()
-        
-        self.fireBaseManager.listenDriverLocation(orderID: (self.order?.orderID)!) { (order) in
-            if let order = order, order.setOff == 2 {
-                
-                self.timer?.invalidate()
-                
-                self.showAlert(title: "接送成功", message: "您已成功接到對方")
-                
-            }
-        }
-    }
+    
     
     func produceTime(orders:[OrderDetail], number: Int)
         -> String {
@@ -147,30 +178,27 @@ class OrderDrivingViewController: UIViewController {
             return "\(year)/\(month)/\(day)   \(time)"
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        if let isSetOff = order?.setOff, isSetOff == 1 {
-            self.grayView.isHidden = true
-            self.isSettingOff = true
-            locationManager.startUpdatingLocation()
-
-        } else {
-            self.grayView.isHidden = false
-            self.isSettingOff = false
+    fileprivate func updatePositionToDB() {
+        if self.updateLat != nil, self.updateLag != nil {
+            
+            self.fireBaseManager.updateDriverLocation(
+                orderID: (self.order?.orderID)!,
+                lat: self.updateLat!,
+                lag: self.updateLag!)
+            
         }
-
     }
     
     func updateDriverLocation() {
         
         self.timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { (timer) in
             
-            if self.updateLat != nil, self.updateLag != nil{
-               
-                    self.fireBaseManager.updateDriverLocation(
-                        orderID: (self.order?.orderID)!,
-                        lat: self.updateLat!,
-                        lag: self.updateLag!)
+            if self.updateLat != nil, self.updateLag != nil {
+                
+                self.fireBaseManager.updateDriverLocation(
+                    orderID: (self.order?.orderID)!,
+                    lat: self.updateLat!,
+                    lag: self.updateLag!)
                 
             }
         })
@@ -206,32 +234,66 @@ extension OrderDrivingViewController: CLLocationManagerDelegate {
             self.mapView.clear()
             
             let position = CLLocationCoordinate2D(latitude: order.selectedLat, longitude: order.selectedLng)
+            
             let marker = GMSMarker(position: position)
+            
             marker.icon = UIImage(named: "Images_60x_Rider_Normal")
+            
             marker.map = self.mapView
             
             if self.order?.driverStartLat == 0.0, self.order?.driverStartLag == 0.0 {
                 self.driverStartLocation = location.coordinate
             }
             
-            guard let driverStartLocation = self.driverStartLocation else { return }
-            getArrivingTime(location: driverStartLocation)
-    
-            region.nearLeft = CLLocationCoordinate2DMake(order.selectedLat, order.selectedLng)
+            if let driverStartLocation = self.driverStartLocation {
+                
+                region.nearLeft = CLLocationCoordinate2DMake(order.selectedLat, order.selectedLng)
+                
+                region.farRight = driverStartLocation
+                
+                let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
+                
+                guard let camera = self.mapView.camera(
+                    for: bounds,
+                    insets:UIEdgeInsets(
+                        top: 50, left: 100 , bottom: 50,  right: 100 )) else { return }
+                
+                self.mapView.camera = camera
+                
+                self.updateLat = Double(location.coordinate.latitude)
+                self.updateLag = Double(location.coordinate.longitude)
+                
+            } else {
+                
+                if self.secondStartLocation == nil {
+                    
+                    self.secondStartLocation = location.coordinate
+                    
+                    region.nearLeft = CLLocationCoordinate2DMake(order.selectedLat, order.selectedLng)
+                    
+                    region.farRight = self.secondStartLocation!
+                    
+                    let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
+                    
+                    guard let camera = self.mapView.camera(
+                        for: bounds,
+                        insets:UIEdgeInsets(
+                            top: 50, left: 100 , bottom: 50,  right: 100 )) else { return }
+                    
+                    self.mapView.camera = camera
+                    
+                    getTime(location: self.secondStartLocation!)
+                    
+                }
+                
+            }
             
-            region.farRight = driverStartLocation
-            
-            let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
-            
-            guard let camera = self.mapView.camera(
-                for: bounds,
-                insets:UIEdgeInsets(
-                    top: 50, left: 100 , bottom: 50,  right: 100 )) else { return }
-            
-            self.mapView.camera = camera
-
             self.updateLat = Double(location.coordinate.latitude)
             self.updateLag = Double(location.coordinate.longitude)
+            
+            
+    
+            
         
         } else {
             
@@ -295,6 +357,43 @@ extension OrderDrivingViewController: CLLocationManagerDelegate {
             }
         }
 
+        
+    }
+    
+    func getTime(location: CLLocationCoordinate2D){
+        
+        guard let order = self.order else { return }
+        
+        let position = CLLocationCoordinate2D(
+            latitude: order.selectedLat, longitude: order.selectedLng)
+        
+        let destination = "\(order.selectedLat),\(order.selectedLng)"
+        let origin = "\(location.latitude),\(location.longitude)"
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
+        
+        Alamofire.request(url).responseJSON { response in
+            
+            do {
+                
+                let json = try JSON(data: response.data!)
+           
+                let timeValue = json["routes"][0]["legs"][0]["duration"]["value"].rawValue as? Int
+                if timeValue != nil {
+                    
+                    let current = Int(Date().timeIntervalSince1970) + timeValue!
+                    let dformatter = DateFormatter()
+                    let date = Date(timeIntervalSince1970: TimeInterval(current))
+                    dformatter.dateFormat = "HH:mm"
+                    self.estimateTime.text = dformatter.string(from: date)
+                    
+                } else {
+                    self.estimateTime.text = " -- : -- "
+                }
+                
+            } catch {
+                print("ERROR: not working")
+            }
+        }
         
     }
     

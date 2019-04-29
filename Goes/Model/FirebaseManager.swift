@@ -329,6 +329,7 @@ class FireBaseManager {
         db.collection("orders").document(orderID).updateData(["driver_start_time": driverStartAt])
         
         db.collection("orders").document(orderID).updateData(["driver_start_Lat":startLat, "driver_start_lag": startLag])
+        db.collection("orders").document(orderID).updateData(["driverLat":startLat, "driverLag": startLag])
         
     }
     

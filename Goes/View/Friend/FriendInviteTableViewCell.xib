@@ -19,34 +19,52 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="I0S-34-KQh">
-                        <rect key="frame" x="30" y="20" width="50" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="I0S-34-KQh">
+                        <rect key="frame" x="40" y="21" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="08u-vH-Kgq"/>
+                            <constraint firstAttribute="height" constant="50" id="tD4-8b-210"/>
+                        </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fam-Eh-X4K">
-                        <rect key="frame" x="245" y="30" width="49" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.43137254899999999" green="0.80392156859999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <state key="normal" title="確認">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTG-ep-rHE">
-                        <rect key="frame" x="302" y="30" width="49" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTG-ep-rHE">
+                        <rect key="frame" x="302" y="31" width="49" height="30"/>
+                        <color key="backgroundColor" red="0.71764705880000002" green="0.71764705880000002" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="49" id="JgF-0R-ua0"/>
+                            <constraint firstAttribute="height" constant="30" id="nq6-PA-k0m"/>
+                        </constraints>
                         <state key="normal" title="刪除">
-                            <color key="titleColor" red="0.43137254899999999" green="0.80392156859999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Xian Wu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USa-I0-TGm">
-                        <rect key="frame" x="97" y="35" width="64" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xian Wu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USa-I0-TGm">
+                        <rect key="frame" x="106" y="35.5" width="64" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fam-Eh-X4K">
+                        <rect key="frame" x="245" y="31" width="49" height="30"/>
+                        <color key="backgroundColor" red="0.43137254899999999" green="0.80392156859999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="W1g-Q2-PI3"/>
+                            <constraint firstAttribute="width" constant="49" id="bFI-sJ-bHq"/>
+                        </constraints>
+                        <state key="normal" title="確認">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="I0S-34-KQh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BRj-6F-uGb"/>
+                    <constraint firstItem="Fam-Eh-X4K" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HbA-Rz-wHY"/>
+                    <constraint firstItem="USa-I0-TGm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KzX-aM-Hyq"/>
+                    <constraint firstItem="Fam-Eh-X4K" firstAttribute="leading" secondItem="USa-I0-TGm" secondAttribute="trailing" constant="75" id="NE4-4Z-wrW"/>
+                    <constraint firstItem="tTG-ep-rHE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Pj8-rq-ia0"/>
+                    <constraint firstItem="tTG-ep-rHE" firstAttribute="leading" secondItem="Fam-Eh-X4K" secondAttribute="trailing" constant="8" id="dJU-rV-elk"/>
+                    <constraint firstItem="USa-I0-TGm" firstAttribute="leading" secondItem="I0S-34-KQh" secondAttribute="trailing" constant="16" id="fvs-mw-eKw"/>
+                    <constraint firstItem="I0S-34-KQh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="24" id="pOz-MF-dtv"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

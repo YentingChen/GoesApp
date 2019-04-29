@@ -58,7 +58,11 @@ class AskLogInViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField! {
+        didSet {
+            passwordTextField.isSecureTextEntry = true
+        }
+    }
     @IBOutlet weak var whiteView: UIView! {
         didSet {
             self.whiteView.roundCorners(20)
