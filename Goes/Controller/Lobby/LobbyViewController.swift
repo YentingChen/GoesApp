@@ -13,6 +13,7 @@ class LobbyViewController: UIViewController {
 //4966-onboarding-car
     @IBOutlet weak var carView: UIView!
     
+    
     let animationView = LOTAnimationView(name: "animation-w300-h300-2")
     override func viewDidLoad() {
         super.viewDidLoad()
