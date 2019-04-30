@@ -48,7 +48,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="iad-4r-P5S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="0kl-kO-eYZ"/>
-                    <constraint firstItem="n5B-Yl-oSF" firstAttribute="leading" secondItem="iad-4r-P5S" secondAttribute="trailing" constant="72" id="BAy-yw-yBg"/>
+                    <constraint firstAttribute="trailing" secondItem="n5B-Yl-oSF" secondAttribute="trailing" constant="29" id="Iao-Dd-EDm"/>
                     <constraint firstItem="iad-4r-P5S" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xq4-EV-BOh"/>
                     <constraint firstItem="n5B-Yl-oSF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rI7-s8-Dsc"/>
                 </constraints>

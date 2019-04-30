@@ -29,11 +29,10 @@
                                             <constraint firstAttribute="width" constant="60" id="hE2-af-KDD"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yenting Chen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-hJ-2dv">
-                                        <rect key="frame" x="136" y="92" width="103" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="       " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-hJ-2dv">
+                                        <rect key="frame" x="24" y="92" width="327" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="ode-Os-MTL"/>
-                                            <constraint firstAttribute="width" constant="103" id="ppY-Tp-LGl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="B1"/>
@@ -42,8 +41,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="dAz-hJ-2dv" secondAttribute="bottom" constant="87" id="DjC-e1-u8d"/>
-                                    <constraint firstAttribute="trailing" secondItem="dAz-hJ-2dv" secondAttribute="trailing" constant="136" id="NvX-mR-QN9"/>
-                                    <constraint firstItem="dAz-hJ-2dv" firstAttribute="leading" secondItem="XXo-HA-71G" secondAttribute="leading" constant="136" id="SaJ-kK-5WJ"/>
+                                    <constraint firstItem="dAz-hJ-2dv" firstAttribute="centerX" secondItem="XXo-HA-71G" secondAttribute="centerX" id="MNr-Fa-IPf"/>
+                                    <constraint firstAttribute="trailing" secondItem="dAz-hJ-2dv" secondAttribute="trailing" constant="24" id="NvX-mR-QN9"/>
+                                    <constraint firstItem="dAz-hJ-2dv" firstAttribute="leading" secondItem="XXo-HA-71G" secondAttribute="leading" constant="24" id="SaJ-kK-5WJ"/>
                                     <constraint firstItem="oa3-4N-boZ" firstAttribute="top" secondItem="XXo-HA-71G" secondAttribute="top" constant="24" id="a77-tS-k4L"/>
                                     <constraint firstItem="oa3-4N-boZ" firstAttribute="centerX" secondItem="XXo-HA-71G" secondAttribute="centerX" id="oYW-lh-o8O"/>
                                 </constraints>
@@ -53,6 +53,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GqR-d5-JuD"/>
+                                    <constraint firstAttribute="width" constant="255" id="ZXY-Kc-52O"/>
                                 </constraints>
                                 <segments>
                                     <segment title="我的資料"/>
@@ -148,12 +149,11 @@
                             <constraint firstItem="EiI-px-mNu" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" constant="200" id="DTD-xk-1Kg"/>
                             <constraint firstItem="XXo-HA-71G" firstAttribute="trailing" secondItem="jR5-dv-g57" secondAttribute="trailing" id="DXf-C7-R3S"/>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="top" secondItem="XXo-HA-71G" secondAttribute="bottom" id="H0b-HO-MMg"/>
-                            <constraint firstItem="o8R-C4-Pit" firstAttribute="leading" secondItem="jR5-dv-g57" secondAttribute="leading" constant="60" id="Tvf-8H-f88"/>
+                            <constraint firstItem="o8R-C4-Pit" firstAttribute="centerX" secondItem="XZj-ra-geE" secondAttribute="centerX" id="NhW-Zs-ZCV"/>
                             <constraint firstItem="XXo-HA-71G" firstAttribute="leading" secondItem="jR5-dv-g57" secondAttribute="leading" id="Y99-qA-Zbx"/>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="trailing" secondItem="jR5-dv-g57" secondAttribute="trailing" id="ZqE-Q2-MIr"/>
                             <constraint firstItem="EiI-px-mNu" firstAttribute="leading" secondItem="jR5-dv-g57" secondAttribute="leading" id="a4E-r6-MF9"/>
                             <constraint firstItem="XXo-HA-71G" firstAttribute="top" secondItem="jR5-dv-g57" secondAttribute="top" id="bgI-Qn-UxC"/>
-                            <constraint firstItem="jR5-dv-g57" firstAttribute="trailing" secondItem="o8R-C4-Pit" secondAttribute="trailing" constant="60" id="p5m-Ze-oTp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jR5-dv-g57"/>
                     </view>

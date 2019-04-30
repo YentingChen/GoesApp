@@ -76,7 +76,8 @@ class SignUpViewController: UIViewController {
                          SetProfile.CodingKeys.phoneNumber.rawValue : userPhone])
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "Goes")
-                    self.present(vc, animated: true, completion: nil)
+//                    self.present(vc, animated: true, completion: nil)
+                    self.dismiss(animated: false, completion: nil)
                     
                 } else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
