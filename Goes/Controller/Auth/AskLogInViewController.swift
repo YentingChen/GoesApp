@@ -55,7 +55,7 @@ class AskLogInViewController: UIViewController {
        
     }
     @IBAction func dismissBtn(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField! {

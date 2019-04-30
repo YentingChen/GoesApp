@@ -37,8 +37,6 @@ class LobbyFriendViewController: UIViewController {
                 preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "確定", style: .cancel, handler: nil)
-            
-           
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)
             
@@ -61,9 +59,9 @@ class LobbyFriendViewController: UIViewController {
                     selectedLocation: self.selectedLocation!,
                     myInfo: self.myProfile!,
                     completionHandler: {
-                        self.dismiss(animated: true, completion: nil)
-                        self.navigationController?.dismiss(animated: true, completion: nil)
-                        self.present(LobbyViewController(), animated: true, completion: nil)
+                        self.dismiss(animated: false, completion: nil)
+                        self.navigationController?.dismiss(animated: false, completion: nil)
+                        self.present(LobbyViewController(), animated: false, completion: nil)
                 })
                 
             }
@@ -100,6 +98,7 @@ class LobbyFriendViewController: UIViewController {
             })
             
         }
+        
         self.searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -111,9 +110,12 @@ class LobbyFriendViewController: UIViewController {
     }
 
     @IBAction func dismissBtn(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-        self.navigationController?.dismiss(animated: true, completion: nil)
-        present(LobbyViewController(), animated: true, completion: nil)
+        
+        dismiss(animated: false, completion: nil)
+        
+        self.navigationController?.dismiss(animated: false, completion: nil)
+        
+        present(LobbyViewController(), animated: false, completion: nil)
     }
 
 }
@@ -159,7 +161,7 @@ extension LobbyFriendViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchText == "" {
-            
+            self.result = self.myFriends
         } else {
             self.result = []
             isSearching = true
@@ -183,5 +185,9 @@ extension LobbyFriendViewController: UISearchBarDelegate {
         
         self.tableView.reloadData()
         
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }

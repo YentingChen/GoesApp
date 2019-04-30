@@ -40,7 +40,7 @@ class LobbyTimeViewController: UIViewController {
                     as? AskLogInViewController
                 loginVC?.modalPresentationStyle = .overCurrentContext
                 
-                self.present(loginVC!, animated: false, completion: nil)
+                self.present(loginVC!, animated: false , completion: nil)
                 
                 
             }
@@ -87,9 +87,12 @@ class LobbyTimeViewController: UIViewController {
 
     @IBAction func dismissBtn(_ sender: Any) {
         
-        dismiss(animated: true, completion: nil)
-        self.navigationController?.dismiss(animated: true, completion: nil)
-        present(LobbyViewController(), animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
+        
+        self.navigationController?.dismiss(animated: false, completion: nil)
+        
+        present(LobbyViewController(), animated: false, completion: nil)
+        
     }
     
     var currentHour = 0

@@ -53,11 +53,11 @@ class LobbyMapViewController: UIViewController {
    
     @IBAction func dismiss(_ sender: Any) {
         
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
         
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        self.navigationController?.dismiss(animated: false, completion: nil)
         
-        present(LobbyViewController(), animated: true, completion: nil)
+        present(LobbyViewController(), animated: false, completion: nil)
         
     }
     

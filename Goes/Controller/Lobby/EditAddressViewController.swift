@@ -30,7 +30,7 @@ class EditAddressViewController: UIViewController {
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         
-        let subView = UIView(frame: CGRect(x: 0, y: 65.0, width: 350.0, height: 45.0))
+        let subView = UIView(frame: CGRect(x: 0, y: 100.0, width: 350.0, height: 45.0))
         
         subView.addSubview((searchController?.searchBar)!)
         view.addSubview(subView)

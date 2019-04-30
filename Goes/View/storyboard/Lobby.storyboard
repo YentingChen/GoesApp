@@ -22,8 +22,20 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="sQI-iF-vxf">
                                 <rect key="frame" x="30" y="80" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="13q-0f-hvG"/>
-                                    <constraint firstAttribute="width" constant="60" id="q1S-J2-be8"/>
+                                    <constraint firstAttribute="height" constant="60" id="13q-0f-hvG" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="iPhoneSE">
+                                                <real key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="60" id="q1S-J2-be8" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="iPhoneSE">
+                                                <real key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </constraint>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AC-7u-5Ow">
@@ -32,7 +44,7 @@
                                     <constraint firstAttribute="height" constant="40" id="bZ5-e5-suI"/>
                                     <constraint firstAttribute="width" constant="217" id="skG-XD-BXq"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="27"/>
                                 <color key="textColor" name="B1"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -42,37 +54,38 @@
                                     <constraint firstAttribute="height" constant="30" id="4qa-NP-qmA"/>
                                     <constraint firstAttribute="width" constant="100" id="h7K-cG-KMF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="27"/>
                                 <color key="textColor" name="B1"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="告訴朋友您的所在地，讓他們知道該去哪裡找你。" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kre-h9-Cfk">
-                                <rect key="frame" x="30" y="242" width="317" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="告訴朋友您的所在地，讓他們知道該去哪裡找你。" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kre-h9-Cfk">
+                                <rect key="frame" x="30" y="246" width="317" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="haF-68-aOG"/>
-                                    <constraint firstAttribute="width" constant="317" id="yRR-ge-Pwd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                 <color key="textColor" name="B3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請點選車車" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZA-MS-XrL">
-                                <rect key="frame" x="30" y="314" width="100" height="48"/>
+                                <rect key="frame" x="30" y="318" width="90" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="I9s-YN-Kii"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d97-4Y-pRu">
-                                <rect key="frame" x="30" y="370" width="317" height="205"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d97-4Y-pRu">
+                                <rect key="frame" x="29" y="374" width="317" height="205"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="317" id="7K7-Hl-zoH" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target"/>
+                                    <constraint firstAttribute="height" constant="205" id="QxQ-f3-aXj" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-4V-bQu">
-                                <rect key="frame" x="16" y="370" width="343" height="222"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-4V-bQu">
+                                <rect key="frame" x="29" y="374" width="317" height="205"/>
                                 <connections>
                                     <segue destination="hTx-so-daN" kind="presentation" id="btq-zr-9Y4"/>
                                 </connections>
@@ -81,15 +94,47 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pSG-FJ-bK0" firstAttribute="top" secondItem="7AC-7u-5Ow" secondAttribute="bottom" constant="4" id="0AB-5f-AsA"/>
-                            <constraint firstItem="sQI-iF-vxf" firstAttribute="top" secondItem="vN1-yL-qtP" secondAttribute="top" constant="16" id="BJ3-xf-kgM"/>
+                            <constraint firstItem="d97-4Y-pRu" firstAttribute="bottom" secondItem="ee1-4V-bQu" secondAttribute="bottom" id="0iQ-zM-9Zf"/>
+                            <constraint firstItem="sQI-iF-vxf" firstAttribute="top" secondItem="vN1-yL-qtP" secondAttribute="top" constant="16" id="BJ3-xf-kgM" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneSE">
+                                        <real key="value" value="-5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="d97-4Y-pRu" firstAttribute="centerX" secondItem="aMP-n5-QTA" secondAttribute="centerX" id="Bni-2m-rn6"/>
                             <constraint firstItem="iZA-MS-XrL" firstAttribute="leading" secondItem="vN1-yL-qtP" secondAttribute="leading" constant="30" id="CO6-NT-zS9"/>
                             <constraint firstItem="sQI-iF-vxf" firstAttribute="leading" secondItem="vN1-yL-qtP" secondAttribute="leading" constant="30" id="GZU-Hk-t1c"/>
-                            <constraint firstItem="7AC-7u-5Ow" firstAttribute="top" secondItem="vN1-yL-qtP" secondAttribute="top" constant="100" id="R9s-rW-buc"/>
+                            <constraint firstItem="d97-4Y-pRu" firstAttribute="top" secondItem="iZA-MS-XrL" secondAttribute="bottom" constant="8" id="I20-HK-Fqh"/>
+                            <constraint firstItem="vN1-yL-qtP" firstAttribute="trailing" secondItem="kre-h9-Cfk" secondAttribute="trailing" constant="28" id="LBh-6q-MBz"/>
+                            <constraint firstItem="7AC-7u-5Ow" firstAttribute="top" secondItem="vN1-yL-qtP" secondAttribute="top" constant="100" id="R9s-rW-buc" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneSE">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="d97-4Y-pRu" firstAttribute="trailing" secondItem="ee1-4V-bQu" secondAttribute="trailing" id="RU3-zN-TMI"/>
                             <constraint firstItem="pSG-FJ-bK0" firstAttribute="leading" secondItem="vN1-yL-qtP" secondAttribute="leading" constant="30" id="Tyr-A8-DpI"/>
-                            <constraint firstItem="iZA-MS-XrL" firstAttribute="top" secondItem="kre-h9-Cfk" secondAttribute="bottom" constant="24" id="Vmy-zk-hBH"/>
-                            <constraint firstItem="kre-h9-Cfk" firstAttribute="top" secondItem="pSG-FJ-bK0" secondAttribute="bottom" constant="4" id="Yma-Oo-NB4"/>
+                            <constraint firstItem="kre-h9-Cfk" firstAttribute="top" secondItem="pSG-FJ-bK0" secondAttribute="bottom" constant="8" id="Yma-Oo-NB4"/>
+                            <constraint firstItem="d97-4Y-pRu" firstAttribute="top" secondItem="ee1-4V-bQu" secondAttribute="top" id="cnU-aM-V8V"/>
                             <constraint firstItem="kre-h9-Cfk" firstAttribute="leading" secondItem="vN1-yL-qtP" secondAttribute="leading" constant="30" id="dxV-d6-rKg"/>
+                            <constraint firstItem="iZA-MS-XrL" firstAttribute="top" secondItem="kre-h9-Cfk" secondAttribute="bottom" constant="24" id="fA3-Vt-j5Z" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneSE">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="vN1-yL-qtP" firstAttribute="bottom" secondItem="d97-4Y-pRu" secondAttribute="bottom" priority="250" constant="80" id="fyt-iM-NVP" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneSE">
+                                        <real key="value" value="140"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
                             <constraint firstItem="7AC-7u-5Ow" firstAttribute="leading" secondItem="vN1-yL-qtP" secondAttribute="leading" constant="30" id="r1q-Sr-Gor"/>
+                            <constraint firstItem="d97-4Y-pRu" firstAttribute="leading" secondItem="ee1-4V-bQu" secondAttribute="leading" id="wVL-gX-Gum"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vN1-yL-qtP"/>
                     </view>
@@ -170,9 +215,12 @@
                                     <constraint firstAttribute="height" constant="24" id="oFC-dW-gux"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Dz-OP-uN3">
-                                <rect key="frame" x="300" y="400" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Dz-OP-uN3">
+                                <rect key="frame" x="303" y="400" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="VHu-wY-TdS"/>
+                                    <constraint firstAttribute="width" constant="48" id="WnF-to-DfA"/>
+                                </constraints>
                                 <state key="normal" image="target36x"/>
                                 <connections>
                                     <action selector="mylocationBtn:" destination="JLf-kq-C3D" eventType="touchUpInside" id="uMM-a7-9iH"/>
@@ -272,6 +320,7 @@
                             <constraint firstItem="PV1-yp-wj7" firstAttribute="top" secondItem="QXu-ua-BTU" secondAttribute="top" constant="46" id="0bE-4Y-9Hr"/>
                             <constraint firstItem="0Bz-di-nua" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="24" id="3AY-sE-DET"/>
                             <constraint firstItem="LbJ-Bm-pCv" firstAttribute="centerX" secondItem="qmq-c2-HkD" secondAttribute="centerX" id="A35-Cn-m7h"/>
+                            <constraint firstItem="PVc-Tj-Bri" firstAttribute="top" secondItem="2Dz-OP-uN3" secondAttribute="bottom" constant="9" id="AoY-Oz-oOH"/>
                             <constraint firstItem="iah-8n-Xw9" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="84" id="Fcz-vB-jON"/>
                             <constraint firstItem="gNS-4k-R9c" firstAttribute="leading" secondItem="PV1-yp-wj7" secondAttribute="leading" id="GYw-GQ-1ze"/>
                             <constraint firstItem="PVc-Tj-Bri" firstAttribute="bottom" secondItem="PV1-yp-wj7" secondAttribute="bottom" id="K6H-89-oA8"/>
@@ -279,10 +328,41 @@
                             <constraint firstItem="gNS-4k-R9c" firstAttribute="trailing" secondItem="PV1-yp-wj7" secondAttribute="trailing" id="Qhk-Kz-vnv"/>
                             <constraint firstItem="PVc-Tj-Bri" firstAttribute="trailing" secondItem="PV1-yp-wj7" secondAttribute="trailing" id="WmT-M1-ynn"/>
                             <constraint firstItem="0Bz-di-nua" firstAttribute="centerX" secondItem="qmq-c2-HkD" secondAttribute="centerX" id="XUD-VW-6J7"/>
-                            <constraint firstItem="PV1-yp-wj7" firstAttribute="bottom" secondItem="LbJ-Bm-pCv" secondAttribute="bottom" constant="345" id="fXq-2g-wNN"/>
+                            <constraint firstItem="PV1-yp-wj7" firstAttribute="bottom" secondItem="LbJ-Bm-pCv" secondAttribute="bottom" constant="345" id="fXq-2g-wNN" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXS">
+                                        <real key="value" value="395"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXR">
+                                        <real key="value" value="395"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXMax">
+                                        <real key="value" value="440"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhone8Plus">
+                                        <real key="value" value="385"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneSE">
+                                        <real key="value" value="300"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
                             <constraint firstItem="PV1-yp-wj7" firstAttribute="trailing" secondItem="QXu-ua-BTU" secondAttribute="trailing" constant="15" id="keI-3K-b0t"/>
                             <constraint firstItem="PV1-yp-wj7" firstAttribute="bottom" secondItem="gNS-4k-R9c" secondAttribute="bottom" id="mSy-rW-1Bx"/>
-                            <constraint firstItem="gNS-4k-R9c" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="-64" id="wKg-PN-a5S"/>
+                            <constraint firstItem="PV1-yp-wj7" firstAttribute="trailing" secondItem="2Dz-OP-uN3" secondAttribute="trailing" constant="24" id="nef-b6-TOa"/>
+                            <constraint firstItem="gNS-4k-R9c" firstAttribute="top" secondItem="PV1-yp-wj7" secondAttribute="top" constant="-64" id="wKg-PN-a5S" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXS">
+                                        <real key="value" value="-100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXR">
+                                        <real key="value" value="-100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXMax">
+                                        <real key="value" value="-100"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
                             <constraint firstItem="iah-8n-Xw9" firstAttribute="centerX" secondItem="qmq-c2-HkD" secondAttribute="centerX" id="wbw-O4-a4d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PV1-yp-wj7"/>
@@ -490,9 +570,12 @@
                                     <action selector="showClicked:" destination="Ima-1g-ql7" eventType="touchUpInside" id="20C-Gf-Zbh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LND-Qf-wYs">
-                                <rect key="frame" x="315" y="19" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LND-Qf-wYs">
+                                <rect key="frame" x="315" y="24" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Bav-kL-Nbe"/>
+                                    <constraint firstAttribute="height" constant="44" id="LUG-Lh-ETC"/>
+                                </constraints>
                                 <state key="normal" image="cross36x"/>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lbh-sn-Vd7">
@@ -511,6 +594,19 @@
                             <constraint firstItem="8Vd-i7-yTk" firstAttribute="top" secondItem="zcE-Ng-9JA" secondAttribute="bottom" constant="20" id="U5s-d5-N6p"/>
                             <constraint firstItem="Jxh-xH-PAU" firstAttribute="bottom" secondItem="q7F-Uz-jvq" secondAttribute="bottom" id="UFQ-3k-61R"/>
                             <constraint firstItem="AYO-XF-pgx" firstAttribute="leading" secondItem="8Vd-i7-yTk" secondAttribute="trailing" constant="20" id="eio-zB-z7m"/>
+                            <constraint firstItem="LND-Qf-wYs" firstAttribute="top" secondItem="DnD-QF-QV6" secondAttribute="top" constant="24" id="gA9-s7-74N" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXS">
+                                        <real key="value" value="48"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXR">
+                                        <real key="value" value="48"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXMax">
+                                        <real key="value" value="48"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
                             <constraint firstItem="KYU-kw-Jes" firstAttribute="leading" secondItem="q7F-Uz-jvq" secondAttribute="leading" constant="24" id="i6c-Tb-Bi5"/>
                             <constraint firstItem="zcE-Ng-9JA" firstAttribute="top" secondItem="KYU-kw-Jes" secondAttribute="bottom" constant="15" id="lBC-qj-c32"/>
                             <constraint firstItem="GMb-Xg-SHR" firstAttribute="leading" secondItem="zcE-Ng-9JA" secondAttribute="trailing" constant="20" id="pRr-zR-jcO"/>
@@ -519,6 +615,7 @@
                             <constraint firstItem="q7F-Uz-jvq" firstAttribute="trailing" secondItem="NWa-hz-y3x" secondAttribute="trailing" constant="24" id="rK3-MT-970"/>
                             <constraint firstItem="Jxh-xH-PAU" firstAttribute="trailing" secondItem="q7F-Uz-jvq" secondAttribute="trailing" id="rQc-Lv-Qj9"/>
                             <constraint firstItem="KYU-kw-Jes" firstAttribute="top" secondItem="q7F-Uz-jvq" secondAttribute="top" constant="24" id="u6N-pN-E9K"/>
+                            <constraint firstAttribute="trailing" secondItem="LND-Qf-wYs" secondAttribute="trailing" constant="16" id="xwR-KJ-qCu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q7F-Uz-jvq"/>
                     </view>
@@ -569,9 +666,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nta-yG-iJe">
-                                <rect key="frame" x="321" y="12" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nta-yG-iJe">
+                                <rect key="frame" x="315" y="24" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="7WI-BN-Wku"/>
+                                    <constraint firstAttribute="height" constant="44" id="cHU-F8-CKH"/>
+                                </constraints>
                                 <state key="normal" image="cross36x"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="好友列表" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDJ-hG-rPi">
@@ -676,12 +776,26 @@
                             <constraint firstItem="S6D-YU-Dtp" firstAttribute="leading" secondItem="JvM-ch-Rxn" secondAttribute="leading" id="535-QE-oRI"/>
                             <constraint firstItem="vVR-wT-JFV" firstAttribute="leading" secondItem="JvM-ch-Rxn" secondAttribute="leading" id="6im-Xj-Mbw"/>
                             <constraint firstItem="S6D-YU-Dtp" firstAttribute="top" secondItem="vVR-wT-JFV" secondAttribute="bottom" id="7Em-UH-BWg"/>
+                            <constraint firstAttribute="trailing" secondItem="nta-yG-iJe" secondAttribute="trailing" constant="16" id="8VW-vT-Tdz"/>
                             <constraint firstItem="JvM-ch-Rxn" firstAttribute="trailing" secondItem="vVR-wT-JFV" secondAttribute="trailing" id="Ahb-Oo-lZQ"/>
                             <constraint firstItem="Jf2-8y-bmc" firstAttribute="top" secondItem="SDJ-hG-rPi" secondAttribute="bottom" id="PN6-df-dR1"/>
                             <constraint firstItem="SDJ-hG-rPi" firstAttribute="top" secondItem="JvM-ch-Rxn" secondAttribute="top" id="QO9-gD-whX"/>
                             <constraint firstItem="Jf2-8y-bmc" firstAttribute="trailing" secondItem="JvM-ch-Rxn" secondAttribute="trailing" id="Zxk-DS-9sN"/>
                             <constraint firstItem="Jf2-8y-bmc" firstAttribute="leading" secondItem="JvM-ch-Rxn" secondAttribute="leading" id="gEv-Xi-nsg"/>
                             <constraint firstItem="SDJ-hG-rPi" firstAttribute="leading" secondItem="JvM-ch-Rxn" secondAttribute="leading" constant="24" id="ktQ-fr-8HR"/>
+                            <constraint firstItem="nta-yG-iJe" firstAttribute="top" secondItem="AoD-XB-etW" secondAttribute="top" constant="24" id="mnM-7b-uln" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXS">
+                                        <real key="value" value="48"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXR">
+                                        <real key="value" value="48"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iPhoneXMax">
+                                        <real key="value" value="48"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
                             <constraint firstItem="S6D-YU-Dtp" firstAttribute="trailing" secondItem="JvM-ch-Rxn" secondAttribute="trailing" id="u9r-c6-pvC"/>
                             <constraint firstItem="JvM-ch-Rxn" firstAttribute="bottom" secondItem="S6D-YU-Dtp" secondAttribute="bottom" id="wgK-zD-ecS"/>
                         </constraints>
