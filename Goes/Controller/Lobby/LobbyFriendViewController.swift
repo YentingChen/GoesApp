@@ -74,7 +74,6 @@ class LobbyFriendViewController: UIViewController {
         }
         
         
-        
     }
     
     func createOrderID() -> Int {

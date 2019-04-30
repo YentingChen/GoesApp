@@ -167,6 +167,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return 23
+
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -342,11 +343,16 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 2 {
-           
-            self.selectedOrder = self.myOrdersS5[indexPath.row]
-            self.selectedDriver = self.driverS5[indexPath.row]
             
-             performSegue(withIdentifier: "toMyOrderDetail", sender: self)
+            if self.myOrdersS5.count != 0 , self.driverS5.count != 0 {
+                
+                self.selectedOrder = self.myOrdersS5[indexPath.row]
+                self.selectedDriver = self.driverS5[indexPath.row]
+                
+                performSegue(withIdentifier: "toMyOrderDetail", sender: self)
+                
+            }
+            
             
         }
     }

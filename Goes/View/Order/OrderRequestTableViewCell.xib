@@ -20,89 +20,70 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kJj-XI-DH8">
-                        <rect key="frame" x="24.5" y="32.5" width="86.5" height="75"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="cNI-Lv-mD2">
-                                <rect key="frame" x="18" y="0.0" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="OGs-T0-0Wg"/>
-                                    <constraint firstAttribute="height" constant="50" id="puY-Iw-kmF"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yenting Chen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OE-hV-E5M">
-                                <rect key="frame" x="0.0" y="58" width="86.5" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="aEa-YY-bCZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="接送時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNo-DZ-2WH">
+                        <rect key="frame" x="120" y="8" width="49.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" name="B3"/>
+                        <color key="highlightedColor" name="B3"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天的下午 3 時" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPQ-vv-hm5">
+                        <rect key="frame" x="120" y="30.5" width="102" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="接送地點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFW-c7-bXX">
+                        <rect key="frame" x="120" y="63.5" width="49.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" name="B3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台北市信義區基隆路一段180號" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOB-Fx-3f5">
+                        <rect key="frame" x="120" y="82" width="247" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="0.0" height="-2"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yenting Chen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OE-hV-E5M">
+                        <rect key="frame" x="8" y="56" width="104" height="67.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="B1"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="cNI-Lv-mD2">
+                        <rect key="frame" x="35" y="16" width="50" height="50"/>
                         <constraints>
-                            <constraint firstItem="2OE-hV-E5M" firstAttribute="centerX" secondItem="cNI-Lv-mD2" secondAttribute="centerX" id="9l1-2V-4Cn"/>
+                            <constraint firstAttribute="width" constant="50" id="H3a-ar-si8"/>
+                            <constraint firstAttribute="height" constant="50" id="ovR-9j-qhW"/>
                         </constraints>
-                    </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Gzg-5r-KrA">
-                        <rect key="frame" x="135" y="19" width="200" height="35.5"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="接送時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNo-DZ-2WH">
-                                <rect key="frame" x="0.0" y="0.0" width="49.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" name="B3"/>
-                                <color key="highlightedColor" name="B3"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天的下午 3 時" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPQ-vv-hm5">
-                                <rect key="frame" x="0.0" y="18.5" width="102" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="200" id="Fyp-XB-DnM"/>
-                        </constraints>
-                    </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="nyJ-lT-05R">
-                        <rect key="frame" x="135" y="66.5" width="235" height="33.5"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="接送地點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFW-c7-bXX">
-                                <rect key="frame" x="0.0" y="0.0" width="49.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" name="B3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台北市信義區基隆路一段180號" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOB-Fx-3f5">
-                                <rect key="frame" x="0.0" y="16.5" width="195.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="0.0" height="-2"/>
-                            </label>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="235" id="Lbm-HY-A93"/>
-                        </constraints>
-                    </stackView>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_24px_More_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="Ymi-o5-rog">
-                        <rect key="frame" x="338" y="16" width="24" height="24"/>
+                        <rect key="frame" x="335" y="16" width="24" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="24" id="e6Y-2g-6JP"/>
-                            <constraint firstAttribute="height" constant="24" id="yIF-uQ-aXx"/>
+                            <constraint firstAttribute="height" constant="24" id="2Rt-rX-IMT"/>
+                            <constraint firstAttribute="width" constant="24" id="bTJ-5P-QGa"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Gzg-5r-KrA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="3wI-5V-FVq"/>
-                    <constraint firstAttribute="trailing" secondItem="Ymi-o5-rog" secondAttribute="trailing" constant="16" id="86f-lW-o7K"/>
-                    <constraint firstItem="kJj-XI-DH8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MBa-7b-p1X"/>
-                    <constraint firstAttribute="trailing" secondItem="nyJ-lT-05R" secondAttribute="trailing" constant="8" id="OIf-IR-TrV"/>
-                    <constraint firstItem="kJj-XI-DH8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="P5b-cN-p5H"/>
-                    <constraint firstItem="Gzg-5r-KrA" firstAttribute="leading" secondItem="kJj-XI-DH8" secondAttribute="trailing" constant="24" id="cHj-zH-UKZ"/>
-                    <constraint firstItem="nyJ-lT-05R" firstAttribute="leading" secondItem="kJj-XI-DH8" secondAttribute="trailing" constant="24" id="dIO-dS-uwA"/>
-                    <constraint firstItem="Ymi-o5-rog" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="nX4-ul-bun"/>
-                    <constraint firstItem="nyJ-lT-05R" firstAttribute="top" secondItem="Gzg-5r-KrA" secondAttribute="bottom" constant="12" id="o32-s6-g9H"/>
+                    <constraint firstAttribute="trailing" secondItem="Ymi-o5-rog" secondAttribute="trailing" constant="16" id="0Sv-Ac-0BM"/>
+                    <constraint firstItem="KOB-Fx-3f5" firstAttribute="leading" secondItem="tFW-c7-bXX" secondAttribute="leading" id="1GN-U2-Xuj"/>
+                    <constraint firstItem="Ymi-o5-rog" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="8PQ-hj-Jdl"/>
+                    <constraint firstItem="KOB-Fx-3f5" firstAttribute="leading" secondItem="2OE-hV-E5M" secondAttribute="trailing" constant="8" id="HOT-Kq-JCJ"/>
+                    <constraint firstAttribute="trailing" secondItem="KOB-Fx-3f5" secondAttribute="trailing" constant="8" id="IlD-YV-3ls"/>
+                    <constraint firstItem="NNo-DZ-2WH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="MU1-k5-1BL"/>
+                    <constraint firstItem="tFW-c7-bXX" firstAttribute="top" secondItem="BPQ-vv-hm5" secondAttribute="bottom" constant="16" id="Ror-bq-LH7"/>
+                    <constraint firstItem="BPQ-vv-hm5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="120" id="VZP-6c-Wcd"/>
+                    <constraint firstItem="BPQ-vv-hm5" firstAttribute="top" secondItem="NNo-DZ-2WH" secondAttribute="bottom" constant="8" id="WN0-90-3Lk"/>
+                    <constraint firstItem="KOB-Fx-3f5" firstAttribute="top" secondItem="tFW-c7-bXX" secondAttribute="bottom" constant="4" id="Xaf-bE-mfw"/>
+                    <constraint firstItem="2OE-hV-E5M" firstAttribute="centerX" secondItem="cNI-Lv-mD2" secondAttribute="centerX" id="ecD-i2-A51"/>
+                    <constraint firstItem="cNI-Lv-mD2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="fXo-dP-ftF"/>
+                    <constraint firstItem="NNo-DZ-2WH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="120" id="gHZ-PP-uYB"/>
+                    <constraint firstItem="tFW-c7-bXX" firstAttribute="leading" secondItem="NNo-DZ-2WH" secondAttribute="leading" id="nEP-73-MlH"/>
+                    <constraint firstItem="2OE-hV-E5M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="o4A-AC-dcB"/>
+                    <constraint firstItem="2OE-hV-E5M" firstAttribute="top" secondItem="cNI-Lv-mD2" secondAttribute="bottom" constant="-10" id="uk8-mz-OX3"/>
+                    <constraint firstAttribute="bottom" secondItem="2OE-hV-E5M" secondAttribute="bottom" constant="16" id="yXM-VE-0rZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -117,6 +98,9 @@
     <resources>
         <image name="Icons_24px_More_Normal" width="24" height="24"/>
         <image name="profile_image" width="512" height="512"/>
+        <namedColor name="B1">
+            <color red="0.24705882352941178" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="B3">
             <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

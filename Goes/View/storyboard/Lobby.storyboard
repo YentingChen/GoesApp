@@ -186,9 +186,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Bz-di-nua">
                                 <rect key="frame" x="37.5" y="88" width="300" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HM-hr-rhk">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HM-hr-rhk">
                                         <rect key="frame" x="8" y="5" width="284" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="addressBtn:" destination="JLf-kq-C3D" eventType="touchUpInside" id="znv-CZ-mlr"/>
                                         </connections>
@@ -198,6 +197,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FUa-vp-QNb"/>
                                     <constraint firstAttribute="width" constant="300" id="GRr-YJ-69t"/>
+                                    <constraint firstItem="3HM-hr-rhk" firstAttribute="top" secondItem="0Bz-di-nua" secondAttribute="top" constant="5" id="V2I-Yv-vOX"/>
+                                    <constraint firstAttribute="trailing" secondItem="3HM-hr-rhk" secondAttribute="trailing" constant="8" id="ceN-Vx-qET"/>
+                                    <constraint firstAttribute="bottom" secondItem="3HM-hr-rhk" secondAttribute="bottom" constant="5" id="lcZ-Wu-qH4"/>
+                                    <constraint firstItem="3HM-hr-rhk" firstAttribute="leading" secondItem="0Bz-di-nua" secondAttribute="leading" constant="8" id="t8I-ei-Vaa"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXu-ua-BTU">
@@ -578,9 +581,8 @@
                                 </constraints>
                                 <state key="normal" image="cross36x"/>
                             </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lbh-sn-Vd7">
-                                <rect key="frame" x="0.0" y="225" width="375" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbh-sn-Vd7">
+                                <rect key="frame" x="27.5" y="225.5" width="320" height="216"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -588,8 +590,10 @@
                             <constraint firstItem="AYO-XF-pgx" firstAttribute="top" secondItem="GMb-Xg-SHR" secondAttribute="bottom" constant="20" id="51X-2T-i7I"/>
                             <constraint firstItem="GOp-UM-Y4C" firstAttribute="centerY" secondItem="AYO-XF-pgx" secondAttribute="centerY" id="59B-J8-NfI"/>
                             <constraint firstItem="Jxh-xH-PAU" firstAttribute="leading" secondItem="q7F-Uz-jvq" secondAttribute="leading" id="5ZI-6X-7ON"/>
+                            <constraint firstItem="Lbh-sn-Vd7" firstAttribute="centerX" secondItem="DnD-QF-QV6" secondAttribute="centerX" id="6fB-xD-Kf6"/>
                             <constraint firstItem="zcE-Ng-9JA" firstAttribute="leading" secondItem="q7F-Uz-jvq" secondAttribute="leading" constant="24" id="7b0-dh-gOA"/>
                             <constraint firstItem="8Vd-i7-yTk" firstAttribute="leading" secondItem="q7F-Uz-jvq" secondAttribute="leading" constant="24" id="Dgd-jW-Csv"/>
+                            <constraint firstItem="Lbh-sn-Vd7" firstAttribute="centerY" secondItem="DnD-QF-QV6" secondAttribute="centerY" id="Ecr-dU-tKY"/>
                             <constraint firstItem="GMb-Xg-SHR" firstAttribute="top" secondItem="KYU-kw-Jes" secondAttribute="bottom" constant="15" id="KS6-mF-HH3"/>
                             <constraint firstItem="8Vd-i7-yTk" firstAttribute="top" secondItem="zcE-Ng-9JA" secondAttribute="bottom" constant="20" id="U5s-d5-N6p"/>
                             <constraint firstItem="Jxh-xH-PAU" firstAttribute="bottom" secondItem="q7F-Uz-jvq" secondAttribute="bottom" id="UFQ-3k-61R"/>
@@ -741,9 +745,12 @@
                                         <color key="textColor" name="B1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKe-6z-8Qn">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKe-6z-8Qn">
                                         <rect key="frame" x="261" y="95" width="46" height="51"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="ZH4-Tl-SCP"/>
+                                            <constraint firstAttribute="width" constant="46" id="eSO-Hi-nGw"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="checkBtn:" destination="oDo-gR-yDl" eventType="touchUpInside" id="oVV-tO-wWe"/>
                                         </connections>
@@ -756,9 +763,11 @@
                                     <constraint firstAttribute="width" constant="375" id="Q0d-dj-x9f"/>
                                     <constraint firstItem="rUq-dC-gJl" firstAttribute="top" secondItem="S6D-YU-Dtp" secondAttribute="top" constant="20" id="bOr-hZ-WhB"/>
                                     <constraint firstItem="rUq-dC-gJl" firstAttribute="leading" secondItem="S6D-YU-Dtp" secondAttribute="leading" constant="27" id="c83-Hn-jNR"/>
+                                    <constraint firstItem="m2c-bQ-BEK" firstAttribute="top" secondItem="fKe-6z-8Qn" secondAttribute="bottom" constant="-51" id="cSo-dP-vgR"/>
                                     <constraint firstItem="FJE-6y-mf9" firstAttribute="leading" secondItem="S6D-YU-Dtp" secondAttribute="leading" constant="27" id="dTx-QV-nBE"/>
                                     <constraint firstAttribute="height" constant="210" id="mmz-2W-mDW"/>
                                     <constraint firstItem="m2c-bQ-BEK" firstAttribute="centerX" secondItem="S6D-YU-Dtp" secondAttribute="centerX" id="uDx-Hy-bZl"/>
+                                    <constraint firstItem="fKe-6z-8Qn" firstAttribute="leading" secondItem="m2c-bQ-BEK" secondAttribute="trailing" constant="-46.5" id="zeo-Ih-rVD"/>
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Jf2-8y-bmc">

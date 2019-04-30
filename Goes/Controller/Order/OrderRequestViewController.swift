@@ -92,7 +92,7 @@ class OrderRequestViewController: UIViewController {
         ridersS2 = []
         ridersS3 = []
         ridersS6 = []
-        
+    
         tableView.reloadData()
         loadDataFromDB()
         
@@ -219,6 +219,7 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
         -> CGFloat {
             
         return 23
+            
     }
     
     func tableView(_ tableView: UITableView,

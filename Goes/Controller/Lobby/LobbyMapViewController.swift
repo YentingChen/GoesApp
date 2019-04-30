@@ -23,7 +23,14 @@ class LobbyMapViewController: UIViewController {
     var editAddressVC: EditAddressViewController?
     var selectedLocation: Address?
     
-    @IBOutlet weak var addressBtn: UIButton!
+    @IBOutlet weak var addressBtn: UIButton! {
+        didSet {
+            
+            self.addressBtn.contentHorizontalAlignment = .left
+             self.addressBtn.titleLabel?.lineBreakMode = .byClipping
+            
+        }
+    }
     @IBOutlet weak var adressSegmentedControl: UISegmentedControl!
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -63,12 +70,36 @@ class LobbyMapViewController: UIViewController {
     
     @IBAction func mylocationBtn(_ sender: Any) {
         
-        guard let lat = self.mapView.myLocation?.coordinate.latitude,
-            let lng = self.mapView.myLocation?.coordinate.longitude else { return }
-        
-        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 16)
-        
-        self.mapView.animate(to: camera)
+        switch CLLocationManager.authorizationStatus() {
+            
+        case .notDetermined:
+            // Request when-in-use authorization initially
+            locationManager.requestWhenInUseAuthorization()
+            
+        case .restricted, .denied:
+            // Disable location features
+            showAlert(title: "請先設定位置權限", message: "前往設定頁面確認位置權限", actionNumber: 2) {
+                self.toSettingPage()
+            }
+            
+        case .authorizedWhenInUse:
+            // Enable basic location features
+            guard let lat = self.mapView.myLocation?.coordinate.latitude,
+                let lng = self.mapView.myLocation?.coordinate.longitude else { return }
+            
+            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 16)
+            
+            self.mapView.animate(to: camera)
+            
+        case .authorizedAlways:
+            // Enable any of your app's location features
+            guard let lat = self.mapView.myLocation?.coordinate.latitude,
+                let lng = self.mapView.myLocation?.coordinate.longitude else { return }
+            
+            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 16)
+            
+            self.mapView.animate(to: camera)
+        }
         
     }
 
@@ -76,6 +107,52 @@ class LobbyMapViewController: UIViewController {
         
         performSegue(withIdentifier: "toEditAddressVC", sender: self)
         
+    }
+    
+    func showAlert(title: String, message: String, actionNumber: Int, completeionHandler: @escaping () ->Void) {
+        
+        let alertController = UIAlertController(title: title,
+                                                message: message, preferredStyle: .alert)
+        
+        if actionNumber == 1 {
+            
+            let cancelAction = UIAlertAction(title: "好的", style: .cancel, handler: nil)
+            
+            alertController.addAction(cancelAction)
+           
+            
+        }
+        
+        if actionNumber == 2 {
+            
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            
+            let okAction = UIAlertAction(title: "好的", style: .default, handler: {
+                action in
+                
+                completeionHandler()
+                
+            })
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            
+        }
+    
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func toSettingPage() {
+        let url = URL(string: UIApplication.openSettingsURLString)
+        if let url = url, UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:],
+                                          completionHandler: {
+                                            (success) in
+                })
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
     
     private let locationManager = CLLocationManager()
@@ -106,6 +183,13 @@ class LobbyMapViewController: UIViewController {
     }
     
     @IBAction func toTimePage(_ sender: Any) {
+        
+        guard let selectedLocation = self.selectedLocation else {
+            showAlert(title: "請先選擇位置", message:  "請先選擇位置", actionNumber: 1) {
+                
+            }
+            return }
+        
       
         performSegue(withIdentifier: "toTimePage", sender: self)
     }
