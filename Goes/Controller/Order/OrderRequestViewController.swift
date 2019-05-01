@@ -26,6 +26,8 @@ class OrderRequestViewController: UIViewController {
     
     var selectedOrder: OrderDetail?
     var selectedRider: MyProfile?
+    
+    let group = DispatchGroup()
    
     @IBOutlet weak var tableView: UITableView!
     
@@ -33,7 +35,120 @@ class OrderRequestViewController: UIViewController {
         super.viewDidLoad()
        
         tableViewSetting()
-
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.addRefreshHeader {
+            
+            self.loadDataAction()
+          
+        }
+        
+         self.tableView.beginHeaderRefreshing()
+    
+    }
+    
+    func loadDataAction() {
+        
+        myOrdersS2 = []
+        myOrdersS3 = []
+        myOrdersS6 = []
+        
+        ridersS2 = []
+        ridersS3 = []
+        ridersS6 = []
+//        tableView.reloadData()
+        
+        self.loadDataFromDB()
+        
+    }
+    
+    func loadDataFromDB() {
+        
+        self.group.enter()
+        
+        personalDataManager.getPersonalData { (myProfile, _) in
+            
+            self.myProfile = myProfile
+            
+            self.group.enter()
+            
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 2, completionHandler: { (orders) in
+                
+                self.myOrdersS2 = orders
+                for order in orders {
+                    
+                    self.group.enter()
+                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
+                        
+                        self.ridersS2.append(rider!)
+                        
+                        print(rider as Any)
+                        
+                        self.group.leave()
+                        //self.tableView.reloadData()
+                        
+                    })
+                    
+                }
+                
+                self.group.leave()
+            })
+            
+            self.group.enter()
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 3, completionHandler: { (orders) in
+                
+                self.myOrdersS3 = orders
+                
+                for order in orders {
+                    self.group.enter()
+                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
+                        self.ridersS3.append(rider!)
+                        print(rider as Any)
+                        //self.tableView.reloadData()
+                        self.group.leave()
+                        
+                    })
+                    
+                }
+                
+                self.group.leave()
+            })
+            
+            self.group.enter()
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 6, completionHandler: { (orders) in
+                
+                self.myOrdersS6 = orders
+                
+                for order in orders {
+                    
+                    self.group.enter()
+                    
+                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
+                        self.ridersS6.append(rider!)
+                        print(rider as Any)
+                        //self.tableView.reloadData()
+                        
+                        self.group.leave()
+                        
+                    })
+                    
+                }
+                
+                self.group.leave()
+            })
+            
+            self.group.notify(queue: .main) {
+                
+                self.tableView.reloadData()
+                self.tableView.endHeaderRefreshing()
+            }
+            
+            self.group.leave()
+        }
     }
     
     fileprivate func tableViewSetting() {
@@ -83,20 +198,7 @@ class OrderRequestViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        myOrdersS2 = []
-        myOrdersS3 = []
-        myOrdersS6 = []
-       
-        ridersS2 = []
-        ridersS3 = []
-        ridersS6 = []
-    
-        tableView.reloadData()
-        loadDataFromDB()
-        
-    }
+   
     
     func produceTime(orders:[OrderDetail], number: Int)
     -> String {
@@ -114,63 +216,7 @@ class OrderRequestViewController: UIViewController {
         return "\(year)/\(month)/\(day)   \(time)"
     }
     
-    func loadDataFromDB() {
-        
-        personalDataManager.getPersonalData { (myProfile, _) in
-            self.myProfile = myProfile
-            
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 2, completionHandler: { (orders) in
-            
-                self.myOrdersS2 = orders
-                for order in orders {
-                    
-                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
-                        
-                        self.ridersS2.append(rider!)
-                        
-                        print(rider as Any)
-                        
-                        self.tableView.reloadData()
-                        
-                    })
-                }
-                
-            })
-            
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 3, completionHandler: { (orders) in
-                
-                self.myOrdersS3 = orders
-                
-                for order in orders {
-                    
-                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
-                        self.ridersS3.append(rider!)
-                        print(rider as Any)
-                        self.tableView.reloadData()
-                        
-                    })
-                }
-                
-            })
-            
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 6, completionHandler: { (orders) in
-
-                self.myOrdersS6 = orders
-                
-                for order in orders {
-                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
-                        self.ridersS6.append(rider!)
-                        print(rider as Any)
-                        self.tableView.reloadData()
-                       
-                    })
-                }
-                
-            })
-            
-        }
-    }
-
+   
 }
 
 extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate {
@@ -407,11 +453,11 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
             if myOrdersS2.count != 0,
                 ridersS2.count != 0,
                 myOrdersS2.count == ridersS2.count {
-                
+
                 self.selectedOrder = myOrdersS2[indexPath.row]
                 self.selectedRider = ridersS2[indexPath.row]
                 performSegue(withIdentifier: "toBeAnswered", sender: self)
-                
+
             }
             
         }
@@ -421,7 +467,7 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
             if myOrdersS3.count != 0,
                 ridersS3.count != 0,
                 myOrdersS3.count == ridersS3.count {
-                
+
                 self.selectedOrder = myOrdersS3[indexPath.row]
                 self.selectedRider = ridersS3[indexPath.row]
                 performSegue(withIdentifier: "toDrivingView", sender: self)

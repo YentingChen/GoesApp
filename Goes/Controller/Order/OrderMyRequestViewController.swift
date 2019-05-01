@@ -22,6 +22,8 @@ class OrderMyRequestViewController: UIViewController {
     var selectedOrder: OrderDetail?
     var selectedDriver: MyProfile?
     
+    let group = DispatchGroup()
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -49,6 +51,121 @@ class OrderMyRequestViewController: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        tableView.addRefreshHeader {
+
+            self.loadDataAction()
+
+        }
+//          self.loadDataAction()
+        
+        tableView.beginHeaderRefreshing()
+    
+    }
+    
+    func loadDataAction() {
+        
+        self.myOrdersS1 = []
+        self.myOrdersS4 = []
+        self.myOrdersS5 = []
+        
+        self.driversS1 = []
+        self.driverS4 = []
+        self.driverS5 = []
+        
+        tableView.reloadData()
+        
+        loadDataFromDB()
+    }
+    
+    func loadDataFromDB() {
+        
+        self.group.enter()
+        personalDataManager.getPersonalData { (myProfile, _) in
+            
+            self.myProfile = myProfile
+            
+            self.group.enter()
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 1, completionHandler: { (orders) in
+                
+                self.myOrdersS1 = orders
+            
+                for order in orders {
+                    
+                    self.group.enter()
+                    
+                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
+                 
+                        self.driversS1.append(driver!)
+                        
+                        self.group.leave()
+                    })
+                }
+                
+                self.group.leave()
+                
+            })
+            
+            self.group.enter()
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 4, completionHandler: { (orders) in
+                
+                self.myOrdersS4 = orders
+                
+                for order in orders {
+                    
+                    self.group.enter()
+                    
+                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
+                        
+                        self.driverS4.append(driver!)
+    
+                        self.group.leave()
+                        
+                    })
+                }
+                
+                self.group.leave()
+                
+            })
+            
+            self.group.enter()
+            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 5, completionHandler: { (orders) in
+                
+                self.myOrdersS5 = orders
+                
+                
+                
+                for order in orders {
+                    
+                    self.group.enter()
+                    
+                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
+                        
+                        self.driverS5.append(driver!)
+                      
+                        self.group.leave()
+                        
+                    })
+                }
+                
+                self.group.leave()
+            })
+            
+            self.group.notify(queue: .main) {
+                
+                self.tableView.reloadData()
+                
+                self.tableView.endHeaderRefreshing()
+            }
+            
+            self.group.leave()
+        }
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMyOrderDetail" {
             if let destination = segue.destination as? OrderRidingViewController {
@@ -59,72 +176,6 @@ class OrderMyRequestViewController: UIViewController {
                 destination.driver = self.selectedDriver
                 
             }
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        self.myOrdersS1 = []
-        self.myOrdersS4 = []
-        self.myOrdersS5 = []
-        self.driversS1 = []
-        self.driverS4 = []
-        self.driverS5 = []
-        tableView.reloadData()
-        
-        loadDataFromDB()
-    }
-    
-    func loadDataFromDB() {
-        
-        personalDataManager.getPersonalData { (myProfile, _) in
-            self.myProfile = myProfile
-            
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 1, completionHandler: { (orders) in
-                
-                self.myOrdersS1 = orders
-                
-                for order in orders {
-                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
-                        
-                        self.driversS1.append(driver!)
-                        
-                        self.tableView.reloadData()
-                        
-                    })
-                }
-                
-            })
-            
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 4, completionHandler: { (orders) in
-                self.myOrdersS4 = orders
-                for order in orders {
-                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
-                        
-                        self.driverS4.append(driver!)
-    
-                        self.tableView.reloadData()
-                        
-                    })
-                }
-                
-            })
-            
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 5, completionHandler: { (orders) in
-                self.myOrdersS5 = orders
-                
-                for order in orders {
-                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
-                        
-                        self.driverS5.append(driver!)
-                      
-                        self.tableView.reloadData()
-                        
-                    })
-                }
-            })
         }
     }
 }

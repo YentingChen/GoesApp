@@ -22,6 +22,7 @@ class LobbyMapViewController: UIViewController {
     var favoriteAddress: Address?
     var editAddressVC: EditAddressViewController?
     var selectedLocation: Address?
+    var tempSelectedLocation: Address?
     
     @IBOutlet weak var addressBtn: UIButton! {
         didSet {
@@ -31,16 +32,25 @@ class LobbyMapViewController: UIViewController {
             
         }
     }
+    
     @IBOutlet weak var adressSegmentedControl: UISegmentedControl!
     @IBOutlet weak var mapView: GMSMapView!
     
     @IBAction func adressModeChosen(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            
+            addressBtn.setTitle(self.tempSelectedLocation?.placeName, for: .normal)
+            selectedLocation = self.tempSelectedLocation
+            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
+        }
         
         if sender.selectedSegmentIndex == 1 {
             
             addressBtn.setTitle(self.homeAddress?.placeName, for: .normal)
             
             selectedLocation = self.homeAddress
+            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
         }
         
         if sender.selectedSegmentIndex == 2 {
@@ -48,6 +58,7 @@ class LobbyMapViewController: UIViewController {
             addressBtn.setTitle(self.workAddress?.placeName, for: .normal)
             
             selectedLocation = self.workAddress
+            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
         }
         
         if sender.selectedSegmentIndex == 3 {
@@ -55,7 +66,15 @@ class LobbyMapViewController: UIViewController {
             addressBtn.setTitle(self.favoriteAddress?.placeName, for: .normal)
             
             selectedLocation = self.favoriteAddress
+            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
         }
+    }
+    
+    func setCamera(lat: Double, lag: Double) {
+        
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lag , zoom: 16)
+        
+        self.mapView.animate(to: camera)
     }
    
     @IBAction func dismiss(_ sender: Any) {
@@ -174,6 +193,13 @@ class LobbyMapViewController: UIViewController {
                 placeName: address.lines![0],
                 placeformattedAddress: address.lines![0])
             
+            self.tempSelectedLocation = Address(
+                placeID: "",
+                placeLat: Double(address.coordinate.latitude),
+                placeLng: Double(address.coordinate.longitude),
+                placeName: address.lines![0],
+                placeformattedAddress: address.lines![0])
+            
             self.addressBtn.setTitle(lines.joined(separator: "\n"), for: .normal)
             
             UIView.animate(withDuration: 0.25) {
@@ -253,9 +279,9 @@ class LobbyMapViewController: UIViewController {
                     
                     self.selectedLocation = selectedAddress
                     
-                    let camera = GMSCameraPosition.camera(withLatitude: (selectedAddress?.placeLat)!, longitude: (selectedAddress?.placeLng)!, zoom: 16)
-                    
-                    self.mapView.animate(to: camera)
+//                    let camera = GMSCameraPosition.camera(withLatitude: (selectedAddress?.placeLat)!, longitude: (selectedAddress?.placeLng)!, zoom: 16)
+//
+//                    self.mapView.animate(to: camera)
                     
                 }
             }

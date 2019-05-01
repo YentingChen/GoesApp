@@ -107,6 +107,7 @@ PODS:
   - IQKeyboardManagerSwift (6.2.0)
   - leveldb-library (1.20)
   - lottie-ios (2.5.2)
+  - MJRefresh (3.1.16)
   - MTSlideToOpen (1.2.1)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -128,6 +129,7 @@ DEPENDENCIES:
   - GooglePlaces
   - IQKeyboardManagerSwift
   - lottie-ios
+  - MJRefresh
   - MTSlideToOpen
   - SwiftLint
   - SwiftyJSON (~> 4.0)
@@ -155,6 +157,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - leveldb-library
     - lottie-ios
+    - MJRefresh
     - MTSlideToOpen
     - nanopb
     - Protobuf
@@ -183,12 +186,13 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
+  MJRefresh: 7798e16e53a5ef7f332dd05b27664db4e29530fd
   MTSlideToOpen: 66d68b2acf888beae7ebfda50e97fbdb26ddb0f6
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: fea3ee166733ecb3ab5bd648880c5378f572d91c
+PODFILE CHECKSUM: a517efcd59e057701f1129d307c9fbf6a56dcd5d
 
 COCOAPODS: 1.6.0

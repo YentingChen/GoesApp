@@ -15,6 +15,7 @@
 		3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23588922590C0B004182F0 /* FriendInviteTableViewCell.swift */; };
 		3E23588C22590C0B004182F0 /* FriendInviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23588A22590C0B004182F0 /* FriendInviteTableViewCell.xib */; };
 		3E23588F22590D74004182F0 /* FriendInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23588E22590D74004182F0 /* FriendInviteViewController.swift */; };
+		3E3E1DEC227954A8003E01F8 /* MJRefreshWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3E1DEB227954A8003E01F8 /* MJRefreshWrapper.swift */; };
 		3E3EFD0A225914B40078E686 /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EFD08225914B40078E686 /* FriendListTableViewCell.swift */; };
 		3E3EFD0B225914B40078E686 /* FriendListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EFD09225914B40078E686 /* FriendListTableViewCell.xib */; };
 		3E3EFD0D225918510078E686 /* FriendSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EFD0C225918510078E686 /* FriendSentViewController.swift */; };
@@ -110,6 +111,7 @@
 		3E23588922590C0B004182F0 /* FriendInviteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInviteTableViewCell.swift; sourceTree = "<group>"; };
 		3E23588A22590C0B004182F0 /* FriendInviteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendInviteTableViewCell.xib; sourceTree = "<group>"; };
 		3E23588E22590D74004182F0 /* FriendInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInviteViewController.swift; sourceTree = "<group>"; };
+		3E3E1DEB227954A8003E01F8 /* MJRefreshWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefreshWrapper.swift; sourceTree = "<group>"; };
 		3E3EFD08225914B40078E686 /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
 		3E3EFD09225914B40078E686 /* FriendListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListTableViewCell.xib; sourceTree = "<group>"; };
 		3E3EFD0C225918510078E686 /* FriendSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSentViewController.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				3E61696622549A1300786F9F /* UIView+Extension.swift */,
 				3E7B6E1C225AE52900646724 /* UISegmentControl+.swift */,
 				3E9CCE81226A209C000BE5F6 /* Date.swift */,
+				3E3E1DEB227954A8003E01F8 /* MJRefreshWrapper.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/MTSlideToOpen/MTSlideToOpen.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -651,6 +655,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MTSlideToOpen.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -750,6 +755,7 @@
 				3E9670BB2274070E005B6DCB /* AskLogInViewController.swift in Sources */,
 				3E7B6E1F225AE56400646724 /* ProfileMainViewController.swift in Sources */,
 				3EA52B492272F56F003A5390 /* ProfileHistoryDetailViewController.swift in Sources */,
+				3E3E1DEC227954A8003E01F8 /* MJRefreshWrapper.swift in Sources */,
 				3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */,
 				3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */,
 				3E662ED1226830920016F962 /* GoogleMapManager.swift in Sources */,

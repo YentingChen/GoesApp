@@ -121,8 +121,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YG7-Hy-gsq">
                                 <rect key="frame" x="0.0" y="65" width="375" height="250"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xian Wu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUu-Qi-1Uh">
-                                        <rect key="frame" x="155.5" y="130" width="64" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="              " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUu-Qi-1Uh">
+                                        <rect key="frame" x="156.5" y="130" width="62" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Aag-Qb-Do2"/>
                                         </constraints>
