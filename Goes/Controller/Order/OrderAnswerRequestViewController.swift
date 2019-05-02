@@ -41,7 +41,7 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
     
     private let locationManager = CLLocationManager()
     var orderRequestVC: OrderRequestViewController?
-    let personalDataManager = PersonalDataManager()
+    let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var order: OrderDetail?
@@ -62,7 +62,7 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
             self.orderRequestVC?.myOrdersS6 = []
             self.orderRequestVC?.ridersS6 = []
             
-            self.orderRequestVC?.loadDataFromDB()
+            self.orderRequestVC?.loadViewIfNeeded()
             
             self.navigationController?.popViewController(animated: true)
         }

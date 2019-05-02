@@ -19,7 +19,7 @@ class OrderDrivingViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     var orderRequestVC: OrderRequestViewController?
-    let personalDataManager = PersonalDataManager()
+    let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager()
     
     var myProfile: MyProfile?
@@ -116,6 +116,17 @@ class OrderDrivingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if UIApplication.shared.applicationState != .active {
+            if isSettingOff {
+               updateDriverLocation()
+            }
+            
+//            print("App is backgrounded. New location is %@", CLLocation.self)
+        }
+
+        
+        locationManager.allowsBackgroundLocationUpdates = true
+        
         self.mapView.delegate = self
         self.mapView.isMyLocationEnabled = true
         self.locationManager.delegate = self
@@ -159,8 +170,6 @@ class OrderDrivingViewController: UIViewController {
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    
     
     func produceTime(orders:[OrderDetail], number: Int)
         -> String {
@@ -230,6 +239,11 @@ extension OrderDrivingViewController: CLLocationManagerDelegate {
 //        self.mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         
         if isSettingOff {
+            
+//            if UIApplication.shared.applicationState != .active {
+//                updateDriverLocation()
+//                print("App is backgrounded. New location is %@", CLLocation.self)
+//            }
             
             self.mapView.clear()
             

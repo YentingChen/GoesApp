@@ -10,7 +10,7 @@ import UIKit
 
 class LobbyTimeViewController: UIViewController {
     
-    let fireAuthManager = FireAuthManager()
+    let fireAuthManager = FireAuthManager.share
     
     var selectedLocation: Address?
     var selectedDateTime : DateAndTime?
@@ -26,7 +26,7 @@ class LobbyTimeViewController: UIViewController {
     @IBOutlet weak var laterBtn: UIButton!
     
     @IBAction func toFriendView(_ sender: Any) {
-        self.fireAuthManager.addSignUpListener { (isMember) in
+        self.fireAuthManager.addSignUpListener { (isMember, _) in
             if isMember {
                 
                 self.performSegue(withIdentifier: "toSelectFriendPage", sender: self)

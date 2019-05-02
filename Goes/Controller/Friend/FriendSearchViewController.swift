@@ -13,7 +13,7 @@ import FirebaseFirestore
 
 class FriendSearchViewController: UIViewController {
     @IBOutlet weak var searchFriend: UITextField!
-    var personalDataManager = PersonalDataManager()
+    var personalDataManager = PersonalDataManager.share
     var firebaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var friendInfo: MyProfile?

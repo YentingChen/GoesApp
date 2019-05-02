@@ -29,7 +29,7 @@ class OrderRidingViewController: UIViewController {
     private let locationManager = CLLocationManager()
     
     var orderMyRequestVC: OrderMyRequestViewController?
-    let personalDataManager = PersonalDataManager()
+    let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var order: OrderDetail?

@@ -14,7 +14,7 @@ class LobbyMapViewController: UIViewController {
     
     let userDefaults = UserDefaults.standard
     
-    var personalDataManager = PersonalDataManager()
+    var personalDataManager = PersonalDataManager.share
     var firebaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var homeAddress: Address?
@@ -38,36 +38,63 @@ class LobbyMapViewController: UIViewController {
     
     @IBAction func adressModeChosen(_ sender: UISegmentedControl) {
         
-        if sender.selectedSegmentIndex == 0 {
-            
+        switch sender.selectedSegmentIndex {
+        case 0:
             addressBtn.setTitle(self.tempSelectedLocation?.placeName, for: .normal)
             selectedLocation = self.tempSelectedLocation
-            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
-        }
-        
-        if sender.selectedSegmentIndex == 1 {
-            
+
+        case 1:
             addressBtn.setTitle(self.homeAddress?.placeName, for: .normal)
             
             selectedLocation = self.homeAddress
-            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
-        }
-        
-        if sender.selectedSegmentIndex == 2 {
             
+        case 2:
             addressBtn.setTitle(self.workAddress?.placeName, for: .normal)
             
             selectedLocation = self.workAddress
-            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
-        }
-        
-        if sender.selectedSegmentIndex == 3 {
-            
+
+        case 3:
             addressBtn.setTitle(self.favoriteAddress?.placeName, for: .normal)
             
             selectedLocation = self.favoriteAddress
-            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
+
+        default: return
+            
         }
+        
+        
+        
+        
+//        if sender.selectedSegmentIndex == 0 {
+//
+//            addressBtn.setTitle(self.tempSelectedLocation?.placeName, for: .normal)
+//            selectedLocation = self.tempSelectedLocation
+////            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
+//        }
+//
+//        if sender.selectedSegmentIndex == 1 {
+//
+//            addressBtn.setTitle(self.homeAddress?.placeName, for: .normal)
+//
+//            selectedLocation = self.homeAddress
+////            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
+//        }
+//
+//        if sender.selectedSegmentIndex == 2 {
+//
+//            addressBtn.setTitle(self.workAddress?.placeName, for: .normal)
+//
+//            selectedLocation = self.workAddress
+////            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
+//        }
+//
+//        if sender.selectedSegmentIndex == 3 {
+//
+//            addressBtn.setTitle(self.favoriteAddress?.placeName, for: .normal)
+//
+//            selectedLocation = self.favoriteAddress
+////            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
+//        }
     }
     
     func setCamera(lat: Double, lag: Double) {

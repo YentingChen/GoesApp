@@ -10,9 +10,8 @@ import UIKit
 
 class OrderRequestViewController: UIViewController {
     
-    var activityIndicator:UIActivityIndicatorView!
-    
-    let personalDataManager = PersonalDataManager()
+    let fireAuthManager = FireAuthManager.share
+    let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
     
@@ -41,13 +40,16 @@ class OrderRequestViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.addRefreshHeader {
-            
-            self.loadDataAction()
-          
-        }
         
-         self.tableView.beginHeaderRefreshing()
+            tableView.addRefreshHeader {
+                
+                self.loadDataAction()
+                
+            }
+            
+            self.tableView.beginHeaderRefreshing()
+        
+        
     
     }
     
@@ -70,84 +72,84 @@ class OrderRequestViewController: UIViewController {
         
         self.group.enter()
         
-        personalDataManager.getPersonalData { (myProfile, _) in
+        personalDataManager.getPersonalData { [weak self] (myProfile, _) in
             
-            self.myProfile = myProfile
+            self?.myProfile = myProfile
             
-            self.group.enter()
+            self?.group.enter()
             
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 2, completionHandler: { (orders) in
+            self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 2, completionHandler: { [weak self] (orders) in
                 
-                self.myOrdersS2 = orders
+                self?.myOrdersS2 = orders
                 for order in orders {
                     
-                    self.group.enter()
-                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
+                    self?.group.enter()
+                    self?.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { [weak self] (rider) in
                         
-                        self.ridersS2.append(rider!)
+                        self?.ridersS2.append(rider!)
                         
                         print(rider as Any)
                         
-                        self.group.leave()
+                        self?.group.leave()
                         //self.tableView.reloadData()
                         
                     })
                     
                 }
                 
-                self.group.leave()
+                self?.group.leave()
             })
             
-            self.group.enter()
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 3, completionHandler: { (orders) in
+            self?.group.enter()
+            self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 3, completionHandler: { [weak self]  (orders) in
                 
-                self.myOrdersS3 = orders
+                self?.myOrdersS3 = orders
                 
                 for order in orders {
-                    self.group.enter()
-                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
-                        self.ridersS3.append(rider!)
+                    self?.group.enter()
+                    self?.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { [weak self] (rider) in
+                        self?.ridersS3.append(rider!)
                         print(rider as Any)
                         //self.tableView.reloadData()
-                        self.group.leave()
+                        self?.group.leave()
                         
                     })
                     
                 }
                 
-                self.group.leave()
+                self?.group.leave()
             })
             
-            self.group.enter()
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 6, completionHandler: { (orders) in
+            self?.group.enter()
+            self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 6, completionHandler: { [weak self]  (orders) in
                 
-                self.myOrdersS6 = orders
+                self?.myOrdersS6 = orders
                 
                 for order in orders {
                     
-                    self.group.enter()
+                    self?.group.enter()
                     
-                    self.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { (rider) in
-                        self.ridersS6.append(rider!)
+                    self?.fireBaseManager.queryUserInfo(userID: order.riderUid, completion: { [weak self]  (rider) in
+                        self?.ridersS6.append(rider!)
                         print(rider as Any)
                         //self.tableView.reloadData()
                         
-                        self.group.leave()
+                        self?.group.leave()
                         
                     })
                     
                 }
                 
-                self.group.leave()
+                self?.group.leave()
             })
             
-            self.group.notify(queue: .main) {
+            self?.group.notify(queue: .main) {
                 
-                self.tableView.reloadData()
-                self.tableView.endHeaderRefreshing()
+                self?.tableView.reloadData()
+                self?.tableView.endHeaderRefreshing()
             }
             
-            self.group.leave()
+            self?.group.leave()
         }
     }
     

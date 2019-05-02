@@ -15,7 +15,7 @@ import Alamofire
 
 class ProfileHistoryViewController: UIViewController {
     
-    let personalDataManager = PersonalDataManager()
+    let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager()
     
     var myProfile: MyProfile?
@@ -40,6 +40,22 @@ class ProfileHistoryViewController: UIViewController {
             forCellReuseIdentifier: "friendPlaceholderTableViewCell")
         tableView.separatorStyle = .none
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        tableView.addRefreshHeader {
+            self.loadDataFromDB()
+        }
+        
+        tableView.beginHeaderRefreshing()
+    }
+    
+    func loadDataFromDB() {
+        
+        self.myHistory = []
+        
         self.personalDataManager.getPersonalData { (myProfile, _) in
             self.myProfile = myProfile
             guard let myProfile = self.myProfile else { return }
@@ -49,12 +65,12 @@ class ProfileHistoryViewController: UIViewController {
                 print(self.myHistory)
                 self.tableView.reloadData()
                 
-                
+                self.tableView.endHeaderRefreshing()
             })
             
         }
+        
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "historyDetail" {
             if let destination = segue.destination as? ProfileHistoryDetailViewController {

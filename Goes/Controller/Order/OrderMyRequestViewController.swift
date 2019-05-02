@@ -10,7 +10,7 @@ import UIKit
 
 class OrderMyRequestViewController: UIViewController {
         
-    let personalDataManager = PersonalDataManager()
+    let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var myOrdersS1 = [OrderDetail]()
@@ -84,84 +84,83 @@ class OrderMyRequestViewController: UIViewController {
     func loadDataFromDB() {
         
         self.group.enter()
-        personalDataManager.getPersonalData { (myProfile, _) in
+        personalDataManager.getPersonalData { [weak self]  (myProfile, _) in
             
-            self.myProfile = myProfile
+            self?.myProfile = myProfile
             
-            self.group.enter()
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 1, completionHandler: { (orders) in
+            self?.group.enter()
+            self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 1, completionHandler: { [weak self] (orders) in
                 
-                self.myOrdersS1 = orders
+                self?.myOrdersS1 = orders
             
                 for order in orders {
                     
-                    self.group.enter()
+                    self?.group.enter()
                     
-                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
+                    self?.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { [weak self]  (driver) in
                  
-                        self.driversS1.append(driver!)
+                        self?.driversS1.append(driver!)
                         
-                        self.group.leave()
+                        self?.group.leave()
                     })
                 }
                 
-                self.group.leave()
+                self?.group.leave()
                 
             })
             
-            self.group.enter()
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 4, completionHandler: { (orders) in
+            self?.group.enter()
+            
+            self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 4, completionHandler: { [weak self]  (orders) in
                 
-                self.myOrdersS4 = orders
+                self?.myOrdersS4 = orders
                 
                 for order in orders {
                     
-                    self.group.enter()
+                    self?.group.enter()
                     
-                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
+                    self?.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { [weak self]  (driver) in
                         
-                        self.driverS4.append(driver!)
+                        self?.driverS4.append(driver!)
     
-                        self.group.leave()
+                        self?.group.leave()
                         
                     })
                 }
                 
-                self.group.leave()
+                self?.group.leave()
                 
             })
             
-            self.group.enter()
-            self.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 5, completionHandler: { (orders) in
+            self?.group.enter()
+            self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 5, completionHandler: {  [weak self] (orders) in
                 
-                self.myOrdersS5 = orders
-                
-                
-                
+                self?.myOrdersS5 = orders
+            
                 for order in orders {
                     
-                    self.group.enter()
+                    self?.group.enter()
                     
-                    self.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { (driver) in
+                    self?.fireBaseManager.queryUserInfo(userID: order.driverUid, completion: { [weak self] (driver) in
                         
-                        self.driverS5.append(driver!)
+                        self?.driverS5.append(driver!)
                       
-                        self.group.leave()
+                        self?.group.leave()
                         
                     })
                 }
                 
-                self.group.leave()
+                self?.group.leave()
             })
             
-            self.group.notify(queue: .main) {
+            self?.group.notify(queue: .main) {
                 
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
                 
-                self.tableView.endHeaderRefreshing()
+                self?.tableView.endHeaderRefreshing()
             }
             
-            self.group.leave()
+            self?.group.leave()
         }
         
     }
@@ -404,8 +403,8 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                 
             }
             
-            
         }
     }
 
 }
+

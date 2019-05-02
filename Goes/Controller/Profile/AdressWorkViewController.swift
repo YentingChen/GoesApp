@@ -13,7 +13,7 @@ class AdressWorkViewController: UIViewController {
 
     var profileAddressVC: ProfileAdressViewController?
     
-    let personalDataManager = PersonalDataManager()
+    let personalDataManager = PersonalDataManager.share
     let firebaseManager = FireBaseManager()
     var myProfile: MyProfile?
     

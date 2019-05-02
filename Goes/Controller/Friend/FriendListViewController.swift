@@ -12,7 +12,7 @@ import IQKeyboardManagerSwift
 
 class FriendListViewController: UIViewController {
     
-    let personalDataManager = PersonalDataManager()
+    let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var myFriends = [MyProfile]()
@@ -25,7 +25,7 @@ class FriendListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDataFromDB()
+        
         
         searchBar.delegate = self
 
@@ -56,7 +56,17 @@ class FriendListViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.addRefreshHeader {
+            self.loadDataFromDB()
+        }
+        tableView.beginHeaderRefreshing()
+    }
+    
+    
     func loadDataFromDB() {
+        
+        self.myFriends = []
         
         personalDataManager.getPersonalData { [weak self] (myProfile, error) in
             self?.myProfile = myProfile
@@ -68,6 +78,7 @@ class FriendListViewController: UIViewController {
                 self?.myFriends = friendInfos
                     
                 self?.tableView.reloadData()
+                self?.tableView.endHeaderRefreshing()
             })
         }
     }
@@ -124,8 +135,7 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             
             return cell
-            
-
+        
         } else {
             
             guard let cell = tableView.dequeueReusableCell(
@@ -189,7 +199,7 @@ extension FriendListViewController: UISearchBarDelegate {
         
         if searchText == "" {
             isSearching = false
-            
+            self.result = self.myFriends
         } else {
             self.result = []
             isSearching = true
@@ -213,6 +223,10 @@ extension FriendListViewController: UISearchBarDelegate {
         
         self.tableView.reloadData()
         
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
     
     

@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
 
 class ProfileMainViewController: UIViewController {
     
     var profilePersonalVC: ProfilePersonalDataViewController?
+    let personalDataManager = PersonalDataManager.share
 
     @IBOutlet weak var userName: UILabel!
     
@@ -46,20 +45,30 @@ class ProfileMainViewController: UIViewController {
         
         }
     }
+   
     
     @IBAction func logOutBtn(_ sender: Any) {
         
-        if Auth.auth().currentUser != nil {
+        if FireAuthManager.share.getCurrentUser()?.id != nil {
         
             do {
-                try Auth.auth().signOut()
+                try FireAuthManager.share.auth.signOut()
                 let alert = UIAlertController(title: "", message: "你已經成功登出", preferredStyle: .alert)
                 let action = UIAlertAction(title: "確定", style: .default) { (action) in
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Goes")
-//                    self.present(viewController, animated: true, completion: nil)
-                    self.dismiss(animated: true, completion: nil)
+                    
+                    self.tabBarController?.dismiss(animated: true, completion: {
+                        let tabStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let tabViewController = tabStoryboard.instantiateViewController(withIdentifier: "Goes") as? GoTabBarViewController
+
+                        self.present(tabViewController!, animated: false, completion: nil)
+                        
+                        FireAuthManager.share.deleteListener()
+                    
+                    })
+                    
+                    
                 }
+                
                 alert.addAction(action)
                 present(alert, animated: true, completion: nil)
                 

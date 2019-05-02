@@ -10,18 +10,54 @@ import Foundation
 import FirebaseAuth
 import Firebase
 
-class FireAuthManager {
-    func addSignUpListener(listener: @escaping (Bool) -> Void) {
+struct YTUser {
+    var id: String?
+    var email: String?
+    
+}
+
+class FireAuthManager: NSObject {
+    
+    static let share = FireAuthManager()
+    
+    private override init() {}
+    
+    let auth = Auth.auth()
+    
+    var addStateListener: AuthStateDidChangeListenerHandle?
+    
+    func addSignUpListener(listener: @escaping (Bool, User?) -> Void) {
         
-        Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
+       addStateListener = auth.addStateDidChangeListener { (_, user) in
             
             guard user != nil else {
-                listener(false)
+                listener(false, nil)
                 return
             }
             
-            listener(true)
+            listener(true, user)
         }
+    }
+    
+    func deleteListener() {
+        
+        if let listener = addStateListener {
+            auth.removeStateDidChangeListener(listener)
+        }
+        
+    }
+    
+    
+    
+    func getCurrentUser() -> YTUser? {
+       let user = Auth.auth().currentUser
+        
+       var ytUser = YTUser()
+        
+       ytUser.email = user?.email
+        ytUser.id = user?.uid
+        
+        return ytUser
     }
 }
 
@@ -34,7 +70,7 @@ class FireBaseManager {
    
     func queryUsers(email: String, completionHandler: @escaping (Bool, String) -> Void) {
         
-        db.collection("users").getDocuments() { (querySnapshot, err) in
+        db.collection("users").getDocuments() { [weak self] (querySnapshot, err) in
             if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -52,7 +88,7 @@ class FireBaseManager {
         }
     
     func queryFriendStatus(friendUid: String, myUid: String, completionHandler: @escaping (Int) -> Void) {
-        db.collection("users").document(myUid).collection("friend").document(friendUid).getDocument { (document, err) in
+        db.collection("users").document(myUid).collection("friend").document(friendUid).getDocument { [weak self]  (document, err) in
             
             if document?.data() != nil {
                 
@@ -102,7 +138,7 @@ class FireBaseManager {
     func querymyFriends(myUid: String, status: Int , completionHandler: @escaping ([MyProfile]) -> Void) {
         var friendList = [MyProfile]()
         db.collection("users").document(myUid).collection("friend").getDocuments
-            {  (querySnapshot, err) in
+            { [weak self]  (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -115,7 +151,7 @@ class FireBaseManager {
                     for document in querySnapshot!.documents {
                         if let fireStatus = document.data()["status"] as? Int {
                             if  fireStatus == status {
-                                self.queryUserInfo(userID: document.documentID, completion: { (friendInfo) in
+                                self?.queryUserInfo(userID: document.documentID, completion: { (friendInfo) in
                                     friendList.append(friendInfo!)
                                     completionHandler(friendList)
                                 })
@@ -159,21 +195,21 @@ class FireBaseManager {
     }
     
     func queryAdress(myUid: String, category: String, completionHandler: @escaping (Address?) -> Void) {
-        db.collection("users").document(myUid).collection("address").document(category).getDocument { (document, err) in
+        db.collection("users").document(myUid).collection("address").document(category).getDocument { [weak self]  (document, err) in
             
             if document?.data() != nil {
                 if let addressInfo = document.flatMap({ $0.data().flatMap({ (data) in
                     return AddressFromDB(dictionary: data)
                 })
                 }) {
-                    self.address = Address(
+                    self?.address = Address(
                         placeID: addressInfo.placeID,
                         placeLat: addressInfo.placeLat,
                         placeLng: addressInfo.placeLng,
                         placeName: addressInfo.placeName,
                         placeformattedAddress: addressInfo.placeformattedAddress
                     )
-                    completionHandler(self.address)
+                    completionHandler(self?.address)
                     
                 } else {
                     print("Document does not exist")
@@ -223,7 +259,7 @@ class FireBaseManager {
         
         var myOrders = [OrderDetail]()
         
-        db.collection("users").document(myUid).collection("orders").getDocuments { (querySnapshot, err) in
+        db.collection("users").document(myUid).collection("orders").getDocuments { [weak self]  (querySnapshot, err) in
             
             if querySnapshot!.documents.count == 0 {
                 completionHandler([])
@@ -236,9 +272,9 @@ class FireBaseManager {
                     
                     if fireStatus == status {
                     
-                        self.group.enter()
+                        self?.group.enter()
                         
-                        self.queryOrderDetail(
+                        self?.queryOrderDetail(
                         
                             orderID: document.documentID,
                             
@@ -246,7 +282,7 @@ class FireBaseManager {
                                 
                                 myOrders.append(orderDetail!)
                                 
-                                self.group.leave()
+                                self?.group.leave()
                                 
                         })
                     }
@@ -254,7 +290,7 @@ class FireBaseManager {
                 
             }
             
-            self.group.notify(queue: .main, execute: {
+            self?.group.notify(queue: .main, execute: {
                 
                 completionHandler(myOrders)
             })
@@ -265,13 +301,13 @@ class FireBaseManager {
         
         let docRef = db.collection("orders").document(orderID)
         
-        docRef.getDocument { (document, error) in
+        docRef.getDocument { [weak self]  (document, error) in
             if let order = document.flatMap({
                 $0.data().flatMap({ (data) in
                     return OrderFromDB(dictionary: data)
                 })
             }) {
-                self.userOrder = OrderDetail(
+                self?.userOrder = OrderDetail(
                     driverUid: order.driverUid,
                     riderUid: order.riderUid,
                     locationFormattedAddress: order.locationFormattedAddress,
@@ -295,7 +331,7 @@ class FireBaseManager {
                     driverStartTime: order.driverStartTime,
                     completeTime: order.completeTime)
                 
-                completionHandler(self.userOrder)
+                completionHandler(self?.userOrder)
                 
             } else {
                 print("Document does not exist")
@@ -359,7 +395,7 @@ class FireBaseManager {
     
     func listenDriverLocation(orderID: String,  completionHandler: @escaping (OrderDetail?) -> Void ) {
         
-        db.collection("orders").document(orderID).addSnapshotListener { documentSnapshot, error in
+        db.collection("orders").document(orderID).addSnapshotListener { [weak self] documentSnapshot, error in
             
                 guard let document = documentSnapshot else {
                     
@@ -381,7 +417,7 @@ class FireBaseManager {
                     
                 })
             }) {
-                self.userOrder = OrderDetail(
+                self?.userOrder = OrderDetail(
                     driverUid: order.driverUid,
                     riderUid: order.riderUid,
                     locationFormattedAddress: order.locationFormattedAddress,
@@ -405,7 +441,7 @@ class FireBaseManager {
                     driverStartTime: order.driverStartTime,
                     completeTime: order.completeTime)
                 
-               completionHandler(self.userOrder)
+                completionHandler(self?.userOrder)
                 
             } else {
                 print("Document does not exist")

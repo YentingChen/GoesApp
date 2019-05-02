@@ -15,7 +15,7 @@ import Alamofire
 class ProfileHistoryDetailViewController: UIViewController {
     
     let locationManager = CLLocationManager()
-    let personalDataManager = PersonalDataManager()
+    let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager()
     
     var myProfile: MyProfile?

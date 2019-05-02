@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class FriendInviteViewController: UIViewController {
-    let personalDataManager = PersonalDataManager()
+    let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var inviteFriend = [MyProfile]()

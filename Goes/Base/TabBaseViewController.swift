@@ -80,7 +80,7 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
    
     private let tabs: [Tab] = [.lobby, .order, .friend, .profile]
     
-    let fireAuthManager = FireAuthManager()
+    let fireAuthManager = FireAuthManager.share
     
     var membmer = Bool()
 
@@ -92,7 +92,7 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
         self.tabBar.backgroundColor = .clear
         
-        self.fireAuthManager.addSignUpListener { (isMember) in
+        self.fireAuthManager.addSignUpListener { (isMember, _) in
             self.membmer = isMember
         }
         
@@ -105,7 +105,8 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let navVC = viewController as? UINavigationController
         
         if navVC?.viewControllers.first as? ProfileMainViewController == nil
-        && navVC?.viewControllers.first as? FriendHomeViewController == nil{
+        && navVC?.viewControllers.first as? FriendHomeViewController == nil
+        && navVC?.viewControllers.first as? OrderMainViewController == nil{
             return true
         }
         

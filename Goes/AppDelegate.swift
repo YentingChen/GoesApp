@@ -16,6 +16,8 @@ import IQKeyboardManagerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var manager = CLLocationManager()
+
 
     func application(
         _ application: UIApplication,
@@ -34,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
+        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
             }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -47,5 +50,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
       
     }
-
+    
 }

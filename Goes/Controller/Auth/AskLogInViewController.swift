@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 
 class AskLogInViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -95,18 +95,12 @@ class AskLogInViewController: UIViewController {
                     print("You have successfully logged in")
                     
                     //Go to the HomeViewController if the login is sucessful
+                   
                     
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "Goes")
-                    self.dismiss(animated: false, completion: {
-                        let alertController = UIAlertController(title: "", message: "你已成功登錄", preferredStyle: .alert)
-                        
-                        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        alertController.addAction(defaultAction)
-                        self.present(alertController, animated: true, completion: nil)
-                    })
                     
-//                    self.present(vc, animated: true, completion: nil)
+                    self.dismiss(animated: false, completion: nil)
+                
+
                     
                 } else {
                     

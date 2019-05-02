@@ -15,7 +15,7 @@ class ProfileAdressViewController: UIViewController {
     var addressWorkVC: AdressWorkViewController?
     var addressFavoriteVC: AdressFavoriteViewController?
     
-    var personalDataManager = PersonalDataManager()
+    var personalDataManager = PersonalDataManager.share
     var firebaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var homeAddress: Address?

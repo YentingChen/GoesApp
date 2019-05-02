@@ -19,7 +19,7 @@ class LobbyFriendViewController: UIViewController {
     var result = [MyProfile]()
     
     @IBOutlet weak var searchBar: UISearchBar!
-    let personalDataManager = PersonalDataManager()
+    let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var myFriends = [MyProfile]()
@@ -73,7 +73,6 @@ class LobbyFriendViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
         
-        
     }
     
     func createOrderID() -> Int {
@@ -120,6 +119,7 @@ class LobbyFriendViewController: UIViewController {
 }
 
 extension LobbyFriendViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if isSearching {
@@ -130,9 +130,11 @@ extension LobbyFriendViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "lobbyFriendTableViewCell",
             for: indexPath) as? LobbyFriendTableViewCell else { return UITableViewCell() }
+        
         if isSearching {
             cell.nameLabel.text = self.result[indexPath.row].userName
             
@@ -160,8 +162,11 @@ extension LobbyFriendViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchText == "" {
+            
             self.result = self.myFriends
+            
         } else {
+            
             self.result = []
             isSearching = true
             

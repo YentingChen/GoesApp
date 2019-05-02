@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 
 class LaunchViewController: UIViewController {
-    let fireAuthManager = FireAuthManager()
+//    let fireAuthManager = FireAuthManager.share
 
     @IBOutlet weak var testes: UIImageView!
     override func viewDidLoad() {
