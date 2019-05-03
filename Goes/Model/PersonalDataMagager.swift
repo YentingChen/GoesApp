@@ -56,7 +56,8 @@ class PersonalDataManager: NSObject {
                         userID: profile.userID,
                         userName: profile.userName,
                         phoneNumber: profile.phoneNumber,
-                        avatar: profile.avatar)
+                        avatar: profile.avatar,
+                        fcmToken: profile.fcmToken)
                     completion(self?.myProfile, nil)
                     
                 } else {

@@ -63,7 +63,11 @@ class LobbyFriendViewController: UIViewController {
                         self.navigationController?.dismiss(animated: false, completion: nil)
                         self.present(LobbyViewController(), animated: false, completion: nil)
                 })
-                
+                guard let friendFcmToken = self.selectedFriend?.fcmToken else { return }
+                guard let myself = self.myProfile else { return }
+                let sender = PushNotificationSender()
+                sender.sendPushNotification(to: friendFcmToken, title: "您收到一則請求", body: "您收到來自\(myself.userName)的請求，快去回覆吧！")
+
             }
             
             let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)

@@ -11,12 +11,29 @@ import Lottie
 
 class LobbyViewController: UIViewController {
 //4966-onboarding-car
+    
+    let fireAuthManager = FireAuthManager.share
+    
     @IBOutlet weak var carView: UIView!
 
     let animationView = AnimationView(name: "animation-w300-h300-2")
 //        LOTAnimationView(name: "animation-w300-h300-2")
+    
+    func isMemberAction() {
+        fireAuthManager.addSignUpListener { (isMember, user) in
+            if isMember {
+                guard let uid = user?.uid else { return }
+                let pushManager = PushNotificationManager(userID: uid)
+                pushManager.registerForPushNotifications()
+            } else {
+                return
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        isMemberAction()
         
     }
     

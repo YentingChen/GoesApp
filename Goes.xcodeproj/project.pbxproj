@@ -58,6 +58,7 @@
 		3E662EF72268408C0016F962 /* AdressWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF62268408C0016F962 /* AdressWorkViewController.swift */; };
 		3E662EF9226840CA0016F962 /* AdressFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */; };
 		3E662EFB22687EA40016F962 /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E662EFA22687EA40016F962 /* EditAddressViewController.swift */; };
+		3E6B9100227C87C9002AB67F /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B90FF227C87C9002AB67F /* PushNotificationSender.swift */; };
 		3E6C39762275F85E005A8117 /* FriendPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6C39742275F85E005A8117 /* FriendPlaceholderTableViewCell.swift */; };
 		3E6C39772275F85E005A8117 /* FriendPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6C39752275F85E005A8117 /* FriendPlaceholderTableViewCell.xib */; };
 		3E70852B226F127B006002CB /* 4966-onboarding-car.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852A226F127B006002CB /* 4966-onboarding-car.json */; };
@@ -158,6 +159,7 @@
 		3E662EF62268408C0016F962 /* AdressWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressWorkViewController.swift; sourceTree = "<group>"; };
 		3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressFavoriteViewController.swift; sourceTree = "<group>"; };
 		3E662EFA22687EA40016F962 /* EditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
+		3E6B90FF227C87C9002AB67F /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		3E6C39742275F85E005A8117 /* FriendPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		3E6C39752275F85E005A8117 /* FriendPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
 		3E70852A226F127B006002CB /* 4966-onboarding-car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "4966-onboarding-car.json"; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				3E92662622656A6C009EC3D1 /* FirebaseManager.swift */,
 				3E662ED0226830920016F962 /* GoogleMapManager.swift */,
 				3E321630227C435E00237042 /* PushNotificationManager.swift */,
+				3E6B90FF227C87C9002AB67F /* PushNotificationSender.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				3E3EFD0A225914B40078E686 /* FriendListTableViewCell.swift in Sources */,
 				3E42382C22607BF3004988A1 /* Profile.swift in Sources */,
 				3E7B6E072259225500646724 /* ProfilePersonalDataViewController.swift in Sources */,
+				3E6B9100227C87C9002AB67F /* PushNotificationSender.swift in Sources */,
 				3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */,
 				3E92662722656A6C009EC3D1 /* FirebaseManager.swift in Sources */,
 				3E609F642253603E0031CF81 /* UIImage+Extension.swift in Sources */,

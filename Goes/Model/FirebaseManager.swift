@@ -116,6 +116,7 @@ class FireBaseManager {
     }
     
     typealias CompletionHandler = (MyProfile?) -> Void
+    
     func queryUserInfo(userID: String, completion: @escaping CompletionHandler) {
         
         let userProfile =  db.collection("users").document(userID)
@@ -130,9 +131,13 @@ class FireBaseManager {
                     userID: profile.userID,
                     userName: profile.userName,
                     phoneNumber: profile.phoneNumber,
-                    avatar: profile.avatar)
+                    avatar: profile.avatar,
+                    fcmToken: profile.fcmToken)
+                
                 print("Profile: \(profile)")
+                
             completion(self.userProfile)
+                
             } else {
                 print("Document does not exist")
             }

@@ -76,6 +76,11 @@ class OrderDrivingViewController: UIViewController {
         
         nowTimeStamp()
         
+        guard let friendFcmToken = self.rider?.fcmToken else { return }
+        guard let myself = self.myProfile else { return }
+        let sender = PushNotificationSender()
+        sender.sendPushNotification(to: friendFcmToken, title: "您收到一則請求", body: "\(myself.userName)已經出發！")
+        
         self.fireBaseManager.orderSetOff(
         myUid: myUid,
         friendUid: friendUid,

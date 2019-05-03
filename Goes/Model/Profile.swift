@@ -30,13 +30,15 @@ struct Profile {
     var userName: String
     var phoneNumber: String
     var avatar: String
+    var fcmToken: String
     
     init(dictionary: [String: Any]){
-        self.email = (dictionary["email"] as? String)!
-        self.userID = (dictionary["userID"] as? String)!
-        self.userName = (dictionary["userName"] as? String)!
-        self.avatar = (dictionary["avatar"] as? String)!
-        self.phoneNumber = (dictionary["phoneNumber"] as? String)!
+        self.email = (dictionary["email"] as? String ?? "")
+        self.userID = (dictionary["userID"] as? String ?? "")
+        self.userName = (dictionary["userName"] as? String ?? "")
+        self.avatar = (dictionary["avatar"] as? String ?? "")
+        self.phoneNumber = (dictionary["phoneNumber"] as? String ?? "")
+        self.fcmToken = (dictionary["fcmToken"] as? String ?? "")
     }
 }
 
@@ -46,6 +48,7 @@ struct MyProfile {
     var userName: String
     var phoneNumber: String
     var avatar: String
+    var fcmToken: String
 }
 
 struct AddressFromDB {

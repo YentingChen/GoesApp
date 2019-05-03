@@ -50,6 +50,11 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
 
     @IBAction func cancelOrder(_ sender: Any) {
         
+        guard let friendFcmToken = self.rider?.fcmToken else { return }
+        guard let myself = self.myProfile else { return }
+        let sender = PushNotificationSender()
+        sender.sendPushNotification(to: friendFcmToken, title: "您的請求遭到拒絕", body: "\(myself.userName) 不同意您的請求，或許您可以再發送一次")
+        
         self.fireBaseManager.orderCancel(
         myUid: (self.myProfile?.userID)!,
         friendUid: (self.rider?.userID)!,
@@ -88,6 +93,11 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
                
                 self.navigationController?.popViewController(animated: true)
             })
+            
+            guard let friendFcmToken = self.rider?.fcmToken else { return }
+            guard let myself = self.myProfile else { return }
+            let sender = PushNotificationSender()
+            sender.sendPushNotification(to: friendFcmToken, title: "您收到一則請求", body: "\(myself.userName)已經回覆您的請求")
         }
         
         alertController.addAction(doneAction)
