@@ -35,9 +35,9 @@ class OrderMyRequestViewController: UIViewController {
         tableView.separatorStyle = .none
         
         tableView.register(
-            UINib(nibName: "OrderMyRequestTableViewCell",
+            UINib(nibName: "OrderRequestTableViewCell",
                   bundle: nil),
-            forCellReuseIdentifier: "orderMyRequestTableViewCell")
+            forCellReuseIdentifier: "orderRequestTableViewCell")
         
         tableView.register(
             UINib(nibName: "OrderRequestHeaderTableViewCell",
@@ -165,6 +165,22 @@ class OrderMyRequestViewController: UIViewController {
         
     }
     
+    func produceTime(orders:[OrderDetail], number: Int)
+        -> String {
+            
+            let year = orders[number].selectTimeYear
+            let month = { () -> String in
+                if orders[number].selectTimeMonth < 10 {
+                    return "0\(orders[number].selectTimeMonth)"
+                } else {
+                    return "\(orders[number].selectTimeMonth)"
+                }
+            }()
+            let day = orders[number].selectTimeDay
+            let time = orders[number].selectTimeTime
+            return "\(year)/\(month)/\(day)   \(time)"
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMyOrderDetail" {
             if let destination = segue.destination as? OrderRidingViewController {
@@ -274,14 +290,18 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                 myOrdersS1.count == driversS1.count {
                 
                 guard let cell = tableView.dequeueReusableCell(
-                    withIdentifier: "orderMyRequestTableViewCell",
-                    for: indexPath) as? OrderMyRequestTableViewCell else {
-                    return UITableViewCell()
+                    withIdentifier: "orderRequestTableViewCell",
+                    for: indexPath) as? OrderRequestTableViewCell else {
+                        return UITableViewCell()
                 }
-                
-                cell.driverName.text = self.driversS1[indexPath.row].userName
-                cell.moreInfoImageVIew.isHidden = true
                 cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                
+                let time = produceTime(orders: myOrdersS1, number: indexPath.row)
+                cell.requestName.text = driversS1[indexPath.row].userName
+                cell.requestTime.text = time
+                cell.requestLocation.text = "\(self.myOrdersS1[indexPath.row].locationFormattedAddress)"
+                cell.moreImage.isHidden = true
+                
                 return cell
                 
             }
@@ -295,15 +315,18 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                     myOrdersS4.count == driverS4.count {
                     
                     guard let cell = tableView.dequeueReusableCell(
-                        withIdentifier: "orderMyRequestTableViewCell",
-                        for: indexPath) as? OrderMyRequestTableViewCell else {
-                        return UITableViewCell()
-                        
+                        withIdentifier: "orderRequestTableViewCell",
+                        for: indexPath) as? OrderRequestTableViewCell else {
+                            return UITableViewCell()
                     }
-                    
-                    cell.driverName.text = self.driverS4[indexPath.row].userName
                     cell.selectionStyle = UITableViewCell.SelectionStyle.none
-                    cell.moreInfoImageVIew.isHidden = true
+                    
+                    let time = produceTime(orders: myOrdersS4, number: indexPath.row)
+                    cell.requestName.text = driverS4[indexPath.row].userName
+                    cell.requestTime.text = time
+                    cell.requestLocation.text = "\(self.myOrdersS4[indexPath.row].locationFormattedAddress)"
+                    cell.moreImage.isHidden = true
+                    
                     return cell
                     
             }
@@ -317,14 +340,18 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                     myOrdersS5.count == driverS5.count {
                     
                     guard let cell = tableView.dequeueReusableCell(
-                        withIdentifier: "orderMyRequestTableViewCell",
-                        for: indexPath) as? OrderMyRequestTableViewCell else {
-                        return UITableViewCell()
-                        
+                        withIdentifier: "orderRequestTableViewCell",
+                        for: indexPath) as? OrderRequestTableViewCell else {
+                            return UITableViewCell()
                     }
-                    cell.moreInfoImageVIew.isHidden = false
-                    cell.driverName.text = self.driverS5[indexPath.row].userName
                     cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                    
+                    let time = produceTime(orders: myOrdersS5, number: indexPath.row)
+                    cell.requestName.text = driverS5[indexPath.row].userName
+                    cell.requestTime.text = time
+                    cell.requestLocation.text = "\(self.myOrdersS5[indexPath.row].locationFormattedAddress)"
+                    
+                    
                     return cell
                 
             }
@@ -350,7 +377,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                 driversS1.count != 0,
                 myOrdersS1.count == driversS1.count {
                 
-                return 100
+                return 140
                 
             } else {
                 
@@ -364,7 +391,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                 driverS4.count != 0,
                 myOrdersS4.count == driverS4.count {
                 
-                return 100
+                return 140
                 
             } else {
                 
@@ -378,7 +405,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                 driverS5.count != 0,
                 myOrdersS5.count == driverS5.count {
                 
-                return 100
+                return 140
                 
             } else {
                 

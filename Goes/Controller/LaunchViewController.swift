@@ -11,7 +11,6 @@ import Firebase
 import FirebaseAuth
 
 class LaunchViewController: UIViewController {
-//    let fireAuthManager = FireAuthManager.share
 
     @IBOutlet weak var testes: UIImageView!
     override func viewDidLoad() {
@@ -30,35 +29,7 @@ class LaunchViewController: UIViewController {
 
         }
         
-    
 
-//        UIView.animate(
-//            withDuration: 3,
-//            animations: {
-//                self.testes.alpha = 0.0
-//            }, completion: { _ in
-//                self.fireAuthManager.addSignUpListener(listener: { (login) in
-//                    if login == false {
-        
-//                        let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-//                        let vc = storyboard.instantiateViewController(withIdentifier: "LogIn")
-//                        self.present(vc, animated: true, completion: nil)
-                        
-//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                        let vc = storyboard.instantiateViewController(withIdentifier: "Goes")
-//                        self.present(vc, animated: true, completion: nil)
-//
-//                    } else {
-//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                        let vc = storyboard.instantiateViewController(withIdentifier: "Goes")
-//                        self.present(vc, animated: true, completion: nil)
-//                    }
-//                })
-//
-//            }
-//        )
-//
-//
     }
 
 }

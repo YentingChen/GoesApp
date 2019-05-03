@@ -26,6 +26,7 @@ class LobbyTimeViewController: UIViewController {
     @IBOutlet weak var laterBtn: UIButton!
     
     @IBAction func toFriendView(_ sender: Any) {
+        
         self.fireAuthManager.addSignUpListener { (isMember, _) in
             if isMember {
                 

@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 import Firebase
 
+
 struct YTUser {
     var id: String?
     var email: String?
@@ -42,6 +43,10 @@ class FireAuthManager: NSObject {
     func deleteListener() {
         
         if let listener = addStateListener {
+            auth.removeStateDidChangeListener(listener)
+            auth.removeStateDidChangeListener(listener)
+            auth.removeStateDidChangeListener(listener)
+            auth.removeStateDidChangeListener(listener)
             auth.removeStateDidChangeListener(listener)
         }
         

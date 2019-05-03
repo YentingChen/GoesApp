@@ -40,6 +40,8 @@ class OrderRidingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkLocationAuth()
+        
         self.mapView.delegate = self
         self.mapView.isMyLocationEnabled = true
         
@@ -136,6 +138,63 @@ class OrderRidingViewController: UIViewController {
         self.completeTime = Int(now.timeIntervalSince1970)
         
     }
+    
+    func toSettingPage() {
+        let url = URL(string: UIApplication.openSettingsURLString)
+        if let url = url, UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:],
+                                          completionHandler: {
+                                            (success) in
+                })
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+    func showAlert(title: String, message: String, completeionHandler: @escaping () ->Void) {
+        
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "好的", style: .default, handler: {
+            action in
+            
+            completeionHandler()
+            
+        })
+        
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func checkLocationAuth() {
+        
+        switch CLLocationManager.authorizationStatus() {
+            
+        case .notDetermined:
+            // Request when-in-use authorization initially
+            locationManager.requestWhenInUseAuthorization()
+            
+        case .restricted, .denied:
+            // Disable location features
+            
+            showAlert(title: "請先設定位置權限",
+                      message: "前往 設定/隱私權/定位服務/允許取用位置，選取 “永遠”或是 “使用 App 期間”，否則將無法使用該功能 ") {
+                        self.toSettingPage()
+                        self.navigationController?.popViewController(animated: false)
+            }
+            
+        case .authorizedWhenInUse,.authorizedAlways:
+            // Enable any of your app's location features
+            return
+            
+        }
+    }
+    
     @IBAction func callBtn(_ sender: Any) {
         guard let riderPhone = driver?.phoneNumber else {
             return
@@ -184,7 +243,9 @@ extension OrderRidingViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
-        guard status == .authorizedWhenInUse else { return }
+        guard status == .authorizedWhenInUse else {
+            checkLocationAuth()
+            return }
         
         locationManager.startUpdatingLocation()
         

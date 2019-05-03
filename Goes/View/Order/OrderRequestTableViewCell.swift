@@ -12,6 +12,7 @@ class OrderRequestTableViewCell: UITableViewCell {
 
     @IBOutlet weak var requestName: UILabel!
     
+    @IBOutlet weak var moreImage: UIImageView!
     @IBOutlet weak var requestTime: UILabel!
     @IBOutlet weak var requestLocation: UILabel!
     override func awakeFromNib() {

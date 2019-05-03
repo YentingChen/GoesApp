@@ -37,12 +37,12 @@ class PersonalDataManager: NSObject {
         firebaseManager.addSignUpListener { (_, user) in
             
             guard user != nil else {
-                
-                
-                
-                //                Auth.auth().removeStateDidChangeListener((self?.authLitsener!)!)
+               
+                guard let authListener = self.authLitsener else { return }
+                Auth.auth().removeStateDidChangeListener(authListener)
                 
                 return }
+            
              guard let userID = user?.uid else { return }
             let userProfile =  self.dataBase.collection("users").document(userID)
             userProfile.getDocument { [weak self] (document, error) in

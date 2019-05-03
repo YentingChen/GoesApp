@@ -62,39 +62,6 @@ class LobbyMapViewController: UIViewController {
             
         }
         
-        
-        
-        
-//        if sender.selectedSegmentIndex == 0 {
-//
-//            addressBtn.setTitle(self.tempSelectedLocation?.placeName, for: .normal)
-//            selectedLocation = self.tempSelectedLocation
-////            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
-//        }
-//
-//        if sender.selectedSegmentIndex == 1 {
-//
-//            addressBtn.setTitle(self.homeAddress?.placeName, for: .normal)
-//
-//            selectedLocation = self.homeAddress
-////            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
-//        }
-//
-//        if sender.selectedSegmentIndex == 2 {
-//
-//            addressBtn.setTitle(self.workAddress?.placeName, for: .normal)
-//
-//            selectedLocation = self.workAddress
-////            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
-//        }
-//
-//        if sender.selectedSegmentIndex == 3 {
-//
-//            addressBtn.setTitle(self.favoriteAddress?.placeName, for: .normal)
-//
-//            selectedLocation = self.favoriteAddress
-////            setCamera(lat: (selectedLocation?.placeLat)!, lag: (selectedLocation?.placeLng)!)
-//        }
     }
     
     func setCamera(lat: Double, lag: Double) {
