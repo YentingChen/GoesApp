@@ -15,6 +15,7 @@
 		3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23588922590C0B004182F0 /* FriendInviteTableViewCell.swift */; };
 		3E23588C22590C0B004182F0 /* FriendInviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23588A22590C0B004182F0 /* FriendInviteTableViewCell.xib */; };
 		3E23588F22590D74004182F0 /* FriendInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23588E22590D74004182F0 /* FriendInviteViewController.swift */; };
+		3E321631227C435E00237042 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E321630227C435E00237042 /* PushNotificationManager.swift */; };
 		3E3E1DEC227954A8003E01F8 /* MJRefreshWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3E1DEB227954A8003E01F8 /* MJRefreshWrapper.swift */; };
 		3E3EFD0A225914B40078E686 /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EFD08225914B40078E686 /* FriendListTableViewCell.swift */; };
 		3E3EFD0B225914B40078E686 /* FriendListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EFD09225914B40078E686 /* FriendListTableViewCell.xib */; };
@@ -111,6 +112,8 @@
 		3E23588922590C0B004182F0 /* FriendInviteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInviteTableViewCell.swift; sourceTree = "<group>"; };
 		3E23588A22590C0B004182F0 /* FriendInviteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendInviteTableViewCell.xib; sourceTree = "<group>"; };
 		3E23588E22590D74004182F0 /* FriendInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInviteViewController.swift; sourceTree = "<group>"; };
+		3E32162F227C3CA200237042 /* Goes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Goes.entitlements; sourceTree = "<group>"; };
+		3E321630227C435E00237042 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		3E3E1DEB227954A8003E01F8 /* MJRefreshWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefreshWrapper.swift; sourceTree = "<group>"; };
 		3E3EFD08225914B40078E686 /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
 		3E3EFD09225914B40078E686 /* FriendListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListTableViewCell.xib; sourceTree = "<group>"; };
@@ -299,6 +302,7 @@
 		3E609F4022533EE10031CF81 /* Goes */ = {
 			isa = PBXGroup;
 			children = (
+				3E32162F227C3CA200237042 /* Goes.entitlements */,
 				3E609F4122533EE10031CF81 /* AppDelegate.swift */,
 				3E93D7302277F7640045D15C /* DeviceHelper.swift */,
 				3E93D7332277F7650045D15C /* NSLayoutHelper.swift */,
@@ -445,6 +449,7 @@
 				3E424B5D22646DE6003A3123 /* PersonalDataMagager.swift */,
 				3E92662622656A6C009EC3D1 /* FirebaseManager.swift */,
 				3E662ED0226830920016F962 /* GoogleMapManager.swift */,
+				3E321630227C435E00237042 /* PushNotificationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -505,6 +510,9 @@
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -706,6 +714,7 @@
 			files = (
 				3E609F682253664D0031CF81 /* UIColor+Extension.swift in Sources */,
 				3E93D7382277F7650045D15C /* UIButtonHelper.swift in Sources */,
+				3E321631227C435E00237042 /* PushNotificationManager.swift in Sources */,
 				3E95EE81225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift in Sources */,
 				3E609F4422533EE10031CF81 /* ViewController.swift in Sources */,
 				3E7B6E17225A633E00646724 /* OrderRequestViewController.swift in Sources */,
@@ -917,6 +926,7 @@
 			baseConfigurationReference = 090995E10833A3558FBB0D9B /* Pods-Goes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Goes/Goes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UNAH767L53;
@@ -938,6 +948,7 @@
 			baseConfigurationReference = CDFD64D319E200998BB050F3 /* Pods-Goes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Goes/Goes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UNAH767L53;
 				INFOPLIST_FILE = Goes/Info.plist;
