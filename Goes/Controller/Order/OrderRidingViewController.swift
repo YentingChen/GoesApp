@@ -147,34 +147,34 @@ class OrderRidingViewController: UIViewController {
     }
     
     @objc func longPressAction(_ sender: UIGestureRecognizer) {
-        
-        let animationView = LOTAnimationView(name: "5184-success")
+
+        let animationView = AnimationView(name: "5184-success")
         animationView.frame = CGRect(x: 0, y: 0, width: successImageView.frame.width, height:  successImageView.frame.height)
         animationView.contentMode = .scaleAspectFit
         animationView.animationSpeed = 2
         self.successImageView.addSubview(animationView)
-    
+
         if sender.state == .ended {
            animationView.stop()
             print("ok")
             nowTimeStamp()
-           
+
             self.fireBaseManager.orderComplete(
                 myUid: self.myProfile?.userID ?? "" ,
                 friendUid: self.driver?.userID ?? "",
                 orderID: self.order?.orderID ?? "",
                 completeTime: self.completeTime ?? 0,
                 completionHandler: {
-                
+
                     print("driver arrive")
-                
+
                 })
-            
+
         }
-        
+
         if sender.state == .began {
            animationView.play()
-           
+
         }
        
     }

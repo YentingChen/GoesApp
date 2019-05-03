@@ -16,9 +16,10 @@ target 'Goes' do
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
-  pod 'lottie-ios'
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
   pod 'MJRefresh'
+  pod 'lottie-ios'
+
   
 end
