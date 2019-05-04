@@ -745,6 +745,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="600"/>
                     <connections>
+                        <outlet property="driverName" destination="zTs-Y2-x16" id="tnn-6R-GkS"/>
                         <outlet property="estimateArrivingTime" destination="ruf-Hs-4RO" id="QwB-tV-KO3"/>
                         <outlet property="greenView" destination="9my-gJ-oXA" id="RJi-uQ-QA0"/>
                         <outlet property="locationLabel" destination="i4z-ve-Ehl" id="mpG-q0-236"/>

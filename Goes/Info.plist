@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string></string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>By accessing your location, this app can find your location.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -19,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.1.3</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -31,6 +27,10 @@
 	<true/>
 	<key>MGLMapboxAccessToken</key>
 	<string>pk.eyJ1IjoieWVpbnRpbmdjaGVuIiwiYSI6ImNqdWMxYTd0NTBqZzY0M21oa3BvN2ZwNjEifQ.Mr8wr4W8vfUFU5r49qGcCQ</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>如要取得規劃路線等相關功能，請選擇(永遠允許)</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>By accessing your location, this app can find your location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>By accessing your location, this app can find your location.</string>
 	<key>UIBackgroundModes</key>

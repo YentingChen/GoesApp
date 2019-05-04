@@ -51,6 +51,9 @@ class FriendSearchViewController: UIViewController {
         guard let friendEmail = self.searchFriend.text else { return }
         guard let myEmail = self.myProfile?.email else { return }
         firebaseManager.queryUsers(email: friendEmail) { (isUser, friUid) in
+            if isUser == false{
+                self.showFriendView(addBtnEnable: false, btnTitle: "無此會員")
+            }
             if isUser == true {
                 if myEmail == friendEmail{
                     print("It's me")

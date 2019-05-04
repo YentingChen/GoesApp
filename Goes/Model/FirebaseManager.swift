@@ -75,6 +75,9 @@ class FireBaseManager {
    
     func queryUsers(email: String, completionHandler: @escaping (Bool, String) -> Void) {
         
+        var isMember = false
+        var friendUid : String?
+        
         db.collection("users").getDocuments() { [weak self] (querySnapshot, err) in
             if let err = err {
                     print("Error getting documents: \(err)")
@@ -82,11 +85,18 @@ class FireBaseManager {
                     for document in querySnapshot!.documents {
                         guard let fireEmail = document.data()["email"] else { return }
                             if  email == fireEmail as? String {
-                                let friendUid = document.data()["userID"] as? String
-                                completionHandler(true, friendUid! )
-                            }
-                               
+                                friendUid = document.data()["userID"] as? String
+                                isMember = true
+                                break
+                            } else {
+                                isMember = false
+                                
                         }
+                               
+                    }
+                completionHandler(isMember, friendUid ?? "")
+                
+                
                 }
                 
             }

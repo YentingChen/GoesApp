@@ -18,6 +18,7 @@ class OrderRidingViewController: UIViewController {
     
     @IBOutlet weak var successImageView: UIImageView!
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var driverName: UILabel!
     @IBOutlet weak var estimateArrivingTime: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var greenView: UIView! {
@@ -54,6 +55,7 @@ class OrderRidingViewController: UIViewController {
         rMarker.map = self.mapView
         
         locationLabel.text = order?.locationFormattedAddress
+        driverName.text = driver?.userName
         
         self.fireBaseManager.listenDriverLocation(orderID: (self.order?.orderID)!) { (order) in
 

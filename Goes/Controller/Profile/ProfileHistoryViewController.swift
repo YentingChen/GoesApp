@@ -61,8 +61,10 @@ class ProfileHistoryViewController: UIViewController {
             guard let myProfile = self.myProfile else { return }
             
             self.fireBaseManager.queryMyOrders(myUid: myProfile.userID, status: 7, completionHandler: { (orders) in
-                self.myHistory = orders
-                print(self.myHistory)
+                
+                self.myHistory = orders.sorted(by: { $0.orderID > $1.orderID })
+                
+               
                 self.tableView.reloadData()
                 
                 self.tableView.endHeaderRefreshing()
