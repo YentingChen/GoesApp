@@ -140,6 +140,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Goes" id="kGj-6Z-ud5"/>
                     <connections>
+                        <outlet property="avatar" destination="sQI-iF-vxf" id="esK-zj-vGh"/>
                         <outlet property="carView" destination="d97-4Y-pRu" id="mUu-BZ-51O"/>
                     </connections>
                 </viewController>

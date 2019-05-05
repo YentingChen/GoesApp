@@ -10,6 +10,7 @@ import UIKit
 
 class OrderRequestTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var requestName: UILabel!
     
     @IBOutlet weak var moreImage: UIImageView!

@@ -177,6 +177,7 @@
                     </view>
                     <connections>
                         <outlet property="addFriendBtn" destination="RTq-pK-bwC" id="cbz-9e-YBj"/>
+                        <outlet property="avatar" destination="hUF-Jj-gyE" id="mfb-QC-Q2y"/>
                         <outlet property="friendName" destination="QUu-Qi-1Uh" id="qvb-dv-AOp"/>
                         <outlet property="friendView" destination="YG7-Hy-gsq" id="xLH-Zh-dLT"/>
                         <outlet property="searchFriend" destination="ePS-WN-pbP" id="6Oj-Mp-Oai"/>

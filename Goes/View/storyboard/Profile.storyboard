@@ -23,14 +23,14 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="200"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="oa3-4N-boZ">
-                                        <rect key="frame" x="157.5" y="24" width="60" height="60"/>
+                                        <rect key="frame" x="137.5" y="0.0" width="100" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="aO7-HD-7le"/>
-                                            <constraint firstAttribute="width" constant="60" id="hE2-af-KDD"/>
+                                            <constraint firstAttribute="height" constant="100" id="aO7-HD-7le"/>
+                                            <constraint firstAttribute="width" constant="100" id="hE2-af-KDD"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="       " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-hJ-2dv">
-                                        <rect key="frame" x="24" y="92" width="327" height="21"/>
+                                        <rect key="frame" x="24" y="104" width="327" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="ode-Os-MTL"/>
                                         </constraints>
@@ -38,13 +38,26 @@
                                         <color key="textColor" name="B1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSQ-Qf-z4F">
+                                        <rect key="frame" x="217.5" y="78" width="20" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="xRJ-4E-OUe"/>
+                                            <constraint firstAttribute="height" constant="22" id="xom-xQ-2dB"/>
+                                        </constraints>
+                                        <state key="normal" image="Icons_20x_Camera_Normal"/>
+                                        <connections>
+                                            <action selector="cameraBtn:" destination="tEL-4Q-yV3" eventType="touchUpInside" id="sOk-YP-oYd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="dAz-hJ-2dv" secondAttribute="bottom" constant="87" id="DjC-e1-u8d"/>
+                                    <constraint firstItem="MSQ-Qf-z4F" firstAttribute="bottom" secondItem="oa3-4N-boZ" secondAttribute="bottom" id="4uh-2R-1Hr"/>
+                                    <constraint firstAttribute="bottom" secondItem="dAz-hJ-2dv" secondAttribute="bottom" constant="75" id="DjC-e1-u8d"/>
                                     <constraint firstItem="dAz-hJ-2dv" firstAttribute="centerX" secondItem="XXo-HA-71G" secondAttribute="centerX" id="MNr-Fa-IPf"/>
                                     <constraint firstAttribute="trailing" secondItem="dAz-hJ-2dv" secondAttribute="trailing" constant="24" id="NvX-mR-QN9"/>
                                     <constraint firstItem="dAz-hJ-2dv" firstAttribute="leading" secondItem="XXo-HA-71G" secondAttribute="leading" constant="24" id="SaJ-kK-5WJ"/>
-                                    <constraint firstItem="oa3-4N-boZ" firstAttribute="top" secondItem="XXo-HA-71G" secondAttribute="top" constant="24" id="a77-tS-k4L"/>
+                                    <constraint firstItem="MSQ-Qf-z4F" firstAttribute="trailing" secondItem="oa3-4N-boZ" secondAttribute="trailing" id="V3X-ef-MeF"/>
+                                    <constraint firstItem="oa3-4N-boZ" firstAttribute="top" secondItem="XXo-HA-71G" secondAttribute="top" id="a77-tS-k4L"/>
                                     <constraint firstItem="oa3-4N-boZ" firstAttribute="centerX" secondItem="XXo-HA-71G" secondAttribute="centerX" id="oYW-lh-o8O"/>
                                 </constraints>
                             </view>
@@ -172,6 +185,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="avatarImageView" destination="oa3-4N-boZ" id="oRB-E7-enK"/>
                         <outlet property="scrollView" destination="EiI-px-mNu" id="QD9-J5-aE2"/>
                         <outlet property="segmentedControl" destination="o8R-C4-Pit" id="t5k-sG-xEO"/>
                         <outlet property="userName" destination="dAz-hJ-2dv" id="7BG-px-mxV"/>
@@ -555,6 +569,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icons_20x_Camera_Normal" width="20" height="17"/>
         <image name="Icons_30x_driver_Normal" width="40" height="31"/>
         <image name="Icons_30x_rider_Normal" width="40" height="31"/>
         <image name="cross36x" width="44" height="44"/>

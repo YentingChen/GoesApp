@@ -17,10 +17,13 @@ target 'Goes' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Messaging'
+  pod 'Firebase/Storage'
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
   pod 'MJRefresh'
   pod 'lottie-ios'
+  pod 'Fusuma'
+  pod 'Kingfisher', '~> 5.0'
 
   
 end

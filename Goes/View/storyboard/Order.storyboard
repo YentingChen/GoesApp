@@ -375,6 +375,7 @@
                     <size key="freeformSize" width="375" height="617"/>
                     <connections>
                         <outlet property="arrivingTime" destination="FAh-XW-NfW" id="8L2-pR-AuS"/>
+                        <outlet property="avatar" destination="SHj-zU-fhU" id="gI5-nu-3Ky"/>
                         <outlet property="estimateTimeLabel" destination="T51-lc-1JJ" id="mf4-Rm-EEt"/>
                         <outlet property="googleMap" destination="vda-4m-o0t" id="9bJ-AZ-G1h"/>
                         <outlet property="locationAddress" destination="wRI-EC-HQk" id="df5-zg-T1G"/>
@@ -563,6 +564,7 @@
                     <size key="freeformSize" width="375" height="617"/>
                     <connections>
                         <outlet property="arrivingAddress" destination="rdu-9y-55B" id="P6x-m6-1bb"/>
+                        <outlet property="avatar" destination="abO-Nn-euk" id="ryK-W0-rug"/>
                         <outlet property="estimateTime" destination="P5e-mN-BXa" id="rM9-SF-IwJ"/>
                         <outlet property="grayView" destination="n4p-A7-k0G" id="bt3-qX-0cv"/>
                         <outlet property="mapView" destination="yaX-CX-Ym8" id="E8w-Nr-nt8"/>
@@ -745,6 +747,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="600"/>
                     <connections>
+                        <outlet property="avatar" destination="gKv-5j-9LP" id="gQ0-vn-dNT"/>
                         <outlet property="driverName" destination="zTs-Y2-x16" id="tnn-6R-GkS"/>
                         <outlet property="estimateArrivingTime" destination="ruf-Hs-4RO" id="QwB-tV-KO3"/>
                         <outlet property="greenView" destination="9my-gJ-oXA" id="RJi-uQ-QA0"/>

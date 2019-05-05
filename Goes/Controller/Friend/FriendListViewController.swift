@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import IQKeyboardManagerSwift
+import Kingfisher
 
 class FriendListViewController: UIViewController {
     
@@ -147,11 +148,22 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
             if isSearching {
                 
                 cell.cellLabel.text = self.result[indexPath.row].userName
-                
+                if self.result[indexPath.row].avatar != "" {
+                    let url = URL(string: self.result[indexPath.row].avatar)
+                    cell.cellImageView.kf.setImage(with: url)
+                    cell.cellImageView.roundCorners(cell.cellImageView.frame.width/2)
+                    cell.cellImageView.clipsToBounds = true
+                }
                 
             } else {
                 
                 cell.cellLabel.text = self.myFriends[indexPath.row].userName
+                if self.myFriends[indexPath.row].avatar != "" {
+                    let url = URL(string: self.myFriends[indexPath.row].avatar)
+                    cell.cellImageView.kf.setImage(with: url)
+                    cell.cellImageView.roundCorners(cell.cellImageView.frame.width/2)
+                    cell.cellImageView.clipsToBounds = true
+                }
                 
             }
             

@@ -88,12 +88,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="avatarImage" destination="cNI-Lv-mD2" id="TAk-CN-dso"/>
                 <outlet property="moreImage" destination="Ymi-o5-rog" id="ECG-YE-7Ph"/>
                 <outlet property="requestLocation" destination="KOB-Fx-3f5" id="3JR-Fc-FPy"/>
                 <outlet property="requestName" destination="2OE-hV-E5M" id="yUB-5W-Oo0"/>
                 <outlet property="requestTime" destination="BPQ-vv-hm5" id="3cx-xG-fC0"/>
             </connections>
-            <point key="canvasLocation" x="-247" y="201"/>
+            <point key="canvasLocation" x="-122" y="201"/>
         </tableViewCell>
     </objects>
     <resources>

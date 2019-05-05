@@ -10,7 +10,6 @@ import Foundation
 import FirebaseAuth
 import Firebase
 
-
 struct YTUser {
     var id: String?
     var email: String?
@@ -51,7 +50,6 @@ class FireAuthManager: NSObject {
         }
         
     }
-    
     
     
     func getCurrentUser() -> YTUser? {
@@ -196,6 +194,10 @@ class FireBaseManager {
         
         completionHandler()
 
+    }
+    
+    func updateAvatar(myUid: String, avatarUrl: String) {
+        db.collection("users").document(myUid).updateData(["avatar": avatarUrl])
     }
     
     func updateAdress(myUid: String,

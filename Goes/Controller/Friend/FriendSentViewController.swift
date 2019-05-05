@@ -112,6 +112,12 @@ extension FriendSentViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.cancleInviteButton.tag = indexPath.row
                 
                 cell.cancleInviteButton.addTarget(self, action: #selector(cancelSent(_:)), for: .touchUpInside)
+                if self.sentFriend[indexPath.row].avatar != "" {
+                    let url = URL(string: self.sentFriend[indexPath.row].avatar)
+                    cell.cellImageView.kf.setImage(with: url)
+                    cell.cellImageView.roundCorners(cell.cellImageView.frame.width/2)
+                    cell.cellImageView.clipsToBounds = true
+                }
                 
                  cell.selectionStyle = .none
                 

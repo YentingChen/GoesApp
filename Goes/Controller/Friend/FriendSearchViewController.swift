@@ -12,12 +12,14 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class FriendSearchViewController: UIViewController {
+    
     @IBOutlet weak var searchFriend: UITextField!
     var personalDataManager = PersonalDataManager.share
     var firebaseManager = FireBaseManager()
     var myProfile: MyProfile?
     var friendInfo: MyProfile?
   
+    @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var friendView: UIView!
     @IBOutlet weak var friendName: UILabel!
     @IBOutlet weak var addFriendBtn: UIButton!
@@ -43,24 +45,56 @@ class FriendSearchViewController: UIViewController {
     }
     
     @IBAction func searchBtn(_ sender: Any) {
+        
         searchFriendFromDB()
     }
     
     func searchFriendFromDB() {
+        
         guard let myUid = self.myProfile?.userID else { return }
+        
         guard let friendEmail = self.searchFriend.text else { return }
+        
         guard let myEmail = self.myProfile?.email else { return }
+        
         firebaseManager.queryUsers(email: friendEmail) { (isUser, friUid) in
+            
             if isUser == false{
+                
                 self.showFriendView(addBtnEnable: false, btnTitle: "無此會員")
             }
+            
             if isUser == true {
+                
                 if myEmail == friendEmail{
                     print("It's me")
+                    guard let myInfo = self.myProfile else {
+                        return
+                    }
+                    if myInfo.avatar != "" {
+                        let url = URL(string: myInfo
+                            .avatar)
+                        self.avatar.kf.setImage(with: url)
+                        self.avatar.roundCorners(self.avatar.frame.width/2)
+                        self.avatar.clipsToBounds = true
+                    }
+                    
+                    self.showFriendView(addBtnEnable: false, btnTitle: "這是我自己")
                 }else {
                     self.firebaseManager.queryUserInfo(userID: friUid, completion: { (userInfo) in
+                        
                         self.friendInfo = userInfo
-                        print(self.friendInfo)
+                        
+                        guard let friendInfo = self.friendInfo else {
+                            return
+                        }
+                        if friendInfo.avatar != "" {
+                            let url = URL(string: friendInfo
+                                .avatar)
+                            self.avatar.kf.setImage(with: url)
+                            self.avatar.roundCorners(self.avatar.frame.width/2)
+                            self.avatar.clipsToBounds = true
+                        }
                         
                         self.firebaseManager.queryFriendStatus(friendUid: friUid, myUid: myUid, completionHandler: { (status) in
                             switch status {
@@ -86,7 +120,7 @@ class FriendSearchViewController: UIViewController {
     }
     
     func showFriendView( addBtnEnable: Bool, btnTitle: String) {
-
+        
         self.friendView.isHidden = false
         self.friendName.text = self.friendInfo?.userName
         self.addFriendBtn.isEnabled = addBtnEnable
@@ -101,8 +135,7 @@ class FriendSearchViewController: UIViewController {
         }
        
     }
-    
-    
+        
     @IBAction func addFriend(_ sender: Any) {
         guard let myUid = self.myProfile?.userID else { return }
         guard let friendUid = self.friendInfo?.userID else { return }

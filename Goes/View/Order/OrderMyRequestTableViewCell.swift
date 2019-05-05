@@ -10,6 +10,7 @@ import UIKit
 
 class OrderMyRequestTableViewCell: UITableViewCell {
     @IBOutlet weak var driverName: UILabel!
+    @IBOutlet weak var avatarImage: UIImageView!
     
     @IBOutlet weak var moreInfoImageVIew: UIImageView!
     override func awakeFromNib() {

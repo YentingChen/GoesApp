@@ -84,6 +84,12 @@ extension FriendInviteViewController: UITableViewDelegate, UITableViewDataSource
             cell.checkBtn.addTarget(self, action: #selector(makeFriend(_:)), for: .touchUpInside)
             cell.deleteBtn.addTarget(self, action: #selector(cancelInvite(_:)), for: .touchUpInside)
             cell.selectionStyle = .none
+            if self.inviteFriend[indexPath.row].avatar != "" {
+                let url = URL(string: self.inviteFriend[indexPath.row].avatar)
+                cell.cellImage.kf.setImage(with: url)
+                cell.cellImage.roundCorners(cell.cellImage.frame.width/2)
+                cell.cellImage.clipsToBounds = true
+            }
             
             return cell
         }

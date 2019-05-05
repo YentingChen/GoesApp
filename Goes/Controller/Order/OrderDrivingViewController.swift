@@ -18,6 +18,7 @@ class OrderDrivingViewController: UIViewController {
     var timer: Timer?
     let locationManager = CLLocationManager()
     
+    @IBOutlet weak var avatar: UIImageView!
     var orderRequestVC: OrderRequestViewController?
     let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager()
@@ -176,6 +177,17 @@ class OrderDrivingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let rider = self.rider else {
+            return
+        }
+        
+        if rider.avatar != "" {
+            let url = URL(string: rider.avatar)
+            avatar.kf.setImage(with: url)
+            avatar.roundCorners(avatar.frame.width/2)
+            avatar.clipsToBounds = true
+        }
         
         checkLocationAuth()
         

@@ -301,6 +301,12 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                 cell.requestTime.text = time
                 cell.requestLocation.text = "\(self.myOrdersS1[indexPath.row].locationFormattedAddress)"
                 cell.moreImage.isHidden = true
+                if driversS1[indexPath.row].avatar != "" {
+                    let url = URL(string: driversS1[indexPath.row].avatar)
+                    cell.avatarImage.kf.setImage(with: url)
+                    cell.avatarImage.roundCorners(cell.avatarImage.frame.width/2)
+                    cell.avatarImage.clipsToBounds = true
+                }
                 
                 return cell
                 
@@ -326,6 +332,12 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                     cell.requestTime.text = time
                     cell.requestLocation.text = "\(self.myOrdersS4[indexPath.row].locationFormattedAddress)"
                     cell.moreImage.isHidden = true
+                    if driverS4[indexPath.row].avatar != "" {
+                        let url = URL(string: driverS4[indexPath.row].avatar)
+                        cell.avatarImage.kf.setImage(with: url)
+                        cell.avatarImage.roundCorners(cell.avatarImage.frame.width/2)
+                        cell.avatarImage.clipsToBounds = true
+                    }
                     
                     return cell
                     
@@ -350,6 +362,12 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                     cell.requestName.text = driverS5[indexPath.row].userName
                     cell.requestTime.text = time
                     cell.requestLocation.text = "\(self.myOrdersS5[indexPath.row].locationFormattedAddress)"
+                    if driverS5[indexPath.row].avatar != "" {
+                        let url = URL(string: driverS5[indexPath.row].avatar)
+                        cell.avatarImage.kf.setImage(with: url)
+                        cell.avatarImage.roundCorners(cell.avatarImage.frame.width/2)
+                        cell.avatarImage.clipsToBounds = true
+                    }
                     
                     
                     return cell

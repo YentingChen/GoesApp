@@ -20,6 +20,7 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
             self.timeBackgroundView.roundCorners(20)
         }
     }
+    @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var estimateTimeLabel: UILabel!
     @IBOutlet weak var googleMap: GMSMapView!
     @IBOutlet weak var riderName: UILabel!
@@ -148,6 +149,16 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
         self.arrivingTime.text = produceTime(orders: order)
 
         self.locationAddress.text = order.locationFormattedAddress
+        guard let rider = self.rider else {
+            return
+        }
+        
+        if rider.avatar != "" {
+            let url = URL(string: rider.avatar)
+            avatar.kf.setImage(with: url)
+            avatar.roundCorners(avatar.frame.width/2)
+            avatar.clipsToBounds = true
+        }
         
     }
     

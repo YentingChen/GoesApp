@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class OrderRequestViewController: UIViewController {
     
@@ -319,8 +320,7 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
         return Int()
     }
 
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath)
+    func tableView(_ tableView: UITableView,cellForRowAt indexPath: IndexPath)
         -> UITableViewCell {
             
         if indexPath.section == 0 {
@@ -340,7 +340,12 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
                 cell.requestName.text = ridersS2[indexPath.row].userName
                 cell.requestTime.text = time
                 cell.requestLocation.text = "\(self.myOrdersS2[indexPath.row].locationFormattedAddress)"
-                
+                if ridersS2[indexPath.row].avatar != "" {
+                    let url = URL(string: ridersS2[indexPath.row].avatar)
+                    cell.avatarImage.kf.setImage(with: url)
+                    cell.avatarImage.roundCorners(cell.avatarImage.frame.width/2)
+                    cell.avatarImage.clipsToBounds = true
+                }
                 return cell
             }
         
@@ -361,7 +366,12 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
                 cell.requestName.text = ridersS3[indexPath.row].userName
                 cell.requestTime.text = time
                 cell.requestLocation.text = "\(self.myOrdersS3[indexPath.row].locationFormattedAddress)"
-                
+                if ridersS3[indexPath.row].avatar != "" {
+                    let url = URL(string: ridersS3[indexPath.row].avatar)
+                    cell.avatarImage.kf.setImage(with: url)
+                    cell.avatarImage.roundCorners(cell.avatarImage.frame.width/2)
+                    cell.avatarImage.clipsToBounds = true
+                }
                 return cell
                 
             }
@@ -383,7 +393,12 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
                 cell.requestName.text = ridersS6[indexPath.row].userName
                 cell.requestTime.text = time
                 cell.requestLocation.text = "\(self.myOrdersS6[indexPath.row].locationFormattedAddress)"
-                
+                if ridersS6[indexPath.row].avatar != "" {
+                    let url = URL(string: ridersS6[indexPath.row].avatar)
+                    cell.avatarImage.kf.setImage(with: url)
+                    cell.avatarImage.roundCorners(cell.avatarImage.frame.width/2)
+                    cell.avatarImage.clipsToBounds = true
+                }
                 return cell
             }
             

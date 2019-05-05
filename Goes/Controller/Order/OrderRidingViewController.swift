@@ -21,6 +21,7 @@ class OrderRidingViewController: UIViewController {
     @IBOutlet weak var driverName: UILabel!
     @IBOutlet weak var estimateArrivingTime: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var greenView: UIView! {
         didSet{
             greenView.roundCorners(20)
@@ -40,6 +41,17 @@ class OrderRidingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let driver = self.driver else {
+            return
+        }
+        
+        if driver.avatar != "" {
+            let url = URL(string: driver
+                .avatar)
+            avatar.kf.setImage(with: url)
+            avatar.roundCorners(avatar.frame.width/2)
+            avatar.clipsToBounds = true
+        }
         
         checkLocationAuth()
         
@@ -55,7 +67,7 @@ class OrderRidingViewController: UIViewController {
         rMarker.map = self.mapView
         
         locationLabel.text = order?.locationFormattedAddress
-        driverName.text = driver?.userName
+        driverName.text = driver.userName
         
         self.fireBaseManager.listenDriverLocation(orderID: (self.order?.orderID)!) { (order) in
 

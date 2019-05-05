@@ -51,6 +51,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="avatarImage" destination="NxZ-td-AYk" id="Jjd-Fe-UBd"/>
                 <outlet property="driverName" destination="Z22-Pw-7go" id="ERJ-mM-bOJ"/>
                 <outlet property="moreInfoImageVIew" destination="e8G-aR-T4E" id="G7t-mi-Zkb"/>
             </connections>
