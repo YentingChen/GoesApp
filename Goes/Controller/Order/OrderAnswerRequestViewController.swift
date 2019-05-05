@@ -292,7 +292,7 @@ extension OrderAnswerRequestViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
-        guard status == .authorizedWhenInUse else {
+         guard status == .authorizedWhenInUse || status == .authorizedAlways else {
             checkLocationAuth()
             return }
         

@@ -242,9 +242,8 @@ class OrderDrivingViewController: UIViewController {
             title: "確定",
             style: .default,
             handler: { (action) in
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "Goes")
-                self.present(vc, animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
         })
         
         alertController.addAction(okAction)

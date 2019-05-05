@@ -142,10 +142,22 @@ extension LobbyFriendViewController: UITableViewDelegate, UITableViewDataSource 
         
         if isSearching {
             cell.nameLabel.text = self.result[indexPath.row].userName
+            if self.result[indexPath.row].avatar != "" {
+                let url = URL(string: self.result[indexPath.row].avatar)
+                cell.profileImageView?.kf.setImage(with: url)
+                cell.profileImageView?.roundCorners((cell.profileImageView?.frame.width)!/2)
+                cell.profileImageView?.clipsToBounds = true
+            }
             
         } else {
             
             cell.nameLabel.text = self.myFriends[indexPath.row].userName
+            if self.myFriends[indexPath.row].avatar != "" {
+                let url = URL(string: self.myFriends[indexPath.row].avatar)
+                cell.profileImageView?.kf.setImage(with: url)
+                cell.profileImageView?.roundCorners((cell.profileImageView?.frame.width)!/2)
+                cell.profileImageView?.clipsToBounds = true
+            }
         }
         
         return cell

@@ -207,6 +207,9 @@ class FireBaseManager {
         completionHandler()
 
     }
+    func updateFcmToken(myUid: String, fcmToken: String) {
+        db.collection("users").document(myUid).updateData(["fcmToken": fcmToken])
+    }
     
     func updateAvatar(myUid: String, avatarUrl: String) {
         db.collection("users").document(myUid).updateData(["avatar": avatarUrl])

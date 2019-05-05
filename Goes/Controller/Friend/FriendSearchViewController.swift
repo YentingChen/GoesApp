@@ -139,7 +139,12 @@ class FriendSearchViewController: UIViewController {
     @IBAction func addFriend(_ sender: Any) {
         guard let myUid = self.myProfile?.userID else { return }
         guard let friendUid = self.friendInfo?.userID else { return }
+        guard let friendFcmToken = self.friendInfo?.fcmToken else { return }
+        guard let myName = self.myProfile?.userName else { return }
        self.firebaseManager.makeFriend(friendUid: friendUid, myUid: myUid)
+        let sender = PushNotificationSender()
+        sender.sendPushNotification(to: friendFcmToken, title: "您收一則好友邀請請", body: "您收到來自\(myName)的好友邀請，快去回覆吧！")
+
         searchFriendFromDB()
     }
     

@@ -84,7 +84,8 @@ class ProfileMainViewController: UIViewController {
                 try FireAuthManager.share.auth.signOut()
                 let alert = UIAlertController(title: "", message: "你已經成功登出", preferredStyle: .alert)
                 let action = UIAlertAction(title: "確定", style: .default) { (action) in
-                    
+                    guard let uid = self.myInfo?.userID else { return }
+                    self.firebaseManager.updateFcmToken(myUid: uid, fcmToken: "")
                     self.tabBarController?.dismiss(animated: true, completion: {
                         let tabStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let tabViewController = tabStoryboard.instantiateViewController(withIdentifier: "Goes") as? GoTabBarViewController
@@ -182,12 +183,14 @@ extension ProfileMainViewController: FusumaDelegate {
             avatarImageView.roundCorners(50)
             avatarImageView.clipsToBounds = true
             avatarImageView.image = fixOrientation(img: avatarImageView.image!)
+             NotificationCenter.default.post(name: Notification.Name.avatarValue, object: nil, userInfo: ["avatar": avatarImageView.image])
 
         case .library:
             print("Image selected from Camera Roll")
             avatarImageView.image = image
             avatarImageView.roundCorners(50)
             avatarImageView.clipsToBounds = true
+            NotificationCenter.default.post(name: Notification.Name.avatarValue, object: nil, userInfo: ["avatar": avatarImageView.image])
             
         default:
             print("Image selected")

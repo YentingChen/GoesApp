@@ -298,7 +298,7 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 
-        guard status == .authorizedWhenInUse else { return }
+        guard status == .authorizedWhenInUse || status == .authorizedAlways else { return }
 
         locationManager.startUpdatingLocation()
 

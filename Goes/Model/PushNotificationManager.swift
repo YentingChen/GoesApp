@@ -14,6 +14,8 @@ import UserNotifications
 
 class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
     
+    let firebaseManager = FireBaseManager()
+    
     let userID: String
     init(userID: String) {
         self.userID = userID
@@ -47,8 +49,8 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     
     func updateFirestorePushTokenIfNeeded() {
         if let token = Messaging.messaging().fcmToken {
-            let usersRef = Firestore.firestore().collection("users").document(userID)
-            usersRef.setData(["fcmToken": token], merge: true)
+            firebaseManager.updateFcmToken(myUid: userID, fcmToken: token)
+           
         }
     }
     
