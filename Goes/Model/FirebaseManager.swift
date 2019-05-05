@@ -153,7 +153,9 @@ class FireBaseManager {
         }
     }
     
-    func querymyFriends(myUid: String, status: Int , completionHandler: @escaping ([MyProfile]) -> Void) {
+    let group2 = DispatchGroup()
+    
+    func querymyFriends(myUid: String, status: Int , completionHandler: @escaping ([MyProfile]?) -> Void) {
         var friendList = [MyProfile]()
         db.collection("users").document(myUid).collection("friend").getDocuments
             { [weak self]  (querySnapshot, err) in
@@ -162,21 +164,31 @@ class FireBaseManager {
                 } else {
                     
                     if querySnapshot!.documents.count == 0 {
-                        completionHandler([])
+                        completionHandler(nil)
                         return
                     }
                     
+                    
                     for document in querySnapshot!.documents {
                         if let fireStatus = document.data()["status"] as? Int {
+                            
                             if  fireStatus == status {
+                                
+                                self?.group2.enter()
+                                
                                 self?.queryUserInfo(userID: document.documentID, completion: { (friendInfo) in
                                     friendList.append(friendInfo!)
-                                    completionHandler(friendList)
+                                    self?.group2.leave()
                                 })
                               
                             }
                         }
                     }
+                    
+                    self?.group2.notify(queue: .main, execute: {
+                        completionHandler(friendList)
+                    })
+                    
                     
                 }
         }

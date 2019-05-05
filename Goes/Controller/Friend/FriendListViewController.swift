@@ -27,7 +27,6 @@ class FriendListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         searchBar.delegate = self
 
         tableView.delegate = self
@@ -41,8 +40,7 @@ class FriendListViewController: UIViewController {
                   bundle: nil),
             forCellReuseIdentifier: "friendPlaceholderTableViewCell")
         tableView.backgroundColor = .white
-
-
+        
     }
     
      func deleteFriend(number: Int) {
@@ -64,22 +62,27 @@ class FriendListViewController: UIViewController {
         tableView.beginHeaderRefreshing()
     }
     
-    
     func loadDataFromDB() {
         
         self.myFriends = []
         
         personalDataManager.getPersonalData { [weak self] (myProfile, error) in
+            
             self?.myProfile = myProfile
             self?.fireBaseManager.querymyFriends(
                 myUid: (self?.myProfile?.userID)!,
                 status: 3,
                 completionHandler: { (friendInfos) in
-                    
-                self?.myFriends = friendInfos
-                    
+                    if friendInfos == nil {
+                        self?.tableView.endHeaderRefreshing()
+                    }
+                    guard let myfriendInfos = friendInfos else {
+                        return
+                    }
+                self?.myFriends = myfriendInfos
                 self?.tableView.reloadData()
                 self?.tableView.endHeaderRefreshing()
+                
             })
         }
     }
@@ -176,7 +179,6 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
         return 90
     }
     
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
     -> UISwipeActionsConfiguration? {
         
@@ -200,8 +202,7 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
             
     }
         
-       
-
+    
 }
 
 extension FriendListViewController: UISearchBarDelegate {

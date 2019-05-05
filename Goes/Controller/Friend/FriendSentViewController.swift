@@ -68,7 +68,9 @@ class FriendSentViewController: UIViewController {
                 myUid: (self?.myProfile?.userID)!,
                 status: 1,
                 completionHandler: { (friendInfos) in
-                    self?.sentFriend = friendInfos
+                    guard let myfriendInfos = friendInfos else { return }
+                   
+                    self?.sentFriend = myfriendInfos
                     self?.tableView.reloadData()
             })
             print(error as Any)

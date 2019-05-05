@@ -22,7 +22,8 @@ class FriendInviteViewController: UIViewController {
         personalDataManager.getPersonalData { [weak self] (myProfile, error) in
             self?.myProfile = myProfile
             self?.fireBaseManager.querymyFriends(myUid: (self?.myProfile?.userID)!, status: 2, completionHandler: { (friendInfos) in
-                self?.inviteFriend = friendInfos
+                guard let myfriendInfos = friendInfos else { return }
+                self?.inviteFriend = myfriendInfos
                 self?.tableView.reloadData()
             })
         }

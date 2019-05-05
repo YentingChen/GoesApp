@@ -95,7 +95,8 @@ class LobbyFriendViewController: UIViewController {
                 myUid: (self.myProfile?.userID)!,
                 status: 3,
                 completionHandler: { (friendInfos) in
-                self.myFriends = friendInfos
+                guard let myfriendInfos = friendInfos else { return }
+                self.myFriends = myfriendInfos
                 self.tableView.reloadData()
             })
             
