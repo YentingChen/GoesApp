@@ -79,7 +79,14 @@ class ProfileHistoryDetailViewController: UIViewController {
                     return "\(order.selectTimeMonth)"
                 }
             }()
-            let day = order.selectTimeDay
+            let day = { () -> String in
+                if order.selectTimeDay < 10 {
+                    return "0\(order.selectTimeDay)"
+                } else {
+                    return "\(order.selectTimeDay)"
+                }
+            }()
+//            let day = order.selectTimeDay
             let time = order.selectTimeTime
             return "\(year)/\(month)/\(day)   \(time)"
     }

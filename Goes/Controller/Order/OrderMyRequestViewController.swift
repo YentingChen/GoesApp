@@ -176,7 +176,15 @@ class OrderMyRequestViewController: UIViewController {
                     return "\(orders[number].selectTimeMonth)"
                 }
             }()
-            let day = orders[number].selectTimeDay
+            let day = { () -> String in
+                if orders[number].selectTimeDay < 10 {
+                    return "0\(orders[number].selectTimeDay)"
+                } else {
+                    return "\(orders[number].selectTimeMonth)"
+                }
+                
+            }()
+
             let time = orders[number].selectTimeTime
             return "\(year)/\(month)/\(day)   \(time)"
     }

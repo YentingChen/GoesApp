@@ -93,7 +93,9 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.backgroundColor = .clear
         
         self.fireAuthManager.addSignUpListener { (isMember, _) in
+            
             self.membmer = isMember
+            
         }
         
     }
@@ -109,7 +111,6 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         && navVC?.viewControllers.first as? OrderMainViewController == nil{
             return true
         }
-        
         
         guard self.membmer != false else {
             

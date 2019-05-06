@@ -173,7 +173,14 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
                         return "\(orders.selectTimeMonth)"
                     }
                 }()
-                let day = orders.selectTimeDay
+                let day = { () -> String in
+                    if orders.selectTimeDay < 10 {
+                        return "0\(orders.selectTimeDay)"
+                    } else {
+                        return "\(orders.selectTimeDay)"
+                    }
+                }()
+         
                 let time = orders.selectTimeTime
                 return "\(year)/\(month)/\(day)   \(time)"
         }

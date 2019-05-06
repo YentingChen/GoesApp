@@ -44,7 +44,6 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
         UIApplication.shared.registerForRemoteNotifications()
         updateFirestorePushTokenIfNeeded()
         
-        
     }
     
     func updateFirestorePushTokenIfNeeded() {

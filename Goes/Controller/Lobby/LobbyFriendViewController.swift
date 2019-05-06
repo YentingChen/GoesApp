@@ -26,6 +26,28 @@ class LobbyFriendViewController: UIViewController {
     var myFriendName = [String]()
 
     @IBOutlet weak var tableView: UITableView!
+    func produceTime(time: DateAndTime)
+        -> String {
+            
+            let year = time.year
+            let month = { () -> String in
+                if time.month < 10 {
+                    return "0\(time.month)"
+                } else {
+                    return "\(time.month)"
+                }
+            }()
+            let day = { () -> String in
+                if time.day < 10 {
+                    return "0\(time.day)"
+                } else {
+                    return "\(time.day)"
+                }
+            }()
+            
+            let time = time.time
+            return "\(year)/\(month)/\(day)   \(time)"
+    }
 
     @IBAction func checkBtn(_ sender: Any) {
         
@@ -41,7 +63,9 @@ class LobbyFriendViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             
         } else {
-            let selectedTimeAndDate = "\(selectedTime!.year)-\(selectedTime!.month)-\(selectedTime!.day) \(selectedTime!.time)"
+            guard let selectime = self.selectedTime else { return }
+            
+            let selectedTimeAndDate = produceTime(time: selectime)
             
             let orderID = "\(createOrderID())"
             
@@ -78,6 +102,8 @@ class LobbyFriendViewController: UIViewController {
         }
         
     }
+    
+    
     
     func createOrderID() -> Int {
         let now = Date()
