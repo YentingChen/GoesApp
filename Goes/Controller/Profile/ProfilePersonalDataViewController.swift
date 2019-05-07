@@ -10,7 +10,7 @@ import UIKit
 
 class ProfilePersonalDataViewController: UIViewController {
     
-    let personalDataManager = PersonalDataManager.share
+    let userdefualt = UserDefaults.standard
     
     var myProfile: MyProfile?
     
@@ -34,14 +34,17 @@ class ProfilePersonalDataViewController: UIViewController {
         
     func loadDataFromDB() {
         
-        personalDataManager.getPersonalData { (myProfile, err) in
-            
+        guard  let uid = userdefualt.value(
+            forKey: UserdefaultKey.memberUid.rawValue)  else {
+            return
+        }
+        
+        FireBaseManager.share.queryUserInfo(userID: "\(uid)") { (myProfile) in
             self.myProfile = myProfile
             self.tableView.reloadData()
             self.handler!(myProfile)
             self.tableView.endHeaderRefreshing()
         }
-        
     }
     
     fileprivate func tableViewSetting() {
@@ -87,19 +90,25 @@ extension ProfilePersonalDataViewController: UITableViewDataSource, UITableViewD
         return 90
     }
     
-
     func showEditingBox(title: String, message: String, placeholder: String, handler:((UIAlertAction) -> Void)?) {
         let alertController = UIAlertController(title: title,
                                                 message: message, preferredStyle: .alert)
         alertController.addTextField {
+            
             (textField: UITextField!) -> Void in
+            
             textField.placeholder = placeholder
+            
         }
         
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
         let okAction = UIAlertAction(title: "確定", style: .default, handler: handler)
+        
         alertController.addAction(cancelAction)
+        
         alertController.addAction(okAction)
+        
         self.present(alertController, animated: true, completion: nil)
         
     }

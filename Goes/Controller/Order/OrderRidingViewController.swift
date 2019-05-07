@@ -32,7 +32,7 @@ class OrderRidingViewController: UIViewController {
     
     var orderMyRequestVC: OrderMyRequestViewController?
     let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager()
+    let fireBaseManager = FireBaseManager.share
     var myProfile: MyProfile?
     var order: OrderDetail?
     var driver: MyProfile?
@@ -221,10 +221,13 @@ class OrderRidingViewController: UIViewController {
     
     @objc func longPressAction(_ sender: UIGestureRecognizer) {
 
-        let animationView = AnimationView(name: "5184-success")
+        let animationView = AnimationView(name: LottieFile.caseSuccessAnimationView.rawValue)
         animationView.frame = CGRect(x: 0, y: 0, width: successImageView.frame.width, height:  successImageView.frame.height)
+        
         animationView.contentMode = .scaleAspectFit
+        
         animationView.animationSpeed = 2
+        
         self.successImageView.addSubview(animationView)
 
         if sender.state == .ended {

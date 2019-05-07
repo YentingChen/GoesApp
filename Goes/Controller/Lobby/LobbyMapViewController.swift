@@ -12,10 +12,8 @@ import GooglePlaces
 
 class LobbyMapViewController: UIViewController {
     
-    let userDefaults = UserDefaults.standard
-    
     var personalDataManager = PersonalDataManager.share
-    var firebaseManager = FireBaseManager()
+    var firebaseManager = FireBaseManager.share
     var myProfile: MyProfile?
     var homeAddress: Address?
     var workAddress: Address?

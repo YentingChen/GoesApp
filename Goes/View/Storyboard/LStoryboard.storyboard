@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lWp-zf-487">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,11 +11,11 @@
             <objects>
                 <viewController id="lWp-zf-487" customClass="LaunchViewController" customModule="Goes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ozb-1N-23G">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Images_180x_Logo_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="5M1-UX-3DE">
-                                <rect key="frame" x="117.5" y="243.5" width="140" height="180"/>
+                                <rect key="frame" x="230" y="210" width="140" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="bYn-yc-TlJ"/>
                                     <constraint firstAttribute="height" constant="180" id="j0D-54-IsF"/>
@@ -34,7 +30,7 @@
                         <viewLayoutGuide key="safeArea" id="uNt-NL-xqJ"/>
                     </view>
                     <connections>
-                        <outlet property="testes" destination="5M1-UX-3DE" id="6TP-3f-8Kg"/>
+                        <outlet property="loadingView" destination="5M1-UX-3DE" id="6TP-3f-8Kg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OQ5-hZ-T8P" userLabel="First Responder" sceneMemberID="firstResponder"/>

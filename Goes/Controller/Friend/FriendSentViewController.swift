@@ -11,7 +11,7 @@ import Firebase
 
 class FriendSentViewController: UIViewController {
     let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager()
+    let fireBaseManager = FireBaseManager.share
     var myProfile: MyProfile?
     var sentFriend = [MyProfile]()
     @IBOutlet weak var tableView: UITableView!

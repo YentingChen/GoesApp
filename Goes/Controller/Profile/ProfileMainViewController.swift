@@ -16,9 +16,10 @@ class ProfileMainViewController: UIViewController {
     
     var profilePersonalVC: ProfilePersonalDataViewController?
     let personalDataManager = PersonalDataManager.share
-    let firebaseManager = FireBaseManager()
+    let firebaseManager = FireBaseManager.share
     let storage = Storage.storage()
     var myInfo: MyProfile?
+    let userDefault = UserDefaults.standard
     
     @IBOutlet weak var avatarImageView: UIImageView! {
         didSet {
@@ -75,7 +76,6 @@ class ProfileMainViewController: UIViewController {
         }
     }
    
-    
     @IBAction func logOutBtn(_ sender: Any) {
         
         if FireAuthManager.share.getCurrentUser()?.id != nil {
@@ -96,9 +96,9 @@ class ProfileMainViewController: UIViewController {
                         FireAuthManager.share.deleteListener()
                         FireAuthManager.share.deleteListener()
                         FireAuthManager.share.deleteListener()
+                        self.userDefault.set("", forKey: UserdefaultKey.memberUid.rawValue)
                     
                     })
-                    
                     
                 }
                 

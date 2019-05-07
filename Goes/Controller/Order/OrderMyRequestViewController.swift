@@ -11,7 +11,7 @@ import UIKit
 class OrderMyRequestViewController: UIViewController {
         
     let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager()
+    let fireBaseManager = FireBaseManager.share
     var myProfile: MyProfile?
     var myOrdersS1 = [OrderDetail]()
     var myOrdersS4 = [OrderDetail]()

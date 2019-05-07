@@ -20,7 +20,7 @@ class LobbyFriendViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager()
+    let fireBaseManager = FireBaseManager.share
     var myProfile: MyProfile?
     var myFriends = [MyProfile]()
     var myFriendName = [String]()

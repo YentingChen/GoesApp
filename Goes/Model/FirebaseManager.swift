@@ -10,67 +10,26 @@ import Foundation
 import FirebaseAuth
 import Firebase
 
-struct YTUser {
+class FireBaseManager: NSObject {
     
-    var id: String?
-    var email: String?
-    
-}
-
-class FireAuthManager: NSObject {
-    
-    static let share = FireAuthManager()
+    static let share = FireBaseManager()
     
     private override init() {}
-    
-    let auth = Auth.auth()
-    
-    var addStateListener: AuthStateDidChangeListenerHandle?
-    
-    func addSignUpListener(listener: @escaping (Bool, User?) -> Void) {
-        
-       addStateListener = auth.addStateDidChangeListener { (_, user) in
-            
-            guard user != nil else {
-                listener(false, nil)
-                return
-            }
-            
-            listener(true, user)
-        }
-    }
-    
-    func deleteListener() {
-        
-        if let listener = addStateListener {
-            auth.removeStateDidChangeListener(listener)
-            auth.removeStateDidChangeListener(listener)
-            auth.removeStateDidChangeListener(listener)
-            auth.removeStateDidChangeListener(listener)
-            auth.removeStateDidChangeListener(listener)
-        }
-        
-    }
-    
-    
-    func getCurrentUser() -> YTUser? {
-       let user = Auth.auth().currentUser
-        
-       var ytUser = YTUser()
-        
-       ytUser.email = user?.email
-        ytUser.id = user?.uid
-        
-        return ytUser
-    }
-}
-
-class FireBaseManager {
     
     var db = Firestore.firestore()
     var userProfile: MyProfile?
     var userOrder: OrderDetail?
     var address: Address?
+    
+    func buildUserInfo(userID: String, userName: String, userEmail: String, avatar: String, userPhone: String) {
+        
+        self.db.collection("users").document(userID).setData(
+            [SetProfile.CodingKeys.userID.rawValue : userID,
+             SetProfile.CodingKeys.userName.rawValue : userName,
+             SetProfile.CodingKeys.email.rawValue : userEmail,
+             SetProfile.CodingKeys.avatar.rawValue : avatar,
+             SetProfile.CodingKeys.phoneNumber.rawValue : userPhone])
+    }
    
     func queryUsers(email: String, completionHandler: @escaping (Bool, String) -> Void) {
         

@@ -14,7 +14,7 @@ import Kingfisher
 class FriendListViewController: UIViewController {
     
     let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager()
+    let fireBaseManager = FireBaseManager.share
     var myProfile: MyProfile?
     var myFriends = [MyProfile]()
     

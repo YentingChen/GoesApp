@@ -14,7 +14,7 @@ class AdressHomeViewController: UIViewController {
     var profileAddressVC: ProfileAdressViewController?
     
     let personalDataManager = PersonalDataManager.share
-    let firebaseManager = FireBaseManager()
+    let firebaseManager = FireBaseManager.share
     var myProfile: MyProfile?
     
     var resultsViewController: GMSAutocompleteResultsViewController?

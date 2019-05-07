@@ -59,5 +59,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         print(remoteMessage.appData)
     }
     
-    
 }

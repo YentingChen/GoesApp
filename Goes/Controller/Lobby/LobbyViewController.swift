@@ -14,7 +14,7 @@ class LobbyViewController: UIViewController {
 //4966-onboarding-car
     
     let fireAuthManager = FireAuthManager.share
-    let firebaseManager = FireBaseManager()
+    let firebaseManager = FireBaseManager.share
     var myProfile: MyProfile?
     var myUid: String?
     let notificationCenter = NotificationCenter.default
@@ -23,8 +23,8 @@ class LobbyViewController: UIViewController {
     
     @IBOutlet weak var carView: UIView!
 
-    let animationView = AnimationView(name: "animation-w300-h300-2")
-//        LOTAnimationView(name: "animation-w300-h300-2")
+    let animationView = AnimationView(name: LottieFile.homeAnimationView.rawValue)
+
    @objc func changeAvatar(_ notification: NSNotification) {
     self.loadViewIfNeeded()
     let image = notification.userInfo!["avatar"] as? UIImage

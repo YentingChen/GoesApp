@@ -13,7 +13,7 @@ class OrderRequestViewController: UIViewController {
     
     let fireAuthManager = FireAuthManager.share
     let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager()
+    let fireBaseManager = FireBaseManager.share
     var myProfile: MyProfile?
     
     var myOrdersS2 = [OrderDetail]()

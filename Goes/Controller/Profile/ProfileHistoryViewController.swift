@@ -16,7 +16,7 @@ import Alamofire
 class ProfileHistoryViewController: UIViewController {
     
     let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager()
+    let fireBaseManager = FireBaseManager.share
     
     var myProfile: MyProfile?
     var myHistory = [OrderDetail]()

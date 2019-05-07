@@ -77,12 +77,12 @@ private enum Tab {
 }
 
 class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
+    
+    let userDefaults = UserDefaults.standard
    
     private let tabs: [Tab] = [.lobby, .order, .friend, .profile]
     
-    let fireAuthManager = FireAuthManager.share
     
-    var membmer = Bool()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,12 +91,6 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
         delegate = self
         self.tabBar.backgroundColor = .clear
-        
-        self.fireAuthManager.addSignUpListener { (isMember, _) in
-            
-            self.membmer = isMember
-            
-        }
         
     }
 
@@ -108,11 +102,11 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         if navVC?.viewControllers.first as? ProfileMainViewController == nil
         && navVC?.viewControllers.first as? FriendHomeViewController == nil
-        && navVC?.viewControllers.first as? OrderMainViewController == nil{
+        && navVC?.viewControllers.first as? OrderMainViewController == nil {
             return true
         }
         
-        guard self.membmer != false else {
+        guard let uid = userDefaults.value(forKey: UserdefaultKey.memberUid.rawValue) as? String, uid != "" else {
             
             if let vc = UIStoryboard.auth.instantiateInitialViewController() {
                 
@@ -120,7 +114,6 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                 
                 present(vc, animated: false, completion: nil)
             }
-            
             return false
         }
         

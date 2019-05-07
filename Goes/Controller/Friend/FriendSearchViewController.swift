@@ -15,7 +15,7 @@ class FriendSearchViewController: UIViewController {
     
     @IBOutlet weak var searchFriend: UITextField!
     var personalDataManager = PersonalDataManager.share
-    var firebaseManager = FireBaseManager()
+    var firebaseManager = FireBaseManager.share
     var myProfile: MyProfile?
     var friendInfo: MyProfile?
   

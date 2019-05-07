@@ -12,8 +12,9 @@ import FirebaseAuth
 
 class SignUpViewController: UIViewController {
     
-     var db : Firestore!
-     var ref: DocumentReference? = nil
+//     var db : Firestore!
+//     var ref: DocumentReference? = nil    
+    let firebaseManager = FireBaseManager.share
     
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -28,9 +29,11 @@ class SignUpViewController: UIViewController {
         }
     }
     @IBOutlet weak var emailTextField: UITextField!
+    
     @IBOutlet weak var passwordTextField: UITextField!
 
     @IBAction func toLogin(_ sender: Any) {
+        
         view.removeFromSuperview()
         
         removeFromParent()
@@ -40,12 +43,13 @@ class SignUpViewController: UIViewController {
     
     @IBAction func dismiss(_ sender: Any) {
         
-      self.parent?.presentingViewController?.dismiss(animated: true, completion: nil)
+      self.parent?.presentingViewController?.dismiss(animated: false, completion: nil)
 
     }
     
     //Sign Up Action for email
     @IBAction func createAccountAction(_ sender: AnyObject) {
+        
         if emailTextField.text == "" {
             
             let alertController = UIAlertController(
@@ -59,27 +63,36 @@ class SignUpViewController: UIViewController {
             present(alertController, animated: true, completion: nil)
             
         } else {
+            
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 
                 if error == nil {
-                    print("You have successfully signed up")
-                    print(user?.user.uid)
+                    
                     guard let userID = user?.user.uid else { return }
+                    
                     guard let userName = self.userNameTextField.text else { return }
+                    
                     guard let userPhone = self.phoneNumberTextField.text else { return }
+                    
                     guard let userEmail = user?.user.email else { return }
-                    self.db.collection("users").document(userID).setData(
-                        [SetProfile.CodingKeys.userID.rawValue : userID,
-                         SetProfile.CodingKeys.userName.rawValue : userName,
-                         SetProfile.CodingKeys.email.rawValue : userEmail,
-                         SetProfile.CodingKeys.avatar.rawValue : "",
-                         SetProfile.CodingKeys.phoneNumber.rawValue : userPhone])
+                    
+                    self.firebaseManager.buildUserInfo(userID: userID, userName: userName, userEmail: userEmail, avatar: "", userPhone: userPhone)
+                    
+//                    self.db.collection("users").document(userID).setData(
+//                        [SetProfile.CodingKeys.userID.rawValue : userID,
+//                         SetProfile.CodingKeys.userName.rawValue : userName,
+//                         SetProfile.CodingKeys.email.rawValue : userEmail,
+//                         SetProfile.CodingKeys.avatar.rawValue : "",
+//                         SetProfile.CodingKeys.phoneNumber.rawValue : userPhone])
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "Goes")
 //                    self.present(vc, animated: true, completion: nil)
+                    
                     self.dismiss(animated: false, completion: nil)
                     
                 } else {
+                    
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -94,7 +107,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        db = Firestore.firestore()
+//        db = Firestore.firestore()
        
     }
     

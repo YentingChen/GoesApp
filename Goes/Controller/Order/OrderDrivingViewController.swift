@@ -21,7 +21,7 @@ class OrderDrivingViewController: UIViewController {
     @IBOutlet weak var avatar: UIImageView!
     var orderRequestVC: OrderRequestViewController?
     let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager()
+    let fireBaseManager = FireBaseManager.share
     
     var myProfile: MyProfile?
     var order: OrderDetail?

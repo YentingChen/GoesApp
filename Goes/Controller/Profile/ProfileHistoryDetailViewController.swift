@@ -16,7 +16,7 @@ class ProfileHistoryDetailViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager()
+    let fireBaseManager = FireBaseManager.share
     
     var myProfile: MyProfile?
     var history: OrderDetail?

@@ -14,7 +14,7 @@ import UserNotifications
 
 class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
     
-    let firebaseManager = FireBaseManager()
+    let firebaseManager = FireBaseManager.share
     
     let userID: String
     init(userID: String) {

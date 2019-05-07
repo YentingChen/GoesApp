@@ -43,7 +43,7 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
     private let locationManager = CLLocationManager()
     var orderRequestVC: OrderRequestViewController?
     let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager()
+    let fireBaseManager = FireBaseManager.share
     var myProfile: MyProfile?
     var order: OrderDetail?
     var rider: MyProfile?

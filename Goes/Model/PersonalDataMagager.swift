@@ -22,17 +22,15 @@ class PersonalDataManager: NSObject {
     
     private override init() {}
     
-    var authLitsener : AuthStateDidChangeListenerHandle?
+    var authLitsener: AuthStateDidChangeListenerHandle?
     
     func getPersonalData(completionHandler completion: @escaping CompletionHandler) {
         
-        print("Ya")
         if myProfile != nil {
             
-                completion(myProfile!, nil)
+            completion(myProfile!, nil)
             return
         }
-        
         
         firebaseManager.addSignUpListener { (_, user) in
             
@@ -43,7 +41,7 @@ class PersonalDataManager: NSObject {
                 
                 return }
             
-             guard let userID = user?.uid else { return }
+            guard let userID = user?.uid else { return }
             let userProfile =  self.dataBase.collection("users").document(userID)
             userProfile.getDocument { [weak self] (document, error) in
                 
@@ -66,47 +64,7 @@ class PersonalDataManager: NSObject {
                 
             }
             
-            
         }
-        
-//      authLitsener =  auth.addStateDidChangeListener { [weak self] (_, user) in
-//            
-//            guard user != nil else {
-//                
-//                if self?.authLitsener == nil {
-//                    
-//                    print("-----no \(self?.authLitsener)-------")
-//                }
-//                
-////                Auth.auth().removeStateDidChangeListener((self?.authLitsener!)!)
-//                
-//                return }
-//            
-//            guard let userID = user?.uid else { return }
-//            
-//            let userProfile =  self?.dataBase.collection("users").document(userID)
-//            
-//            userProfile?.getDocument { [weak self] (document, error) in
-//                
-//                if let profile = document.flatMap({ $0.data().flatMap({ (data) in
-//                        return Profile(dictionary: data)
-//                    })
-//                }) {
-//                    self?.myProfile = MyProfile(
-//                        email: profile.email,
-//                        userID: profile.userID,
-//                        userName: profile.userName,
-//                        phoneNumber: profile.phoneNumber,
-//                        avatar: profile.avatar)
-//                    completion(self?.myProfile, nil)
-//
-//                } else {
-//                    print("Document does not exist")
-//                }
-//                
-//            }
-//        }
-    }
     
-    
+}
 }
