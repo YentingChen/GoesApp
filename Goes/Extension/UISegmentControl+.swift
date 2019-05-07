@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension UISegmentedControl {
+    
     func removeBorder() {
         self.layer.cornerRadius = 0.0
         self.tintColor = .white

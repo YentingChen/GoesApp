@@ -393,11 +393,11 @@
 		3E7B6E14225A62FF00646724 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				3E7B6E1E225AE56400646724 /* ProfileMainViewController.swift */,
 				3E7B6E0C2259F7BE00646724 /* ProfileAdressViewController.swift */,
 				3E7B6E062259225500646724 /* ProfilePersonalDataViewController.swift */,
 				3E7B6E0E2259FB8500646724 /* ProfileHistoryViewController.swift */,
 				3EA52B482272F56F003A5390 /* ProfileHistoryDetailViewController.swift */,
-				3E7B6E1E225AE56400646724 /* ProfileMainViewController.swift */,
 				3E662EF4226840770016F962 /* AdressHomeViewController.swift */,
 				3E662EF62268408C0016F962 /* AdressWorkViewController.swift */,
 				3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */,

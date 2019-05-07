@@ -10,6 +10,7 @@ import UIKit
 
 class OrderMainViewController: UIViewController {
 
+    @IBOutlet weak var segmentWidth: NSLayoutHelper!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
