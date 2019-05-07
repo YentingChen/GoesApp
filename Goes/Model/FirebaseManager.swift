@@ -11,6 +11,7 @@ import FirebaseAuth
 import Firebase
 
 struct YTUser {
+    
     var id: String?
     var email: String?
     

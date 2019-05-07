@@ -61,8 +61,6 @@
 		3E6B9100227C87C9002AB67F /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B90FF227C87C9002AB67F /* PushNotificationSender.swift */; };
 		3E6C39762275F85E005A8117 /* FriendPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6C39742275F85E005A8117 /* FriendPlaceholderTableViewCell.swift */; };
 		3E6C39772275F85E005A8117 /* FriendPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6C39752275F85E005A8117 /* FriendPlaceholderTableViewCell.xib */; };
-		3E70852B226F127B006002CB /* 4966-onboarding-car.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852A226F127B006002CB /* 4966-onboarding-car.json */; };
-		3E70852D226F17D0006002CB /* animation-w300-h300.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852C226F17D0006002CB /* animation-w300-h300.json */; };
 		3E70852F226F1903006002CB /* animation-w300-h300-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852E226F1902006002CB /* animation-w300-h300-2.json */; };
 		3E77D85B227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D859227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift */; };
 		3E77D85C227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E77D85A227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib */; };
@@ -162,8 +160,6 @@
 		3E6B90FF227C87C9002AB67F /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		3E6C39742275F85E005A8117 /* FriendPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		3E6C39752275F85E005A8117 /* FriendPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
-		3E70852A226F127B006002CB /* 4966-onboarding-car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "4966-onboarding-car.json"; sourceTree = "<group>"; };
-		3E70852C226F17D0006002CB /* animation-w300-h300.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-w300-h300.json"; sourceTree = "<group>"; };
 		3E70852E226F1902006002CB /* animation-w300-h300-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-w300-h300-2.json"; sourceTree = "<group>"; };
 		3E77D859227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequestPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		3E77D85A227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderRequestPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
@@ -312,9 +308,7 @@
 				3E93D7312277F7650045D15C /* UILabelHelper.swift */,
 				3E93D72E2277F7640045D15C /* UITextFieldHelper.swift */,
 				3E93D72F2277F7640045D15C /* UITextViewHelper.swift */,
-				3E70852C226F17D0006002CB /* animation-w300-h300.json */,
 				3E70852E226F1902006002CB /* animation-w300-h300-2.json */,
-				3E70852A226F127B006002CB /* 4966-onboarding-car.json */,
 				3E77D85D22709FFC0080CE6F /* 5184-success.json */,
 				3E609F5B22535AE40031CF81 /* Assets.xcassets */,
 				3E609F69225366FD0031CF81 /* Extension */,
@@ -547,7 +541,6 @@
 			files = (
 				3E6C39772275F85E005A8117 /* FriendPlaceholderTableViewCell.xib in Resources */,
 				3E70852F226F1903006002CB /* animation-w300-h300-2.json in Resources */,
-				3E70852D226F17D0006002CB /* animation-w300-h300.json in Resources */,
 				3E23588C22590C0B004182F0 /* FriendInviteTableViewCell.xib in Resources */,
 				3E06C21D22571895000F7E5F /* Friend.storyboard in Resources */,
 				3E5AE003225F2FC70003B241 /* LStoryboard.storyboard in Resources */,
@@ -556,7 +549,6 @@
 				3E3EFD112259186C0078E686 /* FriendSentTableViewCell.xib in Resources */,
 				3E45935E225851B500073210 /* Profile.storyboard in Resources */,
 				3E609F6022535E2A0031CF81 /* Lobby.storyboard in Resources */,
-				3E70852B226F127B006002CB /* 4966-onboarding-car.json in Resources */,
 				3E7B6E132259FBA200646724 /* ProfileHistoryTableViewCell.xib in Resources */,
 				3E459356225777DE00073210 /* LobbyFriendCollectionViewCell.xib in Resources */,
 				3E7B6E1B225A645F00646724 /* OrderRequestTableViewCell.xib in Resources */,
