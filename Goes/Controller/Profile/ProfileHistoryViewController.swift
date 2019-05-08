@@ -31,13 +31,13 @@ class ProfileHistoryViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(
-            UINib(nibName: "ProfileHistoryTableViewCell",
+            UINib(nibName: String(describing: ProfilePersonalTableViewCell.self),
                   bundle: nil),
-            forCellReuseIdentifier: "profileHistoryTableViewCell")
-        tableView.register(
-            UINib(nibName: "FriendPlaceholderTableViewCell",
-                  bundle: nil),
-            forCellReuseIdentifier: "friendPlaceholderTableViewCell")
+            forCellReuseIdentifier: String(describing: ProfilePersonalTableViewCell.self))
+//        tableView.register(
+//            UINib(nibName: "FriendPlaceholderTableViewCell",
+//                  bundle: nil),
+//            forCellReuseIdentifier: "friendPlaceholderTableViewCell")
         tableView.separatorStyle = .none
         
         
@@ -101,7 +101,8 @@ extension ProfileHistoryViewController: UITableViewDelegate, UITableViewDataSour
         
         if myHistory.count != 0 {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "profileHistoryTableViewCell", for: indexPath) as? ProfileHistoryTableViewCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: ProfilePersonalTableViewCell.self), for: indexPath) as? ProfileHistoryTableViewCell else { return UITableViewCell()}
             
             let timeInterVal = TimeInterval(self.myHistory[indexPath.row].completeTime)
             let date = Date(timeIntervalSince1970: timeInterVal)

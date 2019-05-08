@@ -34,7 +34,6 @@ class ProfileHistoryDetailViewController: UIViewController {
     @IBOutlet weak var estimatedTime: UILabel!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

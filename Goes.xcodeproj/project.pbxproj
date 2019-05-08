@@ -36,6 +36,11 @@
 		3E45935C2257BBCA00073210 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E45935B2257BBCA00073210 /* FriendListViewController.swift */; };
 		3E45935E225851B500073210 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E45935D225851B500073210 /* Profile.storyboard */; };
 		3E4593602258565900073210 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E45935F2258565900073210 /* Order.storyboard */; };
+		3E461FB2228271D100162813 /* TableViewCellName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E461FB1228271D100162813 /* TableViewCellName.swift */; };
+		3E461FB42282734200162813 /* SegueName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E461FB32282734200162813 /* SegueName.swift */; };
+		3E461FB622827D0700162813 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E461FB522827D0700162813 /* Title.swift */; };
+		3E461FB82282854E00162813 /* AddressChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E461FB72282854E00162813 /* AddressChooseViewController.swift */; };
+		3E461FBA2282979000162813 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E461FB92282979000162813 /* AlertManager.swift */; };
 		3E52376D225DD2920090818A /* LobbyFindMyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */; };
 		3E5ADFF3225F0B0F0003B241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */; };
 		3E5ADFF5225F11610003B241 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF4225F11610003B241 /* Auth.storyboard */; };
@@ -138,6 +143,11 @@
 		3E45935B2257BBCA00073210 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		3E45935D225851B500073210 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		3E45935F2258565900073210 /* Order.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
+		3E461FB1228271D100162813 /* TableViewCellName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellName.swift; sourceTree = "<group>"; };
+		3E461FB32282734200162813 /* SegueName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueName.swift; sourceTree = "<group>"; };
+		3E461FB522827D0700162813 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
+		3E461FB72282854E00162813 /* AddressChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressChooseViewController.swift; sourceTree = "<group>"; };
+		3E461FB92282979000162813 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFindMyFriendViewController.swift; sourceTree = "<group>"; };
 		3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E5ADFF4225F11610003B241 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
@@ -357,6 +367,8 @@
 		3E609F69225366FD0031CF81 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				3E0297EB2281739200DBB051 /* LayOutHelper */,
+				3E461FB522827D0700162813 /* Title.swift */,
 				3E609F632253603E0031CF81 /* UIImage+Extension.swift */,
 				3E609F672253664D0031CF81 /* UIColor+Extension.swift */,
 				3E609F5D22535DDD0031CF81 /* UIStoryboard+Extension.swift */,
@@ -365,8 +377,9 @@
 				3E9CCE81226A209C000BE5F6 /* Date.swift */,
 				3E3E1DEB227954A8003E01F8 /* MJRefreshWrapper.swift */,
 				3E0297E82281719D00DBB051 /* Lottie+.swift */,
-				3E0297EB2281739200DBB051 /* LayOutHelper */,
 				3EF960FF22817BDE006853C8 /* Userdefault+.swift */,
+				3E461FB1228271D100162813 /* TableViewCellName.swift */,
+				3E461FB32282734200162813 /* SegueName.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -430,6 +443,7 @@
 				3E662EF4226840770016F962 /* AdressHomeViewController.swift */,
 				3E662EF62268408C0016F962 /* AdressWorkViewController.swift */,
 				3E662EF8226840CA0016F962 /* AdressFavoriteViewController.swift */,
+				3E461FB72282854E00162813 /* AddressChooseViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -486,6 +500,7 @@
 				3E662ED0226830920016F962 /* GoogleMapManager.swift */,
 				3E321630227C435E00237042 /* PushNotificationManager.swift */,
 				3E6B90FF227C87C9002AB67F /* PushNotificationSender.swift */,
+				3E461FB92282979000162813 /* AlertManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -758,6 +773,7 @@
 				3E7B6E17225A633E00646724 /* OrderRequestViewController.swift in Sources */,
 				3E0297EE2281742600DBB051 /* Order.swift in Sources */,
 				3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */,
+				3E461FB42282734200162813 /* SegueName.swift in Sources */,
 				3E7B6E23225B300600646724 /* FriendSearchViewController.swift in Sources */,
 				3E7B6E0D2259F7BE00646724 /* ProfileAdressViewController.swift in Sources */,
 				3E7B6E1D225AE52900646724 /* UISegmentControl+.swift in Sources */,
@@ -767,14 +783,17 @@
 				3E6B9100227C87C9002AB67F /* PushNotificationSender.swift in Sources */,
 				3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */,
 				3E92662722656A6C009EC3D1 /* FirebaseManager.swift in Sources */,
+				3E461FB82282854E00162813 /* AddressChooseViewController.swift in Sources */,
 				3E609F642253603E0031CF81 /* UIImage+Extension.swift in Sources */,
 				3E23588822588B51004182F0 /* FriendHomeViewController.swift in Sources */,
 				3E459351225773EE00073210 /* LobbyFriendTableViewCell.swift in Sources */,
 				3E93D7392277F7650045D15C /* NSLayoutHelper.swift in Sources */,
 				3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */,
+				3E461FB2228271D100162813 /* TableViewCellName.swift in Sources */,
 				3E662EF5226840770016F962 /* AdressHomeViewController.swift in Sources */,
 				3E52376D225DD2920090818A /* LobbyFindMyFriendViewController.swift in Sources */,
 				3E93D7352277F7650045D15C /* UITextViewHelper.swift in Sources */,
+				3E461FBA2282979000162813 /* AlertManager.swift in Sources */,
 				3E6169652254798500786F9F /* LobbyMapViewController.swift in Sources */,
 				3E93D7372277F7650045D15C /* UILabelHelper.swift in Sources */,
 				3E459355225777DE00073210 /* LobbyFriendCollectionViewCell.swift in Sources */,
@@ -812,6 +831,7 @@
 				3E9670BB2274070E005B6DCB /* AskLogInViewController.swift in Sources */,
 				3E7B6E1F225AE56400646724 /* ProfileMainViewController.swift in Sources */,
 				3EA52B492272F56F003A5390 /* ProfileHistoryDetailViewController.swift in Sources */,
+				3E461FB622827D0700162813 /* Title.swift in Sources */,
 				3E3E1DEC227954A8003E01F8 /* MJRefreshWrapper.swift in Sources */,
 				3E61696722549A1300786F9F /* UIView+Extension.swift in Sources */,
 				3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */,

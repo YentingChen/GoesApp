@@ -7,61 +7,36 @@
 //
 
 import UIKit
-import GooglePlaces
 
 class ProfileAdressViewController: UIViewController {
     
     var addressHomeVC: AdressHomeViewController?
-    var addressWorkVC: AdressWorkViewController?
-    var addressFavoriteVC: AdressFavoriteViewController?
     
-    var personalDataManager = PersonalDataManager.share
-    var firebaseManager = FireBaseManager.share
+    var addressWorkVC: AdressWorkViewController?
+    
+    var addressFavoriteVC: AdressFavoriteViewController?
+
     var myProfile: MyProfile?
-    var homeAddress: Address?
-    var workAddress: Address?
-    var favoriteAddress: Address?
+    
+    var homeAddress, workAddress, favoriteAddress : Address?
+    
+    let userdefault = UserDefaults.standard
     
     @IBOutlet weak var tableView: UITableView!
-    
-     func loadAdressInfoFromDB() {
-        
-        personalDataManager.getPersonalData { (myProfile, err) in
-            self.myProfile = myProfile
-            self.firebaseManager.queryAdress(myUid: (myProfile?.userID)!, category: "home", completionHandler: { (homeAddress) in
-                self.homeAddress = homeAddress
-                self.tableView.reloadData()
-            })
-            
-            self.firebaseManager.queryAdress(myUid: (myProfile?.userID)!, category: "work", completionHandler: { (workAddress) in
-                self.workAddress = workAddress
-                self.tableView.reloadData()
-            })
-            
-            self.firebaseManager.queryAdress(myUid: (myProfile?.userID)!, category: "favorite", completionHandler: { (favoriteAddress) in
-                self.favoriteAddress = favoriteAddress
-                self.tableView.reloadData()
-            })
-            
-        }
-    }
-    
+   
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         loadAdressInfoFromDB()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(
-            UINib(nibName: "ProfilePersonalTableViewCell",
-                  bundle: nil),
-            forCellReuseIdentifier: "profilePersonalTableViewCell")
-        tableView.separatorStyle = .none
+        
+        tableViewSetting()
 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAdressHomeVC" {
+        
+        if segue.identifier == SegueName.toAdressHomeVC.rawValue {
             
             if let destination = segue.destination as? AdressHomeViewController {
                 
@@ -72,7 +47,7 @@ class ProfileAdressViewController: UIViewController {
             
         }
         
-        if segue.identifier == "toAdressWorkVC" {
+        if segue.identifier ==  SegueName.toAdressWorkVC.rawValue {
             
             if let destination = segue.destination as? AdressWorkViewController {
                 
@@ -83,7 +58,7 @@ class ProfileAdressViewController: UIViewController {
             
         }
         
-        if segue.identifier == "toAdressFavoriteVC" {
+        if segue.identifier == SegueName.toAdressFavoriteVC.rawValue {
             
             if let destination = segue.destination as? AdressFavoriteViewController {
                 
@@ -94,28 +69,98 @@ class ProfileAdressViewController: UIViewController {
             
         }
     }
+    
+    func loadAdressInfoFromDB() {
+        
+        guard let uid = userdefault.value(
+            forKey: UserdefaultKey.memberUid.rawValue) as? String,
+            uid != "" else { return }
+        
+        FireBaseManager.share.queryAdress(
+        myUid: uid,
+        category: "home") { (homeAddress) in
+            self.homeAddress = homeAddress
+            self.tableView.reloadData()
+        }
+        
+        FireBaseManager.share.queryAdress(
+        myUid: uid,
+        category: "work")  { (workAddress) in
+            
+            self.workAddress = workAddress
+            self.tableView.reloadData()
+        }
+        
+        FireBaseManager.share.queryAdress(
+        myUid: uid,
+        category: "favorite") { (favoriteAddress) in
+            
+            self.favoriteAddress = favoriteAddress
+            self.tableView.reloadData()
+        }
+        
+    }
+    
+    fileprivate func tableViewSetting() {
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(
+            UINib(nibName: String(describing: ProfilePersonalTableViewCell.self),
+                  bundle: nil),
+            forCellReuseIdentifier: String(describing: ProfilePersonalTableViewCell.self))
+        tableView.separatorStyle = .none
+        
+    }
 
 }
 
 extension ProfileAdressViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let title = ["住家", "公司", "常用"]
-        let content = [self.homeAddress?.placeName, self.workAddress?.placeName, self.favoriteAddress?.placeName]
-        let image = ["home_icon_hollow_24x", "work_icon_hollow_24x", "star_icon_hollow_24x"]
+        
+        let title = [
+            
+            Title.home.rawValue,
+            Title.company.rawValue,
+            Title.favorite.rawValue
+        ]
+        
+        let content = [
+            
+            self.homeAddress?.placeName,
+            self.workAddress?.placeName,
+            self.favoriteAddress?.placeName
+        ]
+        
+        let images = [
+            
+            UIImage.asset(.Icons_24x_Home_Normal),
+            UIImage.asset(.Icons_24x_Work_Normal),
+            UIImage.asset(.Icons_24x_Star_Normal)
+        ]
         
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "profilePersonalTableViewCell",
-            for: indexPath) as? ProfilePersonalTableViewCell else { return UITableViewCell() }
+            
+            withIdentifier: String(describing: ProfilePersonalTableViewCell.self),
+            
+            for: indexPath) as? ProfilePersonalTableViewCell else {
+                
+                return UITableViewCell()
+                
+        }
         
         cell.cellTitle.text = title[indexPath.row]
         
         cell.cellContent.text = content[indexPath.row]
         
-        cell.cellImageView.image = UIImage(named: image[indexPath.row] )
+        cell.cellImageView.image = images[indexPath.row]
+        
+        cell.editImageView.image = UIImage.asset(.Icons_24x_Edit_Normal)
         
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
 
@@ -130,17 +175,32 @@ extension ProfileAdressViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 0 {
-            performSegue(withIdentifier: "toAdressHomeVC", sender: self)
+        switch indexPath.row {
+            
+        case 0:
+            
+            performSegue(
+                withIdentifier: SegueName.toAdressHomeVC.rawValue,
+                sender: self)
+            
+        case 1:
+            
+            performSegue(
+                withIdentifier: SegueName.toAdressWorkVC.rawValue,
+                sender: self)
+            
+        case 2:
+            
+            performSegue(
+                withIdentifier: SegueName.toAdressFavoriteVC.rawValue,
+                sender: self)
+            
+        default:
+            
+            return
+            
         }
         
-        if indexPath.row == 1 {
-            performSegue(withIdentifier: "toAdressWorkVC", sender: self)
-        }
-        
-        if indexPath.row == 2 {
-            performSegue(withIdentifier: "toAdressFavoriteVC", sender: self)
-        }
     }
     
 }

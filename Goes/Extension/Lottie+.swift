@@ -9,6 +9,8 @@
 import Foundation
 
 enum LottieFile: String {
+    
     case homeAnimationView =  "animation-w300-h300-2"
+    
     case caseSuccessAnimationView = "5184-success"
 }

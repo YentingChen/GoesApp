@@ -53,7 +53,6 @@ enum ImageAsset: String {
     case Icons_24px_Back02
 
     //Friend tab
-
     case Icons_40px_FriendSearch_Selected
     case Icons_40px_FriendSearch_Normal
     case Icons_40px_FriendList_Normal
@@ -62,6 +61,12 @@ enum ImageAsset: String {
     case Icons_40px_FriendSent_Selected
     case Icons_40px_FriendInvite_Normal
     case Icons_40px_FriendInvite_Selected
+    
+    //ProfileAddress
+    case Icons_24x_Home_Normal
+    case Icons_24x_Work_Normal
+    case Icons_24x_Star_Normal
+    case Icons_24x_Edit_Normal
 }
 // swiftlint:enable all
 extension UIImage {
@@ -73,6 +78,7 @@ extension UIImage {
 }
 
 extension UIImage {
+    
     func scale(newWidth: CGFloat) -> UIImage {
         
         // 確認所給定的寬度與目前的不同

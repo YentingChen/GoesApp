@@ -43,8 +43,7 @@ class LobbyTimeViewController: UIViewController {
         
         
         }
-        
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -231,8 +230,7 @@ class LobbyTimeViewController: UIViewController {
         }
     
     }
-    
-    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSelectFriendPage" {
             if let destination = segue.destination as? LobbyFriendViewController {

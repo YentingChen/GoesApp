@@ -54,10 +54,10 @@ class ProfilePersonalDataViewController: UIViewController {
         
         tableView.register(
             UINib(
-                nibName: "ProfilePersonalTableViewCell",
+                nibName: String(describing: ProfilePersonalTableViewCell.self),
                 bundle: nil
             ),
-            forCellReuseIdentifier: "profilePersonalTableViewCell"
+            forCellReuseIdentifier: String(describing: ProfilePersonalTableViewCell.self)
         )
         
         tableView.separatorStyle = .none
@@ -74,7 +74,7 @@ extension ProfilePersonalDataViewController: UITableViewDataSource, UITableViewD
         let content = [myProfile?.userName, myProfile?.email, myProfile?.phoneNumber]
         let image = ["name_icon_24x", "email_icon_24x", "phone_icon_24x"]
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "profilePersonalTableViewCell",
+            withIdentifier: String(describing: ProfilePersonalTableViewCell.self),
             for: indexPath) as? ProfilePersonalTableViewCell else { return UITableViewCell() }
         cell.cellTitle.text = title[indexPath.row]
         cell.cellContent.text = content[indexPath.row]

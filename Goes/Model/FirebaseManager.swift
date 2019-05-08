@@ -182,13 +182,14 @@ class FireBaseManager: NSObject {
                       placeLat: Double,
                       placeID: String,
                       placeformattedAddress: String,
-                      completionHandler: @escaping () -> Void) {
+                      completionHandler: (() -> Void)?) {
         db.collection("users").document(myUid).collection("address").document(category).setData([
             "placeName": placeName,
             "placeLat": placeLat,
             "placeLng": placeLng,
             "placeID": placeID,
             "placeformattedAddress": placeformattedAddress])
+        completionHandler?()
     }
     
     func queryAdress(myUid: String, category: String, completionHandler: @escaping (Address?) -> Void) {
