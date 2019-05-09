@@ -13,7 +13,13 @@ class ProfilePersonalTableViewCell: UITableViewCell {
     @IBOutlet weak var editImageView: UIImageView!
     
     @IBOutlet weak var cellTitle: UILabel!
-    @IBOutlet weak var cellContent: UILabel!
+ 
+    @IBOutlet weak var cellContent: UITextField! {
+        didSet {
+            
+            self.cellContent.isEnabled = false
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

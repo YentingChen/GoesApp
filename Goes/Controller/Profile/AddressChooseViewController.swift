@@ -22,9 +22,9 @@ class AddressChooseViewController: UIViewController {
     var selectedPlace: GMSPlace?
     
     var category: String?
-
-    let alertManager = AlertManager()
-    
+//
+//    let alertManager = AlertManager()
+//    
     @IBAction func dismissAction(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
@@ -79,13 +79,13 @@ extension AddressChooseViewController: GMSAutocompleteResultsViewControllerDeleg
             
             placeFormatted: selectedPlace?.formattedAddress ?? "")
         
-        alertManager.showAlert(
+        AlertManager.share.showAlert(
             
             title: AlertTitleName.addressChanged.rawValue,
             
             message: alertMessage,
             
-            vc: self,
+            viewController: self, typeOfAction: 2,
             
             okHandler: {
                 

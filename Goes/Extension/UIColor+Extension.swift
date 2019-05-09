@@ -23,6 +23,8 @@ private enum STColor: String {
     case B6
     
     case G1
+    
+    case R1
 }
 
 extension UIColor {
@@ -36,6 +38,8 @@ extension UIColor {
     static let B5 = STColor(.B6)
     
     static let G1 = STColor(.G1)
+    
+    static let R1 = STColor(.R1)
 
     private static func STColor(_ color: STColor) -> UIColor? {
 

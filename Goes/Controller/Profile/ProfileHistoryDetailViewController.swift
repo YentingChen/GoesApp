@@ -33,7 +33,6 @@ class ProfileHistoryDetailViewController: UIViewController {
     @IBOutlet weak var selectedAddress: UILabel!
     @IBOutlet weak var estimatedTime: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,53 +40,18 @@ class ProfileHistoryDetailViewController: UIViewController {
        
         showNames()
         
-        self.driverSetOffTime.text =  convertTime(timeStamp: history.driverStartTime)
+        self.driverSetOffTime.text =  String.formateTimeStamp(timeStamp: history.driverStartTime)
         
-        self.completeTime.text = convertTime(timeStamp: history.completeTime)
+        self.completeTime.text = String.formateTimeStamp(timeStamp: history.completeTime)
         
         mapView.delegate = self
         
         self.selectedAddress.text = history.locationFormattedAddress
         
-        self.estimatedTime.text = produceTime(order: history)
-        
+        self.estimatedTime.text = String.produceTime(order: history)
         
         drawPath()
 
-    }
-    
-    func convertTime(timeStamp: Int) -> String {
-        
-        let timeStamp = timeStamp
-        let timeInterval = TimeInterval(timeStamp)
-        let date = Date(timeIntervalSince1970: timeInterval)
-        let dformatter = DateFormatter()
-        dformatter.dateFormat = "yyyy/MM/dd   HH:mm"
-        return "\(dformatter.string(from: date))"
-        
-    }
-    
-    func produceTime(order: OrderDetail)
-        -> String {
-            
-            let year = order.selectTimeYear
-            let month = { () -> String in
-                if order.selectTimeMonth < 10 {
-                    return "0\(order.selectTimeMonth)"
-                } else {
-                    return "\(order.selectTimeMonth)"
-                }
-            }()
-            let day = { () -> String in
-                if order.selectTimeDay < 10 {
-                    return "0\(order.selectTimeDay)"
-                } else {
-                    return "\(order.selectTimeDay)"
-                }
-            }()
-//            let day = order.selectTimeDay
-            let time = order.selectTimeTime
-            return "\(year)/\(month)/\(day)   \(time)"
     }
     
     func drawPath() {
@@ -108,9 +72,13 @@ class ProfileHistoryDetailViewController: UIViewController {
         
         region.farRight = dPosition
         
-        let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
+        let bounds = GMSCoordinateBounds(
+            coordinate: region.nearLeft,
+            coordinate: region.farRight)
         
-        guard let camera = self.mapView.camera(for: bounds, insets:UIEdgeInsets(top: 50, left: 100 , bottom: 50,  right: 100 )) else { return }
+        guard let camera = self.mapView.camera(
+            for: bounds,
+            insets:UIEdgeInsets(top: 50, left: 100 , bottom: 50,  right: 100 )) else { return }
         
         self.mapView.camera = camera
         
@@ -133,12 +101,13 @@ class ProfileHistoryDetailViewController: UIViewController {
                     let path = GMSPath.init(fromEncodedPath: points!)
                     let polyline = GMSPolyline.init(path: path)
                     polyline.map = self.mapView
-                    polyline.strokeColor = #colorLiteral(red: 0.6, green: 0.1960784314, blue: 0.2352941176, alpha: 1)
+                    polyline.strokeColor = UIColor.R1!
+                        
                     polyline.strokeWidth = 6
                 }
                 
             } catch {
-                print("ERROR: not working")
+                
             }
         }
         

@@ -16,4 +16,8 @@ enum SegueName: String {
     case toAdressWorkVC
     
     case toAdressFavoriteVC
+    
+    //ProfileHistory
+    
+    case historyDetail
 }

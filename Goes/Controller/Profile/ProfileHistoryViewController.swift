@@ -7,18 +7,11 @@
 //
 
 import UIKit
-import MTSlideToOpen
 import GoogleMaps
 import GooglePlaces
-import SwiftyJSON
-import Alamofire
 
 class ProfileHistoryViewController: UIViewController {
-    
-    let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager.share
-    
-    var myProfile: MyProfile?
+
     var myHistory = [OrderDetail]()
 
     var selectedHistory: OrderDetail?
@@ -28,24 +21,14 @@ class ProfileHistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(
-            UINib(nibName: String(describing: ProfilePersonalTableViewCell.self),
-                  bundle: nil),
-            forCellReuseIdentifier: String(describing: ProfilePersonalTableViewCell.self))
-//        tableView.register(
-//            UINib(nibName: "FriendPlaceholderTableViewCell",
-//                  bundle: nil),
-//            forCellReuseIdentifier: "friendPlaceholderTableViewCell")
-        tableView.separatorStyle = .none
-        
+        tableViewSetting()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         tableView.addRefreshHeader {
+            
             self.loadDataFromDB()
         }
         
@@ -54,35 +37,52 @@ class ProfileHistoryViewController: UIViewController {
     
     func loadDataFromDB() {
         
+        guard let uid = UserDefaults.standard.value(
+            forKey: UserdefaultKey.memberUid.rawValue) as? String,
+            uid != "" else { return }
+        
         self.myHistory = []
         
-        self.personalDataManager.getPersonalData { (myProfile, _) in
-            self.myProfile = myProfile
-            guard let myProfile = self.myProfile else { return }
+        FireBaseManager.share.queryMyOrders(myUid: uid, status: 7) { (orders) in
             
-            self.fireBaseManager.queryMyOrders(myUid: myProfile.userID, status: 7, completionHandler: { (orders) in
-                
-                self.myHistory = orders.sorted(by: { $0.orderID > $1.orderID })
-                
-               
-                self.tableView.reloadData()
-                
-                self.tableView.endHeaderRefreshing()
-            })
+            self.myHistory = orders.sorted(by: { $0.orderID > $1.orderID })
             
+            self.tableView.reloadData()
+            
+            self.tableView.endHeaderRefreshing()
         }
         
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "historyDetail" {
+            
             if let destination = segue.destination as? ProfileHistoryDetailViewController {
                 
-                destination.myProfile = self.myProfile
                 destination.history  = self.selectedHistory 
         
             }
             
         }
+    }
+    
+    fileprivate func tableViewSetting() {
+        
+        tableView.delegate = self
+        
+        tableView.dataSource = self
+        
+        tableView.register(
+            UINib(nibName: String(describing: FriendPlaceholderTableViewCell.self),
+                  bundle: nil),
+            forCellReuseIdentifier: String(describing: FriendPlaceholderTableViewCell.self))
+        
+        tableView.register(
+            UINib(nibName: String(describing: ProfileHistoryTableViewCell.self),
+                  bundle: nil),
+            forCellReuseIdentifier: String(describing: ProfileHistoryTableViewCell.self))
+        tableView.separatorStyle = .none
     }
 
 }
@@ -92,8 +92,10 @@ extension ProfileHistoryViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if myHistory.count != 0 {
+            
             return myHistory.count
         }
+        
         return 1
     }
 
@@ -102,43 +104,44 @@ extension ProfileHistoryViewController: UITableViewDelegate, UITableViewDataSour
         if myHistory.count != 0 {
             
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: ProfilePersonalTableViewCell.self), for: indexPath) as? ProfileHistoryTableViewCell else { return UITableViewCell()}
+                withIdentifier:
+                String(describing: ProfileHistoryTableViewCell.self),
+                for: indexPath) as? ProfileHistoryTableViewCell else { return UITableViewCell()}
             
-            let timeInterVal = TimeInterval(self.myHistory[indexPath.row].completeTime)
-            let date = Date(timeIntervalSince1970: timeInterVal)
-            let dformatter = DateFormatter()
-            dformatter.dateFormat = " yyyy年MM月dd日 HH:mm "
-            let dateString = "\(dformatter.string(from: date))"
-            cell.dateLabel.text = dateString
+            cell.dateLabel.text = String.formateTimeStamp(timeStamp: self.myHistory[indexPath.row].completeTime)
     
             return cell
             
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendPlaceholderTableViewCell") as? FriendPlaceholderTableViewCell else { return UITableViewCell() }
+            
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier:
+                String(describing:  FriendPlaceholderTableViewCell.self)) as? FriendPlaceholderTableViewCell else {
+                    
+                    return UITableViewCell()
+                    
+            }
+            
             return cell
             
         }
-        
-        return UITableViewCell()
         
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if myHistory.count != 0, myHistory != nil{
+        if myHistory.count != 0 {
             
             self.selectedHistory = myHistory[indexPath.row]
-            print(selectedHistory)
-            performSegue(withIdentifier: "historyDetail", sender: self)
             
-            
+            performSegue(withIdentifier: SegueName.historyDetail.rawValue, sender: self)
+        
         }
       
-        
-
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 70
     }
 

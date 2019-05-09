@@ -23,6 +23,7 @@ class OrderRidingViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var greenView: UIView! {
+        
         didSet{
             greenView.roundCorners(20)
         }

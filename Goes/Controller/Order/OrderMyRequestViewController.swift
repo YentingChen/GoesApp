@@ -89,6 +89,7 @@ class OrderMyRequestViewController: UIViewController {
             self?.myProfile = myProfile
             
             self?.group.enter()
+            
             self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 1, completionHandler: { [weak self] (orders) in
                 
                 self?.myOrdersS1 = orders

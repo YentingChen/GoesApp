@@ -15,6 +15,7 @@ class AskLogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     @IBAction func toPassword(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Auth", bundle: nil)
@@ -30,7 +31,6 @@ class AskLogInViewController: UIViewController {
         passwordVC?.view.backgroundColor = UIColor.clear
         
         self.view.addSubview(passwordVC!.view)
-        
         
     }
     

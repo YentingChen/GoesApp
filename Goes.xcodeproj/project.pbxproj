@@ -41,7 +41,7 @@
 		3E461FB622827D0700162813 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E461FB522827D0700162813 /* Title.swift */; };
 		3E461FB82282854E00162813 /* AddressChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E461FB72282854E00162813 /* AddressChooseViewController.swift */; };
 		3E461FBA2282979000162813 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E461FB92282979000162813 /* AlertManager.swift */; };
-		3E52376D225DD2920090818A /* LobbyFindMyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */; };
+		3E461FBC2282CA1600162813 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E461FBB2282CA1600162813 /* String+.swift */; };
 		3E5ADFF3225F0B0F0003B241 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */; };
 		3E5ADFF5225F11610003B241 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF4225F11610003B241 /* Auth.storyboard */; };
 		3E5ADFF7225F12490003B241 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5ADFF6225F12490003B241 /* SignUpViewController.swift */; };
@@ -106,6 +106,10 @@
 		3E9D8334225383A900A4E29D /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */; };
 		3EA3B553226ED07E0072F432 /* OrderRidingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3B552226ED07E0072F432 /* OrderRidingViewController.swift */; };
 		3EA52B492272F56F003A5390 /* ProfileHistoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA52B482272F56F003A5390 /* ProfileHistoryDetailViewController.swift */; };
+		3EAA688A2283C44C00696AD2 /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA68892283C44C00696AD2 /* URL+.swift */; };
+		3EAA688C2283CE1700696AD2 /* ToSettingPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA688B2283CE1700696AD2 /* ToSettingPageManager.swift */; };
+		3EAA688E2283DC0A00696AD2 /* PrivacyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA688D2283DC0A00696AD2 /* PrivacyManager.swift */; };
+		3EAA68902283F25500696AD2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA688F2283F25500696AD2 /* MapViewController.swift */; };
 		3EF9610022817BDE006853C8 /* Userdefault+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF960FF22817BDE006853C8 /* Userdefault+.swift */; };
 		3EF961022281913C006853C8 /* FireAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF961012281913C006853C8 /* FireAuthManager.swift */; };
 		5CA711F534226EDCB52E35CA /* Pods_Goes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DEB760BA8574D01298CE22 /* Pods_Goes.framework */; };
@@ -148,7 +152,7 @@
 		3E461FB522827D0700162813 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		3E461FB72282854E00162813 /* AddressChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressChooseViewController.swift; sourceTree = "<group>"; };
 		3E461FB92282979000162813 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
-		3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFindMyFriendViewController.swift; sourceTree = "<group>"; };
+		3E461FBB2282CA1600162813 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		3E5ADFF2225F0B0F0003B241 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E5ADFF4225F11610003B241 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		3E5ADFF6225F12490003B241 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +219,10 @@
 		3E9D8333225383A900A4E29D /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		3EA3B552226ED07E0072F432 /* OrderRidingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRidingViewController.swift; sourceTree = "<group>"; };
 		3EA52B482272F56F003A5390 /* ProfileHistoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHistoryDetailViewController.swift; sourceTree = "<group>"; };
+		3EAA68892283C44C00696AD2 /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
+		3EAA688B2283CE1700696AD2 /* ToSettingPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSettingPageManager.swift; sourceTree = "<group>"; };
+		3EAA688D2283DC0A00696AD2 /* PrivacyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyManager.swift; sourceTree = "<group>"; };
+		3EAA688F2283F25500696AD2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3EF960FF22817BDE006853C8 /* Userdefault+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Userdefault+.swift"; sourceTree = "<group>"; };
 		3EF961012281913C006853C8 /* FireAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireAuthManager.swift; sourceTree = "<group>"; };
 		53DEB760BA8574D01298CE22 /* Pods_Goes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,7 +280,6 @@
 				3E662EFA22687EA40016F962 /* EditAddressViewController.swift */,
 				3E06C21E22575397000F7E5F /* LobbyTimeViewController.swift */,
 				3E45934D2257714A00073210 /* LobbyFriendViewController.swift */,
-				3E52376C225DD2920090818A /* LobbyFindMyFriendViewController.swift */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -380,6 +387,8 @@
 				3EF960FF22817BDE006853C8 /* Userdefault+.swift */,
 				3E461FB1228271D100162813 /* TableViewCellName.swift */,
 				3E461FB32282734200162813 /* SegueName.swift */,
+				3E461FBB2282CA1600162813 /* String+.swift */,
+				3EAA68892283C44C00696AD2 /* URL+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -466,8 +475,9 @@
 				3E7B6E16225A633E00646724 /* OrderRequestViewController.swift */,
 				3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */,
 				3E95EE80225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift */,
-				3E8C8C83226DE54F00063208 /* OrderDrivingViewController.swift */,
 				3EA3B552226ED07E0072F432 /* OrderRidingViewController.swift */,
+				3E8C8C83226DE54F00063208 /* OrderDrivingViewController.swift */,
+				3EAA688F2283F25500696AD2 /* MapViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -501,6 +511,8 @@
 				3E321630227C435E00237042 /* PushNotificationManager.swift */,
 				3E6B90FF227C87C9002AB67F /* PushNotificationSender.swift */,
 				3E461FB92282979000162813 /* AlertManager.swift */,
+				3EAA688B2283CE1700696AD2 /* ToSettingPageManager.swift */,
+				3EAA688D2283DC0A00696AD2 /* PrivacyManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -770,6 +782,7 @@
 				3E321631227C435E00237042 /* PushNotificationManager.swift in Sources */,
 				3E95EE81225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift in Sources */,
 				3E609F4422533EE10031CF81 /* ViewController.swift in Sources */,
+				3EAA688C2283CE1700696AD2 /* ToSettingPageManager.swift in Sources */,
 				3E7B6E17225A633E00646724 /* OrderRequestViewController.swift in Sources */,
 				3E0297EE2281742600DBB051 /* Order.swift in Sources */,
 				3E609F4222533EE10031CF81 /* AppDelegate.swift in Sources */,
@@ -790,13 +803,14 @@
 				3E93D7392277F7650045D15C /* NSLayoutHelper.swift in Sources */,
 				3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */,
 				3E461FB2228271D100162813 /* TableViewCellName.swift in Sources */,
+				3EAA688A2283C44C00696AD2 /* URL+.swift in Sources */,
 				3E662EF5226840770016F962 /* AdressHomeViewController.swift in Sources */,
-				3E52376D225DD2920090818A /* LobbyFindMyFriendViewController.swift in Sources */,
 				3E93D7352277F7650045D15C /* UITextViewHelper.swift in Sources */,
 				3E461FBA2282979000162813 /* AlertManager.swift in Sources */,
 				3E6169652254798500786F9F /* LobbyMapViewController.swift in Sources */,
 				3E93D7372277F7650045D15C /* UILabelHelper.swift in Sources */,
 				3E459355225777DE00073210 /* LobbyFriendCollectionViewCell.swift in Sources */,
+				3EAA688E2283DC0A00696AD2 /* PrivacyManager.swift in Sources */,
 				3E23588F22590D74004182F0 /* FriendInviteViewController.swift in Sources */,
 				3E662EF9226840CA0016F962 /* AdressFavoriteViewController.swift in Sources */,
 				3E5AE001225F2E3A0003B241 /* LaunchViewController.swift in Sources */,
@@ -805,6 +819,7 @@
 				3E609F5E22535DDD0031CF81 /* UIStoryboard+Extension.swift in Sources */,
 				3E45934E2257714A00073210 /* LobbyFriendViewController.swift in Sources */,
 				3E3EFD0D225918510078E686 /* FriendSentViewController.swift in Sources */,
+				3E461FBC2282CA1600162813 /* String+.swift in Sources */,
 				3E7B6E0F2259FB8500646724 /* ProfileHistoryViewController.swift in Sources */,
 				3E662EFB22687EA40016F962 /* EditAddressViewController.swift in Sources */,
 				3E0297F02281744100DBB051 /* Address.swift in Sources */,
@@ -825,6 +840,7 @@
 				3E6C39762275F85E005A8117 /* FriendPlaceholderTableViewCell.swift in Sources */,
 				3E662EF72268408C0016F962 /* AdressWorkViewController.swift in Sources */,
 				3E77D85B227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift in Sources */,
+				3EAA68902283F25500696AD2 /* MapViewController.swift in Sources */,
 				3E7B6E122259FBA200646724 /* ProfileHistoryTableViewCell.swift in Sources */,
 				3E7B6E1A225A645F00646724 /* OrderRequestTableViewCell.swift in Sources */,
 				3E424B5E22646DE6003A3123 /* PersonalDataMagager.swift in Sources */,
