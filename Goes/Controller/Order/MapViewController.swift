@@ -15,6 +15,8 @@ import Alamofire
 
 class MapViewController: UIViewController {
     
+    @IBOutlet weak var orderDrivingView: OrderDrivingView!
+    
     var order: OrderDetail?
     
     var rider: MyProfile?
@@ -22,33 +24,21 @@ class MapViewController: UIViewController {
     var myProfile: MyProfile?
     
     let locationManager = CLLocationManager()
-    
-    @IBOutlet weak var mapView: GMSMapView!
-    
-    @IBOutlet weak var avatar: UIImageView!
-    
-    @IBOutlet weak var riderName: UILabel!
-    
-    @IBOutlet weak var estimateTime: UILabel!
-
-    @IBOutlet weak var arrivingAddress: UILabel!
-    
-    @IBOutlet weak var timeBackgroundView: UIView! {
-        
-        didSet {
-            
-            timeBackgroundView.roundCorners(25)
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.mapView.delegate = self
         
-        self.mapView.isMyLocationEnabled = true
+        guard let order = self.order else {
+            return
+        }
+
+        orderDrivingView.mapView.delegate = self
+        
+        orderDrivingView.mapView.isMyLocationEnabled = true
         
         self.locationManager.delegate = self
+        
+        orderDrivingView.arrivingTimeLabel.text = String.produceTime(order: order)
         
         self.locationManager.requestWhenInUseAuthorization()
     }
@@ -86,7 +76,7 @@ extension MapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         
-        self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        orderDrivingView.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
     }
     
@@ -107,15 +97,14 @@ extension MapViewController: CLLocationManagerDelegate {
         
         locationManager.startUpdatingLocation()
         
-        mapView.isMyLocationEnabled = true
+        orderDrivingView.mapView.isMyLocationEnabled = true
         
-        mapView.settings.myLocationButton = true
+        orderDrivingView.mapView.settings.myLocationButton = true
         
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-
     }
     
 }

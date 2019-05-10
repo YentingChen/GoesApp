@@ -36,22 +36,7 @@ class GoogleMapManager: NSObject {
         }
         
     }
-//    GoogleMapManager.share.alamofireAction(url: url) { (json) in
-//
-//    let timeValue = json["routes"][0]["legs"][0]["duration"]["value"].rawValue as? Int
-//
-//    if timeValue != nil {
-//
-//    let current = Int(Date().timeIntervalSince1970) + timeValue!
-//    let dformatter = DateFormatter()
-//    let date = Date(timeIntervalSince1970: TimeInterval(current))
-//    dformatter.dateFormat = "HH:mm"
-//    self.estimateTime.text = dformatter.string(from: date)
-//
-//    } else {
-//    self.estimateTime.text = " -- : -- "
-//    }
-//    }
+
     
     func drawPath(url: String, viewController: MapViewController ) {
         
@@ -69,7 +54,7 @@ class GoogleMapManager: NSObject {
                 
                 let polyline = GMSPolyline.init(path: path)
                 
-                polyline.map = viewController.mapView
+                polyline.map = viewController.orderDrivingView.mapView
                 
                 polyline.strokeColor = UIColor.R1!
                 
@@ -90,11 +75,11 @@ class GoogleMapManager: NSObject {
         
         let bounds = GMSCoordinateBounds(coordinate: region.nearLeft, coordinate: region.farRight)
         
-        guard let camera = viewController.mapView.camera(
+        guard let camera = viewController.orderDrivingView.mapView.camera(
             for: bounds,
             insets: insets) else { return }
         
-        viewController.mapView.camera = camera
+        viewController.orderDrivingView.mapView.camera = camera
         
     }
     
@@ -106,12 +91,13 @@ class GoogleMapManager: NSObject {
         
         marker.icon = UIImage(named: "Images_60x_Rider_Normal")
         
-        marker.map = viewController.mapView
+        marker.map = viewController.orderDrivingView.mapView
     }
     
     func getCoordinate(placeID: String, completionHandler: @escaping (Double, Double) -> Void) {
         
         let apiKey = "AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
+        
         let url = "https://maps.googleapis.com/maps/api/place/details/json?input=bar&placeid=\(placeID)&key=\(apiKey)"
         
         alamofireAction(url: url) { (json) in

@@ -67,6 +67,11 @@ enum ImageAsset: String {
     case Icons_24x_Work_Normal
     case Icons_24x_Star_Normal
     case Icons_24x_Edit_Normal
+    
+    //ProfileMyInfo
+    case Icons_24x_Name_Normal
+    case Icons_24x_Email_Normal
+    case Icons_24x_Phone_Normal
 }
 // swiftlint:enable all
 extension UIImage {

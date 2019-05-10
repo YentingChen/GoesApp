@@ -69,6 +69,7 @@
 		3E6B9100227C87C9002AB67F /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B90FF227C87C9002AB67F /* PushNotificationSender.swift */; };
 		3E6C39762275F85E005A8117 /* FriendPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6C39742275F85E005A8117 /* FriendPlaceholderTableViewCell.swift */; };
 		3E6C39772275F85E005A8117 /* FriendPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6C39752275F85E005A8117 /* FriendPlaceholderTableViewCell.xib */; };
+		3E6E9AC8228561420089FF32 /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6E9AC7228561420089FF32 /* KingFisherWrapper.swift */; };
 		3E70852F226F1903006002CB /* animation-w300-h300-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E70852E226F1902006002CB /* animation-w300-h300-2.json */; };
 		3E77D85B227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D859227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift */; };
 		3E77D85C227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E77D85A227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib */; };
@@ -110,6 +111,7 @@
 		3EAA688C2283CE1700696AD2 /* ToSettingPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA688B2283CE1700696AD2 /* ToSettingPageManager.swift */; };
 		3EAA688E2283DC0A00696AD2 /* PrivacyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA688D2283DC0A00696AD2 /* PrivacyManager.swift */; };
 		3EAA68902283F25500696AD2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA688F2283F25500696AD2 /* MapViewController.swift */; };
+		3EAA68922284260800696AD2 /* OrderDrivingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAA68912284260800696AD2 /* OrderDrivingView.swift */; };
 		3EF9610022817BDE006853C8 /* Userdefault+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF960FF22817BDE006853C8 /* Userdefault+.swift */; };
 		3EF961022281913C006853C8 /* FireAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF961012281913C006853C8 /* FireAuthManager.swift */; };
 		5CA711F534226EDCB52E35CA /* Pods_Goes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DEB760BA8574D01298CE22 /* Pods_Goes.framework */; };
@@ -182,6 +184,8 @@
 		3E6B90FF227C87C9002AB67F /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		3E6C39742275F85E005A8117 /* FriendPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		3E6C39752275F85E005A8117 /* FriendPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
+		3E6E9AC6228552CA0089FF32 /* Goes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Goes.entitlements; sourceTree = "<group>"; };
+		3E6E9AC7228561420089FF32 /* KingFisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
 		3E70852E226F1902006002CB /* animation-w300-h300-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "animation-w300-h300-2.json"; sourceTree = "<group>"; };
 		3E77D859227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequestPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		3E77D85A227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderRequestPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 		3EAA688B2283CE1700696AD2 /* ToSettingPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSettingPageManager.swift; sourceTree = "<group>"; };
 		3EAA688D2283DC0A00696AD2 /* PrivacyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyManager.swift; sourceTree = "<group>"; };
 		3EAA688F2283F25500696AD2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3EAA68912284260800696AD2 /* OrderDrivingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDrivingView.swift; sourceTree = "<group>"; };
 		3EF960FF22817BDE006853C8 /* Userdefault+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Userdefault+.swift"; sourceTree = "<group>"; };
 		3EF961012281913C006853C8 /* FireAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireAuthManager.swift; sourceTree = "<group>"; };
 		53DEB760BA8574D01298CE22 /* Pods_Goes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -358,6 +363,7 @@
 		3E609F4022533EE10031CF81 /* Goes */ = {
 			isa = PBXGroup;
 			children = (
+				3E6E9AC6228552CA0089FF32 /* Goes.entitlements */,
 				3E609F5B22535AE40031CF81 /* Assets.xcassets */,
 				3E609F4D22533EE30031CF81 /* Info.plist */,
 				3E0297EC228173ED00DBB051 /* Supplies */,
@@ -389,6 +395,7 @@
 				3E461FB32282734200162813 /* SegueName.swift */,
 				3E461FBB2282CA1600162813 /* String+.swift */,
 				3EAA68892283C44C00696AD2 /* URL+.swift */,
+				3E6E9AC7228561420089FF32 /* KingFisherWrapper.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -485,14 +492,8 @@
 		3E7B6E2B225B5A9E00646724 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				3E7B6E18225A645F00646724 /* OrderRequestTableViewCell.swift */,
-				3E7B6E19225A645F00646724 /* OrderRequestTableViewCell.xib */,
-				3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */,
-				3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */,
-				3E9CCE7D226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.swift */,
-				3E9CCE7E226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.xib */,
-				3E77D859227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift */,
-				3E77D85A227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib */,
+				3E94538E22854F7400CF2667 /* OrderCell */,
+				3EAA68912284260800696AD2 /* OrderDrivingView.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -515,6 +516,21 @@
 				3EAA688D2283DC0A00696AD2 /* PrivacyManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3E94538E22854F7400CF2667 /* OrderCell */ = {
+			isa = PBXGroup;
+			children = (
+				3E7B6E18225A645F00646724 /* OrderRequestTableViewCell.swift */,
+				3E7B6E19225A645F00646724 /* OrderRequestTableViewCell.xib */,
+				3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */,
+				3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */,
+				3E9CCE7D226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.swift */,
+				3E9CCE7E226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.xib */,
+				3E77D859227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.swift */,
+				3E77D85A227011CB0080CE6F /* OrderRequestPlaceholderTableViewCell.xib */,
+			);
+			path = OrderCell;
 			sourceTree = "<group>";
 		};
 		523BF933A9E08874422EBCD8 /* Frameworks */ = {
@@ -798,6 +814,7 @@
 				3E92662722656A6C009EC3D1 /* FirebaseManager.swift in Sources */,
 				3E461FB82282854E00162813 /* AddressChooseViewController.swift in Sources */,
 				3E609F642253603E0031CF81 /* UIImage+Extension.swift in Sources */,
+				3E6E9AC8228561420089FF32 /* KingFisherWrapper.swift in Sources */,
 				3E23588822588B51004182F0 /* FriendHomeViewController.swift in Sources */,
 				3E459351225773EE00073210 /* LobbyFriendTableViewCell.swift in Sources */,
 				3E93D7392277F7650045D15C /* NSLayoutHelper.swift in Sources */,
@@ -816,6 +833,7 @@
 				3E5AE001225F2E3A0003B241 /* LaunchViewController.swift in Sources */,
 				3E06C21F22575397000F7E5F /* LobbyTimeViewController.swift in Sources */,
 				3E609F66225362260031CF81 /* LobbyViewController.swift in Sources */,
+				3EAA68922284260800696AD2 /* OrderDrivingView.swift in Sources */,
 				3E609F5E22535DDD0031CF81 /* UIStoryboard+Extension.swift in Sources */,
 				3E45934E2257714A00073210 /* LobbyFriendViewController.swift in Sources */,
 				3E3EFD0D225918510078E686 /* FriendSentViewController.swift in Sources */,

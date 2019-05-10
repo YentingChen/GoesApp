@@ -24,7 +24,7 @@ class OrderRidingViewController: UIViewController {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var greenView: UIView! {
         
-        didSet{
+        didSet {
             greenView.roundCorners(20)
         }
     }
@@ -41,6 +41,7 @@ class OrderRidingViewController: UIViewController {
     var completeTime: Int?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         guard let driver = self.driver else {
             return

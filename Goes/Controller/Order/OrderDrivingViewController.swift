@@ -30,22 +30,11 @@ class OrderDrivingViewController: MapViewController {
     
     var secondStartLocation: CLLocationCoordinate2D?
     
-    @IBOutlet weak var grayView: UIView!
-    
-    @IBAction func callBtn(_ sender: Any) {
-        
-        guard let riderPhone = rider?.phoneNumber else { return }
-        
-        guard let number = URL.callPhone(phoneNumber: riderPhone) else { return }
-        
-        UIApplication.shared.open(number)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         
         if let isSetOff = order?.setOff, isSetOff == 1 {
             
-            self.grayView.isHidden = true
+            orderDrivingView.grayView.isHidden = true
             
             self.isSettingOff = true
             
@@ -53,7 +42,7 @@ class OrderDrivingViewController: MapViewController {
             
         } else {
             
-            self.grayView.isHidden = false
+            orderDrivingView.grayView.isHidden = false
             
             self.isSettingOff = false
         }
@@ -64,17 +53,13 @@ class OrderDrivingViewController: MapViewController {
         
         super.viewDidLoad()
         
+        orderDrivingView.delegate = self
+        
         guard let rider = self.rider else { return }
         
         if rider.avatar != "" {
             
-            let url = URL(string: rider.avatar)
-            
-            avatar.kf.setImage(with: url)
-            
-            avatar.roundCorners(avatar.frame.width/2)
-            
-            avatar.clipsToBounds = true
+            orderDrivingView.showAvatar(url: rider.avatar)
         }
         
         checkLocationAuth()
@@ -92,9 +77,9 @@ class OrderDrivingViewController: MapViewController {
         
         locationManager.allowsBackgroundLocationUpdates = true
         
-        self.arrivingAddress.text = self.order?.locationFormattedAddress
+        orderDrivingView.arrivingAddressLabel.text = self.order?.locationFormattedAddress
         
-        self.riderName.text = self.rider?.userName
+        orderDrivingView.riderName.text = self.rider?.userName
         
         updateDriverLocation()
         
@@ -105,6 +90,7 @@ class OrderDrivingViewController: MapViewController {
                 self.timer?.invalidate()
                 
                 AlertManager.share.showAlert(
+                    
                     title: "接送成功",
                     message: "您已成功接到對方",
                     viewController: self, typeOfAction: 1, okHandler: {
@@ -135,7 +121,7 @@ class OrderDrivingViewController: MapViewController {
         
         let destination = Point(x: order.selectedLat, y: order.selectedLng)
         
-        self.grayView.isHidden = true
+        orderDrivingView.grayView.isHidden = true
         
         self.isSettingOff = true
         
@@ -143,7 +129,7 @@ class OrderDrivingViewController: MapViewController {
         
         self.startDrivingTime = nowTimeStamp()
         
-        self.mapView.clear()
+        orderDrivingView.mapView.clear()
         
         GoogleMapManager.share.setRiderMarker(position: destination, viewController: self)
     }
@@ -219,6 +205,10 @@ class OrderDrivingViewController: MapViewController {
             
             if self.updateLat != nil, self.updateLag != nil {
                 
+                let origin = CLLocationCoordinate2D(latitude: self.updateLat!, longitude: self.updateLag!)
+                
+                self.getTime(location: origin)
+                
                FireBaseManager.share.updateDriverLocation(
                     orderID: (self.order?.orderID)!,
                     lat: self.updateLat!,
@@ -254,7 +244,7 @@ class OrderDrivingViewController: MapViewController {
         let url = "\(URL.googleMapDirection(origin: origin, destination: destination))"
         
         GoogleMapManager.share.getEstmatedTime(url: url, viewController: self) { (showTime) in
-            self.estimateTime.text = showTime
+            self.orderDrivingView.estimatedTime.text = showTime
         }
     
     }
@@ -285,21 +275,27 @@ class OrderDrivingViewController: MapViewController {
         
         if isSettingOff {
             
-            self.mapView.clear()
+            orderDrivingView.mapView.clear()
         
             GoogleMapManager.share.setRiderMarker(position: destination, viewController: self)
             
             if order.driverStartLat == 0.0, order.driverStartLag == 0.0 {
                 
-                self.driverStartLocation = location.coordinate
+                if self.driverStartLocation == nil {
+                    
+                    self.driverStartLocation = location.coordinate
+                    
+                    guard let driverStartLocation = self.driverStartLocation else { return }
+                    
+                    let origin = Point(x: driverStartLocation.latitude, y: driverStartLocation.longitude)
+                    
+                    setCamera(origin: origin)
+                    
+                }
                 
             }
             
-            if let driverStartLocation = self.driverStartLocation {
-                
-                let origin = Point(x: driverStartLocation.latitude, y: driverStartLocation.longitude)
-                
-                setCamera(origin: origin)
+            if self.driverStartLocation != nil {
                 
                 self.updateLat = Double(location.coordinate.latitude)
                 
@@ -350,4 +346,25 @@ class OrderDrivingViewController: MapViewController {
             self.driverStartLocation = location.coordinate
         }
     }
+
+}
+
+extension OrderDrivingViewController: OrderDrivingViewDelegate {
+    
+    func setOffAction(_ view: OrderDrivingView, didTapButton button: UIButton) {
+        
+        self.isSettingOff = true
+        
+    }
+    
+    func callAction(_ view: OrderDrivingView, didTapButton button: UIButton) {
+        
+        guard let riderPhone = rider?.phoneNumber else { return }
+        
+        guard let number = URL.callPhone(phoneNumber: riderPhone) else { return }
+        
+        UIApplication.shared.open(number)
+        
+    }
+    
 }

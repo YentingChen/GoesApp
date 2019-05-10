@@ -70,16 +70,28 @@ extension ProfilePersonalDataViewController: UITableViewDataSource, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let title = ["姓名", "email", "手機"]
+        
+        let titles = [
+            Title.name.rawValue,
+            Title.email.rawValue,
+            Title.phone.rawValue
+        ]
+        
         let content = [myProfile?.userName, myProfile?.email, myProfile?.phoneNumber]
-        let image = ["name_icon_24x", "email_icon_24x", "phone_icon_24x"]
+        
+        let images = [
+            UIImage.asset(.Icons_24x_Name_Normal),
+            UIImage.asset(.Icons_24x_Email_Normal),
+            UIImage.asset(.Icons_24x_Phone_Normal)
+        ]
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: ProfilePersonalTableViewCell.self),
             for: indexPath) as? ProfilePersonalTableViewCell else { return UITableViewCell() }
-        cell.cellTitle.text = title[indexPath.row]
+        cell.cellTitle.text = titles[indexPath.row]
+        
         cell.cellContent.text = content[indexPath.row]
         
-        cell.cellImageView.image = UIImage(named: image[indexPath.row] )
+        cell.cellImageView.image = images[indexPath.row]
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.editImageView.isHidden = true
 
