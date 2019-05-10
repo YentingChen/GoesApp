@@ -85,7 +85,7 @@ class ProfileAdressViewController: UIViewController {
         
         FireBaseManager.share.queryAdress(
         myUid: uid,
-        category: "work")  { (workAddress) in
+        category: "work") { (workAddress) in
             
             self.workAddress = workAddress
             self.tableView.reloadData()

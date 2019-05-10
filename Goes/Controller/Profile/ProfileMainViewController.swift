@@ -34,10 +34,15 @@ class ProfileMainViewController: UIViewController {
     @IBAction func cameraBtn(_ sender: Any) {
        
         let fusuma = FusumaViewController()
+        
         fusuma.delegate = self
-        fusuma.availableModes = [FusumaMode.library, FusumaMode.camera] // Add .video capturing mode to the default .library and .camera modes
-        fusuma.cropHeightRatio = 1 // Height-to-width ratio. The default value is 1, which means a squared-size photo.
-        fusuma.allowMultipleSelection = false  // You can select multiple photos from the camera roll. The default value is false.
+        
+        fusuma.availableModes = [FusumaMode.library, FusumaMode.camera]
+        
+        fusuma.cropHeightRatio = 1
+        
+        fusuma.allowMultipleSelection = false
+        
         self.present(fusuma, animated: true, completion: nil)
     }
     
