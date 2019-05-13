@@ -24,6 +24,11 @@ target 'Goes' do
   pod 'lottie-ios'
   pod 'Fusuma'
   pod 'Kingfisher', '~> 5.0'
+  
+  target 'GoesTests' do
+    inherit! :search_paths
+    pod 'Firebase'
+  end
 
   
 end

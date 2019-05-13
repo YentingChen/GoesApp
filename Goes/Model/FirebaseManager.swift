@@ -52,6 +52,7 @@ class FireBaseManager: NSObject {
                         }
                                
                     }
+                
                 completionHandler(isMember, friendUid ?? "")
                 
                 

@@ -82,8 +82,6 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
    
     private let tabs: [Tab] = [.lobby, .order, .friend, .profile]
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -96,7 +94,10 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
     // MARK: - UITabBarControllerDelegate
 
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    func tabBarController(
+        _ tabBarController: UITabBarController,
+        shouldSelect viewController: UIViewController)
+    -> Bool {
         
         let navVC = viewController as? UINavigationController
         
@@ -108,11 +109,11 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         guard let uid = userDefaults.value(forKey: UserdefaultKey.memberUid.rawValue) as? String, uid != "" else {
             
-            if let vc = UIStoryboard.auth.instantiateInitialViewController() {
+            if let viewController = UIStoryboard.auth.instantiateInitialViewController() {
                 
-                vc.modalPresentationStyle = .overCurrentContext
+                viewController.modalPresentationStyle = .overCurrentContext
                 
-                present(vc, animated: false, completion: nil)
+                present(viewController, animated: false, completion: nil)
             }
             return false
         }
