@@ -9,6 +9,7 @@
 import Foundation
 
 struct DateAndTime {
+    
     var date: Int
     var year: Int
     var month: Int

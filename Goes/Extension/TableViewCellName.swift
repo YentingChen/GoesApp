@@ -17,5 +17,5 @@ enum TableViewCellClass: String {
 enum TableViewCellXib: String {
     
     //Profile
-    case profilePersonalTableViewCell = "profilePersonalTableViewCell"
+    case profilePersonalTableViewCell
 }

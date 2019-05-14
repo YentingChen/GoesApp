@@ -43,7 +43,7 @@ class PersonalDataManager: NSObject {
             
             guard let userID = user?.uid else { return }
             let userProfile =  self.dataBase.collection("users").document(userID)
-            userProfile.getDocument { [weak self] (document, error) in
+            userProfile.getDocument { [weak self] (document, _ ) in
                 
                 if let profile = document.flatMap({ $0.data().flatMap({ (data) in
                     return Profile(dictionary: data)

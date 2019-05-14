@@ -9,6 +9,7 @@
 import Foundation
 
 struct AddressFromDB {
+    
     var placeID: String
     var placeLat: Double
     var placeLng: Double
@@ -28,6 +29,7 @@ struct AddressFromDB {
 }
 
 struct Address {
+    
     var placeID: String
     var placeLat: Double
     var placeLng: Double

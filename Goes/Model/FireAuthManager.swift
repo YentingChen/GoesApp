@@ -59,8 +59,9 @@ class FireAuthManager: NSObject {
         return ytUser
     }
     
-    func createAccountAction(email: String, password: String, completionHandler: @escaping () -> Void){
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+    func createAccountAction(email: String, password: String, completionHandler: @escaping () -> Void) {
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (_, error) in
             if error == nil {
                 
             }

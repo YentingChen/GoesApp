@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 //class PrivacyManager {
 //    
 //    func showAlert(title: String, message: String, completeionHandler: @escaping () -> Void) {

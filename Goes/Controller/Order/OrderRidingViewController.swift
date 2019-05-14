@@ -88,7 +88,9 @@ class OrderRidingViewController: UIViewController {
 
             if self.driverFirstLocation == nil {
 
-                self.driverFirstLocation = CLLocationCoordinate2D(latitude: (order?.driverLat)!, longitude: (order?.driverLag)!)
+                self.driverFirstLocation = CLLocationCoordinate2D(
+                    latitude: (order?.driverLat)!,
+                    longitude: (order?.driverLag)!)
                 
                 guard let driverFirstLocation = self.driverFirstLocation else { return }
 
@@ -204,7 +206,7 @@ class OrderRidingViewController: UIViewController {
                         self.navigationController?.popViewController(animated: false)
             }
             
-        case .authorizedWhenInUse,.authorizedAlways:
+        case .authorizedWhenInUse, .authorizedAlways:
             // Enable any of your app's location features
             return
             
@@ -224,7 +226,8 @@ class OrderRidingViewController: UIViewController {
     @objc func longPressAction(_ sender: UIGestureRecognizer) {
 
         let animationView = AnimationView(name: LottieFile.caseSuccessAnimationView.rawValue)
-        animationView.frame = CGRect(x: 0, y: 0, width: successImageView.frame.width, height:  successImageView.frame.height)
+        animationView.frame = CGRect(
+            x: 0, y: 0, width: successImageView.frame.width, height:  successImageView.frame.height)
         
         animationView.contentMode = .scaleAspectFit
         
@@ -275,7 +278,7 @@ extension OrderRidingViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
-        guard let location = locations.first else { return }
+        guard locations.first != nil else { return }
         
 //        if let driverLat = order?.driverLat, let driverLag = order?.driverLag {
 //

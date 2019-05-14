@@ -122,7 +122,7 @@ extension UIView {
         if let lockView = viewWithTag(10) {
             UIView.animate(withDuration: 0.2, animations: {
                 lockView.alpha = 0.0
-            }, completion: { finished in
+            }, completion: { _ in
                 lockView.removeFromSuperview()
             })
         }

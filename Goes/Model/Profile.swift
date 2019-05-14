@@ -35,7 +35,7 @@ struct Profile {
     var avatar: String
     var fcmToken: String
     
-    init(dictionary: [String: Any]){
+    init(dictionary: [String: Any]) {
         self.email = (dictionary["email"] as? String ?? "")
         self.userID = (dictionary["userID"] as? String ?? "")
         self.userName = (dictionary["userName"] as? String ?? "")
@@ -55,10 +55,3 @@ struct MyProfile {
     var fcmToken: String
     
 }
-
-
-    
-   
-
-
-

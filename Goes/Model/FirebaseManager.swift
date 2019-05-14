@@ -14,29 +14,34 @@ class FireBaseManager: NSObject {
     
     static let share = FireBaseManager()
     
-    private override init() {}
+    init(db: Firestore = Firestore.firestore()) {
+        
+        self.db = db
+    }
     
-    var db = Firestore.firestore()
+    let db: Firestore
+    
     var userProfile: MyProfile?
+    
     var userOrder: OrderDetail?
     var address: Address?
     
     func buildUserInfo(userID: String, userName: String, userEmail: String, avatar: String, userPhone: String) {
         
         self.db.collection("users").document(userID).setData(
-            [SetProfile.CodingKeys.userID.rawValue : userID,
-             SetProfile.CodingKeys.userName.rawValue : userName,
-             SetProfile.CodingKeys.email.rawValue : userEmail,
-             SetProfile.CodingKeys.avatar.rawValue : avatar,
-             SetProfile.CodingKeys.phoneNumber.rawValue : userPhone])
+            [SetProfile.CodingKeys.userID.rawValue: userID,
+             SetProfile.CodingKeys.userName.rawValue: userName,
+             SetProfile.CodingKeys.email.rawValue: userEmail,
+             SetProfile.CodingKeys.avatar.rawValue: avatar,
+             SetProfile.CodingKeys.phoneNumber.rawValue: userPhone])
     }
    
     func queryUsers(email: String, completionHandler: @escaping (Bool, String) -> Void) {
         
         var isMember = false
-        var friendUid : String?
-        
-        db.collection("users").getDocuments() { [weak self] (querySnapshot, err) in
+        var friendUid: String?
+
+        db.collection("users").getDocuments() { (querySnapshot, err) in
             if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -54,15 +59,14 @@ class FireBaseManager: NSObject {
                     }
                 
                 completionHandler(isMember, friendUid ?? "")
-                
-                
+            
                 }
                 
             }
         }
     
     func queryFriendStatus(friendUid: String, myUid: String, completionHandler: @escaping (Int) -> Void) {
-        db.collection("users").document(myUid).collection("friend").document(friendUid).getDocument { [weak self]  (document, err) in
+        db.collection("users").document(myUid).collection("friend").document(friendUid).getDocument {(document, _) in
             
             if document?.data() != nil {
                 
@@ -78,7 +82,7 @@ class FireBaseManager: NSObject {
         }
     }
     
-    func makeFriend(friendUid: String, myUid: String){
+    func makeFriend(friendUid: String, myUid: String) {
         db.collection("users").document(myUid).collection("friend").document(friendUid).setData(["status":1])
         db.collection("users").document(friendUid).collection("friend").document(myUid).setData(["status":2])
         
@@ -89,7 +93,8 @@ class FireBaseManager: NSObject {
     func queryUserInfo(userID: String, completion: @escaping CompletionHandler) {
         
         let userProfile =  db.collection("users").document(userID)
-        userProfile.getDocument { (document, error) in
+        
+        userProfile.getDocument { (document, _) in
             
             if let profile = document.flatMap({ $0.data().flatMap({ (data) in
                 return Profile(dictionary: data)
@@ -116,10 +121,9 @@ class FireBaseManager: NSObject {
     
     let group2 = DispatchGroup()
     
-    func querymyFriends(myUid: String, status: Int , completionHandler: @escaping ([MyProfile]?) -> Void) {
+    func querymyFriends(myUid: String, status: Int, completionHandler: @escaping ([MyProfile]?) -> Void) {
         var friendList = [MyProfile]()
-        db.collection("users").document(myUid).collection("friend").getDocuments
-            { [weak self]  (querySnapshot, err) in
+        db.collection("users").document(myUid).collection("friend").getDocuments { [weak self]  (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -128,7 +132,6 @@ class FireBaseManager: NSObject {
                         completionHandler(nil)
                         return
                     }
-                    
                     
                     for document in querySnapshot!.documents {
                         if let fireStatus = document.data()["status"] as? Int {
@@ -149,7 +152,6 @@ class FireBaseManager: NSObject {
                     self?.group2.notify(queue: .main, execute: {
                         completionHandler(friendList)
                     })
-                    
                     
                 }
         }
@@ -194,7 +196,8 @@ class FireBaseManager: NSObject {
     }
     
     func queryAdress(myUid: String, category: String, completionHandler: @escaping (Address?) -> Void) {
-        db.collection("users").document(myUid).collection("address").document(category).getDocument { [weak self]  (document, err) in
+        let ref = db.collection("users").document(myUid)
+        ref.collection("address").document(category).getDocument { [weak self]  (document, _) in
             
             if document?.data() != nil {
                 if let addressInfo = document.flatMap({ $0.data().flatMap({ (data) in
@@ -258,7 +261,7 @@ class FireBaseManager: NSObject {
         
         var myOrders = [OrderDetail]()
         
-        db.collection("users").document(myUid).collection("orders").getDocuments { [weak self]  (querySnapshot, err) in
+        db.collection("users").document(myUid).collection("orders").getDocuments { [weak self]  (querySnapshot, _) in
             
             if querySnapshot!.documents.count == 0 {
                 completionHandler([])
@@ -300,7 +303,7 @@ class FireBaseManager: NSObject {
         
         let docRef = db.collection("orders").document(orderID)
         
-        docRef.getDocument { [weak self]  (document, error) in
+        docRef.getDocument { [weak self]  (document, _) in
             if let order = document.flatMap({
                 $0.data().flatMap({ (data) in
                     return OrderFromDB(dictionary: data)
@@ -375,8 +378,12 @@ class FireBaseManager: NSObject {
         completionHandler()
     }
     
-    func orderComplete(myUid: String, friendUid: String, orderID: String, completeTime: Int, completionHandler: @escaping () -> Void) {
-        
+    func orderComplete(
+        myUid: String,
+        friendUid: String,
+        orderID: String,
+        completeTime: Int,
+        completionHandler: @escaping () -> Void) {
         db.collection("users").document(myUid).collection("orders").document(orderID).updateData(["status": 7])
         
         db.collection("users").document(friendUid).collection("orders").document(orderID).updateData(["status": 7])
@@ -402,7 +409,7 @@ class FireBaseManager: NSObject {
                     return
                 }
             
-                guard let data = document.data() else {
+            guard document.data() != nil else {
                     
                     print("Document data was empty.")
                     return

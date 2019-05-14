@@ -8,108 +8,162 @@
 
 import XCTest
 import Firebase
+@testable import Goes
 
-class GoesTests: XCTestCase {
+class MockFirestore: Firestore {
     
-    var results = [Int]()
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    static var path: String = ""
+    
+    override func collection(_ collectionPath: String) -> CollectionReference {
+        
+        MockFirestore.path += (collectionPath + "/")
+        
+        return super.collection(collectionPath)
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func document(_ documentPath: String) -> DocumentReference {
+        
+        MockFirestore.path += (documentPath + "/")
+        
+        return super.document(documentPath)
     }
+}
 
-
-    func fab(nnn: Int) -> Int? {
-//        if nnn <= 1 {
-//            return 1
-//        }
-        
-        if nnn < 0 {
-            return nil
-        }
-        
-        for iii in 0...nnn {
-            if iii <= 1 {
-                
-                results.append(1)
-                
-            } else {
-                
-                let first = results[iii-2]
-                let second = results[iii-1]
-                
-                results.append(first+second)
-                
-            }
-            
-        }
-        
-        return results[nnn]
+class MockCollectionReference: CollectionReference {
+    
+    init(test: String) {
         
     }
     
-//    func test_getData_fail() {}
-//    test method 用底線
-    
-    func testtestlab() {
-       XCTAssertTrue(fab(nnn: -1 ) == nil)
+    override func getDocuments(completion: @escaping FIRQuerySnapshotBlock) {
+
     }
+}
+
+class MockDocumentReference: DocumentReference {
     
+    init(test: String) {
+        
+    }
+}
+
+//class GoesTests: XCTestCase {
+//    
+//    
+//    override func setUp() {
+//        
+//    }
+//    
+//    override func tearDown() {
+//        // Put teardown code here. This method is called after the invocation of each test method in the class.
+//    }
+//    
+////    func test_queryUserInfo_pathShouldBeUserId() {
+////
+////        let mock = MockFirestore.firestore()
+////        
+////        let manager = FireBaseManager(db: mock)
+////        
+////        manager.queryUserInfo(userID: "12345") { (profile) in
+////            
+////        }
+////        
+////        print(mock.path)
+////    }
+//    
+////    func getUserName() -> String {
+////        let group = DispatchGroup()
+////        var userName = ""
+////        group.enter()
+////        self.testFirebaseManager.queryUserInfo(userID: "4VHjH8RqDhMKOpjCIIFBHGue97h2") { (myProfile) in
+////            userName = (myProfile?.userName)!
+////            group.leave()
+////        }
+////
+////        group.notify(queue: .main) {
+////            return userName
+////        }
+////
+////        return String()
+////
+////    }
 //
-//    func fib(n: Int) -> Int {
+////    func testExample() {
+////        getUserName()
+////        var realResult = getUserName()
+////
+////        let testResult = mockDB.queryData(userId: "4VHjH8RqDhMKOpjCIIFBHGue97h2")
+////        XCTAssertTrue(testResult == realResult)
+////
+////    }
+////
+////    func testPerformanceExample() {
+////        // This is an example of a performance test case.
+////        self.measure {
+////            // Put the code you want to measure the time of here.
+////
+////        }
+////    }
 //
-//        if n == 0 {
+//}
+
+//class TestFireBaseManager: NSObject {
 //
-//            return 0
+//    static let share = TestFireBaseManager()
 //
-//        } else if n == 1 {
+//    private override init() {}
 //
-//            return 1
+//    var db = Firestore.firestore()
 //
-//        } else {
+//     var userProfile: MyProfile?
 //
-//            return fib(n: n-1) + fib(n: n-2)
+//    typealias CompletionHandler = (MyProfile?) -> Void
+//
+//    func queryUserInfo(userID: String, completion: @escaping CompletionHandler) {
+//
+//        let userProfile =  db.collection("users").document(userID)
+//
+//        userProfile.getDocument { (document, error) in
+//
+//            if let profile = document.flatMap({ $0.data().flatMap({ (data) in
+//                return Profile(dictionary: data)
+//            })
+//            }) {
+//                self.userProfile = MyProfile(
+//                    email: profile.email,
+//                    userID: profile.userID,
+//                    userName: profile.userName,
+//                    phoneNumber: profile.phoneNumber,
+//                    avatar: profile.avatar,
+//                    fcmToken: profile.fcmToken)
+//
+//                print("Profile: \(profile)")
+//
+//                completion(self.userProfile)
+//
+//            } else {
+//                print("Document does not exist")
+//            }
 //
 //        }
 //    }
-    
-    func testLuke() {
-        //3A - Arrange, Action, Assert
-        
-        //Arrange
-        let aaa = 10
-        
-        let bbb = 20
-        
-        let expectedResult = aaa + bbb
-        
-        //Action
-        let actualResult = add(aaa: aaa, bbb: bbb)
-        
-        //Assert
-        XCTAssertEqual(actualResult, expectedResult)
-       
-    }
-    
-    
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-            
-            for _ in 0...1000 {
-                let _ = UIView()
-            }
-        }
-    }
-
-}
+//}
+//
+//class MockFireBaseDataBase {
+//
+//    let userId = "12345"
+//
+//    func queryData(userId: String ) -> String? {
+//
+//        if userId == self.userId {
+//
+//
+//            return "彥廷"
+//
+//        } else {
+//
+//            return nil
+//        }
+//
+//    }
+//}

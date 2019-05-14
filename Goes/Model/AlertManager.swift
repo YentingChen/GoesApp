@@ -10,14 +10,10 @@ import Foundation
 import UIKit
 
 enum AlertTitleName: String {
+    
     case addressChanged = "地址變更"
+    
 }
-
-//enum AlertMessage: String {
-//    
-//    case addressChanged = 
-//    
-//}
 
 class AlertManager: NSObject {
     
