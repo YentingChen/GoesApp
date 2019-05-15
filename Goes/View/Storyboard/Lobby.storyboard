@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="sQI-iF-vxf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Images_40x_ProfileDefault_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="sQI-iF-vxf">
                                 <rect key="frame" x="30" y="80" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="13q-0f-hvG" customClass="NSLayoutHelper" customModule="Goes" customModuleProvider="target">
@@ -859,6 +859,7 @@
         <image name="Home_ProgressBar_time" width="296" height="85"/>
         <image name="Images_24px_RadioBtn_Normal" width="37" height="37"/>
         <image name="Images_24px_RadioBtn_Selected" width="36" height="36"/>
+        <image name="Images_40x_ProfileDefault_Normal" width="512" height="512"/>
         <image name="baseline_home_black" width="24" height="24"/>
         <image name="baseline_location_on_black" width="24" height="24"/>
         <image name="baseline_star_black" width="24" height="24"/>

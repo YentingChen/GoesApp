@@ -43,7 +43,7 @@ class FriendInviteViewController: UIViewController {
         tableView.register(
             UINib(nibName: "FriendPlaceholderTableViewCell",
                   bundle: nil),
-            forCellReuseIdentifier: "friendPlaceholderTableViewCell")
+            forCellReuseIdentifier: "FriendPlaceholderTableViewCell")
 
     }
 
@@ -68,7 +68,7 @@ extension FriendInviteViewController: UITableViewDelegate, UITableViewDataSource
         if self.inviteFriend.count == 0 {
             
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "friendPlaceholderTableViewCell") as? FriendPlaceholderTableViewCell else {
+                withIdentifier: String(describing: FriendPlaceholderTableViewCell.self)) as? FriendPlaceholderTableViewCell else {
                     return UITableViewCell()
             }
             cell.selectionStyle = .none

@@ -15,6 +15,7 @@ import Alamofire
 
 class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate {
     
+    
     @IBOutlet weak var timeBackgroundView: UIView!{
         didSet {
             self.timeBackgroundView.roundCorners(20)
@@ -28,6 +29,16 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
     @IBOutlet weak var arrivingTime: UILabel!
     
     @IBOutlet weak var slideButtonView: UIView!
+    
+    @IBAction func toChatRoom(_ sender: Any) {
+        
+        let member = Member(name: myProfile!.userName, uid: myProfile!.userID)
+        
+        let vc = ChatViewController(user: member, order: order!)
+        navigationController?.pushViewController(vc, animated: true)
+        
+        
+    }
     
     @IBAction func callBtn(_ sender: Any) {
         
@@ -333,6 +344,8 @@ extension OrderAnswerRequestViewController: GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        
+        
         
     }
     

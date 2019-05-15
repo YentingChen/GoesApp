@@ -185,7 +185,7 @@ class OrderMyRequestViewController: UIViewController {
                 if orders[number].selectTimeDay < 10 {
                     return "0\(orders[number].selectTimeDay)"
                 } else {
-                    return "\(orders[number].selectTimeMonth)"
+                    return "\(orders[number].selectTimeDay)"
                 }
                 
             }()
@@ -448,6 +448,17 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == 0 {
+            if self.myOrdersS1.count != 0, self.driversS1.count != 0 {
+                self.selectedOrder = self.myOrdersS1[indexPath.row]
+                self.selectedDriver = self.driversS1[indexPath.row]
+                let member = Member(name: myProfile!.userName, uid: myProfile!.userID)
+                
+                let vc = ChatViewController(user: member, order: self.selectedOrder!)
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
         
         if indexPath.section == 2 {
             

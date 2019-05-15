@@ -24,6 +24,7 @@ target 'Goes' do
   pod 'lottie-ios'
   pod 'Fusuma'
   pod 'Kingfisher', '~> 5.0'
+  pod 'MessageKit'
   
   target 'GoesTests' do
     inherit! :search_paths

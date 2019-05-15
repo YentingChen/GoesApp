@@ -13,6 +13,8 @@ import Kingfisher
 
 class FriendListViewController: UIViewController {
     
+    let userDefault = UserDefaults.standard
+    
     let personalDataManager = PersonalDataManager.share
     let fireBaseManager = FireBaseManager.share
     var myProfile: MyProfile?
@@ -66,25 +68,45 @@ class FriendListViewController: UIViewController {
         
         self.myFriends = []
         
-        personalDataManager.getPersonalData { [weak self] (myProfile, error) in
+        guard let myUid = userDefault.value(forKey: UserdefaultKey.memberUid.rawValue) as? String else { return }
+        
+        FireBaseManager.share.queryUserInfo(userID: myUid) { (myProfile) in
+            self.myProfile = myProfile
             
-            self?.myProfile = myProfile
-            self?.fireBaseManager.querymyFriends(
-                myUid: (self?.myProfile?.userID)!,
-                status: 3,
-                completionHandler: { (friendInfos) in
-                    if friendInfos == nil {
-                        self?.tableView.endHeaderRefreshing()
-                    }
-                    guard let myfriendInfos = friendInfos else {
-                        return
-                    }
-                self?.myFriends = myfriendInfos
-                self?.tableView.reloadData()
-                self?.tableView.endHeaderRefreshing()
-                
-            })
         }
+        
+        FireBaseManager.share.querymyFriends(myUid: myUid, status: 3) { (friendInfos) in
+            
+            if friendInfos == nil {
+                self.tableView.endHeaderRefreshing()
+            }
+            guard let myfriendInfos = friendInfos else {
+                return
+            }
+            self.myFriends = myfriendInfos
+            self.tableView.reloadData()
+            self.tableView.endHeaderRefreshing()
+        }
+        
+//        personalDataManager.getPersonalData { [weak self] (myProfile, error) in
+//
+//            self?.myProfile = myProfile
+//            self?.fireBaseManager.querymyFriends(
+//                myUid: (self?.myProfile?.userID)!,
+//                status: 3,
+//                completionHandler: { (friendInfos) in
+//                    if friendInfos == nil {
+//                        self?.tableView.endHeaderRefreshing()
+//                    }
+//                    guard let myfriendInfos = friendInfos else {
+//                        return
+//                    }
+//                self?.myFriends = myfriendInfos
+//                self?.tableView.reloadData()
+//                self?.tableView.endHeaderRefreshing()
+//
+//            })
+//        }
     }
     
     fileprivate func showAlert(number: Int) {
@@ -135,7 +157,7 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
         
         if self.myFriends.count == 0 {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendPlaceholderTableViewCell") as? FriendPlaceholderTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FriendPlaceholderTableViewCell.self)) as? FriendPlaceholderTableViewCell else { return UITableViewCell() }
             cell.selectionStyle = .none
             
             return cell

@@ -93,6 +93,9 @@
 		3E7B6E25225B517C00646724 /* OrderMyRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */; };
 		3E7B6E28225B52E100646724 /* OrderMyRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */; };
 		3E7B6E29225B52E100646724 /* OrderMyRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */; };
+		3E7F832B228C586500EEAB1F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F832A228C586500EEAB1F /* Message.swift */; };
+		3E7F832D228C59B800EEAB1F /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F832C228C59B800EEAB1F /* UIScrollView.swift */; };
+		3E7F832F228C59E300EEAB1F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F832E228C59E300EEAB1F /* ChatViewController.swift */; };
 		3E8C8C84226DE54F00063208 /* OrderDrivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C8C83226DE54F00063208 /* OrderDrivingViewController.swift */; };
 		3E92662722656A6C009EC3D1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E92662622656A6C009EC3D1 /* FirebaseManager.swift */; };
 		3E93D7342277F7650045D15C /* UITextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E93D72E2277F7640045D15C /* UITextFieldHelper.swift */; };
@@ -222,6 +225,9 @@
 		3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyRequestViewController.swift; sourceTree = "<group>"; };
 		3E7B6E26225B52E100646724 /* OrderMyRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyRequestTableViewCell.swift; sourceTree = "<group>"; };
 		3E7B6E27225B52E100646724 /* OrderMyRequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderMyRequestTableViewCell.xib; sourceTree = "<group>"; };
+		3E7F832A228C586500EEAB1F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		3E7F832C228C59B800EEAB1F /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
+		3E7F832E228C59E300EEAB1F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		3E8C8C83226DE54F00063208 /* OrderDrivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDrivingViewController.swift; sourceTree = "<group>"; };
 		3E92662622656A6C009EC3D1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		3E93D72E2277F7640045D15C /* UITextFieldHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldHelper.swift; sourceTree = "<group>"; };
@@ -424,6 +430,7 @@
 				3E461FBB2282CA1600162813 /* String+.swift */,
 				3EAA68892283C44C00696AD2 /* URL+.swift */,
 				3E6E9AC7228561420089FF32 /* KingFisherWrapper.swift */,
+				3E7F832C228C59B800EEAB1F /* UIScrollView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -522,6 +529,7 @@
 				3EA3B552226ED07E0072F432 /* OrderRidingViewController.swift */,
 				3E8C8C83226DE54F00063208 /* OrderDrivingViewController.swift */,
 				3EAA688F2283F25500696AD2 /* MapViewController.swift */,
+				3E7F832E228C59E300EEAB1F /* ChatViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -551,6 +559,7 @@
 				3E461FB92282979000162813 /* AlertManager.swift */,
 				3EAA688B2283CE1700696AD2 /* ToSettingPageManager.swift */,
 				3EAA688D2283DC0A00696AD2 /* PrivacyManager.swift */,
+				3E7F832A228C586500EEAB1F /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -821,9 +830,11 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/MTSlideToOpen/MTSlideToOpen.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
@@ -842,9 +853,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InputBarAccessoryView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MTSlideToOpen.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
@@ -939,11 +952,13 @@
 				3E7B6E0A2259229B00646724 /* ProfilePersonalTableViewCell.swift in Sources */,
 				3E461FB2228271D100162813 /* TableViewCellName.swift in Sources */,
 				3EAA688A2283C44C00696AD2 /* URL+.swift in Sources */,
+				3E7F832F228C59E300EEAB1F /* ChatViewController.swift in Sources */,
 				3E662EF5226840770016F962 /* AdressHomeViewController.swift in Sources */,
 				3E93D7352277F7650045D15C /* UITextViewHelper.swift in Sources */,
 				3E461FBA2282979000162813 /* AlertManager.swift in Sources */,
 				3E6169652254798500786F9F /* LobbyMapViewController.swift in Sources */,
 				3E93D7372277F7650045D15C /* UILabelHelper.swift in Sources */,
+				3E7F832D228C59B800EEAB1F /* UIScrollView.swift in Sources */,
 				3E459355225777DE00073210 /* LobbyFriendCollectionViewCell.swift in Sources */,
 				3EAA688E2283DC0A00696AD2 /* PrivacyManager.swift in Sources */,
 				3E23588F22590D74004182F0 /* FriendInviteViewController.swift in Sources */,
@@ -965,6 +980,7 @@
 				3E0297E92281719D00DBB051 /* Lottie+.swift in Sources */,
 				3E93D7342277F7650045D15C /* UITextFieldHelper.swift in Sources */,
 				3E93D7362277F7650045D15C /* DeviceHelper.swift in Sources */,
+				3E7F832B228C586500EEAB1F /* Message.swift in Sources */,
 				3E9CCE7F226A1258000BE5F6 /* OrderRequestHeaderTableViewCell.swift in Sources */,
 				3E3EFD102259186C0078E686 /* FriendSentTableViewCell.swift in Sources */,
 				3EF961022281913C006853C8 /* FireAuthManager.swift in Sources */,
@@ -1203,6 +1219,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = UNAH767L53;
 				INFOPLIST_FILE = GoesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1223,6 +1240,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UNAH767L53;
 				INFOPLIST_FILE = GoesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

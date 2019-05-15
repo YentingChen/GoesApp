@@ -22,7 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XXo-HA-71G">
                                 <rect key="frame" x="0.0" y="64" width="375" height="200"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="oa3-4N-boZ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Images_40x_ProfileDefault_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="oa3-4N-boZ">
                                         <rect key="frame" x="137.5" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="aO7-HD-7le"/>
@@ -572,9 +572,9 @@
         <image name="Icons_20x_Camera_Normal" width="20" height="17"/>
         <image name="Icons_30x_driver_Normal" width="40" height="31"/>
         <image name="Icons_30x_rider_Normal" width="40" height="31"/>
+        <image name="Images_40x_ProfileDefault_Normal" width="512" height="512"/>
         <image name="cross36x" width="44" height="44"/>
         <image name="icons_24x_logOut_Normal" width="24" height="23"/>
-        <image name="profile_image" width="512" height="512"/>
         <namedColor name="B1">
             <color red="0.24705882352941178" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

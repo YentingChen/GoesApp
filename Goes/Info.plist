@@ -29,12 +29,14 @@
 	<string>pk.eyJ1IjoieWVpbnRpbmdjaGVuIiwiYSI6ImNqdWMxYTd0NTBqZzY0M21oa3BvN2ZwNjEifQ.Mr8wr4W8vfUFU5r49qGcCQ</string>
 	<key>NSCameraUsageDescription</key>
 	<string>如果要更換使用者頭像等相關功能，請選擇讀取和寫入</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>如要取得規劃路線等相關功能，請選擇(永遠允許)</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>如要取得規劃路線等相關功能，請選擇(永遠允許)</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>如要取得規劃路線等相關功能，請選擇(永遠允許)</string>
+	<string></string>
+<!--    <key>NSLocationUsageDescription</key>-->
+<!--    <string></string>-->
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>如果要更換使用者頭像等相關功能，請選擇讀取和寫入</string>
 	<key>UIBackgroundModes</key>

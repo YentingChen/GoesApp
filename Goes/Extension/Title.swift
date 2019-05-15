@@ -24,7 +24,7 @@ enum Title: String {
     case driverSetOff = "您的朋友已經出發"
 }
 
-enum Message: String {
+enum NotificationMessage: String {
 
     case driverSetOff = "已經出發!"
         

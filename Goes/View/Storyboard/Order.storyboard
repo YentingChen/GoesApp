@@ -292,6 +292,14 @@
                                     <action selector="callBtn:" destination="vas-Iy-HlV" eventType="touchUpInside" id="O1h-U4-5hg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D22-U5-Zbr">
+                                <rect key="frame" x="235" y="413" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Icons_24x_Email_Normal"/>
+                                <connections>
+                                    <action selector="toChatRoom:" destination="vas-Iy-HlV" eventType="touchUpInside" id="y1T-ha-3sI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -705,6 +713,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icons_24x_Email_Normal" width="22" height="17"/>
         <image name="Images_24x_Phone_Normal" width="24" height="24"/>
         <image name="Images_40x_Cross_Red" width="40" height="40"/>
         <image name="Images_80x_Arrive_Normal" width="80" height="80"/>

@@ -32,7 +32,7 @@ class FriendSentViewController: UIViewController {
         tableView.register(
             UINib(nibName: "FriendPlaceholderTableViewCell",
                   bundle: nil),
-            forCellReuseIdentifier: "friendPlaceholderTableViewCell")
+            forCellReuseIdentifier: "FriendPlaceholderTableViewCell")
         
         tableView.separatorStyle = .none
         
@@ -97,7 +97,8 @@ extension FriendSentViewController: UITableViewDataSource, UITableViewDelegate {
         -> UITableViewCell {
             if sentFriend.count == 0 {
                 
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendPlaceholderTableViewCell") as? FriendPlaceholderTableViewCell else { return UITableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: String(describing: FriendPlaceholderTableViewCell.self)) as? FriendPlaceholderTableViewCell else { return UITableViewCell() }
                 
                  cell.selectionStyle = .none
                 

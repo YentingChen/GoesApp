@@ -12,6 +12,7 @@ import GoogleMaps
 import GooglePlaces
 import SwiftyJSON
 import Alamofire
+import CoreLocation
 
 class MapViewController: UIViewController {
     
@@ -27,7 +28,7 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         guard let order = self.order else {
             return
         }
@@ -40,7 +41,7 @@ class MapViewController: UIViewController {
         
         orderDrivingView.arrivingTimeLabel.text = String.produceTime(order: order)
         
-        self.locationManager.requestWhenInUseAuthorization()
+//        self.locationManager.requestWhenInUseAuthorization()
     }
     
     func checkLocationAuth() {
@@ -49,7 +50,9 @@ class MapViewController: UIViewController {
             
         case .notDetermined:
             
-            locationManager.requestWhenInUseAuthorization()
+//            locationManager.requestWhenInUseAuthorization()
+            
+            locationManager.requestAlwaysAuthorization()
             
         case .restricted, .denied, .authorizedWhenInUse:
             // Disable location features
@@ -58,7 +61,7 @@ class MapViewController: UIViewController {
                 title: "請先設定位置權限",
                 message: "前往 設定/隱私權/定位服務/允許取用位置，選取 “永遠”，否則將無法使用該功能 ",
                 viewController: self,
-                typeOfAction: 3,
+                typeOfAction: 1,
                 okHandler: {
                     ToSettingPageManager.share.toSettingPage()
                     self.navigationController?.popViewController(animated: false)

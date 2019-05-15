@@ -10,42 +10,87 @@ import XCTest
 import Firebase
 @testable import Goes
 
-class MockFirestore: Firestore {
+class GoesTest: XCTestCase {
     
-    static var path: String = ""
-    
-    override func collection(_ collectionPath: String) -> CollectionReference {
+    func produceOrderDetail(year: Int, month: Int, time: String, day: Int ) -> OrderDetail {
         
-        MockFirestore.path += (collectionPath + "/")
+        let testOrderDetail = OrderDetail(
+            driverUid: "123",
+            riderUid: "456",
+            locationFormattedAddress: "taipei Xinyi",
+            selectedLat: 22.5,
+            selectedLng: 112.2,
+            locationName: "taipei",
+            locationPlaceID: "taipeiXinyi180",
+            selectTimeDate: 201111111,
+            selectTimeDay: day,
+            selectTimeYear: year,
+            selectTimeMonth: month,
+            selectTimeTime: time,
+            orderID: "1111",
+            driverLat: 22.3,
+            driverLag: 112.3,
+            riderLat: 22.4,
+            riderLag: 112.5,
+            setOff: 1,
+            driverStartLat: 22.2,
+            driverStartLag: 112.2,
+            driverStartTime: 20111111,
+            completeTime: 20111122)
         
-        return super.collection(collectionPath)
+        return testOrderDetail
     }
     
-    override func document(_ documentPath: String) -> DocumentReference {
+    
+    func test_ProduceTime() {
+        let order = produceOrderDetail(year: 2019, month: 13, time: "25:06", day: 30)
+        let abc = String.produceTime(order: order )
+        print(abc)
         
-        MockFirestore.path += (documentPath + "/")
-        
-        return super.document(documentPath)
     }
+    
+    func test_produceTime_success() {
+        
+    }
+    
 }
 
-class MockCollectionReference: CollectionReference {
-    
-    init(test: String) {
-        
-    }
-    
-    override func getDocuments(completion: @escaping FIRQuerySnapshotBlock) {
-
-    }
-}
-
-class MockDocumentReference: DocumentReference {
-    
-    init(test: String) {
-        
-    }
-}
+//class MockFirestore: Firestore {
+//
+//    static var path: String = ""
+//
+//    override func collection(_ collectionPath: String) -> CollectionReference {
+//
+//        MockFirestore.path += (collectionPath + "/")
+//
+//        return super.collection(collectionPath)
+//    }
+//
+//    override func document(_ documentPath: String) -> DocumentReference {
+//
+//        MockFirestore.path += (documentPath + "/")
+//
+//        return super.document(documentPath)
+//    }
+//}
+//
+//class MockCollectionReference: CollectionReference {
+//
+//    init(test: String) {
+//
+//    }
+//
+//    override func getDocuments(completion: @escaping FIRQuerySnapshotBlock) {
+//
+//    }
+//}
+//
+//class MockDocumentReference: DocumentReference {
+//
+//    init(test: String) {
+//
+//    }
+//}
 
 //class GoesTests: XCTestCase {
 //    

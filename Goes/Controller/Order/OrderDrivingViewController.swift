@@ -112,7 +112,7 @@ class OrderDrivingViewController: MapViewController {
         sender.sendPushNotification(
             to: friendFcmToken,
             title: Title.driverSetOff.rawValue,
-            body: "\(myself.userName)\(Message.driverSetOff.rawValue)")
+            body: "\(myself.userName)\(NotificationMessage.driverSetOff.rawValue)")
     }
     
     fileprivate func startDriveSetting() {
