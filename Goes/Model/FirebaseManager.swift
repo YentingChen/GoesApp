@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 import Firebase
 
+// swiftlint:disable identifier_name
 class FireBaseManager: NSObject {
     
     static let share = FireBaseManager()
@@ -455,5 +456,5 @@ class FireBaseManager: NSObject {
 
         }
     }
-    
+    // swiftlint:enable identifier_name
 }

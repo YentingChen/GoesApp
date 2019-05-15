@@ -12,7 +12,7 @@ class LobbyTimeViewController: UIViewController {
     
     let userDefaults = UserDefaults.standard
     var selectedLocation: Address?
-    var selectedDateTime : DateAndTime?
+    var selectedDateTime: DateAndTime?
     var laterTxt = "儘快"
     let timeArray = [String]()
     let test = ["今天", "明天"]
@@ -37,7 +37,7 @@ class LobbyTimeViewController: UIViewController {
                 as? AskLogInViewController
             loginVC?.modalPresentationStyle = .overCurrentContext
             
-            self.present(loginVC!, animated: false , completion: nil)
+            self.present(loginVC!, animated: false, completion: nil)
            
         }
         

@@ -382,7 +382,6 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
                         cell.avatarImage.clipsToBounds = true
                     }
                     
-                    
                     return cell
                 
             }

@@ -9,5 +9,6 @@
 import Foundation
 
 enum UserdefaultKey: String {
+    
     case memberUid
 }

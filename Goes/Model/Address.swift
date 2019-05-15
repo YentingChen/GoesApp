@@ -37,4 +37,3 @@ struct Address {
     var placeformattedAddress: String
     
 }
-
