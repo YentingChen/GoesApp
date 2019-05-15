@@ -90,7 +90,9 @@ class OrderMyRequestViewController: UIViewController {
             
             self?.group.enter()
             
-            self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 1, completionHandler: { [weak self] (orders) in
+            self?.fireBaseManager.queryMyOrders(
+                myUid: (myProfile?.userID)!, status: 1,
+                completionHandler: { [weak self] (orders) in
                 
                 self?.myOrdersS1 = orders
             
@@ -112,7 +114,9 @@ class OrderMyRequestViewController: UIViewController {
             
             self?.group.enter()
             
-            self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 4, completionHandler: { [weak self]  (orders) in
+            self?.fireBaseManager.queryMyOrders(
+                myUid: (myProfile?.userID)!, status: 4,
+                completionHandler: { [weak self]  (orders) in
                 
                 self?.myOrdersS4 = orders
                 
@@ -166,7 +170,7 @@ class OrderMyRequestViewController: UIViewController {
         
     }
     
-    func produceTime(orders:[OrderDetail], number: Int)
+    func produceTime(orders: [OrderDetail], number: Int)
         -> String {
             
             let year = orders[number].selectTimeYear
@@ -448,7 +452,7 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
         
         if indexPath.section == 2 {
             
-            if self.myOrdersS5.count != 0 , self.driverS5.count != 0 {
+            if self.myOrdersS5.count != 0, self.driverS5.count != 0 {
                 
                 self.selectedOrder = self.myOrdersS5[indexPath.row]
                 self.selectedDriver = self.driverS5[indexPath.row]
@@ -461,4 +465,3 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
     }
 
 }
-

@@ -97,7 +97,7 @@ import UIKit
 extension UIView {
     
     func lock() {
-        if let _ = viewWithTag(10) {
+        if viewWithTag(10) != nil {
             //View is already locked
         } else {
 

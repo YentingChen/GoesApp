@@ -16,12 +16,13 @@ extension UISegmentedControl {
         self.tintColor = .white
         self.backgroundColor = .white
         self.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: UIColor.G1,
+            [NSAttributedString.Key.foregroundColor: UIColor.G1!,
              NSAttributedString.Key.backgroundColor: UIColor.white,
-             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .bold)], for: .selected)
+             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .bold)], for: .selected)
         self.setTitleTextAttributes(
-            [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16),
-             NSAttributedString.Key.foregroundColor: UIColor(red: 136/255, green: 136/255, blue: 136/255, alpha: 136/255)],
+            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+             NSAttributedString.Key.foregroundColor: UIColor(
+                red: 136/255, green: 136/255, blue: 136/255, alpha: 136/255)],
             for: .normal)
     }
     
@@ -31,7 +32,9 @@ extension UISegmentedControl {
         let underlineHeight: CGFloat = 3.0
         let underlineXPosition = CGFloat(selectedSegmentIndex * Int(underlineWidth))
         let underLineYPosition = self.bounds.size.height - 0.5
-        let underlineFrame = CGRect(x: underlineXPosition, y: underLineYPosition, width: underlineWidth, height: underlineHeight)
+        let underlineFrame = CGRect(
+            x: underlineXPosition, y: underLineYPosition,
+            width: underlineWidth, height: underlineHeight)
         let underline = UIView(frame: underlineFrame)
         underline.backgroundColor = UIColor.G1
         underline.tag = 1
@@ -40,7 +43,8 @@ extension UISegmentedControl {
     
     func changeUnderlinePosition() {
         guard let underline = self.viewWithTag(1) else {return}
-        let underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(selectedSegmentIndex)
+        let underlineFinalXPosition = (
+            self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(selectedSegmentIndex)
         UIView.animate(withDuration: 0.1, animations: {
             underline.frame.origin.x = underlineFinalXPosition
             underline.layer.zPosition = 0.2

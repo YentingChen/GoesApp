@@ -9,6 +9,8 @@
 import UIKit
 
 private enum STColor: String {
+    
+     // swiftlint:disable identifier_name
 
     case B1
 
@@ -44,17 +46,19 @@ extension UIColor {
     private static func STColor(_ color: STColor) -> UIColor? {
 
         return UIColor(named: color.rawValue)
+        
+        // swiftlint:eable identifier_name
     }
 
     static func hexStringToUIColor(hex: String) -> UIColor {
 
         var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
-        if (cString.hasPrefix("#")) {
+        if cString.hasPrefix("#") {
             cString.remove(at: cString.startIndex)
         }
 
-        if ((cString.count) != 6) {
+        if (cString.count) != 6 {
             return UIColor.gray
         }
 

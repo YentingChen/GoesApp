@@ -276,29 +276,29 @@ extension OrderRidingViewController: CLLocationManagerDelegate {
        
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-        guard locations.first != nil else { return }
-        
-//        if let driverLat = order?.driverLat, let driverLag = order?.driverLag {
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //
-//            var region = GMSVisibleRegion()
-//
-//            region.nearLeft = CLLocationCoordinate2DMake((self.order?.selectedLat)!, (self.order?.selectedLng)!)
-//
-//            region.farRight = CLLocationCoordinate2DMake(driverLat, driverLag)
-//
-//            let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
-//
-//            let camera = self.mapView.camera(for: bounds, insets:UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100))
-//
-//            self.mapView.camera = camera!
-//        } else {
-        
-//            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-//        }
-        
-    }
+//        guard locations.first != nil else { return }
+//        
+////        if let driverLat = order?.driverLat, let driverLag = order?.driverLag {
+////
+////            var region = GMSVisibleRegion()
+////
+////            region.nearLeft = CLLocationCoordinate2DMake((self.order?.selectedLat)!, (self.order?.selectedLng)!)
+////
+////            region.farRight = CLLocationCoordinate2DMake(driverLat, driverLag)
+////
+////            let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
+////
+////            let camera = self.mapView.camera(for: bounds, insets:UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100))
+////
+////            self.mapView.camera = camera!
+////        } else {
+//        
+////            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+////        }
+//        
+//    }
 
 }
 
