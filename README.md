@@ -33,8 +33,8 @@ The App is published on App Store [click here](https://itunes.apple.com/tw/app/g
 
 **Profile tab**  
 
-
 - In profile page, you can edit the addresses, change the avatar and check the history.
+
 <img src="https://github.com/YentingChen/GoesApp/blob/develope/Gif/profile:avatar.gif" width="200"><img src="https://github.com/YentingChen/GoesApp/blob/develope/Gif/profile_address.gif" width="200"><img src="https://github.com/YentingChen/GoesApp/blob/develope/Gif/Profile_history.gif" width="200">
 
 
