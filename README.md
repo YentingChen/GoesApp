@@ -28,8 +28,10 @@ The App is published on App Store [click here](https://itunes.apple.com/tw/app/g
 
 3. Seclect a friend
 
-![](https://i.imgur.com/hfPSE1k.png)
-  
+<img src="https://github.com/YentingChen/GoesApp/blob/develope/Gif/select_friend.gif" width="200">
+
+
+**Check request tab**  
 - In request page, your friend can decide accept the request or not, also can see the request content and estimated arriving time. When your friend start the journey, you will receive the remote notification.
 
 ![](https://i.imgur.com/QNnct6E.png)![](https://i.imgur.com/UEP4V8z.png)![](https://i.imgur.com/dKXKu0I.png)
