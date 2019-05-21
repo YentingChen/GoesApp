@@ -14,14 +14,20 @@ The App is published on App Store [click here](https://itunes.apple.com/tw/app/g
 
 ## Features
 
-- You can use **Pin** :round_pushpin: or **Searching Bar** :mag: to select picking up place
+**Make a picking up request**
+1. Select a picking up place
+-- You can use **Pin** :round_pushpin: or **Searching Bar** :mag:
 
 <img src="https://github.com/YentingChen/GoesApp/blob/develope/Gif/pin:map.gif" width="200">    <img src="https://github.com/YentingChen/GoesApp/blob/develope/Gif/search:map.gif" width="200">
 
-- You can select estimated Arring Time :clock1:, and then, select **the friend** to send picking up request.
+2. Select picking up time
+
+![](https://i.imgur.com/PjnDn6k.png)
 
 
-![](https://i.imgur.com/PjnDn6k.png)![](https://i.imgur.com/hfPSE1k.png)
+3. Seclect a friend
+
+![](https://i.imgur.com/hfPSE1k.png)
   
 - In request page, your friend can decide accept the request or not, also can see the request content and estimated arriving time. When your friend start the journey, you will receive the remote notification.
 
