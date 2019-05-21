@@ -22,7 +22,8 @@ The App is published on App Store [click here](https://itunes.apple.com/tw/app/g
 
 2. Select picking up time
 
-![](https://i.imgur.com/PjnDn6k.png)
+<img src="https://github.com/YentingChen/GoesApp/blob/develope/Gif/select_time.gif" width="200">
+
 
 
 3. Seclect a friend
