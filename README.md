@@ -14,10 +14,12 @@ The App is published on App Store [click here](https://itunes.apple.com/tw/app/g
 
 ## Features
 
-- You can use **Pin** :round_pushpin: or **Searching Bar** :mag: to select picking up place 
+- You can use **Pin** :round_pushpin: or **Searching Bar** :mag: to select picking up place
+
 ![](https://i.imgur.com/phyzkAn.png)![](https://i.imgur.com/GCKpGtn.png)
 
 - You can select estimated Arring Time :clock1:, and then, select **the friend** to send picking up request.
+
 
 ![](https://i.imgur.com/PjnDn6k.png)![](https://i.imgur.com/hfPSE1k.png)
   
