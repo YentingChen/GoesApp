@@ -1,6 +1,3 @@
-# GoesApp
-
-
 # Goes
 
 <!-- Put the link to this slide here so people can follow -->
