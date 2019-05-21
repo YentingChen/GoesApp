@@ -11,9 +11,7 @@ import Firebase
 import FirebaseAuth
 
 class SignUpViewController: UIViewController {
-    
-//     var db : Firestore!
-//     var ref: DocumentReference? = nil    
+
     let firebaseManager = FireBaseManager.share
     
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -76,7 +74,12 @@ class SignUpViewController: UIViewController {
                     
                     guard let userEmail = user?.user.email else { return }
                     
-                    self.firebaseManager.buildUserInfo(userID: userID, userName: userName, userEmail: userEmail, avatar: "", userPhone: userPhone)
+                    self.firebaseManager.buildUserInfo(
+                        userID: userID,
+                        userName: userName,
+                        userEmail: userEmail,
+                        avatar: "",
+                        userPhone: userPhone)
                     
 //                    self.db.collection("users").document(userID).setData(
 //                        [SetProfile.CodingKeys.userID.rawValue : userID,

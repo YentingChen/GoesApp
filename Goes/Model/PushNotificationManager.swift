@@ -33,7 +33,6 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
                 completionHandler: {_, _ in })
             // For iOS 10 data message (sent via FCM)
             Messaging.messaging().delegate = self
-            print(Messaging.messaging().fcmToken)
            
         } else {
             let settings: UIUserNotificationSettings =

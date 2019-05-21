@@ -15,7 +15,6 @@ class FriendInviteViewController: UIViewController {
     var myProfile: MyProfile?
     var inviteFriend = [MyProfile]()
     @IBOutlet weak var tableView: UITableView!
-    var db = Firestore.firestore()
 
      func loadDataFromDB() {
         
@@ -77,7 +76,9 @@ extension FriendInviteViewController: UITableViewDelegate, UITableViewDataSource
             
         } else {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendInviteTableViewCell", for: indexPath) as? FriendInviteTableViewCell else { return  UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "friendInviteTableViewCell",
+                for: indexPath) as? FriendInviteTableViewCell else { return  UITableViewCell() }
             
             cell.checkBtn.tag = indexPath.row
             cell.deleteBtn.tag = indexPath.row
@@ -98,7 +99,9 @@ extension FriendInviteViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     @objc func cancelInvite(_ sendr: UIButton) {
-        self.fireBaseManager.deleteFriend(myUid: (self.myProfile?.userID)!, friendUid: self.inviteFriend[sendr.tag].userID) {
+        self.fireBaseManager.deleteFriend(
+        myUid: (self.myProfile?.userID)!,
+        friendUid: self.inviteFriend[sendr.tag].userID) {
             
             self.inviteFriend.remove(at: sendr.tag)
             self.tableView.reloadData()
@@ -107,7 +110,9 @@ extension FriendInviteViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     @objc func makeFriend(_ sendr: UIButton) {
-        self.fireBaseManager.becomeFriend(myUid: (self.myProfile?.userID)!, friendUid: self.inviteFriend[sendr.tag].userID) {
+        self.fireBaseManager.becomeFriend(
+        myUid: (self.myProfile?.userID)!,
+        friendUid: self.inviteFriend[sendr.tag].userID) {
             
             self.inviteFriend.remove(at: sendr.tag)
             self.tableView.reloadData()

@@ -138,7 +138,10 @@ class OrderMyRequestViewController: UIViewController {
             })
             
             self?.group.enter()
-            self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 5, completionHandler: {  [weak self] (orders) in
+            self?.fireBaseManager.queryMyOrders(
+                myUid: (myProfile?.userID)!,
+                status: 5,
+                completionHandler: {  [weak self] (orders) in
                 
                 self?.myOrdersS5 = orders
             
@@ -218,7 +221,10 @@ extension OrderMyRequestViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
+            withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else {
+                return UITableViewCell()
+                
+        }
         
          cell.backgroundColor = .white
 

@@ -42,7 +42,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDa-c9-2DE">
                                         <rect key="frame" x="129" y="185" width="54" height="30"/>
-                                        <state key="normal" title="&lt;&lt; 登陸">
+                                        <state key="normal" title="&lt;&lt; 登錄">
                                             <color key="titleColor" name="B3"/>
                                         </state>
                                         <connections>

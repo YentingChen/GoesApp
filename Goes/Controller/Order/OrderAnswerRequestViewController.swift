@@ -15,7 +15,6 @@ import Alamofire
 
 class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate {
     
-    
     @IBOutlet weak var timeBackgroundView: UIView!{
         didSet {
             self.timeBackgroundView.roundCorners(20)
@@ -65,7 +64,10 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
         guard let friendFcmToken = self.rider?.fcmToken else { return }
         guard let myself = self.myProfile else { return }
         let sender = PushNotificationSender()
-        sender.sendPushNotification(to: friendFcmToken, title: "您的請求遭到拒絕", body: "\(myself.userName) 不同意您的請求，或許您可以再發送一次")
+        sender.sendPushNotification(
+            to: friendFcmToken,
+            title: "您的請求遭到拒絕",
+            body: "\(myself.userName) 不同意您的請求，或許您可以再發送一次")
         
         self.fireBaseManager.orderCancel(
         myUid: (self.myProfile?.userID)!,
@@ -264,9 +266,13 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
         
         region.farRight = origin
         
-        let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
+        let bounds = GMSCoordinateBounds(
+            coordinate: region.nearLeft,
+            coordinate: region.farRight)
         
-        guard let camera = googleMap.camera(for: bounds, insets: UIEdgeInsets(top: 50, left: 100 , bottom: 50,  right: 100 )) else { return }
+        guard let camera = googleMap.camera(
+            for: bounds,
+            insets: UIEdgeInsets(top: 50, left: 100, bottom: 50, right: 100 )) else { return }
         
         self.googleMap.camera = camera
         
@@ -277,7 +283,6 @@ class OrderAnswerRequestViewController: UIViewController, MTSlideToOpenDelegate 
         let destinationCoordinate = "\(destination.latitude),\(destination.longitude)"
         
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(originCoordinate)&destination=\(destinationCoordinate)&mode=driving&key=AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
-        print(url)
         
         Alamofire.request(url).responseJSON { response in
             

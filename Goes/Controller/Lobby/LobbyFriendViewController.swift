@@ -103,8 +103,6 @@ class LobbyFriendViewController: UIViewController {
         
     }
     
-    
-    
     func createOrderID() -> Int {
         let now = Date()
         let timeInterval: TimeInterval = now.timeIntervalSince1970
@@ -115,7 +113,7 @@ class LobbyFriendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        personalDataManager.getPersonalData { (myProfile, error) in
+        personalDataManager.getPersonalData { (myProfile, _) in
             self.myProfile = myProfile
             self.fireBaseManager.querymyFriends(
                 myUid: (self.myProfile?.userID)!,

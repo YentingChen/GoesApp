@@ -212,7 +212,7 @@
                                 </constraints>
                                 <state key="normal" image="cross36x"/>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin24x24" translatesAutoresizingMaskIntoConstraints="NO" id="LbJ-Bm-pCv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Images_24x_Pin_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="LbJ-Bm-pCv">
                                 <rect key="frame" x="175.5" y="298" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="Dm0-LX-bCn"/>
@@ -859,13 +859,13 @@
         <image name="Home_ProgressBar_time" width="296" height="85"/>
         <image name="Images_24px_RadioBtn_Normal" width="37" height="37"/>
         <image name="Images_24px_RadioBtn_Selected" width="36" height="36"/>
+        <image name="Images_24x_Pin_Normal" width="14" height="24"/>
         <image name="Images_40x_ProfileDefault_Normal" width="512" height="512"/>
         <image name="baseline_home_black" width="24" height="24"/>
         <image name="baseline_location_on_black" width="24" height="24"/>
         <image name="baseline_star_black" width="24" height="24"/>
         <image name="baseline_work_black" width="24" height="24"/>
         <image name="cross36x" width="44" height="44"/>
-        <image name="pin24x24" width="14" height="24"/>
         <image name="profile_image" width="512" height="512"/>
         <image name="target36x" width="48" height="48"/>
         <image name="time36x_white" width="36" height="36"/>

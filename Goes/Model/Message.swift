@@ -20,7 +20,7 @@ struct Member {
     let name: String
     let uid: String
     
-    init(name: String, uid: String){
+    init(name: String, uid: String) {
         self.name = name
         self.uid = uid
     }
@@ -33,7 +33,6 @@ struct Message: MessageType {
     let content: String
     let sentDate: Date
     
-    
     var kind: MessageKind {
         
         return .text(content)
@@ -44,14 +43,12 @@ struct Message: MessageType {
         return id ?? UUID().uuidString
     }
     
-    
     init(user: Member, content: String) {
         sender = Sender(id: user.uid, displayName: user.name)
         self.content = content
         sentDate = Date()
         id = nil
     }
-    
     
     init?(document: QueryDocumentSnapshot) {
         

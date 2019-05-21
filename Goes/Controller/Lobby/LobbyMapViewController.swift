@@ -202,13 +202,12 @@ class LobbyMapViewController: UIViewController {
     
     @IBAction func toTimePage(_ sender: Any) {
         
-        guard let selectedLocation = self.selectedLocation else {
+        guard self.selectedLocation != nil else {
             showAlert(title: "請先選擇位置", message:  "請先選擇位置", actionNumber: 1) {
                 
             }
             return }
         
-      
         performSegue(withIdentifier: "toTimePage", sender: self)
     }
     

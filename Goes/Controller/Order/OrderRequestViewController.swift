@@ -102,7 +102,10 @@ class OrderRequestViewController: UIViewController {
             })
             
             self?.group.enter()
-            self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 3, completionHandler: { [weak self]  (orders) in
+            self?.fireBaseManager.queryMyOrders(
+                myUid: (myProfile?.userID)!,
+                status: 3,
+                completionHandler: { [weak self]  (orders) in
                 
                 self?.myOrdersS3 = orders
                 
@@ -122,7 +125,10 @@ class OrderRequestViewController: UIViewController {
             })
             
             self?.group.enter()
-            self?.fireBaseManager.queryMyOrders(myUid: (myProfile?.userID)!, status: 6, completionHandler: { [weak self]  (orders) in
+            self?.fireBaseManager.queryMyOrders(
+                myUid: (myProfile?.userID)!,
+                status: 6,
+                completionHandler: { [weak self]  (orders) in
                 
                 self?.myOrdersS6 = orders
                 

@@ -41,8 +41,8 @@ class FireBaseManager: NSObject {
         
         var isMember = false
         var friendUid: String?
-
-        db.collection("users").getDocuments() { (querySnapshot, err) in
+        
+        db.collection("users").getDocuments { querySnapshot, err in
             if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
@@ -354,7 +354,7 @@ class FireBaseManager: NSObject {
     func orderSetOff(myUid: String,
                      friendUid: String,
                      orderID: String,
-                     driverStartAt:Int,
+                     driverStartAt: Int,
                      startLat: Double,
                      startLag: Double,
                      completionHandler: @escaping ()
@@ -367,8 +367,10 @@ class FireBaseManager: NSObject {
         
         db.collection("orders").document(orderID).updateData(["driver_start_time": driverStartAt])
         
-        db.collection("orders").document(orderID).updateData(["driver_start_Lat":startLat, "driver_start_lag": startLag])
-        db.collection("orders").document(orderID).updateData(["driverLat":startLat, "driverLag": startLag])
+        db.collection("orders").document(orderID).updateData(
+            ["driver_start_Lat": startLat, "driver_start_lag": startLag])
+        
+        db.collection("orders").document(orderID).updateData(["driverLat": startLat, "driverLag": startLag])
         
     }
     

@@ -88,12 +88,13 @@ class ProfileMainViewController: UIViewController {
             do {
                 try FireAuthManager.share.auth.signOut()
                 let alert = UIAlertController(title: "", message: "你已經成功登出", preferredStyle: .alert)
-                let action = UIAlertAction(title: "確定", style: .default) { (action) in
+                let action = UIAlertAction(title: "確定", style: .default) { _ in
                     guard let uid = self.myInfo?.userID else { return }
                     self.firebaseManager.updateFcmToken(myUid: uid, fcmToken: "")
                     self.tabBarController?.dismiss(animated: true, completion: {
                         let tabStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let tabViewController = tabStoryboard.instantiateViewController(withIdentifier: "Goes") as? GoTabBarViewController
+                        let tabViewController = tabStoryboard.instantiateViewController(
+                            withIdentifier: "Goes") as? GoTabBarViewController
 
                         self.present(tabViewController!, animated: false, completion: nil)
                         
@@ -164,7 +165,7 @@ extension ProfileMainViewController: UIScrollViewDelegate {
 
 extension ProfileMainViewController: FusumaDelegate {
     func fixOrientation(img: UIImage) -> UIImage {
-        if (img.imageOrientation == .up) {
+        if img.imageOrientation == .up {
             return img
         }
         
@@ -188,14 +189,20 @@ extension ProfileMainViewController: FusumaDelegate {
             avatarImageView.roundCorners(50)
             avatarImageView.clipsToBounds = true
             avatarImageView.image = fixOrientation(img: avatarImageView.image!)
-             NotificationCenter.default.post(name: Notification.Name.avatarValue, object: nil, userInfo: ["avatar": avatarImageView.image])
+             NotificationCenter.default.post(
+                name: Notification.Name.avatarValue,
+                object: nil,
+                userInfo: ["avatar": avatarImageView.image as Any])
 
         case .library:
             print("Image selected from Camera Roll")
             avatarImageView.image = image
             avatarImageView.roundCorners(50)
             avatarImageView.clipsToBounds = true
-            NotificationCenter.default.post(name: Notification.Name.avatarValue, object: nil, userInfo: ["avatar": avatarImageView.image])
+            NotificationCenter.default.post(
+                name: Notification.Name.avatarValue,
+                object: nil,
+                userInfo: ["avatar": avatarImageView.image as Any])
             
         default:
             print("Image selected")
@@ -263,5 +270,4 @@ extension ProfileMainViewController: FusumaDelegate {
         
     }
 
-    
 }
