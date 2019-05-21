@@ -17,6 +17,7 @@ The App is published on App Store [click here](https://itunes.apple.com/tw/app/g
 - You can use **Pin** :round_pushpin: or **Searching Bar** :mag: to select picking up place
 
 ![](https://i.imgur.com/phyzkAn.png)![](https://i.imgur.com/GCKpGtn.png)
+img src="https://github.com/YentingChen/GoesApp/blob/develope/Gif/pin:map.gif" width="200">
 
 - You can select estimated Arring Time :clock1:, and then, select **the friend** to send picking up request.
 
