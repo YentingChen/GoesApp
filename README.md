@@ -19,7 +19,7 @@ The App is published on App Store [click here](https://itunes.apple.com/tw/app/g
 
 - You can select estimated Arring Time :clock1:, and then, select **the friend** to send picking up request.
 
-  ![](https://i.imgur.com/PjnDn6k.png)![](https://i.imgur.com/hfPSE1k.png)
+![](https://i.imgur.com/PjnDn6k.png)![](https://i.imgur.com/hfPSE1k.png)
   
 - In request page, your friend can decide accept the request or not, also can see the request content and estimated arriving time. When your friend start the journey, you will receive the remote notification.
 ![](https://i.imgur.com/QNnct6E.png)![](https://i.imgur.com/UEP4V8z.png)![](https://i.imgur.com/dKXKu0I.png)
@@ -31,12 +31,7 @@ The App is published on App Store [click here](https://itunes.apple.com/tw/app/g
 
 
 - In profile page, you can edit the addresses, change the avatar and see the history.
-![](https://i.imgur.com/G3zxxyB.png)![](https://i.imgur.com/Vx46a3M.png) ![](https://i.imgur.com/WMrmSDQ.png)
-
-
- 
-
-## 
+![](https://i.imgur.com/G3zxxyB.png)![](https://i.imgur.com/Vx46a3M.png)![](https://i.imgur.com/WMrmSDQ.png)
 
 ## Libraries
 - Alamofire
