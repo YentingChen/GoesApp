@@ -440,14 +440,14 @@
                                     <constraint firstAttribute="height" constant="300" id="Hco-3o-pX1"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_30x_driver_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="d5O-TP-6yV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_30x_Driver_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="d5O-TP-6yV">
                                 <rect key="frame" x="24" y="288" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1AM-9G-VPg"/>
                                     <constraint firstAttribute="width" constant="40" id="NGn-X2-ziq"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_30x_rider_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="PpP-f9-YvT">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_30x_Rider_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="PpP-f9-YvT">
                                 <rect key="frame" x="24" y="408" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="2vP-Qg-NBZ"/>
@@ -570,8 +570,8 @@
     </scenes>
     <resources>
         <image name="Icons_20x_Camera_Normal" width="20" height="17"/>
-        <image name="Icons_30x_driver_Normal" width="40" height="31"/>
-        <image name="Icons_30x_rider_Normal" width="40" height="31"/>
+        <image name="Icons_30x_Driver_Normal" width="40" height="31"/>
+        <image name="Icons_30x_Rider_Normal" width="40" height="31"/>
         <image name="Images_40x_ProfileDefault_Normal" width="512" height="512"/>
         <image name="cross36x" width="44" height="44"/>
         <image name="icons_24x_logOut_Normal" width="24" height="23"/>

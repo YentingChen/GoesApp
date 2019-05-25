@@ -28,6 +28,9 @@ class OrderRequestViewController: UIViewController {
     var selectedRider: MyProfile?
     
     let group = DispatchGroup()
+    var refreshControl = UIRefreshControl()
+    let refreshView = UIActivityIndicatorView.init(style: .whiteLarge)
+    let refreshBackgroundView = UIView()
    
     @IBOutlet weak var tableView: UITableView!
     
@@ -41,19 +44,34 @@ class OrderRequestViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+//            tableView.addRefreshHeader {
+//
+//                self.loadDataAction()
+//
+//            }
+//
+//            self.tableView.beginHeaderRefreshing()
+        refreshView.color = UIColor.gray
+        refreshBackgroundView.frame = self.view.frame
+        refreshBackgroundView.isHidden = false
+        refreshBackgroundView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.view.addSubview(refreshBackgroundView)
+        refreshBackgroundView.addSubview(refreshView)
+      
+        refreshView.center = self.view.center
+        refreshView.startAnimating()
+        refreshControl.addTarget(self, action: #selector(refreshData),
+                                 for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "下拉更新數據")
+        tableView.addSubview(refreshControl)
+        loadDataAction()
+//        refreshData()
         
-            tableView.addRefreshHeader {
-                
-                self.loadDataAction()
-                
-            }
-            
-            self.tableView.beginHeaderRefreshing()
-        
-        
-    
     }
-    
+    @objc func refreshData() {
+       loadDataAction()
+        
+    }
     func loadDataAction() {
         
         myOrdersS2 = []
@@ -153,7 +171,10 @@ class OrderRequestViewController: UIViewController {
             self?.group.notify(queue: .main) {
                 
                 self?.tableView.reloadData()
-                self?.tableView.endHeaderRefreshing()
+//                self?.tableView.endHeaderRefreshing()
+                self?.refreshView.stopAnimating()
+                self?.refreshBackgroundView.isHidden = true
+                self?.refreshControl.endRefreshing()
             }
             
             self?.group.leave()
@@ -232,7 +253,6 @@ class OrderRequestViewController: UIViewController {
         return "\(year)/\(month)/\(day)   \(time)"
     }
     
-   
 }
 
 extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate {
@@ -245,31 +265,56 @@ extension OrderRequestViewController: UITableViewDataSource, UITableViewDelegate
         
         if section == 0 {
             
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
-            cell.titleLabel.text = "待回覆"
+            let header = tableView.dequeueReusableCell(withIdentifier: "orderRequestHeaderTableViewCell")
             
-            return cell
+            guard let headerView = header as? OrderRequestHeaderTableViewCell else { return header }
+        
+            headerView.titleLabel.text = "待回覆"
+            
+            return headerView
+//            guard let cell = tableView.dequeueReusableCell(
+//                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
+//            cell.titleLabel.text = "待回覆"
+//
+//            return cell
+            
+            
             
         }
         
         if section == 1 {
+//
+//            guard let cell = tableView.dequeueReusableCell(
+//                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
+//            cell.titleLabel.text = "準備中"
+//
+//            return cell
             
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
-            cell.titleLabel.text = "準備中"
+            let header = tableView.dequeueReusableCell(withIdentifier: "orderRequestHeaderTableViewCell")
             
-            return cell
+            guard let headerView = header as? OrderRequestHeaderTableViewCell else { return header }
+            
+            headerView.titleLabel.text = "準備中"
+            
+            return headerView
             
         }
         
         if section == 2 {
             
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
-            cell.titleLabel.text = "進行中"
+//            guard let cell = tableView.dequeueReusableCell(
+//                withIdentifier: "orderRequestHeaderTableViewCell") as? OrderRequestHeaderTableViewCell else { return UITableViewCell() }
+//            cell.titleLabel.text = "進行中"
+//
+//            return cell
             
-            return cell
+            let header = tableView.dequeueReusableCell(withIdentifier: "orderRequestHeaderTableViewCell")
+            
+            guard let headerView = header as? OrderRequestHeaderTableViewCell else { return header }
+            
+            headerView.titleLabel.text = "進行中"
+            
+            return headerView
             
         }
         

@@ -13,7 +13,7 @@ import Firebase
 
 final class ChatViewController: MessagesViewController {
     
-    var db: Firestore!
+    var dataBase: Firestore!
     private var reference: CollectionReference?
     
     private var messages: [Message] = []
@@ -27,7 +27,6 @@ final class ChatViewController: MessagesViewController {
     }
     
     init(user: Member, order: OrderDetail) {
-        
         
         self.user = user
         self.order = order
@@ -44,9 +43,9 @@ final class ChatViewController: MessagesViewController {
         super.viewDidLoad()
         
         //        user = Member(name: "yenting", uid: "123")
-        db = Firestore.firestore()
+        dataBase = Firestore.firestore()
         
-        reference = db.collection(["channels", order!.orderID, "thread"].joined(separator: "/"))
+        reference = dataBase.collection(["channels", order!.orderID, "thread"].joined(separator: "/"))
         
         messageListener = reference?.addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {

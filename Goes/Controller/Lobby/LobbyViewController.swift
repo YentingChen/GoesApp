@@ -9,10 +9,11 @@
 import UIKit
 import Lottie
 import Kingfisher
+import Crashlytics
 
 class LobbyViewController: UIViewController {
 //4966-onboarding-car
-    
+
     let fireAuthManager = FireAuthManager.share
     let firebaseManager = FireBaseManager.share
     var myProfile: MyProfile?
@@ -30,7 +31,6 @@ class LobbyViewController: UIViewController {
     let image = notification.userInfo!["avatar"] as? UIImage
     self.avatar.image = image
     
-        
     }
     
     func isMemberAction() {
@@ -78,14 +78,10 @@ class LobbyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         isMemberAction()
-       
        
          NotificationCenter.default.addObserver(self, selector: #selector(changeAvatar(_:)), name: Notification.Name.avatarValue, object: nil)
         animationView.frame = CGRect(x: 0, y: 0, width: carView.frame.width, height:  carView.frame.height)

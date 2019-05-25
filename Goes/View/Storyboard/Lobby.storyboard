@@ -707,7 +707,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="UeV-lT-njM">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Images_40x_ProfileDefault_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="UeV-lT-njM">
                                                     <rect key="frame" x="42" y="10" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -866,7 +866,6 @@
         <image name="baseline_star_black" width="24" height="24"/>
         <image name="baseline_work_black" width="24" height="24"/>
         <image name="cross36x" width="44" height="44"/>
-        <image name="profile_image" width="512" height="512"/>
         <image name="target36x" width="48" height="48"/>
         <image name="time36x_white" width="36" height="36"/>
         <image name="time_dark_36x" width="36" height="36"/>
