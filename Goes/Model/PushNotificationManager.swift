@@ -71,6 +71,10 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print(response)
+//        if response.notification.request.content.title == "您收到一則請求" {
+//            
+//        }
+        
     }
     
     func userNotificationCenter(

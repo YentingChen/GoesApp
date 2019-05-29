@@ -30,7 +30,7 @@ class LaunchViewController: UIViewController {
             
              self.loadingView.alpha = 0.0
             
-        }) { (_) in
+        }) { (_) in 
             
             self.presentHomeVC()
             

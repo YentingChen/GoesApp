@@ -10,6 +10,7 @@ import XCTest
 import Firebase
 @testable import Goes
 
+
 class MockFirestore: Firestore {
 
     static var path: String = ""

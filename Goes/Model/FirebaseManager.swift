@@ -27,6 +27,8 @@ class FireBaseManager: NSObject {
     var userOrder: OrderDetail?
     var address: Address?
     
+   
+    
     func buildUserInfo(userID: String, userName: String, userEmail: String, avatar: String, userPhone: String) {
         
         self.db.collection("users").document(userID).setData(
@@ -84,8 +86,8 @@ class FireBaseManager: NSObject {
     }
     
     func makeFriend(friendUid: String, myUid: String) {
-        db.collection("users").document(myUid).collection("friend").document(friendUid).setData(["status":1])
-        db.collection("users").document(friendUid).collection("friend").document(myUid).setData(["status":2])
+        db.collection("users").document(myUid).collection("friend").document(friendUid).setData(["status": 1])
+        db.collection("users").document(friendUid).collection("friend").document(myUid).setData(["status": 2])
         
     }
     

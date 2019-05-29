@@ -68,6 +68,7 @@ class OrderRequestViewController: UIViewController {
 //        refreshData()
         
     }
+    
     @objc func refreshData() {
        loadDataAction()
         
@@ -227,8 +228,6 @@ class OrderRequestViewController: UIViewController {
             }
         }
     }
-    
-   
     
     func produceTime(orders:[OrderDetail], number: Int)
     -> String {

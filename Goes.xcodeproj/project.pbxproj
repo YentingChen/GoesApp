@@ -21,6 +21,7 @@
 		3E23588C22590C0B004182F0 /* FriendInviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23588A22590C0B004182F0 /* FriendInviteTableViewCell.xib */; };
 		3E23588F22590D74004182F0 /* FriendInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23588E22590D74004182F0 /* FriendInviteViewController.swift */; };
 		3E321631227C435E00237042 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E321630227C435E00237042 /* PushNotificationManager.swift */; };
+		3E362F21229E35B30037F230 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E362F20229E35B30037F230 /* Result.swift */; };
 		3E3E1DEC227954A8003E01F8 /* MJRefreshWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3E1DEB227954A8003E01F8 /* MJRefreshWrapper.swift */; };
 		3E3EFD0A225914B40078E686 /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EFD08225914B40078E686 /* FriendListTableViewCell.swift */; };
 		3E3EFD0B225914B40078E686 /* FriendListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EFD09225914B40078E686 /* FriendListTableViewCell.xib */; };
@@ -148,6 +149,7 @@
 		3E23588E22590D74004182F0 /* FriendInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInviteViewController.swift; sourceTree = "<group>"; };
 		3E32162F227C3CA200237042 /* Goes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Goes.entitlements; sourceTree = "<group>"; };
 		3E321630227C435E00237042 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		3E362F20229E35B30037F230 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		3E3E1DEB227954A8003E01F8 /* MJRefreshWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefreshWrapper.swift; sourceTree = "<group>"; };
 		3E3EFD08225914B40078E686 /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
 		3E3EFD09225914B40078E686 /* FriendListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListTableViewCell.xib; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				3EAA68892283C44C00696AD2 /* URL+.swift */,
 				3E6E9AC7228561420089FF32 /* KingFisherWrapper.swift */,
 				3E7F832C228C59B800EEAB1F /* UIScrollView.swift */,
+				3E362F20229E35B30037F230 /* Result.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1008,6 +1011,7 @@
 				3E609F6222535E800031CF81 /* TabBaseViewController.swift in Sources */,
 				3EA3B553226ED07E0072F432 /* OrderRidingViewController.swift in Sources */,
 				3E8C8C84226DE54F00063208 /* OrderDrivingViewController.swift in Sources */,
+				3E362F21229E35B30037F230 /* Result.swift in Sources */,
 				3E7B6E25225B517C00646724 /* OrderMyRequestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

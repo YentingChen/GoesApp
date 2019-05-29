@@ -52,8 +52,7 @@ class OrderDrivingViewController: MapViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        
+    
         orderDrivingView.delegate = self
         
         guard let rider = self.rider else { return }
@@ -65,16 +64,16 @@ class OrderDrivingViewController: MapViewController {
         
         checkLocationAuth()
         
-        if isSettingOff {
-            
-            if UIApplication.shared.applicationState != .active {
-                
-                if isSettingOff {
-                    
-                    updateDriverLocation()
-                }
-            }
-        }
+//        if isSettingOff {
+//
+//            if UIApplication.shared.applicationState != .active {
+//
+//                if isSettingOff {
+//
+//                    updateDriverLocation()
+//                }
+//            }
+//        }
         
         locationManager.allowsBackgroundLocationUpdates = true
         
@@ -84,21 +83,21 @@ class OrderDrivingViewController: MapViewController {
         
         updateDriverLocation()
         
-        FireBaseManager.share.listenDriverLocation(orderID: (self.order?.orderID)!) { (order) in
+        FireBaseManager.share.listenDriverLocation(orderID: (self.order?.orderID)!) { [weak self] (order) in
             
             if let order = order, order.setOff == 2 {
                 
-                self.timer?.invalidate()
+                self?.timer?.invalidate()
                 
                 AlertManager.share.showAlert(
                     
                     title: "接送成功",
                     message: "您已成功接到對方",
-                    viewController: self, typeOfAction: 1, okHandler: {
+                    viewController: self ?? UIViewController(), typeOfAction: 1, okHandler: {
                         
-                        self.navigationController?.popViewController(animated: true)
+                        self?.navigationController?.popViewController(animated: true)
                         
-                        self.dismiss(animated: true, completion: nil)
+                        self?.dismiss(animated: true, completion: nil)
                         
                 }, cancelHandler: nil)
                 

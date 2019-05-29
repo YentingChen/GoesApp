@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
     -> Bool {
+        
+        
 
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyBMCjRtdyWxo3BTOvl5B8ksVuCtqiONz4g")
@@ -39,22 +41,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-            }
-
+        print("applicationWillResignActive")
+    }
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
-        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+//        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        print("applicationDidEnterBackground")
             }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-       
+       print("applicationWillEnterForeground")
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        
+        print("applicationDidBecomeActive")
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
-      
+      print("applicationWillTerminate")
     }
     
     func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {

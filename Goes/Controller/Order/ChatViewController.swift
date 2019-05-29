@@ -10,6 +10,7 @@ import UIKit
 import MessageKit
 import InputBarAccessoryView
 import Firebase
+import MTSlideToOpen
 
 final class ChatViewController: MessagesViewController {
     

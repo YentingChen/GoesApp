@@ -178,6 +178,8 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.cellImageView.kf.setImage(with: url)
                     cell.cellImageView.roundCorners(cell.cellImageView.frame.width/2)
                     cell.cellImageView.clipsToBounds = true
+                } else {
+                    cell.cellImageView.image = UIImage(named: "Images_40x_ProfileDefault_Normal")
                 }
                 
             } else {
@@ -188,6 +190,8 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.cellImageView.kf.setImage(with: url)
                     cell.cellImageView.roundCorners(cell.cellImageView.frame.width/2)
                     cell.cellImageView.clipsToBounds = true
+                } else {
+                    cell.cellImageView.image = UIImage(named: "Images_40x_ProfileDefault_Normal")
                 }
                 
             }
