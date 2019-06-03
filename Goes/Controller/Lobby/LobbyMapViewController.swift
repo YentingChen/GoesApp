@@ -26,7 +26,7 @@ class LobbyMapViewController: UIViewController {
         didSet {
             
             self.addressBtn.contentHorizontalAlignment = .left
-             self.addressBtn.titleLabel?.lineBreakMode = .byClipping
+            self.addressBtn.titleLabel?.lineBreakMode = .byClipping
             
         }
     }
@@ -64,7 +64,7 @@ class LobbyMapViewController: UIViewController {
     
     func setCamera(lat: Double, lag: Double) {
         
-        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lag , zoom: 16)
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lag ,zoom: 16)
         
         self.mapView.animate(to: camera)
     }
@@ -84,17 +84,17 @@ class LobbyMapViewController: UIViewController {
         switch CLLocationManager.authorizationStatus() {
             
         case .notDetermined:
-            // Request when-in-use authorization initially
+        
             locationManager.requestWhenInUseAuthorization()
             
         case .restricted, .denied:
-            // Disable location features
+            
             showAlert(title: "請先設定位置權限", message: "前往設定頁面確認位置權限", actionNumber: 2) {
                 self.toSettingPage()
             }
             
         case .authorizedWhenInUse:
-            // Enable basic location features
+          
             guard let lat = self.mapView.myLocation?.coordinate.latitude,
                 let lng = self.mapView.myLocation?.coordinate.longitude else { return }
             
@@ -103,7 +103,7 @@ class LobbyMapViewController: UIViewController {
             self.mapView.animate(to: camera)
             
         case .authorizedAlways:
-            // Enable any of your app's location features
+           
             guard let lat = self.mapView.myLocation?.coordinate.latitude,
                 let lng = self.mapView.myLocation?.coordinate.longitude else { return }
             
@@ -131,7 +131,6 @@ class LobbyMapViewController: UIViewController {
             
             alertController.addAction(cancelAction)
            
-            
         }
         
         if actionNumber == 2 {
@@ -300,7 +299,7 @@ extension LobbyMapViewController: CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
 
         mapView.isMyLocationEnabled = true
-
+    
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -27,8 +27,6 @@ class FireBaseManager: NSObject {
     var userOrder: OrderDetail?
     var address: Address?
     
-   
-    
     func buildUserInfo(userID: String, userName: String, userEmail: String, avatar: String, userPhone: String) {
         
         self.db.collection("users").document(userID).setData(

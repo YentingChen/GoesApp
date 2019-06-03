@@ -185,7 +185,6 @@ extension FriendHomeViewController: UICollectionViewDelegate, UICollectionViewDa
             collectionView.reloadData()
         }
             
-
         if indexPath.row == 2 {
             changePage(to: friendListViewController)
             

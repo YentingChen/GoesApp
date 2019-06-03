@@ -20,6 +20,10 @@
 		3E23588B22590C0B004182F0 /* FriendInviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23588922590C0B004182F0 /* FriendInviteTableViewCell.swift */; };
 		3E23588C22590C0B004182F0 /* FriendInviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23588A22590C0B004182F0 /* FriendInviteTableViewCell.xib */; };
 		3E23588F22590D74004182F0 /* FriendInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23588E22590D74004182F0 /* FriendInviteViewController.swift */; };
+		3E2E95DD22A4C79200252C8E /* BaseMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E95DC22A4C79100252C8E /* BaseMapViewController.swift */; };
+		3E2E95DF22A4F7B100252C8E /* OrderRidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E95DE22A4F7B100252C8E /* OrderRidingView.swift */; };
+		3E2E95E122A50F4000252C8E /* GoogleDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E95E022A50F4000252C8E /* GoogleDirection.swift */; };
+		3E2E95E322A50FFC00252C8E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E95E222A50FFC00252C8E /* HTTPClient.swift */; };
 		3E321631227C435E00237042 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E321630227C435E00237042 /* PushNotificationManager.swift */; };
 		3E362F21229E35B30037F230 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E362F20229E35B30037F230 /* Result.swift */; };
 		3E3E1DEC227954A8003E01F8 /* MJRefreshWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3E1DEB227954A8003E01F8 /* MJRefreshWrapper.swift */; };
@@ -147,6 +151,10 @@
 		3E23588922590C0B004182F0 /* FriendInviteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInviteTableViewCell.swift; sourceTree = "<group>"; };
 		3E23588A22590C0B004182F0 /* FriendInviteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendInviteTableViewCell.xib; sourceTree = "<group>"; };
 		3E23588E22590D74004182F0 /* FriendInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInviteViewController.swift; sourceTree = "<group>"; };
+		3E2E95DC22A4C79100252C8E /* BaseMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapViewController.swift; sourceTree = "<group>"; };
+		3E2E95DE22A4F7B100252C8E /* OrderRidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRidingView.swift; sourceTree = "<group>"; };
+		3E2E95E022A50F4000252C8E /* GoogleDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDirection.swift; sourceTree = "<group>"; };
+		3E2E95E222A50FFC00252C8E /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		3E32162F227C3CA200237042 /* Goes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Goes.entitlements; sourceTree = "<group>"; };
 		3E321630227C435E00237042 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		3E362F20229E35B30037F230 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -326,8 +334,8 @@
 		3E23589022590DCE004182F0 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				3E609F4A22533EE30031CF81 /* LaunchScreen.storyboard */,
 				3E609F4522533EE10031CF81 /* Main.storyboard */,
+				3E609F4A22533EE30031CF81 /* LaunchScreen.storyboard */,
 				3E609F5F22535E2A0031CF81 /* Lobby.storyboard */,
 				3E06C21C22571895000F7E5F /* Friend.storyboard */,
 				3E45935D225851B500073210 /* Profile.storyboard */,
@@ -405,7 +413,6 @@
 				3E0297EC228173ED00DBB051 /* Supplies */,
 				3E0297EA2281732B00DBB051 /* LottieFiles */,
 				3E609F69225366FD0031CF81 /* Extension */,
-				3E609F6B2253672C0031CF81 /* Base */,
 				3E92662522656A1F009EC3D1 /* Model */,
 				3E609F6C225367400031CF81 /* View */,
 				3E609F6A225367100031CF81 /* Controller */,
@@ -441,6 +448,7 @@
 		3E609F6A225367100031CF81 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3E609F6B2253672C0031CF81 /* Base */,
 				3E609F4122533EE10031CF81 /* AppDelegate.swift */,
 				3E609F4322533EE10031CF81 /* ViewController.swift */,
 				3E5AE000225F2E3A0003B241 /* LaunchViewController.swift */,
@@ -529,9 +537,10 @@
 				3E7B6E16225A633E00646724 /* OrderRequestViewController.swift */,
 				3E7B6E24225B517C00646724 /* OrderMyRequestViewController.swift */,
 				3E95EE80225C733A00B3DEF6 /* OrderAnswerRequestViewController.swift */,
-				3EA3B552226ED07E0072F432 /* OrderRidingViewController.swift */,
 				3E8C8C83226DE54F00063208 /* OrderDrivingViewController.swift */,
 				3EAA688F2283F25500696AD2 /* MapViewController.swift */,
+				3EA3B552226ED07E0072F432 /* OrderRidingViewController.swift */,
+				3E2E95DC22A4C79100252C8E /* BaseMapViewController.swift */,
 				3E7F832E228C59E300EEAB1F /* ChatViewController.swift */,
 			);
 			path = Order;
@@ -542,6 +551,7 @@
 			children = (
 				3E94538E22854F7400CF2667 /* OrderCell */,
 				3EAA68912284260800696AD2 /* OrderDrivingView.swift */,
+				3E2E95DE22A4F7B100252C8E /* OrderRidingView.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -563,6 +573,8 @@
 				3EAA688B2283CE1700696AD2 /* ToSettingPageManager.swift */,
 				3EAA688D2283DC0A00696AD2 /* PrivacyManager.swift */,
 				3E7F832A228C586500EEAB1F /* Message.swift */,
+				3E2E95E022A50F4000252C8E /* GoogleDirection.swift */,
+				3E2E95E222A50FFC00252C8E /* HTTPClient.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -971,6 +983,7 @@
 				3E609F66225362260031CF81 /* LobbyViewController.swift in Sources */,
 				3EAA68922284260800696AD2 /* OrderDrivingView.swift in Sources */,
 				3E609F5E22535DDD0031CF81 /* UIStoryboard+Extension.swift in Sources */,
+				3E2E95DF22A4F7B100252C8E /* OrderRidingView.swift in Sources */,
 				3E45934E2257714A00073210 /* LobbyFriendViewController.swift in Sources */,
 				3E3EFD0D225918510078E686 /* FriendSentViewController.swift in Sources */,
 				3E461FBC2282CA1600162813 /* String+.swift in Sources */,
@@ -978,9 +991,11 @@
 				3E662EFB22687EA40016F962 /* EditAddressViewController.swift in Sources */,
 				3E0297F02281744100DBB051 /* Address.swift in Sources */,
 				3E23588522588B1D004182F0 /* FriendMenuCollectionViewCell.swift in Sources */,
+				3E2E95DD22A4C79200252C8E /* BaseMapViewController.swift in Sources */,
 				3E5ADFFB225F130F0003B241 /* ResetPasswordViewController.swift in Sources */,
 				3E5ADFF7225F12490003B241 /* SignUpViewController.swift in Sources */,
 				3E0297E92281719D00DBB051 /* Lottie+.swift in Sources */,
+				3E2E95E122A50F4000252C8E /* GoogleDirection.swift in Sources */,
 				3E93D7342277F7650045D15C /* UITextFieldHelper.swift in Sources */,
 				3E93D7362277F7650045D15C /* DeviceHelper.swift in Sources */,
 				3E7F832B228C586500EEAB1F /* Message.swift in Sources */,
@@ -1010,6 +1025,7 @@
 				3EF9610022817BDE006853C8 /* Userdefault+.swift in Sources */,
 				3E609F6222535E800031CF81 /* TabBaseViewController.swift in Sources */,
 				3EA3B553226ED07E0072F432 /* OrderRidingViewController.swift in Sources */,
+				3E2E95E322A50FFC00252C8E /* HTTPClient.swift in Sources */,
 				3E8C8C84226DE54F00063208 /* OrderDrivingViewController.swift in Sources */,
 				3E362F21229E35B30037F230 /* Result.swift in Sources */,
 				3E7B6E25225B517C00646724 /* OrderMyRequestViewController.swift in Sources */,

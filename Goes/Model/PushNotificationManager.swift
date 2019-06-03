@@ -15,8 +15,9 @@ import UserNotifications
 class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
     
     let firebaseManager = FireBaseManager.share
-    
+        
     let userID: String
+    
     init(userID: String) {
         self.userID = userID
         super.init()
@@ -47,6 +48,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     
     func updateFirestorePushTokenIfNeeded() {
         if let token = Messaging.messaging().fcmToken {
+            
             firebaseManager.updateFcmToken(myUid: userID, fcmToken: token)
            
         }
@@ -71,9 +73,6 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print(response)
-//        if response.notification.request.content.title == "您收到一則請求" {
-//            
-//        }
         
     }
     

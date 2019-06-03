@@ -20,7 +20,7 @@ class STNoUnderlineNavigationController: UINavigationController {
         navigationBar.backgroundColor = .clear
 
         navigationBar.shadowImage = UIImage()
-
+            
 //        self.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem()
 //        self.navigationBar.backIndicatorImage = UIImage.asset(.Icons_24px_Back02)
 //        self.navigationBar.backIndicatorTransitionMaskImage = UIImage.asset(.Icons_24px_Back02)

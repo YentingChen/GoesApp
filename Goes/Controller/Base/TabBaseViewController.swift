@@ -89,6 +89,7 @@ class GoTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
         delegate = self
         self.tabBar.backgroundColor = .clear
+    
         
     }
 

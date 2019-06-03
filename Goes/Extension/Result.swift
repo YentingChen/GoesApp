@@ -9,7 +9,7 @@
 import Foundation
 /// A value that represents either a success or a failure, including an
 /// associated value in each case.
-public enum Result<Success, Failure> where Failure : Error {
+public enum Results<Success, Failure> where Failure : Error {
     
     /// A success, storing a `Success` value.
     case success(Success)
@@ -108,14 +108,14 @@ public enum Result<Success, Failure> where Failure : Error {
     /// - Parameter body: A throwing closure to evaluate.
 //    public init(catching body: () throws -> Success)
 }
+//
+//extension Result {
+//    
+////    public static func != (lhs: Result<Success, Failure>, rhs: Result<Success, Failure>) -> Bool
+//}
 
-extension Result {
-    
-//    public static func != (lhs: Result<Success, Failure>, rhs: Result<Success, Failure>) -> Bool
-}
-
-extension Result : Equatable where Success : Equatable, Failure : Equatable {
-}
-
-extension Result : Hashable where Success : Hashable, Failure : Hashable {
-}
+//extension Result : Equatable where Success : Equatable, Failure : Equatable {
+//}
+//
+//extension Result : Hashable where Success : Hashable, Failure : Hashable {
+//}

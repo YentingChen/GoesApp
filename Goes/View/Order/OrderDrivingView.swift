@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-protocol OrderDrivingViewDelegate: class {
+protocol OrderViewDelegate: AnyObject {
     
     func setOffAction(_ view: OrderDrivingView, didTapButton button: UIButton)
     
@@ -19,7 +19,7 @@ protocol OrderDrivingViewDelegate: class {
 
 class OrderDrivingView: UIView, GMSMapViewDelegate {
     
-    weak var delegate: OrderDrivingViewDelegate?
+    weak var delegate: OrderViewDelegate?
 
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var grayView: UIView!

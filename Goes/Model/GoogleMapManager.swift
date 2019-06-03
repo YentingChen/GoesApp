@@ -18,7 +18,39 @@ class GoogleMapManager: NSObject {
     
     private override init() {}
     
-    func getEstmatedTime(url: String, viewController: MapViewController, completionHandler: @escaping (String) -> Void) {
+    func fetchDirection(url: URL, completion: @escaping (Result<GoogleDirection, NetworkError>) -> Void) {
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data, error == nil else {
+                
+                if let error = error as NSError?, error.domain == NSURLErrorDomain {
+                    
+                    completion( Result.failure(.domainError))
+                    
+                }
+                
+                return
+                
+            }
+            
+            do {
+                
+                let directionData = try JSONDecoder().decode(GoogleDirection.self, from: data)
+                
+                completion(Result.success(directionData))
+                
+            } catch {
+                completion(Result.failure(.decoingError))
+            }
+            }.resume()
+        
+    }
+    
+    func getEstmatedTime(
+        url: String,
+        viewController: MapViewController,
+        completionHandler: @escaping (String)
+        -> Void) {
         
         alamofireAction(url: url) { (json) in
             let timeValue = json["routes"][0]["legs"][0]["duration"]["value"].rawValue as? Int
@@ -37,7 +69,6 @@ class GoogleMapManager: NSObject {
         
     }
 
-    
     func drawPath(url: String, viewController: MapViewController ) {
         
         alamofireAction(url: url) { (json) in

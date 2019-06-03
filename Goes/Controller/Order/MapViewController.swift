@@ -18,6 +18,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var orderDrivingView: OrderDrivingView!
     
+    
     var order: OrderDetail?
     
     var rider: MyProfile?
@@ -29,19 +30,8 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let order = self.order else {
-            return
-        }
-
-        orderDrivingView.mapView.delegate = self
-        
-        orderDrivingView.mapView.isMyLocationEnabled = true
-        
         self.locationManager.delegate = self
-        
-        orderDrivingView.arrivingTimeLabel.text = String.produceTime(order: order)
-        
-//        self.locationManager.requestWhenInUseAuthorization()
+
     }
     
     func checkLocationAuth() {
@@ -49,14 +39,10 @@ class MapViewController: UIViewController {
         switch CLLocationManager.authorizationStatus() {
             
         case .notDetermined:
-            
-//            locationManager.requestWhenInUseAuthorization()
-            
             locationManager.requestAlwaysAuthorization()
             
         case .restricted, .denied, .authorizedWhenInUse:
             // Disable location features
-            
             AlertManager.share.showAlert(
                 title: "請先設定位置權限",
                 message: "前往 設定/隱私權/定位服務/允許取用位置，選取 “永遠”，否則將無法使用該功能 ",
@@ -79,11 +65,7 @@ extension MapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         
-        orderDrivingView.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-    }
-    
-    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
     }
     

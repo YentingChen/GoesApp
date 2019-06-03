@@ -19,6 +19,7 @@ import FirebaseMessaging
 class AppDelegate: UIResponder, UIApplicationDelegate{
 
     var window: UIWindow?
+    
     var manager = CLLocationManager()
 
     func application(
@@ -26,8 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
     -> Bool {
         
-        
-
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyBMCjRtdyWxo3BTOvl5B8ksVuCtqiONz4g")
         

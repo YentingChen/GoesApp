@@ -16,9 +16,7 @@ class OrderDrivingViewController: MapViewController {
 
     var orderRequestVC: OrderRequestViewController?
     
-    var updateLat: Double?
-    
-    var updateLag: Double?
+    var updateLat, updateLag: Double?
     
     var startDrivingTime: Int?
     
@@ -30,30 +28,21 @@ class OrderDrivingViewController: MapViewController {
     
     var secondStartLocation: CLLocationCoordinate2D?
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        if let isSetOff = order?.setOff, isSetOff == 1 {
-            
-            orderDrivingView.grayView.isHidden = true
-            
-            self.isSettingOff = true
-            
-            locationManager.startUpdatingLocation()
-            
-        } else {
-            
-            orderDrivingView.grayView.isHidden = false
-            
-            self.isSettingOff = false
-        }
-        
-    }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-    
+        
         orderDrivingView.delegate = self
+        
+        orderDrivingView.mapView.delegate = self
+        
+        orderDrivingView.mapView.isMyLocationEnabled = true
+        
+        guard let order = self.order else {
+            return
+        }
+        
+        orderDrivingView.arrivingTimeLabel.text = String.produceTime(order: order)
         
         guard let rider = self.rider else { return }
         
@@ -63,17 +52,6 @@ class OrderDrivingViewController: MapViewController {
         }
         
         checkLocationAuth()
-        
-//        if isSettingOff {
-//
-//            if UIApplication.shared.applicationState != .active {
-//
-//                if isSettingOff {
-//
-//                    updateDriverLocation()
-//                }
-//            }
-//        }
         
         locationManager.allowsBackgroundLocationUpdates = true
         
@@ -103,6 +81,25 @@ class OrderDrivingViewController: MapViewController {
                 
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let isSetOff = order?.setOff, isSetOff == 1 {
+            
+            orderDrivingView.grayView.isHidden = true
+            
+            self.isSettingOff = true
+            
+            locationManager.startUpdatingLocation()
+            
+        } else {
+            
+            orderDrivingView.grayView.isHidden = false
+            
+            self.isSettingOff = false
+        }
+        
     }
     
     fileprivate func pushNotificationAction(_ friendFcmToken: String, _ myself: MyProfile) {
@@ -349,7 +346,7 @@ class OrderDrivingViewController: MapViewController {
 
 }
 
-extension OrderDrivingViewController: OrderDrivingViewDelegate {
+extension OrderDrivingViewController: OrderViewDelegate {
     
     func setOffAction(_ view: OrderDrivingView, didTapButton button: UIButton) {
         

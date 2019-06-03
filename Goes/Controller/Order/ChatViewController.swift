@@ -15,9 +15,11 @@ import MTSlideToOpen
 final class ChatViewController: MessagesViewController {
     
     var dataBase: Firestore!
+    
     private var reference: CollectionReference?
     
     private var messages: [Message] = []
+    
     private var messageListener: ListenerRegistration?
     
     var user: Member?

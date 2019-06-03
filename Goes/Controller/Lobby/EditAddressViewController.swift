@@ -19,7 +19,9 @@ class EditAddressViewController: UIViewController {
     var resultView: UITextView?
     
     @IBAction func dismiss(_ sender: Any) {
+        
         self.dismiss(animated: true, completion: nil)
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +32,8 @@ class EditAddressViewController: UIViewController {
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         
-        let subView = UIView(frame: CGRect(x: 0, y: 100.0, width: 350.0, height: 45.0))
-        
+        let subView = UIView(frame: CGRect(x: 0, y: 70.0, width: 350.0, height: 45.0))
+        searchController?.dimsBackgroundDuringPresentation = true
         subView.addSubview((searchController?.searchBar)!)
         view.addSubview(subView)
         searchController?.searchBar.sizeToFit()

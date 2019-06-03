@@ -14,108 +14,84 @@ import SwiftyJSON
 import Alamofire
 import Lottie
 
-class OrderRidingViewController: UIViewController {
-    
-    @IBOutlet weak var successImageView: UIImageView!
-    @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var driverName: UILabel!
-    @IBOutlet weak var estimateArrivingTime: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var avatar: UIImageView!
-    @IBOutlet weak var greenView: UIView! {
-        
-        didSet {
-            greenView.roundCorners(20)
-        }
-    }
-    
-    private let locationManager = CLLocationManager()
+class OrderRidingViewController: BaseMapViewController {
     
     var orderMyRequestVC: OrderMyRequestViewController?
-    let personalDataManager = PersonalDataManager.share
-    let fireBaseManager = FireBaseManager.share
-    var myProfile: MyProfile?
-    var order: OrderDetail?
-    var driver: MyProfile?
     var driverFirstLocation: CLLocationCoordinate2D?
     var completeTime: Int?
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        guard let driver = self.driver else {
-            return
-        }
         
-        if driver.avatar != "" {
-            let url = URL(string: driver
-                .avatar)
-            avatar.kf.setImage(with: url)
-            avatar.roundCorners(avatar.frame.width/2)
-            avatar.clipsToBounds = true
-        }
-        
+        locationManager.requestWhenInUseAuthorization()
         checkLocationAuth()
         
-        self.mapView.delegate = self
-        self.mapView.isMyLocationEnabled = true
+        guard let driver = self.driver else { return }
+        guard driver.avatar != "" else { return }
+        orderRrivingView.showAvatar(url: driver.avatar)
         
-        self.locationManager.delegate = self
-        self.locationManager.requestWhenInUseAuthorization()
+        showMarker(self.order)
+        orderRrivingView.arrivingAddressLabel.text = order?.locationFormattedAddress
+        orderRrivingView.driverName.text = driver.userName
         
-        let rPosition = CLLocationCoordinate2D(latitude: (order?.selectedLat)!, longitude: (order?.selectedLng)!)
-        let rMarker = GMSMarker(position: rPosition)
-        rMarker.icon = UIImage(named: "Images_60x_Rider_Normal")
-        rMarker.map = self.mapView
-        
-        locationLabel.text = order?.locationFormattedAddress
-        driverName.text = driver.userName
-        
-        self.fireBaseManager.listenDriverLocation(orderID: (self.order?.orderID)!) { (order) in
-
-            self.order = order
-            self.mapView.clear()
-            
-            let position = CLLocationCoordinate2D(latitude: (order?.driverLat)!, longitude: (order?.driverLag)!)
-            let marker = GMSMarker(position: position)
-            marker.icon = UIImage(named: "Images_60x_Driver_Normal")
-            marker.map = self.mapView
-            
-            let rPosition = CLLocationCoordinate2D(latitude: (order?.selectedLat)!, longitude: (order?.selectedLng)!)
-            let rMarker = GMSMarker(position: rPosition)
-            rMarker.icon = UIImage(named: "Images_60x_Rider_Normal")
-            rMarker.map = self.mapView
-
-            if self.driverFirstLocation == nil {
-
-                self.driverFirstLocation = CLLocationCoordinate2D(
-                    latitude: (order?.driverLat)!,
-                    longitude: (order?.driverLag)!)
-                
-                guard let driverFirstLocation = self.driverFirstLocation else { return }
-
-                var region = GMSVisibleRegion()
-
-                region.nearLeft = CLLocationCoordinate2DMake((self.order?.selectedLat)!, (self.order?.selectedLng)!)
-
-                region.farRight = driverFirstLocation
-
-                let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
-                
-                guard let camera = self.mapView.camera(for: bounds, insets:UIEdgeInsets(top: 50, left: 100, bottom: 50, right: 100)) else { return }
-                
-                self.getArrivingTime(location: driverFirstLocation)
-
-                self.mapView.camera = camera
-
-            }
-            
-        }
+        listenDriverLocation()
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction(_:)))
     
         self.view.addGestureRecognizer(longPress)
        
+    }
+    
+    fileprivate func listenDriverLocation() {
+        
+        guard let orederID = self.order?.orderID else { return }
+        FireBaseManager.share.listenDriverLocation(orderID: orederID) { [weak self] order in
+            
+            self?.order = order
+            
+            self?.orderRrivingView.mapView.clear()
+            
+            self?.showMarker(order)
+            
+            if self?.driverFirstLocation == nil {
+                
+                self?.driverFirstLocation = CLLocationCoordinate2D(
+                    latitude: (order?.driverLat)!,
+                    longitude: (order?.driverLag)!)
+                
+                guard let driverFirstLocation = self?.driverFirstLocation else { return }
+                
+                var region = GMSVisibleRegion()
+                
+                region.nearLeft = CLLocationCoordinate2DMake((self?.order?.selectedLat)!, (self?.order?.selectedLng)!)
+                
+                region.farRight = driverFirstLocation
+                
+                let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
+                
+                guard let camera = self?.orderRrivingView.mapView.camera(for: bounds, insets:UIEdgeInsets(top: 50, left: 100, bottom: 50, right: 100)) else { return }
+                
+                self?.getArrivingTime(location: driverFirstLocation)
+                
+                self?.orderRrivingView.mapView.camera = camera
+                
+            }
+            
+        }
+    }
+    
+    fileprivate func showMarker(_ order: OrderDetail?) {
+        
+        guard let order = order else { return }
+        let driverLocation = CLLocationCoordinate2D(latitude: order.driverLat, longitude: order.driverLag)
+        let driverMarker = GMSMarker(position: driverLocation)
+        driverMarker.icon = UIImage(named: "Images_60x_Driver_Normal")
+        driverMarker.map = orderRrivingView.mapView
+        
+        let riderLocation = CLLocationCoordinate2D(latitude: order.selectedLat, longitude: order.selectedLng)
+        let riderMarker = GMSMarker(position: riderLocation)
+        riderMarker.icon = UIImage(named: "Images_60x_Rider_Normal")
+        riderMarker.map = orderRrivingView.mapView
     }
     
     func getArrivingTime(location: CLLocationCoordinate2D) {
@@ -125,29 +101,51 @@ class OrderRidingViewController: UIViewController {
         let origin = "\(order.selectedLat),\(order.selectedLng)"
         let destination = "\(location.latitude),\(location.longitude)"
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyAw1nm850dZdGXNXekQXf0_TK846oFKX84"
-        Alamofire.request(url).responseJSON { response in
-            
-            do {
-                
-                let json = try JSON(data: response.data!)
-                let timeValue = json["routes"][0]["legs"][0]["duration"]["value"].rawValue as? Int
+        
+        GoogleMapManager.share.fetchDirection(url: URL(string: url)!) { result in
+            switch result {
+            case .success(let posts):
+                let timeValue = posts.routes[0].legs[0].duration.value
                 if timeValue != nil {
                     
-                    let current = Int(Date().timeIntervalSince1970) + timeValue!
+                    let current = Int(Date().timeIntervalSince1970) + timeValue
                     let dformatter = DateFormatter()
                     let date = Date(timeIntervalSince1970: TimeInterval(current))
                     dformatter.dateFormat = "HH:mm"
-                    self.estimateArrivingTime.text = dformatter.string(from: date)
+                    self.orderRrivingView.estimatedTime.text = dformatter.string(from: date)
                     
                 } else {
-                    self.estimateArrivingTime.text = " -- : -- "
+                    self.orderRrivingView.estimatedTime.text = " -- : -- "
                 }
                 
-            } catch {
-                print("ERROR: not working")
+                
+            case .failure:
+                print("Failed")
             }
         }
         
+//        Alamofire.request(url).responseJSON { response in
+//            
+//            do {
+//                
+//                let json = try JSON(data: response.data!)
+//                let timeValue = json["routes"][0]["legs"][0]["duration"]["value"].rawValue as? Int
+//                if timeValue != nil {
+//                    
+//                    let current = Int(Date().timeIntervalSince1970) + timeValue!
+//                    let dformatter = DateFormatter()
+//                    let date = Date(timeIntervalSince1970: TimeInterval(current))
+//                    dformatter.dateFormat = "HH:mm"
+//                    self.orderRrivingView.estimatedTime.text = dformatter.string(from: date)
+//                    
+//                } else {
+//                    self.orderRrivingView.estimatedTime.text = " -- : -- "
+//                }
+//                
+//            } catch {
+//                print("ERROR: not working")
+//            }
+//        }
         
     }
     
@@ -226,21 +224,19 @@ class OrderRidingViewController: UIViewController {
     @objc func longPressAction(_ sender: UIGestureRecognizer) {
 
         let animationView = AnimationView(name: LottieFile.caseSuccessAnimationView.rawValue)
-        animationView.frame = CGRect(
-            x: 0, y: 0, width: successImageView.frame.width, height:  successImageView.frame.height)
-        
+        let animationViewFrame = orderRrivingView.successfulImage.frame
+        animationView.frame = CGRect(x: 0, y: 0, width: animationViewFrame.width, height:  animationViewFrame.height)
         animationView.contentMode = .scaleAspectFit
-        
         animationView.animationSpeed = 2
         
-        self.successImageView.addSubview(animationView)
+        orderRrivingView.successfulImage.addSubview(animationView)
 
         if sender.state == .ended {
            animationView.stop()
             print("ok")
             nowTimeStamp()
 
-            self.fireBaseManager.orderComplete(
+            FireBaseManager.share.orderComplete(
                 myUid: self.myProfile?.userID ?? "" ,
                 friendUid: self.driver?.userID ?? "",
                 orderID: self.order?.orderID ?? "",
@@ -259,11 +255,8 @@ class OrderRidingViewController: UIViewController {
         }
        
     }
-}
 
-extension OrderRidingViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    override func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         guard status == .authorizedWhenInUse else {
             checkLocationAuth()
@@ -271,47 +264,9 @@ extension OrderRidingViewController: CLLocationManagerDelegate {
         
         locationManager.startUpdatingLocation()
         
-        mapView.isMyLocationEnabled = true
-        mapView.settings.myLocationButton = true
+        orderRrivingView.mapView.isMyLocationEnabled = true
+        orderRrivingView.mapView.settings.myLocationButton = true
        
     }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//
-//        guard locations.first != nil else { return }
-//        
-////        if let driverLat = order?.driverLat, let driverLag = order?.driverLag {
-////
-////            var region = GMSVisibleRegion()
-////
-////            region.nearLeft = CLLocationCoordinate2DMake((self.order?.selectedLat)!, (self.order?.selectedLng)!)
-////
-////            region.farRight = CLLocationCoordinate2DMake(driverLat, driverLag)
-////
-////            let bounds = GMSCoordinateBounds(coordinate: region.nearLeft,coordinate: region.farRight)
-////
-////            let camera = self.mapView.camera(for: bounds, insets:UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100))
-////
-////            self.mapView.camera = camera!
-////        } else {
-//        
-////            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-////        }
-//        
-//    }
 
-}
-
-extension OrderRidingViewController: GMSMapViewDelegate {
-    
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        
-        self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-    }
-    
-    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-        
-    }
-    
 }

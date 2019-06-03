@@ -98,12 +98,8 @@ class AskLogInViewController: UIViewController {
                     
                     //Go to the HomeViewController if the login is sucessful
                    
-                    
-                    
                     self.dismiss(animated: false, completion: nil)
-                
-
-                    
+            
                 } else {
                     
                     //Tells the user that there is an error and then gets firebase to tell them the error
